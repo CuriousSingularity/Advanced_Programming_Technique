@@ -26,9 +26,17 @@ using namespace std;
 #define radToDeg(angleInRadians) 	((angleInRadians) * 180.0 / M_PI)
 
 //Method Implementations
-//CWaypoint constructor
+
+/**
+ * CWaypoint constructor:
+ * Sets the value of any object when created
+ * param@ string name		-	name of a Waypoint (IN)
+ * param@ double latitude	-	latitude of a Waypoint (IN)
+ * param@ double longitude	-	longitude of a Waypoint (IN)
+ */
 CWaypoint::CWaypoint(string name, double latitude, double longitude)
 {
+	// Solution (Exercise 1.1; section c):
 	// set the class data members with the parameters values passed during an object creation.
 	this->set(name, latitude, longitude);
 
@@ -52,8 +60,16 @@ CWaypoint::CWaypoint(string name, double latitude, double longitude)
 }
 
 
+/**
+ * Sets the current waypoint co-ordinate values
+ * param@ string name		-	name of a Waypoint	(IN)
+ * param@ double latitude	-	latitude of a Waypoint	(IN)
+ * param@ double longitude	-	longitude of a Waypoint	(IN)
+ * returnvalue@ void
+ */
 void CWaypoint::set(string name, double latitude, double longitude)
 {
+	// Solution (Exercise 1.1; section b):
 	if (((latitude >= LATITUDE_MIN) && (latitude <= LATITUDE_MAX)) &&
 		((longitude >= LONGITUDE_MIN) && (longitude <= LONGITUDE_MAX)) &&
 		(!name.empty()))
@@ -73,24 +89,43 @@ void CWaypoint::set(string name, double latitude, double longitude)
 }
 
 
+/**
+ * Return the current waypoint co-ordinate name
+ * retuvalue@ string name	-	name of a Waypoint
+ */
 string CWaypoint::getName()
 {
 	return (this->m_name);
 }
 
 
+/**
+ * Return the current waypoint latitude
+ * returnvalue@ double latitude	-	latitude of a Waypoint
+ */
 double CWaypoint::getLatitude()
 {
 	return (this->m_latitude);
 }
 
 
+/**
+ * Return the current waypoint longitude
+ * returnvalue@ double longitude-	longitude of a Waypoint
+ */
 double CWaypoint::getLongitude()
 {
 	return (this->m_longitude);
 }
 
 
+/**
+ * Return the current waypoint co-ordinate values
+ * param@ string& name		-	name of a Waypoint	(OUT)
+ * param@ double& latitude	-	latitude of a Waypoint	(OUT)
+ * param@ double& longitude	-	longitude of a Waypoint (OUT)
+ * returnvalue@ void
+ */
 void CWaypoint::getAllDataByReference(string& name, double& latitude, double& longitude)
 {
 	/*
@@ -114,6 +149,12 @@ void CWaypoint::getAllDataByReference(string& name, double& latitude, double& lo
 	longitude 	= this->m_longitude;
 }
 
+
+/**
+ * Return the distance between 2 waypoint co-ordinates
+ * param@ const CWaypoint& wp	-	Waypoint co-ordinate (IN)
+ * returnvalue@ double			- 	Distance in KMs
+ */
 double CWaypoint::calculateDistance(const CWaypoint& wp)
 {
 	double distance = 0;
@@ -125,8 +166,14 @@ double CWaypoint::calculateDistance(const CWaypoint& wp)
 	return distance;
 }
 
+
+/**
+ * Prints the waypoint values in Degree-Mins-secs format or Decimal format
+ * returnvalue@ void
+ */
 void CWaypoint::print(int format)
 {
+	// Exercise 1.1 ; section e
 	if (format == DEGREE)
 	{
 		// Latitude and Longitude in decimal format
@@ -146,8 +193,17 @@ void CWaypoint::print(int format)
 	}
 }
 
+
+/**
+ * Converts the Latitude in decimal to deg-min-sec format
+ * param@ int& deg		-	latitude in degrees	(OUT)
+ * param@ int& deg		-	latitude in minutes	(OUT)
+ * param@ double& ss	-	latitude in seconds (OUT)
+ * returnvalue@ void
+ */
 void CWaypoint::transformLatitude2degmmss(int& deg, int& mm, double& ss)
 {
+	// Exercise 1.1 ; section e
 	deg = this->m_latitude;
 	mm  = (this->m_latitude - deg) * 60;
 	ss  = (((this->m_latitude - deg) * 60) - mm) * 60;
@@ -160,8 +216,17 @@ void CWaypoint::transformLatitude2degmmss(int& deg, int& mm, double& ss)
 	}
 }
 
+
+/**
+ * Converts the Longitude in decimal to deg-min-sec format
+ * param@ int& deg		-	longitude in degrees (OUT)
+ * param@ int& deg		-	longitude in minutes (OUT)
+ * param@ double& ss	-	longitude in seconds (OUT)
+ * returnvalue@ void
+ */
 void CWaypoint::transformLongitude2degmmss(int& deg, int& mm, double& ss)
 {
+	// Exercise 1.1 ; section e
 	deg = this->m_longitude;
 	mm  = (this->m_longitude - deg) * 60;
 	ss  = (((this->m_longitude - deg) * 60) - mm) * 60;
