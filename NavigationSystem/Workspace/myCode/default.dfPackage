@@ -19,25 +19,63 @@ class reference1 {
 */
 class reference {
 }
+/**
+@__ref <oiref:cpp#Class#CPOI:oiref><oihard>
+@__modelType reference */
+class reference2 {
+}
+/**
+@__ref <oiref:cpp#Class#CPoiDatabase:oiref><oihard>
+@__modelType reference 
+*/
+class reference3 {
+}
+/**
+@__ref <oiref:cpp#Class#CGPSSensor:oiref><oihard>
+@__modelType reference 
+*/
+class reference4 {
+}
+/**
+@__ref <oiref:cpp#Class#CRoute:oiref><oihard>
+@__modelType reference 
+*/
+class reference5 {
+}
+/**
+@__ref <oiref:cpp#Class#CNavigationSystem:oiref><oihard>
+@__modelType reference 
+*/
+class reference6 {
+}
 }/**
 @__tags
 @shapeType ClassDiagram
 @changelog rO0ABXNyABFqYXZhLnV0aWwuSGFzaE1hcAUH2sHDFmDRAwACRgAKbG9hZEZhY3RvckkACXRocmVz
-aG9sZHhwP0AAAAAAAAx3CAAAABAAAAACc3IADmphdmEubGFuZy5Mb25nO4vkkMyPI98CAAFKAAV2
+aG9sZHhwP0AAAAAAAAx3CAAAABAAAAADc3IADmphdmEubGFuZy5Mb25nO4vkkMyPI98CAAFKAAV2
 YWx1ZXhyABBqYXZhLmxhbmcuTnVtYmVyhqyVHQuU4IsCAAB4cAAAAWbHa3QAc3IAE2phdmEudXRp
 bC5BcnJheUxpc3R4gdIdmcdhnQMAAUkABHNpemV4cAAAAAF3BAAAAApzcgAlZGUubW5sLmRvY2Jv
 b2s0VEEuaW1wbC5DaGFuZ2VMb2dFbnRyeQeNjrX5qiSfAgADTAAIaG9zdG5hbWV0ABJMamF2YS9s
 YW5nL1N0cmluZztMAARuYW1lcQB+AAhMAAR1c2VycQB+AAh4cHQAD0RFU0tUT1AtTU5MNDdGMnQA
-CTxkZWZhdWx0PnQABXJiaGFyeHNxAH4AAgAAAWbCRRgAc3EAfgAFAAAAAXcEAAAACnNxAH4AB3QA
-D0RFU0tUT1AtTU5MNDdGMnQACTxkZWZhdWx0PnQABXJiaGFyeHg=
+CTxkZWZhdWx0PnQABXJiaGFyeHNxAH4AAgAAAWbW3ogAc3EAfgAFAAAAAXcEAAAACnNxAH4AB3QA
+D0RFU0tUT1AtTU5MNDdGMnQACTxkZWZhdWx0PnQABXJiaGFyeHNxAH4AAgAAAWbCRRgAc3EAfgAF
+AAAAAXcEAAAACnNxAH4AB3QAD0RFU0tUT1AtTU5MNDdGMnQACTxkZWZhdWx0PnQABXJiaGFyeHg=
 @elementChangelogs rO0ABXNyABFqYXZhLnV0aWwuSGFzaE1hcAUH2sHDFmDRAwACRgAKbG9hZEZhY3RvckkACXRocmVz
-aG9sZHhwP0AAAAAAAAx3CAAAABAAAAABdAAhPG9pcmVmOmNwcCNDbGFzcyNDV2F5cG9pbnQ6b2ly
-ZWY+c3EAfgAAP0AAAAAAAAx3CAAAABAAAAABc3IADmphdmEubGFuZy5Mb25nO4vkkMyPI98CAAFK
-AAV2YWx1ZXhyABBqYXZhLmxhbmcuTnVtYmVyhqyVHQuU4IsCAAB4cAAAAWbHa3QAc3IAE2phdmEu
-dXRpbC5BcnJheUxpc3R4gdIdmcdhnQMAAUkABHNpemV4cAAAAAF3BAAAAApzcgAlZGUubW5sLmRv
-Y2Jvb2s0VEEuaW1wbC5DaGFuZ2VMb2dFbnRyeQeNjrX5qiSfAgADTAAIaG9zdG5hbWV0ABJMamF2
-YS9sYW5nL1N0cmluZztMAARuYW1lcQB+AApMAAR1c2VycQB+AAp4cHQAD0RFU0tUT1AtTU5MNDdG
-MnQACUNXYXlwb2ludHQABXJiaGFyeHh4
+aG9sZHhwP0AAAAAAAAx3CAAAABAAAAAFdAAcPG9pcmVmOmNwcCNDbGFzcyNDUE9JOm9pcmVmPnNx
+AH4AAD9AAAAAAAAMdwgAAAAQAAAAAXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFs
+dWV4cgAQamF2YS5sYW5nLk51bWJlcoaslR0LlOCLAgAAeHAAAAFm1t6IAHNyABNqYXZhLnV0aWwu
+QXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAABdwQAAAAKc3IAJWRlLm1ubC5kb2Nib29r
+NFRBLmltcGwuQ2hhbmdlTG9nRW50cnkHjY61+aoknwIAA0wACGhvc3RuYW1ldAASTGphdmEvbGFu
+Zy9TdHJpbmc7TAAEbmFtZXEAfgAKTAAEdXNlcnEAfgAKeHB0AA9ERVNLVE9QLU1OTDQ3RjJ0AARD
+UE9JdAAFcmJoYXJ4eHQAIjxvaXJlZjpjcHAjQ2xhc3MjQ0dQU1NlbnNvcjpvaXJlZj5zcQB+AAA/
+QAAAAAAADHcIAAAAEAAAAAFzcQB+AAQAAAFm1t6IAHNxAH4ABwAAAAF3BAAAAApzcQB+AAlxAH4A
+DHQACkNHUFNTZW5zb3JxAH4ADnh4dAApPG9pcmVmOmNwcCNDbGFzcyNDTmF2aWdhdGlvblN5c3Rl
+bTpvaXJlZj5zcQB+AAA/QAAAAAAADHcIAAAAEAAAAAFzcQB+AAQAAAFm1t6IAHNxAH4ABwAAAAF3
+BAAAAApzcQB+AAlxAH4ADHQAEUNOYXZpZ2F0aW9uU3lzdGVtcQB+AA54eHQAJDxvaXJlZjpjcHAj
+Q2xhc3MjQ1BvaURhdGFiYXNlOm9pcmVmPnNxAH4AAD9AAAAAAAAMdwgAAAAQAAAAAXNxAH4ABAAA
+AWbW3ogAc3EAfgAHAAAAAXcEAAAACnNxAH4ACXEAfgAMdAAMQ1BvaURhdGFiYXNlcQB+AA54eHQA
+HjxvaXJlZjpjcHAjQ2xhc3MjQ1JvdXRlOm9pcmVmPnNxAH4AAD9AAAAAAAAMdwgAAAAQAAAAAXNx
+AH4ABAAAAWbW3ogAc3EAfgAHAAAAAXcEAAAACnNxAH4ACXEAfgAMdAAGQ1JvdXRlcQB+AA54eHg=
 */
 class __tags {
 }/**
@@ -45,11 +83,29 @@ class __tags {
 */
 class __options {
 }/**
-@__positions <oigroup:<oiref:cpp#Member#CWaypoint#m_name:oiref>=130,40,261,16,1:oigroup>
-<oigroup:<oiref:cpp#Member#CWaypoint#m_longitude:oiref>=120,70,261,16,1:oigroup>
-<oigroup:<oiref:design#Class#id6blvljo18z0h7jo18z9e5.diagram:oiref>=50,40,83,95,1:oigroup>
+@__positions <oigroup:Composite#supplierCardinality#MemberLink#<oiref:cpp#Member#CRoute#m_pPoiDatabase:oiref>=938,322,28,16,0:oigroup>
 <oigroup:<oiref:cpp#Class#CWaypoint:oiref>=170,40,267,270,0:oigroup>
+<oigroup:<oiref:cpp#Extends#CPOI#CWaypoint:oiref>=970,121,437,121:oigroup>
+<oigroup:<oiref:design#Class#id6blvljo18z0h7jo18z9e5.diagram:oiref>=50,40,83,95,1:oigroup>
+<oigroup:MemberLink#<oiref:cpp#Member#CNavigationSystem#m_PoiDatabase:oiref>=770,690,1175,414:oigroup>
+<oigroup:MemberLink#<oiref:cpp#Member#CRoute#m_pWaypoint:oiref>=610,285,437,285:oigroup>
+<oigroup:<oiref:cpp#Class#CNavigationSystem:oiref>=620,690,200,190,1:oigroup>
+<oigroup:<oiref:cpp#Member#CWaypoint#m_longitude:oiref>=120,70,261,16,1:oigroup>
+<oigroup:MemberLink#<oiref:cpp#Member#CNavigationSystem#m_GPSSensor:oiref>=620,730,356,730:oigroup>
+<oigroup:<oiref:cpp#Member#CWaypoint#m_name:oiref>=130,40,261,16,1:oigroup>
 <oigroup:<oiref:cpp#Member#CWaypoint#m_latitude:oiref>=120,60,261,16,1:oigroup>
+<oigroup:<oiref:cpp#Class#CPOI:oiref>=970,50,172,142,1:oigroup>
+<oigroup:MemberLink#<oiref:cpp#Member#CPoiDatabase#m_POI:oiref>=1056,270,1056,192:oigroup>
+<oigroup:<oiref:cpp#Class#CGPSSensor:oiref>=170,670,186,101,1:oigroup>
+<oigroup:<oiref:cpp#Member#CRoute#connectToPoiDatabase#(#CPoiDatabase*#)#:oiref>=550,540,194,16,1:oigroup>
+<oigroup:MemberLink#<oiref:cpp#Member#CNavigationSystem#m_route:oiref>=720,690,720,582:oigroup>
+<oigroup:<oiref:cpp#Class#CRoute:oiref>=610,280,220,302,0:oigroup>
+<oigroup:<oiref:cpp#Class#CPoiDatabase:oiref>=970,270,410,144,0:oigroup>
+<oigroup:Autodependency<oiref:cpp#Class#CGPSSensor:oiref><Autodependency><oiref:cpp#Class#CWaypoint:oiref>=263,670,263,310:oigroup>
+<oigroup:MemberLink#<oiref:cpp#Member#CRoute#m_pPoiDatabase:oiref>=830,342,970,342:oigroup>
+<oigroup:Autodependency<oiref:cpp#Class#CRoute:oiref><Autodependency><oiref:cpp#Class#CPOI:oiref>=720,280,1013,192:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:cpp#Member#CRoute#m_pWaypoint:oiref>=441,265,28,16,0:oigroup>
+<oigroup:<oiref:cpp#Member#CNavigationSystem#$$constructor$$#(##)#:oiref>=590,820,186,16,1:oigroup>
 */
 class __positions {
 }
