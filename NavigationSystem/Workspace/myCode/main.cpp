@@ -10,9 +10,13 @@
 using namespace std;
 
 #include "CWaypoint.h"
+#include "CPOI.h"
+#include "CPoiDatabase.h"
+#include "CNavigationSystem.h"
 
 int main (void)
 {
+#if 0
 	cout << "Navigation System:" << endl << endl;
 	//cout << std::fixed << std::setprecision(4);
 
@@ -22,6 +26,12 @@ int main (void)
 	CWaypoint berlin("Berlin", 52.5200, 13.4050);
 	CWaypoint tokio("Tokyo", 35.6895, 139.6917);
 	CWaypoint newWaypoint;
+
+#ifdef TESTCASE
+	CWaypoint wp("", 10, 20);
+
+	wp.print(MMSS);
+#endif
 
 	// Exercise 1.1 ; section f
 	cout << "==================================================\n";
@@ -95,6 +105,19 @@ int main (void)
 
 		cout << place1.getName() << "\tto\t" << place2.getName() << ": " << place1.calculateDistance(place2) << " Kms (approx.)\n";
 	}
+#endif
+
+#ifdef TESTCASE
+	CPOI poi_testcase_1(RESTAURANT, "KFC", "KFC near Lusienplatz", 12, 11.5);
+	CPOI poi_testcase_2(RESTAURANT, "", "", 12, 11.5);
+
+	poi_testcase_1.print();
+	poi_testcase_2.print();
+#endif
+
+	CNavigationSystem navigationSystem;
+
+	navigationSystem.run();
 
 	return 0;
 }

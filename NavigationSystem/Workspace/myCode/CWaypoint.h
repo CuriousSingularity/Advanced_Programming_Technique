@@ -1,9 +1,11 @@
 /***************************************************************************
 *============= Copyright by Darmstadt University of Applied Sciences =======
 ****************************************************************************
-* Filename        : CWAYPOINT.H
-* Author          :
-* Description     :
+* Filename        : CWaypoint.h
+* Author          : Bharath Ramachandraiah
+* Description     : The file defines a class CWaypoint.
+* 					The class CWaypoint is used to hold the information of
+* 					a waypoint co-ordinates and a name for it.
 *
 *
 ****************************************************************************/
@@ -11,10 +13,20 @@
 #ifndef CWAYPOINT_H
 #define CWAYPOINT_H
 
-// Solution (Exercise 1.1; section f):
-// Macros should be defined here (CWaypoint.h) so that it can be accessed by
-// both print method and calling function in main.cpp or *.cpp which includes
-// this header file.
+//System Include Files
+#include <string>
+
+//Own Include Files
+
+
+//Macros
+/**
+ * Solution (Exercise 1.1; section f):
+ *
+ * Macros should be defined here (CWaypoint.h) so that it can be accessed by
+ * both print method and calling function in main.cpp or *.cpp which includes
+ * this header file.
+ */
 #define DEGREE					1
 #define MMSS					2
 
@@ -22,6 +34,8 @@
 #define LATITUDE_MAX			(+90)
 #define LONGITUDE_MIN			(-180)
 #define LONGITUDE_MAX			(+180)
+
+//#define SHOWADRESS
 
 class CWaypoint {
 private:
@@ -46,9 +60,21 @@ private:
 
 protected:
 
-    std::string m_name;
-    double 		m_latitude;
-    double 		m_longitude;
+    /*
+     * A name for the waypoint.
+     * eg: Berlin, Rio, Sydney etc
+     */
+    std::string 	m_name;
+
+    /**
+     * The latitude value of a co-ordinate
+     */
+    double 			m_latitude;
+
+    /**
+     * The longtitude value of a co-ordinate
+     */
+    double 			m_longitude;
 
 public:
 
@@ -63,7 +89,7 @@ public:
 
     /**
      * Sets the current waypoint co-ordinate values
-     * param@ string name		-	name of a Waypoint	(IN)
+     * param@ string name		-	name of a Waypoint		(IN)
      * param@ double latitude	-	latitude of a Waypoint	(IN)
      * param@ double longitude	-	longitude of a Waypoint	(IN)
      * returnvalue@ void
@@ -90,7 +116,7 @@ public:
 
     /**
 	 * Return the current waypoint co-ordinate values
-	 * param@ string& name		-	name of a Waypoint	(OUT)
+	 * param@ string& name		-	name of a Waypoint		(OUT)
 	 * param@ double& latitude	-	latitude of a Waypoint	(OUT)
 	 * param@ double& longitude	-	longitude of a Waypoint (OUT)
 	 * returnvalue@ void

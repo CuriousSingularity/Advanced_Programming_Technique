@@ -19,8 +19,6 @@ using namespace std;
 #include "CWaypoint.h"
 
 //Macros
-//#define SHOWADRESS
-
 #define M_PI						(atan(1) * 4)
 #define degToRad(angleInDegrees) 	((angleInDegrees) * M_PI / 180.0)
 #define radToDeg(angleInRadians) 	((angleInRadians) * 180.0 / M_PI)
@@ -30,8 +28,8 @@ using namespace std;
 /**
  * CWaypoint constructor:
  * Sets the value of any object when created
- * param@ string name		-	name of a Waypoint (IN)
- * param@ double latitude	-	latitude of a Waypoint (IN)
+ * param@ string name		-	name of a Waypoint 		(IN)
+ * param@ double latitude	-	latitude of a Waypoint 	(IN)
  * param@ double longitude	-	longitude of a Waypoint (IN)
  */
 CWaypoint::CWaypoint(string name, double latitude, double longitude)
@@ -62,7 +60,7 @@ CWaypoint::CWaypoint(string name, double latitude, double longitude)
 
 /**
  * Sets the current waypoint co-ordinate values
- * param@ string name		-	name of a Waypoint	(IN)
+ * param@ string name		-	name of a Waypoint		(IN)
  * param@ double latitude	-	latitude of a Waypoint	(IN)
  * param@ double longitude	-	longitude of a Waypoint	(IN)
  * returnvalue@ void
@@ -121,7 +119,7 @@ double CWaypoint::getLongitude()
 
 /**
  * Return the current waypoint co-ordinate values
- * param@ string& name		-	name of a Waypoint	(OUT)
+ * param@ string& name		-	name of a Waypoint		(OUT)
  * param@ double& latitude	-	latitude of a Waypoint	(OUT)
  * param@ double& longitude	-	longitude of a Waypoint (OUT)
  * returnvalue@ void
@@ -177,7 +175,7 @@ void CWaypoint::print(int format)
 	if (format == DEGREE)
 	{
 		// Latitude and Longitude in decimal format
-		cout << this->m_name << " on " << "latitude = " << this->m_latitude << " and " << "longitude = " << this->m_longitude << endl;
+		cout << this->m_name << "\t\ton " << "latitude = " << this->m_latitude << " and " << "longitude = " << this->m_longitude << endl;
 	}
 	else if (format == MMSS)
 	{
@@ -186,7 +184,7 @@ void CWaypoint::print(int format)
 		double ss = 0;
 
 		this->transformLatitude2degmmss(deg, mm, ss);
-		cout << this->m_name << " on " << "latitude = " << deg << "deg " << mm << "min " << ss << "s ";
+		cout << this->m_name << "\t\ton " << "latitude = " << deg << "deg " << mm << "min " << ss << "s ";
 
 		this->transformLongitude2degmmss(deg, mm, ss);
 		cout << "and longitude = " << deg << "deg " << mm << "min " << ss << "s" << endl;
