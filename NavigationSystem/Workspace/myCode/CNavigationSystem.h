@@ -1,10 +1,11 @@
 /***************************************************************************
 *============= Copyright by Darmstadt University of Applied Sciences =======
 ****************************************************************************
-* Filename        : CNAVIGATIONSYSTEM.H
-* Author          :
-* Description     :
-*
+* Filename        : CNavigationSystem.h
+* Author          : Bharath Ramachandraiah
+* Description     : The file defines a class CNavigationSystem.
+* 					The class CNavigationSystem is used for Navigation which
+* 					has a GPS Sensor, Route and a Database.
 *
 ****************************************************************************/
 

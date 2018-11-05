@@ -1,10 +1,12 @@
 /***************************************************************************
 *============= Copyright by Darmstadt University of Applied Sciences =======
 ****************************************************************************
-* Filename        : CNAVIGATIONSYSTEM.CPP
-* Author          :
-* Description     :
-*
+* Filename        : CNavigationSystem.cpp
+* Author          : Bharath Ramachandraiah
+* Description     : The file defines all the methods pertaining to the
+* 					class type - class CNavigationSystem.
+* 					The class CNavigationSystem is used for Navigation which
+* 					has a GPS Sensor, Route and a Database.
 *
 ****************************************************************************/
 
@@ -14,8 +16,9 @@
 //Own Include Files
 #include "CNavigationSystem.h"
 
-
+//Namespaces
 using namespace std;
+
 
 //Method Implementations
 /**
@@ -60,8 +63,8 @@ void CNavigationSystem::enterRoute()
 	this->m_route.addWaypoint(CWaypoint("Heidelberger Landstrasse", 49.80687 ,	8.641321));
 
 	// add POIs
-	this->m_route.addPoi("HDA BuildingC10");
-	this->m_route.addPoi("Aral Tankstelle"	);
+	this->m_route.addPoi("HDA BuildingC10"	);
+	this->m_route.addPoi("Aral Tankst."		);
 	this->m_route.addPoi("Starbucks"		);
 	this->m_route.addPoi("SushiRestaurant"	);
 	this->m_route.addPoi("Aral Tankstelle"	);
@@ -90,13 +93,36 @@ void CNavigationSystem::printRoute()
  */
 void CNavigationSystem::printDistanceCurPosNextPoi()
 {
-	double distance = 0;
 	CPOI poi;
-	//CWaypoint currentPosition = this->m_GPSSensor.getCurrentPosition();
-	CWaypoint currentPosition("CurrentPos", 49.866851, 	8.634864);
+	CPOI::t_poi type = CPOI::DEFAULT_POI;
+	string name, description;
+	double distance = 0, latitude = 0, longitude = 0;
 
-	distance = this->m_route.getDistanceNextPoi(currentPosition, poi);
+	CWaypoint currentPosition;
+	currentPosition = this->m_GPSSensor.getCurrentPosition();
 
-	cout << "Distance to next POI = " << distance << endl;
-	poi.print();
+	// check if the GPS current location is valid
+	currentPosition.getAllDataByReference(name, latitude, longitude);
+
+	if (!name.empty())
+	{
+		distance = this->m_route.getDistanceNextPoi(currentPosition, poi);
+
+		// check if the POI is valid
+		poi.getAllDataByReference(name, latitude, longitude, type, description);
+
+		if (type != CPOI::DEFAULT_POI)
+		{
+			cout << "Distance to next POI = " << distance << endl;
+			poi.print();
+		}
+		else
+		{
+			cout << "WARNING: Can not compute the distance.\n";
+		}
+	}
+	else
+	{
+		cout << "WARNING: Invalid Sensor data.\n";
+	}
 }

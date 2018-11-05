@@ -35,7 +35,7 @@
 #define LONGITUDE_MIN			(-180)
 #define LONGITUDE_MAX			(+180)
 
-//#define SHOWADRESS
+#define SHOWADRESS
 
 class CWaypoint {
 private:
@@ -62,7 +62,7 @@ protected:
 
     /*
      * A name for the waypoint.
-     * eg: Berlin, Rio, Sydney etc
+     * eg: Berlin, California, Rio, Sydney etc
      */
     std::string 	m_name;
 
@@ -72,7 +72,7 @@ protected:
     double 			m_latitude;
 
     /**
-     * The longtitude value of a co-ordinate
+     * The longitude value of a co-ordinate
      */
     double 			m_longitude;
 

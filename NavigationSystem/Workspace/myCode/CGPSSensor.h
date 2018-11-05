@@ -1,16 +1,20 @@
 /***************************************************************************
 *============= Copyright by Darmstadt University of Applied Sciences =======
 ****************************************************************************
-* Filename        : CGPSSENSOR.H
-* Author          :
-* Description     :
-*
+* Filename        : CGPSSensor.h
+* Author          : Bharath Ramachandraiah
+* Description     : The file defines a class CGPSSensor.
+* 					The class CGPSSensor is used to receive the current
+* 					location from GPS sensor.
 *
 ****************************************************************************/
 
 #ifndef CGPSSENSOR_H
 #define CGPSSENSOR_H
 
+//System Include Files
+
+//Own Include Files
 #include "CWaypoint.h"
 
 class CGPSSensor {

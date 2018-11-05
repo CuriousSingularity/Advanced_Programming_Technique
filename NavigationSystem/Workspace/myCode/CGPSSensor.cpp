@@ -1,21 +1,25 @@
 /***************************************************************************
 *============= Copyright by Darmstadt University of Applied Sciences =======
 ****************************************************************************
-* Filename        : CGPSSENSOR.CPP
-* Author          :
-* Description     :
-*
+* Filename        : CGPSSensor.cpp
+* Author          : Bharath Ramachandraiah
+* Description     : The file defines all the methods pertaining to the
+* 					class type - class CGPSSensor.
+* 					The class CGPSSensor is used to receive the current
+* 					location from GPS sensor.
 *
 ****************************************************************************/
 
-
 //System Include Files
 #include <iostream>
+#include <limits>
 
-using namespace std;
 //Own Include Files
 #include "CGPSSensor.h"
-#include "CWaypoint.h"
+
+//Namespace
+using namespace std;
+
 
 //Method Implementations
 /**
@@ -23,7 +27,7 @@ using namespace std;
  */
 CGPSSensor::CGPSSensor()
 {
-	// Nothing
+	// Do Nothing
 }
 
 
@@ -33,40 +37,40 @@ CGPSSensor::CGPSSensor()
  */
 CWaypoint CGPSSensor::getCurrentPosition()
 {
-	double latitude = 360, longitude = 360;		// initializing to invalid values
+	double latitude = 0, longitude = 0;
 	CWaypoint gpsSensorValue;
 
 	cout << "GPS Sensor\n";
-	cout << "\tEnter latitude: \n";
-	cin >> latitude;
-	cout << "\tEnter longitude: \n";
-	cin >> longitude;
+
+	do
+	{
+		cout << "\tEnter latitude: \t";
+		cin >> latitude;
+
+		if (!cin.fail())
+			break;
+
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cout << "Invalid Input, please enter a number.\n";
+
+	} while (1);
+
+	do
+	{
+		cout << "\tEnter longitude: \t";
+		cin >> longitude;
+
+		if (!cin.fail())
+			break;
+
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		cout << "Invalid Input, please enter a number.\n";
+
+	} while (1);
 
 	gpsSensorValue.set("Current Position", latitude, longitude);
 
 	return gpsSensorValue;
-
-#if 0
-	do
-	{
-		cout << "GPS Sensor\n";
-		cout << "\tEnter latitude: \n";
-		cin >> latitude;
-		cout << "\tEnter longitude: \n";
-		cin >> longitude;
-
-		// check if the value entered is valid co-ordinates
-		if ((latitude >= LATITUDE_MIN) && (latitude <= LATITUDE_MAX) &&
-				(longitude >= LONGITUDE_MIN) && (longitude <= LONGITUDE_MAX))
-		{
-			break;
-		}
-		else
-		{
-			cout << "Invalid sensor value" << endl;
-		}
-	}
-	while(1);
-#endif
-
 }

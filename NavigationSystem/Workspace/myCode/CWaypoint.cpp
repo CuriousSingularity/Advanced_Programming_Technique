@@ -12,9 +12,6 @@
 #include <iostream>
 #include <math.h>
 
-//Namespaces
-using namespace std;
-
 //Own Include Files
 #include "CWaypoint.h"
 
@@ -23,8 +20,10 @@ using namespace std;
 #define degToRad(angleInDegrees) 	((angleInDegrees) * M_PI / 180.0)
 #define radToDeg(angleInRadians) 	((angleInRadians) * 180.0 / M_PI)
 
-//Method Implementations
+//Namespaces
+using namespace std;
 
+//Method Implementations
 /**
  * CWaypoint constructor:
  * Sets the value of any object when created
@@ -46,7 +45,7 @@ CWaypoint::CWaypoint(string name, double latitude, double longitude)
 	/*
 	 * Solution (Exercise 1.1; section c):
 	 * Data occupied by different attributes are as follows:
-	 * Data occupied by "m_name" 		= number of character string
+	 * Data occupied by "m_name" 		= depends on the number of character in a string
 	 * Data occupied by "m_latitude" 	= 8 bytes since it is of type double
 	 * Data occupied by "m_longitude" 	= 8 bytes since it is of type double
 	 */
@@ -126,6 +125,10 @@ double CWaypoint::getLongitude()
  */
 void CWaypoint::getAllDataByReference(string& name, double& latitude, double& longitude)
 {
+	name 		= this->getName();
+	latitude 	= this->getLatitude();
+	longitude 	= this->getLongitude();
+
 	/*
 	 * Solution (Exercise 1.1; section h):
 	 * The address of the variables of a calling function is same as the address of this function parameters.
@@ -141,10 +144,6 @@ void CWaypoint::getAllDataByReference(string& name, double& latitude, double& lo
 	cout << "latitude \t" 		<< &latitude 			<< "\t\t" << sizeof(latitude)	<< "\t\t" << latitude << "\n";
 	cout << "longitude \t" 		<< &longitude 			<< "\t\t" << sizeof(longitude)	<< "\t\t" << longitude << "\n";
 #endif
-
-	name 		= this->m_name;
-	latitude 	= this->m_latitude;
-	longitude 	= this->m_longitude;
 }
 
 
@@ -157,7 +156,7 @@ double CWaypoint::calculateDistance(const CWaypoint& wp)
 {
 	double distance = 0;
 
-	// distance is in spherical co-ordinate system
+	// distance in a spherical co-ordinate system
 	distance = 6378.17 * (acos(sin(degToRad(this->m_latitude)) * sin(degToRad(wp.m_latitude)) + 		\
 						 cos(degToRad(this->m_latitude)) * cos(degToRad(wp.m_latitude)) * cos(degToRad(wp.m_longitude - this->m_longitude))));
 
@@ -171,11 +170,11 @@ double CWaypoint::calculateDistance(const CWaypoint& wp)
  */
 void CWaypoint::print(int format)
 {
-	// Exercise 1.1 ; section e
+	// Solution (Exercise 1.1; section e)
 	if (format == DEGREE)
 	{
 		// Latitude and Longitude in decimal format
-		cout << this->m_name << "\t\ton " << "latitude = " << this->m_latitude << " and " << "longitude = " << this->m_longitude << endl;
+		cout << this->m_name << "\ton " << "latitude = " << this->m_latitude << "\tand " << "longitude = " << this->m_longitude << endl;
 	}
 	else if (format == MMSS)
 	{
@@ -184,10 +183,14 @@ void CWaypoint::print(int format)
 		double ss = 0;
 
 		this->transformLatitude2degmmss(deg, mm, ss);
-		cout << this->m_name << "\t\ton " << "latitude = " << deg << "deg " << mm << "min " << ss << "s ";
+		cout << this->m_name << "\ton " << "latitude = " << deg << "deg " << mm << "min " << ss << "s ";
 
 		this->transformLongitude2degmmss(deg, mm, ss);
-		cout << "and longitude = " << deg << "deg " << mm << "min " << ss << "s" << endl;
+		cout << "\tand longitude = " << deg << "deg " << mm << "min " << ss << "s" << endl;
+	}
+	else
+	{
+		cout << "WARNING: Requested Print format doesn't exist.\n";
 	}
 }
 
@@ -201,7 +204,7 @@ void CWaypoint::print(int format)
  */
 void CWaypoint::transformLatitude2degmmss(int& deg, int& mm, double& ss)
 {
-	// Exercise 1.1 ; section e
+	// Solution (Exercise 1.1; section e)
 	deg = this->m_latitude;
 	mm  = (this->m_latitude - deg) * 60;
 	ss  = (((this->m_latitude - deg) * 60) - mm) * 60;
@@ -211,6 +214,10 @@ void CWaypoint::transformLatitude2degmmss(int& deg, int& mm, double& ss)
 	{
 		mm = -mm;
 		ss = -ss;
+	}
+	else
+	{
+		// Do nothing
 	}
 }
 
@@ -224,7 +231,7 @@ void CWaypoint::transformLatitude2degmmss(int& deg, int& mm, double& ss)
  */
 void CWaypoint::transformLongitude2degmmss(int& deg, int& mm, double& ss)
 {
-	// Exercise 1.1 ; section e
+	// Solution (Exercise 1.1; section e)
 	deg = this->m_longitude;
 	mm  = (this->m_longitude - deg) * 60;
 	ss  = (((this->m_longitude - deg) * 60) - mm) * 60;
@@ -234,5 +241,9 @@ void CWaypoint::transformLongitude2degmmss(int& deg, int& mm, double& ss)
 	{
 		mm = -mm;
 		ss = -ss;
+	}
+	else
+	{
+		// Do nothing
 	}
 }

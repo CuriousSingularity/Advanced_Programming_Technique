@@ -1,10 +1,11 @@
 /***************************************************************************
 *============= Copyright by Darmstadt University of Applied Sciences =======
 ****************************************************************************
-* Filename        : CROUTE.H
-* Author          :
-* Description     :
-*
+* Filename        : CRoute.h
+* Author          : Bharath Ramachandraiah
+* Description     : The file defines a class CRoute.
+* 					The class CRoute is used to hold the information
+* 					of points of interest and waypoints of a Route.
 *
 ****************************************************************************/
 
@@ -38,7 +39,7 @@ private:
     unsigned int m_nextWp;
 
     /**
-     * A pointer to an array of pointers containing the POIs of the current route
+     * A pointer to an array of pointers containing the POIs from Database of the current route
      */
     CPOI* * m_pPoi;
 

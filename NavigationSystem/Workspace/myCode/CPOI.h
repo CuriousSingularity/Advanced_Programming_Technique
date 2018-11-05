@@ -3,7 +3,7 @@
 ****************************************************************************
 * Filename        : CPOI.h
 * Author          : Bharath Ramachandraiah
-* Description     : The file declares a class CPOI.
+* Description     : The file defines a class CPOI.
 * 					The class CPOI is used to hold the information of a
 * 					point of interest.
 *
@@ -18,30 +18,17 @@
 //Own Include Files
 #include "CWaypoint.h"
 
-//Enumations
-enum t_poi
-{
-	RESTAURANT,
-	TOURISTIC,
-	GASSTATION,
-	UNIVERSITY,
-	DEFAULT_POI,
-};
-
 class CPOI : public CWaypoint {
-private:
-
-	/**
-	 * To identify the type of point of interest.
-	 */
-    t_poi 			m_type;
-
-    /**
-     * A description about the point of interest.
-     */
-    std::string 	m_description;
-
 public:
+
+    enum t_poi
+    {
+    	RESTAURANT,
+    	TOURISTIC,
+    	GASSTATION,
+    	UNIVERSITY,
+    	DEFAULT_POI,
+    };
 
     /**
 	 * CPOI constructor:
@@ -69,6 +56,18 @@ public:
      * returnvalue@ void
      */
     void print();
+private:
+
+	/**
+	 * To identify the type of point of interest.
+	 */
+    t_poi 			m_type;
+
+    /**
+     * A description about the point of interest.
+     */
+    std::string 	m_description;
+
 };
 /********************
 **  CLASS END

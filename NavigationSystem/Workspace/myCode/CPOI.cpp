@@ -18,24 +18,8 @@
 //Own Include Files
 #include "CPOI.h"
 
-
+//Namespaces
 using namespace std;
-
-
-typedef struct
-{
-	t_poi		type;
-	string		type_name;
-} poi_type_t;
-
-const poi_type_t poi_types [] =
-{
-	{	RESTAURANT,		"Restaurant"	},
-	{	TOURISTIC,		"Touristic"		},
-	{	GASSTATION,		"Gas station"	},
-	{	UNIVERSITY,		"University"	},
-	{	DEFAULT_POI,	"Default"		}
-};
 
 
 //Method Implementations
@@ -49,12 +33,6 @@ const poi_type_t poi_types [] =
  */
 CPOI::CPOI(t_poi type, string name, string description, double latitude, double longitude) : CWaypoint(name, latitude, longitude)
 {
-//	if (name.empty() || description.empty())
-//	{
-//		// TODO:throw exception
-//		cout << "WARNING: The POI entered has missing Name and/or Description\n";
-//	}
-
 	this->m_type 			= type;
 	this->m_description 	= description;
 }
@@ -71,11 +49,10 @@ CPOI::CPOI(t_poi type, string name, string description, double latitude, double 
 */
 void CPOI::getAllDataByReference(string& name, double& latitude, double& longitude, t_poi &type, string &description)
 {
-	name 		= this->m_name;
-	latitude 	= this->m_latitude;
-	longitude 	= this->m_longitude;
 	type 		= this->m_type;
 	description = this->m_description;
+
+	this->CWaypoint::getAllDataByReference(name, latitude, longitude);
 }
 
 
@@ -85,16 +62,35 @@ void CPOI::getAllDataByReference(string& name, double& latitude, double& longitu
  */
 void CPOI::print()
 {
-	for (unsigned int index = 0; index < sizeof(poi_types) / sizeof(poi_type_t); index++)
+	string typeName;
+
+	switch(this->m_type)
 	{
-		if (this->m_type == poi_types[index].type)
-		{
-			cout << "Point of interest\n";
-			cout << "===================\n";
-			cout << " of type " << poi_types[index].type_name << " : " << this->m_description << "\n";
-			this->CWaypoint::print(MMSS);
-			cout << endl;
+		case RESTAURANT:
+			typeName = "Restaurant";
 			break;
-		}
+
+		case TOURISTIC:
+			typeName = "Touristic";
+			break;
+
+		case GASSTATION:
+			typeName = "Gas station";
+			break;
+
+		case UNIVERSITY:
+			typeName = "University";
+			break;
+
+		case DEFAULT_POI:
+		default:
+			typeName = "Default";
+			break;
 	}
+
+	cout << "Point of interest\n";
+	cout << "===================\n";
+	cout << " of type " << typeName << " : " << this->m_description << "\n";
+	this->CWaypoint::print(MMSS);
+	cout << endl;
 }

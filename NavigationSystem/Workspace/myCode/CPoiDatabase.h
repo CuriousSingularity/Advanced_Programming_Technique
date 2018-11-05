@@ -3,9 +3,9 @@
 ****************************************************************************
 * Filename        : CPoiDatabase.h
 * Author          : Bharath Ramachandraiah
-* Description     : The file declares a class CPoiDatabase.
-* 					The class CPoiDatabase is used to hold the information of
-* 					array of point of interests.
+* Description     : The file defines a class CPoiDatabase.
+* 					The class CPoiDatabase is used to hold the information
+* 					of points of interest in an array.
 *
 ****************************************************************************/
 
@@ -32,9 +32,12 @@ private:
 public:
 
     /**
-	 * CPoiDatabase constructor:
-	 * Sets the value of an object when created.
-	 */
+     * CPoiDatabase constructor:
+     * When an object is created, this constructor gets called.
+     * Before this constructor is called, default constructor of CPOI class are invoked.
+     *
+     * Add all the POIs to the Database
+     */
     CPoiDatabase();
 
     /**
@@ -46,7 +49,7 @@ public:
 	 * param@ double longitude	-	longitude of a POI's Waypoint 	(IN)
 	 * returnvalue@ void
 	 */
-    void addPoi(t_poi type, std::string name, std::string description, double latitude, double longitude);
+    void addPoi(CPOI::t_poi type, std::string name, std::string description, double latitude, double longitude);
 
     /**
      * Get pointer to a POI from the Database which matches the name

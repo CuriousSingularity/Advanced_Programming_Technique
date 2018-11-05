@@ -1,24 +1,24 @@
 /***************************************************************************
 *============= Copyright by Darmstadt University of Applied Sciences =======
 ****************************************************************************
-* Filename        : CROUTE.CPP
-* Author          :
-* Description     :
-*
+* Filename        : CRoute.cpp
+* Author          : Bharath Ramachandraiah
+* Description     : The file defines all the methods pertaining to the
+* 					class type - class CRoute.
+* 					The class CRoute is used to hold the information
+* 					of points of interest and waypoints of a Route.
 *
 ****************************************************************************/
-
 
 //System Include Files
 #include <iostream>
 
 //Own Include Files
 #include "CRoute.h"
-#include "CWaypoint.h"
-#include "CPOI.h"
-#include "CPoiDatabase.h"
 
+//Namespace
 using namespace std;
+
 
 //Method Implementations
 /**
@@ -31,13 +31,37 @@ CRoute::CRoute(unsigned int maxWp, unsigned int maxPoi)
 {
 	this->m_nextWp			= 0;
 	this->m_maxWp			= maxWp;
-	this->m_pWaypoint 		= new CWaypoint[this->m_maxWp];
-
 	this->m_nextPoi			= 0;
 	this->m_maxPoi			= maxPoi;
-	this->m_pPoi			= new CPOI*[this->m_maxPoi];	// TODO: initialise this to null pointers
-
+	this->m_pPoi			= 0;
+	this->m_pWaypoint 		= 0;
 	this->m_pPoiDatabase	= 0;
+
+	if (this->m_maxWp)
+	{
+		this->m_pWaypoint 	= new (nothrow) CWaypoint[this->m_maxWp];
+
+		if (!this->m_pWaypoint)
+		{
+			cout << "WARNING: Memory allocation to store waypoints for the route failed.\n";
+		}
+	}
+
+	if (this->m_maxPoi)
+	{
+		this->m_pPoi		= new (nothrow) CPOI*[this->m_maxPoi];
+
+		if (!this->m_pPoi)
+		{
+			cout << "WARNING: Memory allocation to store POIs for the route failed.\n";
+		}
+
+		// Initialise all the pointers to null
+		for (unsigned int Index = 0; (Index < this->m_maxPoi) && this->m_pPoi; Index++)
+		{
+			this->m_pPoi[Index]	= 0;
+		}
+	}
 }
 
 
@@ -51,23 +75,41 @@ CRoute::CRoute(CRoute const &origin)
 	// Perform Deep copy
 	this->m_nextWp			= origin.m_nextWp;
 	this->m_maxWp			= origin.m_maxWp;
-	this->m_pWaypoint 		= new CWaypoint[this->m_maxWp];
-
-	for (unsigned int Index = 0; Index < this->m_maxWp; Index++)
-	{
-		this->m_pWaypoint[Index] = origin.m_pWaypoint[Index];
-	}
-
 	this->m_nextPoi			= origin.m_nextPoi;
 	this->m_maxPoi			= origin.m_maxPoi;
-	this->m_pPoi			= new CPOI*[this->m_maxPoi];
+	this->m_pPoi			= 0;
+	this->m_pWaypoint 		= 0;
+	this->m_pPoiDatabase	= origin.m_pPoiDatabase;
 
-	for (unsigned int Index = 0; Index < this->m_maxPoi; Index++)
+	if (this->m_maxWp)
 	{
-		this->m_pPoi[Index] = origin.m_pPoi[Index];
+		this->m_pWaypoint 	= new (nothrow) CWaypoint[this->m_maxWp];
+
+		if (!this->m_pWaypoint)
+		{
+			cout << "WARNING: Memory allocation to store waypoints for the route failed.\n";
+		}
+
+		for (unsigned int Index = 0; (Index < this->m_maxWp) && this->m_pWaypoint && origin.m_pWaypoint; Index++)
+		{
+			this->m_pWaypoint[Index] = origin.m_pWaypoint[Index];
+		}
 	}
 
-	this->m_pPoiDatabase	= origin.m_pPoiDatabase;
+	if (this->m_maxPoi)
+	{
+		this->m_pPoi		= new (nothrow) CPOI*[this->m_maxPoi];
+
+		if (!this->m_pPoi)
+		{
+			cout << "WARNING: Memory allocation to store POIs for the route failed.\n";
+		}
+
+		for (unsigned int Index = 0; (Index < this->m_maxPoi) && this->m_pPoi && origin.m_pPoi; Index++)
+		{
+			this->m_pPoi[Index] = origin.m_pPoi[Index];
+		}
+	}
 }
 
 
@@ -80,6 +122,8 @@ CRoute::~CRoute()
 	// cleanup dynamic memories
 	delete[] this->m_pWaypoint;
 	delete[] this->m_pPoi;
+
+	// disconnect from the Database
 	this->m_pPoiDatabase = 0;
 }
 
@@ -92,7 +136,10 @@ CRoute::~CRoute()
 void CRoute::connectToPoiDatabase(CPoiDatabase* pPoiDB)
 {
 	// connect to the POI Database
-	this->m_pPoiDatabase = pPoiDB;
+	if (pPoiDB)
+	{
+		this->m_pPoiDatabase = pPoiDB;
+	}
 }
 
 
@@ -103,14 +150,22 @@ void CRoute::connectToPoiDatabase(CPoiDatabase* pPoiDB)
  */
 void CRoute::addWaypoint(CWaypoint const &wp)
 {
-	if (this->m_nextWp < this->m_maxWp)
+	// check if the dynamic memory is allocated
+	if (this->m_pWaypoint)
 	{
-		this->m_pWaypoint[this->m_nextWp] = wp;
-		this->m_nextWp++;
+		if (this->m_nextWp < this->m_maxWp)
+		{
+			this->m_pWaypoint[this->m_nextWp] = wp;
+			this->m_nextWp++;
+		}
+		else
+		{
+			cout << "WARNING: memory full, waypoint can not be added to the route.\n";
+		}
 	}
 	else
 	{
-		cout << "Warning: waypoint can not be added to the route.\n";
+		cout << "WARNING: Memory not created to add any waypoints to the route.\n";
 	}
 }
 
@@ -122,17 +177,41 @@ void CRoute::addWaypoint(CWaypoint const &wp)
  */
 void CRoute::addPoi(string namePoi)
 {
-	if (this->m_nextPoi < this->m_maxPoi)
+	// check if the dynamic memory is allocated
+	if (this->m_pPoi)
 	{
-		CPOI* pPoi = 0;
-
-		pPoi = this->m_pPoiDatabase->getPointerToPoi(namePoi);
-
-		if (pPoi)
+		if (this->m_nextPoi < this->m_maxPoi)
 		{
-			this->m_pPoi[this->m_nextPoi] = this->m_pPoiDatabase->getPointerToPoi(namePoi);
-			this->m_nextPoi++;
+			CPOI* pPoi = 0;
+
+			// check if the Database is connected
+			if (this->m_pPoiDatabase)
+			{
+				pPoi = this->m_pPoiDatabase->getPointerToPoi(namePoi);
+
+				if (pPoi)
+				{
+					this->m_pPoi[this->m_nextPoi] = this->m_pPoiDatabase->getPointerToPoi(namePoi);
+					this->m_nextPoi++;
+				}
+				else
+				{
+					cout << "WARNING: The Point of interest is not available in the Database.\n";
+				}
+			}
+			else
+			{
+				cout << "WARNING: The Database is not available\n.";
+			}
 		}
+		else
+		{
+			cout << "WARNING: memory full, POI can not be added to the route.\n";
+		}
+	}
+	else
+	{
+		cout << "WARNING: Memory not created to add any POIs to the route.\n";
 	}
 }
 
@@ -147,22 +226,33 @@ double CRoute::getDistanceNextPoi(CWaypoint const &wp, CPOI& poi)
 {
 	double shortestDistance = 0, currentDistance = 0;
 
-	if (this->m_maxPoi)
+	if (this->m_pPoi)
 	{
-		// assume 0th element has shortest distance
-		shortestDistance = this->m_pPoi[0]->calculateDistance(wp);
-
-		// perform linear comparison for shortest distance
-		for (unsigned int Index = 0; Index < this->m_maxPoi; Index++)
+		if (this->m_nextPoi)
 		{
-			currentDistance = this->m_pPoi[Index]->calculateDistance(wp);
+			// assume 0th element has shortest distance
+			shortestDistance = this->m_pPoi[0]->CWaypoint::calculateDistance(wp);
 
-			if (currentDistance <= shortestDistance)
+			// perform linear comparison for shortest distance
+			for (unsigned int Index = 0; Index < this->m_nextPoi; Index++)
 			{
-				shortestDistance 	= currentDistance;
-				poi					= *this->m_pPoi[Index];
+				currentDistance = this->m_pPoi[Index]->CWaypoint::calculateDistance(wp);
+
+				if (currentDistance <= shortestDistance)
+				{
+					shortestDistance 	= currentDistance;
+					poi					= *this->m_pPoi[Index];
+				}
 			}
 		}
+		else
+		{
+			cout << "WARNING: No POIs added to the current route.\n";
+		}
+	}
+	else
+	{
+		cout << "WARNING: No POIs added to the current route.\n";
 	}
 
 	return shortestDistance;
@@ -177,7 +267,7 @@ void CRoute::print()
 	// print all the waypoints in the route
 	cout << "The route's has " << this->m_nextWp << " waypoints (maximum : " << this->m_maxWp << ")\n";
 
-	for (unsigned int Index = 0; Index < this->m_maxWp; Index++)
+	for (unsigned int Index = 0; (Index < this->m_nextWp) && this->m_pWaypoint; Index++)
 	{
 		this->m_pWaypoint[Index].print(MMSS);
 	}
@@ -187,8 +277,8 @@ void CRoute::print()
 	// print all the POIs in the route
 	cout << "The route's has " << this->m_nextPoi << " POIs (maximum : " << this->m_maxPoi << ")\n";
 
-	for (unsigned int Index = 0; Index < this->m_maxPoi; Index++)
+	for (unsigned int Index = 0; (Index < this->m_nextPoi) && this->m_pPoi; Index++)
 	{
-		this->m_pPoi[Index]->CWaypoint::print(MMSS);
+		this->m_pPoi[Index]->print();
 	}
 }
