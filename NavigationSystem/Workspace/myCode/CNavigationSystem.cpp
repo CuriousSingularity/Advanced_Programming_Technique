@@ -26,7 +26,7 @@ using namespace std;
  */
 CNavigationSystem::CNavigationSystem() : m_route(8, 8)
 {
-	this->m_route.connectToPoiDatabase(&this->m_PoiDatabase);
+	// Do nothing
 }
 
 
@@ -36,6 +36,17 @@ CNavigationSystem::CNavigationSystem() : m_route(8, 8)
  */
 void CNavigationSystem::run()
 {
+#ifdef RUN_TEST_CASE_DEEP_COPY
+	testCaseDeepCopy();
+#endif
+
+	// connect to the Database
+#ifdef RUN_TEST_CASE_DATABASE_NOT_AVAILABLE
+	this->testCaseDatabaseNotAvailable();
+#else
+	this->m_route.connectToPoiDatabase(&this->m_PoiDatabase);
+#endif
+
 	this->enterRoute();
 	this->printRoute();
 	this->printDistanceCurPosNextPoi();
@@ -164,12 +175,37 @@ void CNavigationSystem::testCaseAddMorePOIs()
 
 
 /**
- * TestCase to check if POI is not available in Database
+ * TestCase to check if non existing POI is added to the route
  * @returnval void
  */
 #ifdef RUN_TEST_CASE_NON_EXIST_POI
 void CNavigationSystem::testCaseNonExistingPOI()
 {
 	this->m_route.addPoi("My Chicken"		);
+}
+#endif
+
+
+/**
+ * TestCase to check if deep copy is working
+ * @returnval void
+ */
+#ifdef RUN_TEST_CASE_DEEP_COPY
+void CNavigationSystem::testCaseDeepCopy()
+{
+	CRoute testObj(8,8);
+	CRoute testCopyObj(testObj);
+}
+#endif
+
+
+/**
+ * TestCase to check when database is not available
+ * @returnval void
+ */
+#ifdef RUN_TEST_CASE_DATABASE_NOT_AVAILABLE
+void CNavigationSystem::testCaseDatabaseNotAvailable()
+{
+	this->m_route.connectToPoiDatabase(0);
 }
 #endif

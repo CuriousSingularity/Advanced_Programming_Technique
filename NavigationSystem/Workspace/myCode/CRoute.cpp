@@ -72,6 +72,8 @@ CRoute::CRoute(unsigned int maxWp, unsigned int maxPoi)
  */
 CRoute::CRoute(CRoute const &origin)
 {
+	cout << "INFO: Performing deep copy.\n";
+
 	// Perform Deep copy
 	this->m_nextWp			= origin.m_nextWp;
 	this->m_maxWp			= origin.m_maxWp;
@@ -219,7 +221,7 @@ void CRoute::addPoi(string namePoi)
 			}
 			else
 			{
-				cout << "WARNING: The Database is not available\n.";
+				cout << "WARNING: The Database is not available.\n";
 			}
 		}
 		else
@@ -282,6 +284,8 @@ double CRoute::getDistanceNextPoi(CWaypoint const &wp, CPOI& poi)
  */
 void CRoute::print()
 {
+	cout << "=============================================" << endl << endl;
+
 	// print all the waypoints in the route
 	cout << "The route's has " << this->m_nextWp << " waypoints (maximum : " << this->m_maxWp << ")\n";
 

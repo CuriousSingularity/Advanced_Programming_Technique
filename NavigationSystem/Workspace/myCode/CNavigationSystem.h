@@ -20,9 +20,11 @@
 #include "CPoiDatabase.h"
 
 //Macros
+//#define RUN_TEST_CASE_DEEP_COPY
 //#define RUN_TEST_CASE_MORE_POIS
 //#define RUN_TEST_CASE_NON_EXIST_POI
 //#define RUN_TEST_CASE_MORE_WAYPOINTS
+//#define RUN_TEST_CASE_DATABASE_NOT_AVAILABLE
 
 class CNavigationSystem {
 private:
@@ -76,9 +78,28 @@ private:
     void testCaseAddMorePOIs();
 #endif
 
-
+    /**
+	 * TestCase to check if non existing POI is added to the route
+	 * @returnval void
+	 */
 #ifdef RUN_TEST_CASE_NON_EXIST_POI
     void testCaseNonExistingPOI();
+#endif
+
+    /**
+	 * TestCase to check if deep copy is working
+	 * @returnval void
+	 */
+#ifdef RUN_TEST_CASE_DEEP_COPY
+    void testCaseDeepCopy();
+#endif
+
+    /**
+	 * TestCase to check when database is not available
+	 * @returnval void
+	 */
+#ifdef RUN_TEST_CASE_DATABASE_NOT_AVAILABLE
+    void testCaseDatabaseNotAvailable();
 #endif
 
 public:
