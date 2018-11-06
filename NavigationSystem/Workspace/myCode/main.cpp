@@ -169,13 +169,6 @@ int main (void)
 		}
 	}
 #endif
-#ifdef TESTCASE
-	CPOI poi_testcase_1(RESTAURANT, "KFC", "KFC near Lusienplatz", 12, 11.5);
-	CPOI poi_testcase_2(RESTAURANT, "", "", 12, 11.5);
-
-	poi_testcase_1.print();
-	poi_testcase_2.print();
-#endif
 
 	CNavigationSystem navigationSystem;
 

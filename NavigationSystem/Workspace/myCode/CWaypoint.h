@@ -35,7 +35,7 @@
 #define LONGITUDE_MIN			(-180)
 #define LONGITUDE_MAX			(+180)
 
-#define SHOWADRESS
+//#define SHOWADRESS
 
 class CWaypoint {
 private:

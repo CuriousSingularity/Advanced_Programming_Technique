@@ -18,12 +18,16 @@
 //Own Include Files
 #include "CPOI.h"
 
+//Macros
+#define DATBASE_SIZE					10
+
+
 class CPoiDatabase {
 private:
 	/**
 	 * An array to store different point of interests.
 	 */
-    CPOI m_POI[10];
+    CPOI m_POI[DATBASE_SIZE];
 
     /**
      * A counter to keep track of number of point of interests.

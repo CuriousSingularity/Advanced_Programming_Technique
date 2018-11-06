@@ -24,7 +24,7 @@ using namespace std;
 /**
  * Constructor
  */
-CNavigationSystem::CNavigationSystem() : m_route(10, 10)
+CNavigationSystem::CNavigationSystem() : m_route(8, 8)
 {
 	this->m_route.connectToPoiDatabase(&this->m_PoiDatabase);
 }
@@ -57,10 +57,10 @@ void CNavigationSystem::enterRoute()
 	this->m_route.addWaypoint(CWaypoint("FriedrichStraße",	 		49.838545,	8.645571));
 	this->m_route.addWaypoint(CWaypoint("Katharinen Str.", 			49.824827,	8.644529));
 	this->m_route.addWaypoint(CWaypoint("Wartehalle", 				49.820845,	8.644222));
-	this->m_route.addWaypoint(CWaypoint("PfungstädterStr",	 		49.817379,	8.644088));
-	this->m_route.addWaypoint(CWaypoint("Büschelstraße", 			49.815069,	8.644614));
-	this->m_route.addWaypoint(CWaypoint("Seeheimer Str.", 			49.813681,	8.646337));
-	this->m_route.addWaypoint(CWaypoint("Heidelberger Landstrasse", 49.80687 ,	8.641321));
+
+#ifdef RUN_TEST_CASE_MORE_WAYPOINTS
+	testCaseAddMoreWaypoints();
+#endif
 
 	// add POIs
 	this->m_route.addPoi("HDA BuildingC10"	);
@@ -70,10 +70,17 @@ void CNavigationSystem::enterRoute()
 	this->m_route.addPoi("Aral Tankstelle"	);
 	this->m_route.addPoi("Church Holy"		);
 	this->m_route.addPoi("Thessaloniki"		);
+
+#ifdef RUN_TEST_CASE_NON_EXIST_POI
+	testCaseNonExistingPOI();
+#endif
+
 	this->m_route.addPoi("Church 7 Days"	);
-	this->m_route.addPoi("Ladestation"		);
-	this->m_route.addPoi("El Quinto Vino"	);
-	this->m_route.addPoi("My Chicken"		);
+
+#ifdef RUN_TEST_CASE_MORE_POIS
+	testCaseAddMorePOIs();
+#endif
+
 }
 
 
@@ -113,7 +120,7 @@ void CNavigationSystem::printDistanceCurPosNextPoi()
 
 		if (type != CPOI::DEFAULT_POI)
 		{
-			cout << "Distance to next POI = " << distance << endl;
+			cout << "Distance to next POI = " << distance << " Kms (approx.)\n\n";
 			poi.print();
 		}
 		else
@@ -126,3 +133,43 @@ void CNavigationSystem::printDistanceCurPosNextPoi()
 		cout << "WARNING: Invalid Sensor data.\n";
 	}
 }
+
+
+/**
+ * TestCase to check if more waypoints are added when the memory is not available
+ * @returnval void
+ */
+#ifdef RUN_TEST_CASE_MORE_WAYPOINTS
+void CNavigationSystem::testCaseAddMoreWaypoints()
+{
+	this->m_route.addWaypoint(CWaypoint("PfungstädterStr",	 		49.817379,	8.644088));
+	this->m_route.addWaypoint(CWaypoint("Büschelstraße", 			49.815069,	8.644614));
+	this->m_route.addWaypoint(CWaypoint("Seeheimer Str.", 			49.813681,	8.646337));
+	this->m_route.addWaypoint(CWaypoint("Heidelberger Landstrasse", 49.80687 ,	8.641321));
+}
+#endif
+
+
+/**
+ * TestCase to check if more POIs are added when the memory is not available
+ * @returnval void
+ */
+#ifdef RUN_TEST_CASE_MORE_POIS
+void CNavigationSystem::testCaseAddMorePOIs()
+{
+	this->m_route.addPoi("Ladestation"		);
+	this->m_route.addPoi("El Quinto Vino"	);
+}
+#endif
+
+
+/**
+ * TestCase to check if POI is not available in Database
+ * @returnval void
+ */
+#ifdef RUN_TEST_CASE_NON_EXIST_POI
+void CNavigationSystem::testCaseNonExistingPOI()
+{
+	this->m_route.addPoi("My Chicken"		);
+}
+#endif

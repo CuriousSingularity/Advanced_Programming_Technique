@@ -19,6 +19,11 @@
 #include "CRoute.h"
 #include "CPoiDatabase.h"
 
+//Macros
+//#define RUN_TEST_CASE_MORE_POIS
+//#define RUN_TEST_CASE_NON_EXIST_POI
+//#define RUN_TEST_CASE_MORE_WAYPOINTS
+
 class CNavigationSystem {
 private:
 
@@ -54,6 +59,27 @@ private:
      * @returnval void
      */
     void printDistanceCurPosNextPoi();
+
+    /**
+     * TestCase to check if more waypoints are added when the memory is not available
+     * @returnval void
+     */
+#ifdef RUN_TEST_CASE_MORE_WAYPOINTS
+    void testCaseAddMoreWaypoints();
+#endif
+
+    /**
+     * TestCase to check if more POIs are added when the memory is not available
+     * @returnval void
+     */
+#ifdef RUN_TEST_CASE_MORE_POIS
+    void testCaseAddMorePOIs();
+#endif
+
+
+#ifdef RUN_TEST_CASE_NON_EXIST_POI
+    void testCaseNonExistingPOI();
+#endif
 
 public:
 

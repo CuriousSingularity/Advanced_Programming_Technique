@@ -191,8 +191,26 @@ void CRoute::addPoi(string namePoi)
 
 				if (pPoi)
 				{
-					this->m_pPoi[this->m_nextPoi] = this->m_pPoiDatabase->getPointerToPoi(namePoi);
-					this->m_nextPoi++;
+					// check if the POI is already added to the route
+					bool AlreadyExists = false;
+
+					for (unsigned int Index = 0; Index < this->m_nextPoi; Index++)
+					{
+						if (pPoi == this->m_pPoi[this->m_nextPoi])
+						{
+							AlreadyExists = true;
+						}
+					}
+
+					if (!AlreadyExists)
+					{
+						this->m_pPoi[this->m_nextPoi] = this->m_pPoiDatabase->getPointerToPoi(namePoi);
+						this->m_nextPoi++;
+					}
+					else
+					{
+						cout << "WARNING: POI already added to the route.\n";
+					}
 				}
 				else
 				{
@@ -272,13 +290,15 @@ void CRoute::print()
 		this->m_pWaypoint[Index].print(MMSS);
 	}
 
-	cout << "=============================================" << endl;
+	cout << "=============================================" << endl << endl;
 
 	// print all the POIs in the route
 	cout << "The route's has " << this->m_nextPoi << " POIs (maximum : " << this->m_maxPoi << ")\n";
 
 	for (unsigned int Index = 0; (Index < this->m_nextPoi) && this->m_pPoi; Index++)
 	{
-		this->m_pPoi[Index]->print();
+		this->m_pPoi[Index]->CWaypoint::print(MMSS);
 	}
+
+	cout << "=============================================" << endl << endl;
 }
