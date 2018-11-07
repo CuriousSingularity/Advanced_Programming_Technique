@@ -206,8 +206,15 @@ void CRoute::addPoi(string namePoi)
 
 					if (!AlreadyExists)
 					{
-						this->m_pPoi[this->m_nextPoi] = this->m_pPoiDatabase->getPointerToPoi(namePoi);
-						this->m_nextPoi++;
+						if (!namePoi.empty())
+						{
+							this->m_pPoi[this->m_nextPoi] = this->m_pPoiDatabase->getPointerToPoi(namePoi);
+							this->m_nextPoi++;
+						}
+						else
+						{
+							cout << "WARNING: Invalid POI can't be added to the route.\n";
+						}
 					}
 					else
 					{
@@ -287,7 +294,7 @@ void CRoute::print()
 	cout << "=============================================" << endl << endl;
 
 	// print all the waypoints in the route
-	cout << "The route's has " << this->m_nextWp << " waypoints (maximum : " << this->m_maxWp << ")\n";
+	cout << "The route has " << this->m_nextWp << " waypoints (maximum : " << this->m_maxWp << ")\n";
 
 	for (unsigned int Index = 0; (Index < this->m_nextWp) && this->m_pWaypoint; Index++)
 	{
@@ -297,7 +304,7 @@ void CRoute::print()
 	cout << "=============================================" << endl << endl;
 
 	// print all the POIs in the route
-	cout << "The route's has " << this->m_nextPoi << " POIs (maximum : " << this->m_maxPoi << ")\n";
+	cout << "The route has " << this->m_nextPoi << " POIs (maximum : " << this->m_maxPoi << ")\n";
 
 	for (unsigned int Index = 0; (Index < this->m_nextPoi) && this->m_pPoi; Index++)
 	{

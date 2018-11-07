@@ -49,6 +49,11 @@ CPoiDatabase::CPoiDatabase()
 	this->addPoi(CPOI::TOURISTIC,  "Church 7 Days"		, "Adventist Chruch", 			49.839096,	8.646294);
 	this->addPoi(CPOI::GASSTATION, "Ladestation"		, "Electric vehicle charge", 	49.811698,	8.646074);
 	this->addPoi(CPOI::RESTAURANT, "El Quinto Vino"		, "Spanish Restaurant ", 		49.813422, 	8.646246);
+
+#ifdef RUN_TEST_CASE_DATABASE_FULL
+	this->addPoi(CPOI::GASSTATION, "Ladestation"		, "Electric vehicle charge", 	49.811698,	8.646072);
+	this->addPoi(CPOI::RESTAURANT, "El Quinto Vino"		, "Spanish Restaurant ", 		49.813422, 	8.646243);
+#endif
 }
 
 
@@ -88,8 +93,18 @@ void CPoiDatabase::addPoi(CPOI::t_poi type, string name, string description, dou
 
 		if (!alreadyExist)
 		{
-			this->m_POI[this->m_noPoi] = CPOI(type, name, description, latitude, longitude);
-			this->m_noPoi++;
+			if ((CPOI::DEFAULT_POI != type) &&
+				((latitude >= LATITUDE_MIN) && (latitude <= LATITUDE_MAX)) &&
+				((longitude >= LONGITUDE_MIN) && (longitude <= LONGITUDE_MAX)) &&
+				(!name.empty()))
+			{
+				this->m_POI[this->m_noPoi] = CPOI(type, name, description, latitude, longitude);
+				this->m_noPoi++;
+			}
+			else
+			{
+				cout << "WARNING: Invalid POI. Not added to the Database.\n";
+			}
 		}
 		else
 		{

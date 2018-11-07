@@ -20,7 +20,7 @@
 
 //Macros
 #define DATBASE_SIZE					10
-
+//#define RUN_TEST_CASE_DATABASE_FULL
 
 class CPoiDatabase {
 private:
