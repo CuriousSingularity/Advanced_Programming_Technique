@@ -141,6 +141,11 @@ void CRoute::connectToPoiDatabase(CPoiDatabase* pPoiDB)
 	if (pPoiDB)
 	{
 		this->m_pPoiDatabase = pPoiDB;
+		cout << "INFO: Database connected to the route.\n";
+	}
+	else
+	{
+		cout << "WARNING: Database not connected to the route.\n";
 	}
 }
 

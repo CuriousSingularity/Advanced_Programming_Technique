@@ -16,9 +16,9 @@
 #include "CWaypoint.h"
 
 //Macros
-#define M_PI						(atan(1) * 4)
-#define degToRad(angleInDegrees) 	((angleInDegrees) * M_PI / 180.0)
-#define radToDeg(angleInRadians) 	((angleInRadians) * 180.0 / M_PI)
+#define PI_VALUE						(atan(1) * 4)
+#define degToRad(angleInDegrees) 	((angleInDegrees) * PI_VALUE / 180.0)
+#define radToDeg(angleInRadians) 	((angleInRadians) * 180.0 / PI_VALUE)
 
 //Namespaces
 using namespace std;
