@@ -38,7 +38,6 @@ CGPSSensor::CGPSSensor()
 CWaypoint CGPSSensor::getCurrentPosition()
 {
 	double latitude = 0, longitude = 0;
-	CWaypoint gpsSensorValue;
 
 	cout << "GPS Sensor\n";
 
@@ -70,7 +69,7 @@ CWaypoint CGPSSensor::getCurrentPosition()
 
 	} while (1);
 
-	gpsSensorValue.set("Current Position", latitude, longitude);
+	CWaypoint gpsSensorValue("Current Position", latitude, longitude, CWaypoint::WAYPOINT);
 
 	return gpsSensorValue;
 }

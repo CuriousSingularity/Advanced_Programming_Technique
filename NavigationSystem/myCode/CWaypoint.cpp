@@ -8,6 +8,7 @@
 *
 *
 ****************************************************************************/
+
 //System Include Files
 #include <iostream>
 #include <math.h>
@@ -30,51 +31,20 @@ using namespace std;
  * param@ string name		-	name of a Waypoint 		(IN)
  * param@ double latitude	-	latitude of a Waypoint 	(IN)
  * param@ double longitude	-	longitude of a Waypoint (IN)
+ * param@ wp_type type		-	type of data the object represents:
+ * 								POI / Waypoint / Invalid(IN)
  */
-CWaypoint::CWaypoint(string name, double latitude, double longitude)
+CWaypoint::CWaypoint(string name, double latitude, double longitude, wp_type type)
 {
-	// Solution (Exercise 1.1; section c):
-	// set the class data members with the parameters values passed during an object creation.
-	this->set(name, latitude, longitude);
-
-#ifdef SHOWADRESS
-
-	cout << "A CWaypoint Object has be created at address : " << this << endl;
-	cout << "Attribute Name \t" <<"Attribute Address \t"<< 			"Attribute Size \t" 		<< "Attribute Value\n";
-
-	/*
-	 * Solution (Exercise 1.1; section c):
-	 * Data occupied by different attributes are as follows:
-	 * Data occupied by "m_name" 		= depends on the number of character in a string
-	 * Data occupied by "m_latitude" 	= 8 bytes since it is of type double
-	 * Data occupied by "m_longitude" 	= 8 bytes since it is of type double
-	 */
-	cout << "m_name \t\t" 		<< &this->m_name 		<< "\t\t" << this->m_name.size() 		<< "\t\t" << this->m_name << "\n";
-	cout << "m_latitude \t" 	<< &this->m_latitude 	<< "\t\t" << sizeof(this->m_latitude)	<< "\t\t" << this->m_latitude << "\n";
-	cout << "m_longitude \t" 	<< &this->m_longitude 	<< "\t\t" << sizeof(this->m_longitude)	<< "\t\t" << this->m_longitude << "\n\n";
-
-#endif
-}
-
-
-/**
- * Sets the current waypoint co-ordinate values
- * param@ string name		-	name of a Waypoint		(IN)
- * param@ double latitude	-	latitude of a Waypoint	(IN)
- * param@ double longitude	-	longitude of a Waypoint	(IN)
- * returnvalue@ void
- */
-void CWaypoint::set(string name, double latitude, double longitude)
-{
-	// Solution (Exercise 1.1; section b):
 	if (((latitude >= LATITUDE_MIN) && (latitude <= LATITUDE_MAX)) &&
-		((longitude >= LONGITUDE_MIN) && (longitude <= LONGITUDE_MAX)) &&
-		(!name.empty()))
+			((longitude >= LONGITUDE_MIN) && (longitude <= LONGITUDE_MAX)) &&
+			(!name.empty()))
 	{
 		// All the parameters values are valid; we can assign these values to the respective data members of the class
 		this->m_name 		= name;
 		this->m_latitude 	= latitude;
 		this->m_longitude 	= longitude;
+		this->m_type		= type;
 	}
 	else
 	{
@@ -82,6 +52,7 @@ void CWaypoint::set(string name, double latitude, double longitude)
 		this->m_name 		= "";
 		this->m_latitude 	= 0;
 		this->m_longitude 	= 0;
+		this->m_type	 	= CWaypoint::INVALID;
 	}
 }
 
@@ -128,22 +99,6 @@ void CWaypoint::getAllDataByReference(string& name, double& latitude, double& lo
 	name 		= this->getName();
 	latitude 	= this->getLatitude();
 	longitude 	= this->getLongitude();
-
-	/*
-	 * Solution (Exercise 1.1; section h):
-	 * The address of the variables of a calling function is same as the address of this function parameters.
-	 * This is due to "&" in the parameter, which implies that the function call is pass-by-reference.
-	 * Since the address is same, the value inside them are same as well, but the function member or method
-	 * "getAllDataByReference" overrides the value with the data members value. Thus, once the method is returned,
-	 * the local variables used during function call will have this object's data members value.
-	 */
-#ifdef SHOWADRESS
-	cout << "Parameters variables at addresses : \n";
-	cout << "Attribute Name \t" <<"Attribute Address \t"<< "Attribute Size \t" 			<< "Attribute Value\n";
-	cout << "name \t\t" 		<< &name 				<< "\t\t" << name.size() 		<< "\t\t" << name << "\n";
-	cout << "latitude \t" 		<< &latitude 			<< "\t\t" << sizeof(latitude)	<< "\t\t" << latitude << "\n";
-	cout << "longitude \t" 		<< &longitude 			<< "\t\t" << sizeof(longitude)	<< "\t\t" << longitude << "\n";
-#endif
 }
 
 
@@ -170,7 +125,6 @@ double CWaypoint::calculateDistance(const CWaypoint& wp)
  */
 void CWaypoint::print(int format)
 {
-	// Solution (Exercise 1.1; section e)
 	if (format == DEGREE)
 	{
 		// Latitude and Longitude in decimal format
@@ -193,6 +147,7 @@ void CWaypoint::print(int format)
 		cout << "WARNING: Requested Print format doesn't exist.\n";
 	}
 }
+
 
 
 /**

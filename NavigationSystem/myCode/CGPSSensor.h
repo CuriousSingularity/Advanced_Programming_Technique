@@ -23,15 +23,14 @@ public:
 	/**
 	 * CGPSSensor constructor
 	 */
-    CGPSSensor();
+	CGPSSensor();
 
-    /**
-     * Get the current position from the sensor
-     * @returnval CWaypoint
-     */
-    CWaypoint getCurrentPosition();
+	/**
+	 * Get the current position from the sensor
+	 * @returnval CWaypoint
+	 */
+	CWaypoint getCurrentPosition();
 };
-
 /********************
 **  CLASS END
 *********************/
