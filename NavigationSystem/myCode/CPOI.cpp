@@ -10,7 +10,6 @@
 *
 ****************************************************************************/
 
-
 //System Include Files
 #include <iostream>
 #include <string>
@@ -21,8 +20,8 @@
 //Namespaces
 using namespace std;
 
-
 //Method Implementations
+
 /**
  * CPOI constructor:
  * Sets the value of an object when created.
@@ -31,10 +30,20 @@ using namespace std;
  * param@ double latitude	-	latitude of a Waypoint		(IN)
  * param@ double longitude	-	longitude of a Waypoint		(IN)
  */
-CPOI::CPOI(t_poi type, string name, string description, double latitude, double longitude) : CWaypoint(name, latitude, longitude)
+CPOI::CPOI(t_poi type, string name, string description, double latitude, double longitude) : CWaypoint(name, latitude, longitude, CWaypoint::POI)
 {
 	this->m_type 			= type;
 	this->m_description 	= description;
+}
+
+
+/**
+ * CPOI Destructor:
+ * Called when the object is destroyed
+ */
+CPOI::~CPOI()
+{
+	// Do nothing
 }
 
 

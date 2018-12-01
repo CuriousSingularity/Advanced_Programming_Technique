@@ -20,11 +20,10 @@
 #include "CPoiDatabase.h"
 
 //Macros
-//#define RUN_TEST_CASE_DEEP_COPY
-//#define RUN_TEST_CASE_MORE_POIS
-//#define RUN_TEST_CASE_NON_EXIST_POI
-//#define RUN_TEST_CASE_MORE_WAYPOINTS
-//#define RUN_TEST_CASE_DATABASE_NOT_AVAILABLE
+#define RUN_TEST_CASE_NON_EXIST_POI
+#define RUN_TEST_CASE_NON_EXIST_WAYPOINT
+#define RUN_TEST_CASE_DATABASE_NOT_AVAILABLE_POI
+#define RUN_TEST_CASE_DATABASE_NOT_AVAILABLE_WAYPOINT
 
 class CNavigationSystem {
 private:
@@ -32,22 +31,27 @@ private:
 	/**
 	 * GPS sensor which feeds the current location
 	 */
-    CGPSSensor m_GPSSensor;
+    CGPSSensor 		m_GPSSensor;
 
     /**
-     * Navigation System's current route
-     */
-    CRoute m_route;
+	 * Navigation System's current route
+	 */
+    CRoute 			m_route;
 
     /**
-     * The Database of points of interest
-     */
-    CPoiDatabase m_PoiDatabase;
+	 * The Database of points of interest
+	 */
+    CPoiDatabase 	m_PoiDatabase;
 
     /**
-     * Add waypoints and POIs to create custom route
-     * @returnval void
-     */
+	 * The Database of waypoint
+	 */
+    CWpDatabase 	m_WpDatabase;
+
+    /**
+	 * Add waypoints and POIs to create custom route
+	 * @returnval void
+	 */
     void enterRoute();
 
     /**
@@ -57,26 +61,10 @@ private:
     void printRoute();
 
     /**
-     * Print the Distance between current position and a closest POI
-     * @returnval void
-     */
-    void printDistanceCurPosNextPoi();
-
-    /**
-     * TestCase to check if more waypoints are added when the memory is not available
-     * @returnval void
-     */
-#ifdef RUN_TEST_CASE_MORE_WAYPOINTS
-    void testCaseAddMoreWaypoints();
-#endif
-
-    /**
-     * TestCase to check if more POIs are added when the memory is not available
-     * @returnval void
-     */
-#ifdef RUN_TEST_CASE_MORE_POIS
-    void testCaseAddMorePOIs();
-#endif
+	 * Print the Distance between current position and a closest POI
+	 * @returnval void
+	 */
+	void printDistanceCurPosNextPoi();
 
     /**
 	 * TestCase to check if non existing POI is added to the route
@@ -87,32 +75,40 @@ private:
 #endif
 
     /**
-	 * TestCase to check if deep copy is working
+	 * TestCase to check if non existing Waypoint is added to the route
 	 * @returnval void
 	 */
-#ifdef RUN_TEST_CASE_DEEP_COPY
-    void testCaseDeepCopy();
+#ifdef RUN_TEST_CASE_NON_EXIST_WAYPOINT
+    void testCaseNonExistingWaypoint();
 #endif
 
     /**
-	 * TestCase to check when database is not available
+	 * TestCase to check when POI database is not available
 	 * @returnval void
 	 */
-#ifdef RUN_TEST_CASE_DATABASE_NOT_AVAILABLE
-    void testCaseDatabaseNotAvailable();
+#ifdef RUN_TEST_CASE_DATABASE_NOT_AVAILABLE_POI
+    void testCaseDatabaseNotAvailablePoi();
+#endif
+
+    /**
+	 * TestCase to check when Waypoint database is not available
+	 * @returnval void
+	 */
+#ifdef RUN_TEST_CASE_DATABASE_NOT_AVAILABLE_WAYPOINT
+    void testCaseDatabaseNotAvailableWaypoint();
 #endif
 
 public:
 
     /**
-     * Constructor
-     */
+	 * Constructor
+	 */
     CNavigationSystem();
 
     /**
-     * Navigation System functionaliy's entry function
-     * @returnval void
-     */
+	 * Navigation System functionaliy's entry function
+	 * @returnval void
+	 */
     void run();
 
 };
