@@ -12,6 +12,7 @@
 
 //System Include Files
 #include <iostream>
+#include <limits>
 
 //Own Include Files
 #include "CRoute.h"
@@ -104,9 +105,7 @@ void CRoute::addWaypoint(string name)
 		if (pWp)
 		{
 			// save the pointer to the waypoint in the current route
-			// type checking should not done; hence static_cast is used
 			this->m_Course.push_back(static_cast<CWaypoint *>(pWp));
-
 		}
 		else
 		{
@@ -143,7 +142,7 @@ void CRoute::addPoi(string namePoi, string afterWp)
 			{
 				pWp = dynamic_cast<CWaypoint *>(*this->m_ReverseItr);
 
-				// check if this is a Waypoint or POI
+				// is this a Waypoint ?
 				if (pWp)
 				{
 					// are the names matching ?
@@ -181,48 +180,27 @@ void CRoute::addPoi(string namePoi, string afterWp)
  */
 double CRoute::getDistanceNextPoi(CWaypoint const &wp, CPOI& poi)
 {
-	double shortestDistance = 0, currentDistance = 0;
+	CPOI	*pPoi = 0;
+	double	shortestDistance = numeric_limits<double>::max(), currentDistance = 0;
 
-//	if (this->m_pPoiDatabase && this->m_pWpDatabase)
-//	{
-//		if (!(this->m_pPoiDatabase->m_Poi.empty()))
-//		{
-//			// assume 0th element has shortest distance
-//			shortestDistance = this->m_pPoi[0]->CWaypoint::calculateDistance(wp);
-//		}
-//		else
-//		{
-//			cout << "WARNING: No POIs added to the Database.\n";
-//		}
-//	}
-//	if (this->m_pPoi)
-//	{
-//		if (this->m_nextPoi)
-//		{
-//			// assume 0th element has shortest distance
-//			shortestDistance = this->m_pPoi[0]->CWaypoint::calculateDistance(wp);
-//
-//			// perform linear comparison for shortest distance
-//			for (unsigned int Index = 0; Index < this->m_nextPoi; Index++)
-//			{
-//				currentDistance = this->m_pPoi[Index]->CWaypoint::calculateDistance(wp);
-//
-//				if (currentDistance <= shortestDistance)
-//				{
-//					shortestDistance 	= currentDistance;
-//					poi					= *this->m_pPoi[Index];
-//				}
-//			}
-//		}
-//		else
-//		{
-//			cout << "WARNING: No POIs added to the current route.\n";
-//		}
-//	}
-//	else
-//	{
-//		cout << "WARNING: No POIs added to the current route.\n";
-//	}
+	if (!this->m_Course.empty())
+	{
+		for (this->m_ForwardItr = this->m_Course.begin(); this->m_ForwardItr != this->m_Course.end(); ++(this->m_ForwardItr))
+		{
+			pPoi = dynamic_cast<CPOI *>(*this->m_ForwardItr);
+
+			if (pPoi)
+			{
+				currentDistance = pPoi->CWaypoint::calculateDistance(wp);
+
+				if (currentDistance <= shortestDistance)
+				{
+					shortestDistance = currentDistance;
+					poi				 = *pPoi;
+				}
+			}
+		}
+	}
 
 	return shortestDistance;
 }
@@ -243,6 +221,17 @@ void CRoute::print()
 	for (this->m_ForwardItr = this->m_Course.begin(); this->m_ForwardItr != this->m_Course.end(); ++(this->m_ForwardItr))
 	{
 		pPoi = dynamic_cast<CPOI *>(*this->m_ForwardItr);
+
+#ifdef RUN_TEST_PRINT
+		// The iterator can point to
+		// 1. Address of a CWaypoint	-> CWaypoint::print() 	will be invoked.
+		// 2. Address of a CPOI			-> CPOI::print() 		will be invoked.
+		(*this->m_ForwardItr)->print(2);
+
+		// Since the container used is of type CWaypoint, even the POI will be treated as
+		// a Waypoint data and the corresponding CWaypointer's operator<< will be invoked.
+		cout << (**this->m_ForwardItr) << endl;
+#endif
 
 		if (pPoi)
 		{

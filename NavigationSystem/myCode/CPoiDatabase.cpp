@@ -72,13 +72,10 @@ CPOI* CPoiDatabase::getPointerToPoi(string name)
 {
 	CPOI *pPoi = 0;
 
-	for (this->m_PoiItr = this->m_Poi.begin(); this->m_PoiItr != this->m_Poi.end(); ++(this->m_PoiItr))
+	if (!this->m_Poi.empty())
 	{
-		if (!name.compare(this->m_PoiItr->first))
-		{
-			pPoi = &this->m_PoiItr->second;
-			break;
-		}
+		this->m_PoiItr = this->m_Poi.find(name);
+		pPoi = &this->m_PoiItr->second;
 	}
 
 	return pPoi;

@@ -103,9 +103,10 @@ public:
 
 	/**
 	 * Prints the waypoint values in Degree-Mins-secs format or Decimal format
+	 * param@ int format	-	Decimal or Deg-min-ss (OUT)
 	 * returnvalue@ void
 	 */
-	void print(int format);
+	virtual void print(int format);
 
 	/**
 	 * An operator overloaded friend function which prints the waypoint information
@@ -115,7 +116,6 @@ public:
 	 */
 	friend std::ostream& operator<< (std::ostream &stream, CWaypoint const &wp);
 
-	virtual ~CWaypoint() {}
 private:
 
 	/*
