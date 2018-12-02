@@ -57,6 +57,13 @@ public:
     CRoute();
 
     /**
+	 * CRoute Constructor:
+	 * Sets the value when an object is created by deep copy.
+	 * @param CRoute const &origin	- CRoute const object (IN)
+	 */
+	CRoute(CRoute const &origin);
+
+    /**
 	 * CRoute Destructor:
 	 * Called when the object is destroyed
 	 */
@@ -109,6 +116,20 @@ public:
 	 * prints all the waypoints and POIs in the route
 	 */
     void print();
+
+    /**
+     * A assignment operator
+     * @param CRoute const & rhs	- CRoute const object (IN)
+     * @returnval CRoute&
+     */
+    CRoute& operator=(CRoute const & rhs);
+
+    /**
+	 * A addition operator
+	 * @param CRoute const & rhs	- CRoute const object (IN)
+	 * @returnval CRoute
+	 */
+	CRoute operator+(CRoute const & rhs);
 
 };
 /********************

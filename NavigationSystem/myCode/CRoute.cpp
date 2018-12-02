@@ -27,10 +27,84 @@ using namespace std;
  */
 CRoute::CRoute()
 {
+	this->m_Course.clear();
 	this->m_pPoiDatabase	= 0;
 	this->m_pWpDatabase		= 0;
 	this->m_ForwardItr 		= this->m_Course.begin();
 	this->m_ReverseItr		= this->m_Course.rbegin();
+}
+
+
+/**
+ * CRoute Constructor:
+ * Sets the value when an object is created by deep copy.
+ * @param CRoute const &origin	- CRoute const object (IN)
+ */
+CRoute::CRoute(CRoute const &origin)
+{
+	cout << "INFO: Performing deep copy.\n";
+
+	this->m_Course 		= origin.m_Course;
+	this->m_ForwardItr	= this->m_Course.begin();
+	this->m_ReverseItr	= this->m_Course.rbegin();
+	this->m_pPoiDatabase= origin.m_pPoiDatabase;
+	this->m_pWpDatabase	= origin.m_pWpDatabase;
+}
+
+
+/**
+ * A assignment operator
+ * @param CRoute const & rhs	- CRoute const object (IN)
+ * @returnval CRoute&
+ */
+CRoute& CRoute::operator=(CRoute const & rhs)
+{
+	this->m_Course.clear();
+	this->m_pPoiDatabase= 0;
+	this->m_pWpDatabase	= 0;
+
+	this->m_Course 		= rhs.m_Course;
+	this->m_ForwardItr	= this->m_Course.begin();
+	this->m_ReverseItr	= this->m_Course.rbegin();
+	this->m_pPoiDatabase= rhs.m_pPoiDatabase;
+	this->m_pWpDatabase	= rhs.m_pWpDatabase;
+
+	return *this;
+}
+
+
+/**
+ * A addition operator
+ * @param CRoute const & rhs	- CRoute const object (IN)
+ * @returnval CRoute
+ */
+CRoute CRoute::operator+(CRoute const & rhs)
+{
+	CRoute result;
+
+	// check if the Databases are same
+	if ((this->m_pPoiDatabase == rhs.m_pPoiDatabase) &&
+		(this->m_pWpDatabase == rhs.m_pWpDatabase))
+	{
+		list<CWaypoint *> temp1 = this->m_Course;
+		list<CWaypoint *> temp2 = rhs.m_Course;
+
+		result.m_Course.clear();
+		result.m_ForwardItr = result.m_Course.begin();
+
+		result.m_Course.splice(result.m_ForwardItr, temp1);
+		result.m_Course.splice(result.m_ForwardItr, temp2);
+		result.m_ForwardItr 	= result.m_Course.begin();
+		result.m_ReverseItr 	= result.m_Course.rbegin();
+		result.m_pPoiDatabase	= rhs.m_pPoiDatabase;
+		result.m_pWpDatabase	= rhs.m_pWpDatabase;
+	}
+	else
+	{
+		cout << "WARNING: The Databases are different and can not be concatenated.\n";
+	}
+
+	return result;
 }
 
 
@@ -124,8 +198,8 @@ void CRoute::addWaypoint(string name)
  * if ->
  * 		namePoi is empty 		and afterWp is empty		-> don't add
  * 		namePoi is empty 		and afterWp is not empty	-> POI will not be in the DB
- * 		namePoi is not empty 	and afterWp is empty		-> Add POI to DB at the end
- * 		namePoi is not empty 	and afterWp is not empty	-> Add POI afterWp
+ * 		namePoi is not empty 	and afterWp is empty		-> Add POI to Route at the end
+ * 		namePoi is not empty 	and afterWp is not empty	-> Add POI afterWp where afterWP is already added
  *
  * @param string namePoi			- name of a POI		(IN)
  * @param string afterWp			- name of a waypoint(IN)
