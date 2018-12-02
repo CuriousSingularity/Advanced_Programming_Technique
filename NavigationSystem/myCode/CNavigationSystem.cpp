@@ -78,6 +78,11 @@ void CNavigationSystem::enterRoute()
 	this->m_route.addPoi("HDA BuildingC10"	, "Berliner Alle"	);
 	this->m_route.addPoi("Aral Tankst."		, "Rheinstraße"		);
 	this->m_route.addPoi("Starbucks"		, "Neckarstraße"	);
+
+	this->m_route += "Landskronstraße";
+	this->m_route += "SushiRestaurant";
+	this->m_route += "";
+
 //	this->m_route.addPoi("SushiRestaurant"	);
 //	this->m_route.addPoi("Aral Tankstelle"	);
 //	this->m_route.addPoi("Church Holy"		);

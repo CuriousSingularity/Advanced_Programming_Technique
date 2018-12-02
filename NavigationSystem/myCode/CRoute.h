@@ -92,6 +92,12 @@ public:
     void addPoi(std::string namePoi, std::string afterWp);
 
     /**
+	 * The function is an extension of addPoi which searches the Databases and add the
+	 * Waypoint or the POI which matches the name.
+	 */
+	void operator += (std::string const &name);
+
+    /**
 	 * Calculates the distance between waypoint and POI
 	 * @param CWaypoint const &wp	- waypoint			(IN)
 	 * @param CPOI& poi				- POI				(IN)
