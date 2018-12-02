@@ -15,6 +15,7 @@
 
 //System Include Files
 #include <string>
+#include <ostream>
 
 //Own Include Files
 
@@ -76,6 +77,24 @@ public:
 	void getAllDataByReference(std::string& name, double& latitude, double& longitude);
 
 	/**
+	 * Converts the Latitude in decimal to deg-min-sec format
+	 * param@ int& deg		-	latitude in degrees	(OUT)
+	 * param@ int& deg		-	latitude in minutes	(OUT)
+	 * param@ double& ss	-	latitude in seconds (OUT)
+	 * returnvalue@ void
+	 */
+	void transformLatitude2degmmss(int& deg, int& mm, double& ss);
+
+	/**
+	 * Converts the Longitude in decimal to deg-min-sec format
+	 * param@ int& deg		-	longitude in degrees (OUT)
+	 * param@ int& deg		-	longitude in minutes (OUT)
+	 * param@ double& ss	-	longitude in seconds (OUT)
+	 * returnvalue@ void
+	 */
+	void transformLongitude2degmmss(int& deg, int& mm, double& ss);
+
+	/**
 	 * Return the distance between 2 waypoint co-ordinates
 	 * param@ const CWaypoint& wp	-	Waypoint co-ordinate (IN)
 	 * returnvalue@ double			- 	Distance in KMs
@@ -88,6 +107,15 @@ public:
 	 */
 	void print(int format);
 
+	/**
+	 * An operator overloaded friend function which prints the waypoint information
+	 * param@ ostream &stream		-	output stream	(IN/OUT)
+	 * param@ CWaypoint const &wp	-	A Waypoint 		(IN)
+	 * returnvalue@ output stream with the waypoint information
+	 */
+	friend std::ostream& operator<< (std::ostream &stream, CWaypoint const &wp);
+
+	virtual ~CWaypoint() {}
 private:
 
 	/*
@@ -110,26 +138,6 @@ private:
 	 * The type of data - POI or Waypoint
 	 */
 	wp_type			m_type;
-
-	/**
-	 * Converts the Latitude in decimal to deg-min-sec format
-	 * param@ int& deg		-	latitude in degrees	(OUT)
-	 * param@ int& deg		-	latitude in minutes	(OUT)
-	 * param@ double& ss	-	latitude in seconds (OUT)
-	 * returnvalue@ void
-	 */
-	void transformLatitude2degmmss(int& deg, int& mm, double& ss);
-
-	/**
-	 * Converts the Longitude in decimal to deg-min-sec format
-	 * param@ int& deg		-	longitude in degrees (OUT)
-	 * param@ int& deg		-	longitude in minutes (OUT)
-	 * param@ double& ss	-	longitude in seconds (OUT)
-	 * returnvalue@ void
-	 */
-	void transformLongitude2degmmss(int& deg, int& mm, double& ss);
-
-
 };
 /********************
 **  CLASS END

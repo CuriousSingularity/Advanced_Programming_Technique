@@ -12,6 +12,7 @@
 
 //System Include Files
 #include <iostream>
+#include <map>
 
 //Own Include Files
 #include "CWpDatabase.h"
@@ -28,7 +29,18 @@ CWpDatabase::CWpDatabase()
 {
 	this->m_WpItr = this->m_Wp.begin();
 
-	// add POIs from persistence storage
+	// add Waypoints from persistence storage
+	// TODO: check the validity - type, lat, long
+
+	this->addWaypoint(CWaypoint("Berliner Alle", 			49.866851, 	8.634864));
+	this->addWaypoint(CWaypoint("Rheinstraße", 				49.870267, 	8.633266));
+	this->addWaypoint(CWaypoint("Neckarstraße", 			49.8717, 	8.644417));
+	this->addWaypoint(CWaypoint("Landskronstraße", 			49.853308,	8.646835));
+	this->addWaypoint(CWaypoint("Bessunger", 				49.846994,	8.646193));
+	this->addWaypoint(CWaypoint("FriedrichStraße",	 		49.838545,	8.645571));
+	this->addWaypoint(CWaypoint("Katharinen Str.", 			49.824827,	8.644529));
+	this->addWaypoint(CWaypoint("Wartehalle", 				49.820845,	8.644222));
+	this->addWaypoint(CWaypoint("Wartehalle", 				49.820845,	8.644222));
 }
 
 
@@ -39,7 +51,15 @@ CWpDatabase::CWpDatabase()
  */
 void CWpDatabase::addWaypoint(CWaypoint const &wp)
 {
+	CWaypoint tempWp = wp;
+	pair<map<string, CWaypoint>::iterator, bool> ret;
 
+	ret = this->m_Wp.insert(pair<string, CWaypoint>(tempWp.getName(), wp));
+
+	if (ret.second == false)
+	{
+		cout << "WARNING: Waypoint already exists in the Database.\n" << wp << endl;
+	}
 }
 
 
@@ -52,6 +72,15 @@ CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
 {
 	CWaypoint *pWp = 0;
 
+	for (this->m_WpItr = this->m_Wp.begin(); this->m_WpItr != this->m_Wp.end(); ++(this->m_WpItr))
+	{
+		if (!name.compare(this->m_WpItr->first))
+		{
+			pWp = &this->m_WpItr->second;
+			break;
+		}
+	}
+
 	return pWp;
 }
 
@@ -63,5 +92,8 @@ CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
  */
 void CWpDatabase::print()
 {
-
+	for (this->m_WpItr = this->m_Wp.begin(); this->m_WpItr != this->m_Wp.end(); ++(this->m_WpItr))
+	{
+		cout << this->m_WpItr->second << endl;
+	}
 }

@@ -29,6 +29,18 @@ CPoiDatabase::CPoiDatabase()
 	this->m_PoiItr = this->m_Poi.begin();
 
 	// add POIs from persistence storage
+	// TODO: check the validity - type, lat, long
+	this->addPoi(CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 		49.86727, 	8.638459));
+	this->addPoi(CPOI(CPOI::GASSTATION, "Aral Tankst."		, "Refuel your vehicle", 		49.871558, 	8.639206));
+	this->addPoi(CPOI(CPOI::RESTAURANT, "Starbucks"			, "A blissful coffee", 			49.872409, 	8.650744));
+	this->addPoi(CPOI(CPOI::RESTAURANT, "SushiRestaurant"	, "Asian food today!", 			49.869365,	8.645922));
+	this->addPoi(CPOI(CPOI::GASSTATION, "Aral Tankstelle"	, "Refuel your vehicle", 		49.868538,	8.645465));
+	this->addPoi(CPOI(CPOI::TOURISTIC,  "Church Holy"		, "Freie Christengemeinde", 	49.865072,	8.647415));
+	this->addPoi(CPOI(CPOI::RESTAURANT, "Thessaloniki"		, "Greek Restaurant ", 			49.862869, 	8.646691));
+	this->addPoi(CPOI(CPOI::TOURISTIC,  "Church 7 Days"		, "Adventist Chruch", 			49.839096,	8.646294));
+	this->addPoi(CPOI(CPOI::GASSTATION, "Ladestation"		, "Electric vehicle charge", 	49.811698,	8.646074));
+	this->addPoi(CPOI(CPOI::RESTAURANT, "El Quinto Vino"	, "Spanish Restaurant ", 		49.813422, 	8.646246));
+	this->addPoi(CPOI(CPOI::RESTAURANT, "El Quinto Vino"	, "Spanish Restaurant ", 		49.813422, 	8.646246));
 }
 
 
@@ -39,53 +51,15 @@ CPoiDatabase::CPoiDatabase()
  */
 void CPoiDatabase::addPoi(CPOI const &poi)
 {
-//	// check if the Database has free memory to store new POI
-//	if (this->m_noPoi < sizeof(this->m_POI)/sizeof(CPOI))
-//	{
-//		bool alreadyExist = false;
-//
-//		// check if the POI already exists
-//		for (int Index = 0; Index < this->m_noPoi; Index++)
-//		{
-//			CPOI::t_poi getTypeFromDB;
-//			string getNameFromDB, getDescriptionFromDB;
-//			double getLatitudeFromDB, getLongitudeFromDB;
-//
-//			this->m_POI[Index].getAllDataByReference(getNameFromDB, getLatitudeFromDB, getLongitudeFromDB, getTypeFromDB, getDescriptionFromDB);
-//
-//			if ((getTypeFromDB == type) && (getNameFromDB == name) &&
-//				(getLatitudeFromDB == latitude) && (getLongitudeFromDB == longitude))
-//			{
-//				// POI already exists
-//				alreadyExist = true;
-//				break;
-//			}
-//		}
-//
-//		if (!alreadyExist)
-//		{
-//			if ((CPOI::DEFAULT_POI != type) &&
-//				((latitude >= LATITUDE_MIN) && (latitude <= LATITUDE_MAX)) &&
-//				((longitude >= LONGITUDE_MIN) && (longitude <= LONGITUDE_MAX)) &&
-//				(!name.empty()))
-//			{
-//				this->m_POI[this->m_noPoi] = CPOI(type, name, description, latitude, longitude);
-//				this->m_noPoi++;
-//			}
-//			else
-//			{
-//				cout << "WARNING: Invalid POI. Not added to the Database.\n";
-//			}
-//		}
-//		else
-//		{
-//			cout << "WARNING: POI already exists!\n";
-//		}
-//	}
-//	else
-//	{
-//		cout << "WARNING: Database full!\n";
-//	}
+	CPOI tempPoi = poi;
+	pair<map<string, CPOI>::iterator, bool> ret;
+
+	ret = this->m_Poi.insert(pair<string, CPOI>(tempPoi.getName(), poi));
+
+	if (ret.second == false)
+	{
+		cout << "WARNING: POI already exists in the Database.\n" << poi << endl;
+	}
 }
 
 
@@ -98,14 +72,14 @@ CPOI* CPoiDatabase::getPointerToPoi(string name)
 {
 	CPOI *pPoi = 0;
 
-//	for (int Index = 0; Index < this->m_noPoi; Index++)
-//	{
-//		if (this->m_POI[Index].CWaypoint::getName() == name)
-//		{
-//			pPoi = &this->m_POI[Index];
-//			break;
-//		}
-//	}
+	for (this->m_PoiItr = this->m_Poi.begin(); this->m_PoiItr != this->m_Poi.end(); ++(this->m_PoiItr))
+	{
+		if (!name.compare(this->m_PoiItr->first))
+		{
+			pPoi = &this->m_PoiItr->second;
+			break;
+		}
+	}
 
 	return pPoi;
 }

@@ -103,3 +103,59 @@ void CPOI::print()
 	this->CWaypoint::print(MMSS);
 	cout << endl;
 }
+
+
+/**
+ * An operator overloaded friend function which prints the POI information
+ * param@ ostream &stream		-	output stream	(IN/OUT)
+ * param@ CPOI const &poi		-	A POI 			(IN)
+ * returnvalue@ output stream with the POI information
+ */
+ostream& operator<< (ostream &stream, CPOI const &poi)
+{
+	CPOI tempPoi = poi;
+	CPOI::t_poi type;
+	string name, description, typeName;
+	double latitude, longitude;
+
+	tempPoi.getAllDataByReference(name, latitude, longitude, type, description);
+
+	switch(type)
+	{
+		case CPOI::RESTAURANT:
+			typeName = "Restaurant";
+			break;
+
+		case CPOI::TOURISTIC:
+			typeName = "Touristic";
+			break;
+
+		case CPOI::GASSTATION:
+			typeName = "Gas station";
+			break;
+
+		case CPOI::UNIVERSITY:
+			typeName = "University";
+			break;
+
+		case CPOI::DEFAULT_POI:
+		default:
+			typeName = "Default";
+			break;
+	}
+
+	stream << "POI	  : " << name << "\n";
+	stream << "POI type  : " << typeName << "\n";
+	stream << "Descript  : " << description << "\n";
+
+	int deg, mm;
+	double ss;
+
+	tempPoi.transformLatitude2degmmss(deg, mm, ss);
+	stream << "Latitude  : " << deg << "deg " << mm << "min " << ss << "s\n";
+
+	tempPoi.transformLongitude2degmmss(deg, mm, ss);
+	stream << "Longitude : " << deg << "deg " << mm << "min " << ss << "s \n";
+
+	return stream;
+}

@@ -202,3 +202,33 @@ void CWaypoint::transformLongitude2degmmss(int& deg, int& mm, double& ss)
 		// Do nothing
 	}
 }
+
+
+/**
+ * An operator overloaded friend function which prints the waypoint information
+ * param@ ostream &stream		-	output stream	(IN/OUT)
+ * param@ CWaypoint const &wp	-	A Waypoint 		(IN)
+ * returnvalue@ output stream with the waypoint information
+ */
+ostream& operator<< (ostream &stream, CWaypoint const &wp)
+{
+	CWaypoint tempWp = wp;
+
+	string name;
+	double latitude, longitude;
+
+	tempWp.getAllDataByReference(name, latitude, longitude);
+
+	int deg, mm;
+	double ss;
+
+	stream << "Waypoint  : " << name << "\n";
+
+	tempWp.transformLatitude2degmmss(deg, mm, ss);
+	stream << "Latitude  : " << deg << "deg " << mm << "min " << ss << "s\n";
+
+	tempWp.transformLongitude2degmmss(deg, mm, ss);
+	stream << "Longitude : " << deg << "deg " << mm << "min " << ss << "s \n";
+
+	return stream;
+}

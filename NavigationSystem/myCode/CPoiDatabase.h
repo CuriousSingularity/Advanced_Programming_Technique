@@ -27,12 +27,12 @@ private:
 	 * key 		- name
 	 * value	- POI
 	 */
-    std::multimap<std::string, CPOI> 				m_Poi;
+    std::map<std::string, CPOI> 				m_Poi;
 
     /**
      * An iterator for the above container
      */
-    std::multimap<std::string, CPOI>::iterator		m_PoiItr;
+    std::map<std::string, CPOI>::iterator		m_PoiItr;
 
 public:
 
