@@ -54,11 +54,18 @@ void CPoiDatabase::addPoi(CPOI const &poi)
 	CPOI tempPoi = poi;
 	pair<map<string, CPOI>::iterator, bool> ret;
 
-	ret = this->m_Poi.insert(pair<string, CPOI>(tempPoi.getName(), poi));
-
-	if (ret.second == false)
+	if (!tempPoi.getName().empty())
 	{
-		cout << "WARNING: POI already exists in the Database.\n" << poi << endl;
+		ret = this->m_Poi.insert(pair<string, CPOI>(tempPoi.getName(), poi));
+
+		if (ret.second == false)
+		{
+			cout << "WARNING: POI already exists in the Database.\n" << poi << endl;
+		}
+	}
+	else
+	{
+		cout << "WARNING: Trying to add invalid POI to the Database.\n" << poi << endl;
 	}
 }
 
@@ -75,7 +82,12 @@ CPOI* CPoiDatabase::getPointerToPoi(string name)
 	if (!this->m_Poi.empty())
 	{
 		this->m_PoiItr = this->m_Poi.find(name);
-		pPoi = &this->m_PoiItr->second;
+
+		if (this->m_PoiItr != this->m_Poi.end())
+		{
+			// element found
+			pPoi = &this->m_PoiItr->second;
+		}
 	}
 
 	return pPoi;

@@ -54,11 +54,18 @@ void CWpDatabase::addWaypoint(CWaypoint const &wp)
 	CWaypoint tempWp = wp;
 	pair<map<string, CWaypoint>::iterator, bool> ret;
 
-	ret = this->m_Wp.insert(pair<string, CWaypoint>(tempWp.getName(), wp));
-
-	if (ret.second == false)
+	if (!tempWp.getName().empty())
 	{
-		cout << "WARNING: Waypoint already exists in the Database.\n" << wp << endl;
+		ret = this->m_Wp.insert(pair<string, CWaypoint>(tempWp.getName(), wp));
+
+		if (ret.second == false)
+		{
+			cout << "WARNING: Waypoint already exists in the Database.\n" << wp << endl;
+		}
+	}
+	else
+	{
+		cout << "WARNING: Trying to add invalid Waypoint to the Database.\n" << wp << endl;
 	}
 }
 
@@ -75,7 +82,12 @@ CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
 	if (!this->m_Wp.empty())
 	{
 		this->m_WpItr = this->m_Wp.find(name);
-		pWp = &this->m_WpItr->second;
+
+		if (this->m_WpItr != this->m_Wp.end())
+		{
+			// element found
+			pWp = &this->m_WpItr->second;
+		}
 	}
 
 	return pWp;

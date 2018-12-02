@@ -121,6 +121,12 @@ void CRoute::addWaypoint(string name)
 
 /**
  * Search the POI in the POI-database by the name; Add the POI to current route after "afterWp"
+ * if ->
+ * 		namePoi is empty 		and afterWp is empty		-> don't add
+ * 		namePoi is empty 		and afterWp is not empty	-> POI will not be in the DB
+ * 		namePoi is not empty 	and afterWp is empty		-> Add POI to DB at the end
+ * 		namePoi is not empty 	and afterWp is not empty	-> Add POI afterWp
+ *
  * @param string namePoi			- name of a POI		(IN)
  * @param string afterWp			- name of a waypoint(IN)
  * @returnval void
@@ -131,43 +137,94 @@ void CRoute::addPoi(string namePoi, string afterWp)
 	CPOI		*pPoi 		= 0;
 	CWaypoint 	*pWp 		= 0;
 
-	// check if the database is connected
-	if (this->m_pPoiDatabase)
+	if (!namePoi.empty() || !afterWp.empty())
 	{
-		pPoi = this->m_pPoiDatabase->getPointerToPoi(namePoi);
-
-		if (pPoi)
+		// check if the database is connected
+		if (this->m_pPoiDatabase)
 		{
-			for (this->m_ReverseItr = this->m_Course.rbegin(); this->m_ReverseItr != this->m_Course.rend(); ++(this->m_ReverseItr))
-			{
-				pWp = dynamic_cast<CWaypoint *>(*this->m_ReverseItr);
+			pPoi = this->m_pPoiDatabase->getPointerToPoi(namePoi);
 
-				// is this a Waypoint ?
-				if (pWp)
+			if (pPoi)
+			{
+				for (this->m_ReverseItr = this->m_Course.rbegin(); this->m_ReverseItr != this->m_Course.rend(); ++(this->m_ReverseItr))
 				{
-					// are the names matching ?
-					if (!afterWp.compare(pWp->getName()))
+					pWp = dynamic_cast<CWaypoint *>(*this->m_ReverseItr);
+
+					// is this a Waypoint ?
+					if (pWp)
 					{
-						this->m_Course.insert(this->m_ReverseItr.base(), pPoi);
-						isAfterWp = true;
-						break;
+						// are the names matching ?
+						if (!afterWp.compare(pWp->getName()))
+						{
+							this->m_Course.insert(this->m_ReverseItr.base(), pPoi);
+							isAfterWp = true;
+							break;
+						}
 					}
 				}
-			}
 
-			if (!isAfterWp)
+				if (!isAfterWp)
+				{
+					this->m_Course.push_back(static_cast<CPOI *>(pPoi));
+
+					cout << "WARNING: The Requested Waypoint is not available in the Route.\n";
+				}
+			}
+			else
 			{
-				cout << "WARNING: The Requested Waypoint is not available in the Route.\n";
+				cout << "WARNING: The Requested POI is not available in the Database.\n";
 			}
 		}
 		else
 		{
-			cout << "WARNING: The Requested POI is not available in the Database.\n";
+			cout << "WARNING: The POI Database is not available.\n";
 		}
 	}
 	else
 	{
-		cout << "WARNING: The POI Database is not available.\n";
+		cout << "WARNING: The Waypoint and POI are invalid.\n";
+	}
+}
+
+
+
+/**
+ * The function is an extension of addPoi which searches the Databases and add the
+ * Waypoint and/or the POI which matches the name.
+ */
+void CRoute::operator += (string const &name)
+{
+	CPOI		*pPoi = 0;
+	CWaypoint	*pWp  = 0;
+	string 		namePoi, nameWp;
+
+	if (!name.empty())
+	{
+		if (this->m_pWpDatabase)
+		{
+			pWp	= this->m_pWpDatabase->getPointerToWaypoint(name);
+
+			if (pWp)
+			{
+				this->addWaypoint(name);
+				nameWp = name;
+			}
+		}
+
+		if (this->m_pPoiDatabase)
+		{
+			pPoi = this->m_pPoiDatabase->getPointerToPoi(name);
+
+			if (pPoi)
+			{
+				namePoi = name;
+			}
+		}
+		this->addPoi(namePoi, nameWp);
+	}
+	else
+	{
+		cout << "WARNING: Invalid POI / Waypoint.\n";
 	}
 }
 
