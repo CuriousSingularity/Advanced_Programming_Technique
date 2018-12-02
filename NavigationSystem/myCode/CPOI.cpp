@@ -66,10 +66,11 @@ void CPOI::getAllDataByReference(string& name, double& latitude, double& longitu
 
 
 /**
- * Print all the information of a Point of Interest.
+ * Prints the POI values in Degree-Mins-secs format or Decimal format
+ * param@ int format	-	Decimal or Deg-min-ss (OUT)
  * returnvalue@ void
  */
-void CPOI::print()
+void CPOI::print(int format)
 {
 	string typeName;
 
@@ -100,7 +101,7 @@ void CPOI::print()
 	cout << "Point of interest\n";
 	cout << "===================\n";
 	cout << " of type " << typeName << " : " << this->m_description << "\n";
-	this->CWaypoint::print(MMSS);
+	this->CWaypoint::print(format);
 	cout << endl;
 }
 

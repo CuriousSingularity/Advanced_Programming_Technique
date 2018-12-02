@@ -58,10 +58,11 @@ public:
 	void getAllDataByReference(std::string& name, double& latitude, double& longitude, t_poi &type, std::string &description);
 
 	/**
-	 * Print all the information of a Point of Interest.
+	 * Prints the POI values in Degree-Mins-secs format or Decimal format
+	 * param@ int format	-	Decimal or Deg-min-ss (OUT)
 	 * returnvalue@ void
 	 */
-	void print();
+	void print(int format);
 
 	/**
 	 * An operator overloaded friend function which prints the POI information

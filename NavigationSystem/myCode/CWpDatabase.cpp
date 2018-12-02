@@ -72,13 +72,10 @@ CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
 {
 	CWaypoint *pWp = 0;
 
-	for (this->m_WpItr = this->m_Wp.begin(); this->m_WpItr != this->m_Wp.end(); ++(this->m_WpItr))
+	if (!this->m_Wp.empty())
 	{
-		if (!name.compare(this->m_WpItr->first))
-		{
-			pWp = &this->m_WpItr->second;
-			break;
-		}
+		this->m_WpItr = this->m_Wp.find(name);
+		pWp = &this->m_WpItr->second;
 	}
 
 	return pWp;

@@ -74,7 +74,6 @@ void CNavigationSystem::enterRoute()
     testCaseNonExistingWaypoint();
 #endif
 
-    this->printRoute();
 	// add POIs
 	this->m_route.addPoi("HDA BuildingC10"	, "Berliner Alle"	);
 	this->m_route.addPoi("Aral Tankst."		, "Rheinstraße"		);
@@ -84,8 +83,6 @@ void CNavigationSystem::enterRoute()
 //	this->m_route.addPoi("Church Holy"		);
 //	this->m_route.addPoi("Thessaloniki"		);
 //	this->m_route.addPoi("Church 7 Days"	);
-
-	this->printRoute();
 
 #ifdef RUN_TEST_CASE_NON_EXIST_POI
 	testCaseNonExistingPOI();
@@ -129,8 +126,7 @@ void CNavigationSystem::printDistanceCurPosNextPoi()
 
 		if (type != CPOI::DEFAULT_POI)
 		{
-			cout << "Distance to next POI = " << distance << " Kms (approx.)\n\n";
-			poi.print();
+			cout << "Distance to next POI = " << distance << " Kms (approx.)\n\n" << poi << endl;
 		}
 		else
 		{
