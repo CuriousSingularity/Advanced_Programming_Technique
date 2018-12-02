@@ -27,12 +27,12 @@ private:
 	 * key 		- name
 	 * value	- waypoint
 	 */
-	std::multimap<std::string, CWaypoint> 				m_Wp;
+	std::map<std::string, CWaypoint> 				m_Wp;
 
     /**
 	 * An iterator for the above container
 	 */
-	std::multimap<std::string, CWaypoint>::iterator		m_WpItr;
+	std::map<std::string, CWaypoint>::iterator		m_WpItr;
 
 public:
 

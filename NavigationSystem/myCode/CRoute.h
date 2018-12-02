@@ -26,22 +26,27 @@ private:
 	/**
 	 * An list container to store the waypoints and POI of the route
 	 */
-	std::list<CPOI *>				m_List;
+	std::list<CWaypoint *>						m_Course;
 
 	/**
 	 * An iterator for the above container
 	 */
-	std::list<CPOI *>::iterator		m_ListItr;
+	std::list<CWaypoint *>::iterator			m_ForwardItr;
+
+	/**
+	 * A reverse iterator for the above container
+	 */
+	std::list<CWaypoint *>::reverse_iterator	m_ReverseItr;
 
 	/**
 	 * A pointer to the Point of interest Database
 	 */
-	CPoiDatabase					*m_pPoiDatabase;
+	CPoiDatabase								*m_pPoiDatabase;
 
 	/**
 	 * A pointer the Waypoint Database
 	 */
-	CWpDatabase						*m_pWpDatabase;
+	CWpDatabase									*m_pWpDatabase;
 
 public:
 

@@ -45,7 +45,7 @@ void CNavigationSystem::run()
 #ifdef RUN_TEST_CASE_DATABASE_NOT_AVAILABLE_WAYPOINT
 	this->testCaseDatabaseNotAvailableWaypoint();
 #else
-	this->m_route.connectToPoiDatabase(&this->m_PoiDatabase);
+	this->m_route.connectToWpDatabase(&this->m_WpDatabase);
 #endif
 
 	this->enterRoute();
@@ -64,25 +64,28 @@ void CNavigationSystem::enterRoute()
 	this->m_route.addWaypoint("Berliner Alle"	);
 	this->m_route.addWaypoint("Rheinstraße"     );
 	this->m_route.addWaypoint("Neckarstraße"    );
-	this->m_route.addWaypoint("Landskronstraße" );
-	this->m_route.addWaypoint("Bessunger"       );
-	this->m_route.addWaypoint("FriedrichStraße" );
-	this->m_route.addWaypoint("Katharinen Str." );
-	this->m_route.addWaypoint("Wartehalle"      );
+//	this->m_route.addWaypoint("Landskronstraße" );
+//	this->m_route.addWaypoint("Bessunger"       );
+//	this->m_route.addWaypoint("FriedrichStraße" );
+//	this->m_route.addWaypoint("Katharinen Str." );
+//	this->m_route.addWaypoint("Wartehalle"      );
 
 #ifdef RUN_TEST_CASE_NON_EXIST_WAYPOINT
     testCaseNonExistingWaypoint();
 #endif
 
+    this->printRoute();
 	// add POIs
-//	this->m_route.addPoi("HDA BuildingC10"	);
-//	this->m_route.addPoi("Aral Tankst."		);
-//	this->m_route.addPoi("Starbucks"		);
+	this->m_route.addPoi("HDA BuildingC10"	, "Berliner Alle"	);
+	this->m_route.addPoi("Aral Tankst."		, "Rheinstraße"		);
+	this->m_route.addPoi("Starbucks"		, "Neckarstraße"	);
 //	this->m_route.addPoi("SushiRestaurant"	);
 //	this->m_route.addPoi("Aral Tankstelle"	);
 //	this->m_route.addPoi("Church Holy"		);
 //	this->m_route.addPoi("Thessaloniki"		);
-//  this->m_route.addPoi("Church 7 Days"	);
+//	this->m_route.addPoi("Church 7 Days"	);
+
+	this->printRoute();
 
 #ifdef RUN_TEST_CASE_NON_EXIST_POI
 	testCaseNonExistingPOI();

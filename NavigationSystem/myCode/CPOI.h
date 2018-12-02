@@ -63,6 +63,14 @@ public:
 	 */
 	void print();
 
+	/**
+	 * An operator overloaded friend function which prints the POI information
+	 * param@ ostream &stream		-	output stream	(IN/OUT)
+	 * param@ CPOI const &poi		-	A POI 			(IN)
+	 * returnvalue@ output stream with the POI information
+	 */
+	friend std::ostream& operator<< (std::ostream &stream, CPOI const &poi);
+
 private:
 
 	/**
