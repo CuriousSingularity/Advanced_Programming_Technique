@@ -19,6 +19,10 @@
 //Own Include Files
 #include "CPOI.h"
 
+
+typedef std::map<std::string, CPOI> 			Poi_Map_t;
+typedef std::map<std::string, CPOI>::iterator 	Poi_Map_Itr_t;
+
 class CPoiDatabase {
 private:
 
@@ -27,12 +31,12 @@ private:
 	 * key 		- name
 	 * value	- POI
 	 */
-    std::map<std::string, CPOI> 				m_Poi;
+	Poi_Map_t 				m_Poi;
 
     /**
      * An iterator for the above container
      */
-    std::map<std::string, CPOI>::iterator		m_PoiItr;
+	Poi_Map_Itr_t			m_PoiItr;
 
 public:
 
@@ -48,6 +52,13 @@ public:
 	 * returnvalue@ void
 	 */
     void addPoi(CPOI const &poi);
+
+    /**
+	 * Function which returns the container having POIs in the Database
+	 * param@ Wp_Map_t &WpDatabase		-	POIs in Database	(IN)
+	 * returnvalue@ void
+	 */
+    void getPoisFromDatabase(Poi_Map_t &Pois) const;
 
     /**
 	 * Get pointer to a POI from the Database which matches the name

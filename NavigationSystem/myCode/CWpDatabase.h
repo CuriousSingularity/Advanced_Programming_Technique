@@ -19,6 +19,10 @@
 //Own Include Files
 #include "CWaypoint.h"
 
+//typedefs
+typedef std::map<std::string, CWaypoint> 			Wp_Map_t;
+typedef std::map<std::string, CWaypoint>::iterator 	Wp_Map_Itr_t;
+
 class CWpDatabase {
 private:
 
@@ -27,12 +31,12 @@ private:
 	 * key 		- name
 	 * value	- waypoint
 	 */
-	std::map<std::string, CWaypoint> 				m_Wp;
+	Wp_Map_t 				m_Wp;
 
     /**
 	 * An iterator for the above container
 	 */
-	std::map<std::string, CWaypoint>::iterator		m_WpItr;
+	Wp_Map_Itr_t			m_WpItr;
 
 public:
 
@@ -57,6 +61,19 @@ public:
     CWaypoint* getPointerToWaypoint(std::string name);
 
     /**
+     * Function which returns the container having waypoints in the Database
+     * param@ Wp_Map_t &WpDatabase		-	Waypoints in Database	(IN)
+     * returnvalue@ void
+     */
+    void getWpsFromDatabase(Wp_Map_t &Wps) const;
+
+    /**
+	 * Function which reset the Database
+	 * returnvalue@ void
+	 */
+	void resetWpsDatabase();
+
+	/**
 	 * Print all the Waypoints in the database
 	 * returnvalue@ void
 	 */

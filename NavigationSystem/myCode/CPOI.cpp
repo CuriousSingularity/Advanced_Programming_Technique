@@ -66,11 +66,10 @@ void CPOI::getAllDataByReference(string& name, double& latitude, double& longitu
 
 
 /**
- * Prints the POI values in Degree-Mins-secs format or Decimal format
- * param@ int format	-	Decimal or Deg-min-ss (OUT)
- * returnvalue@ void
+ * Gets the type name in the string
+ * returnvalue@ string 	-	name of the POI type
  */
-void CPOI::print(int format)
+string CPOI::getPoiTypeName()
 {
 	string typeName;
 
@@ -98,6 +97,19 @@ void CPOI::print(int format)
 			break;
 	}
 
+	return typeName;
+}
+/**
+ * Prints the POI values in Degree-Mins-secs format or Decimal format
+ * param@ int format	-	Decimal or Deg-min-ss (OUT)
+ * returnvalue@ void
+ */
+void CPOI::print(int format)
+{
+	string typeName;
+
+	typeName = this->getPoiTypeName();
+
 	cout << "Point of interest\n";
 	cout << "===================\n";
 	cout << " of type " << typeName << " : " << this->m_description << "\n";
@@ -121,29 +133,7 @@ ostream& operator<< (ostream &stream, CPOI const &poi)
 
 	tempPoi.getAllDataByReference(name, latitude, longitude, type, description);
 
-	switch(type)
-	{
-		case CPOI::RESTAURANT:
-			typeName = "Restaurant";
-			break;
-
-		case CPOI::TOURISTIC:
-			typeName = "Touristic";
-			break;
-
-		case CPOI::GASSTATION:
-			typeName = "Gas station";
-			break;
-
-		case CPOI::UNIVERSITY:
-			typeName = "University";
-			break;
-
-		case CPOI::DEFAULT_POI:
-		default:
-			typeName = "Default";
-			break;
-	}
+	typeName = tempPoi.getPoiTypeName();
 
 	stream << "POI	  : " << name << "\n";
 	stream << "POI type  : " << typeName << "\n";

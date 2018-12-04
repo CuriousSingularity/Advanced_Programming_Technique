@@ -52,7 +52,7 @@ CWpDatabase::CWpDatabase()
 void CWpDatabase::addWaypoint(CWaypoint const &wp)
 {
 	CWaypoint tempWp = wp;
-	pair<map<string, CWaypoint>::iterator, bool> ret;
+	pair<Wp_Map_Itr_t, bool> ret;
 
 	if (!tempWp.getName().empty())
 	{
@@ -93,6 +93,26 @@ CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
 	return pWp;
 }
 
+
+/**
+ * Function which returns the container having waypoints in the Database
+ * param@ Wp_Map_t &WpDatabase		-	Waypoints in Database	(IN)
+ * returnvalue@ void
+ */
+void CWpDatabase::getWpsFromDatabase(Wp_Map_t &Wps) const
+{
+	Wps = this->m_Wp;
+}
+
+
+/**
+ * Function which reset the Database
+ * returnvalue@ void
+ */
+void CWpDatabase::resetWpsDatabase()
+{
+	this->m_Wp.clear();
+}
 
 
 /**
