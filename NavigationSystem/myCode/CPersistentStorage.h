@@ -1,15 +1,24 @@
 /***************************************************************************
 *============= Copyright by Darmstadt University of Applied Sciences =======
 ****************************************************************************
-* Filename        : CPERSISTENTSTORAGE.H
-* Author          :
-* Description     :
-*
+* Filename        : CPersistentStorage.h
+* Author          : Bharath Ramachandraiah
+* Description     : The file defines a class CPersistentStorage.
+* 					The class CPersistentStorage is an abstract class which
+* 					provide interfaces to the derived class.
 *
 ****************************************************************************/
 
 #ifndef CPERSISTENTSTORAGE_H
 #define CPERSISTENTSTORAGE_H
+
+//System Include Files
+#include <string>
+
+//Own Include Files
+#include "CPoiDatabase.h"
+#include "CWpDatabase.h"
+
 class CPersistentStorage {
 public:
 	/**
@@ -19,7 +28,7 @@ public:
 	*
 	* @param name the media to be used
 	*/
-	virtual void setMediaName(string name) = 0;
+	virtual void setMediaName(std::string name) = 0;
 	
 	/**
 	* Write the data to the persistent storage.
@@ -49,6 +58,11 @@ public:
 	* @return true if the data could be read successfully
 	*/
 	virtual bool readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mode) = 0;
+
+	/**
+	 * A Virtual Destructor for an abstract class
+	 */
+	virtual ~CPersistentStorage() {}
 };
 /********************
 **  CLASS END

@@ -52,7 +52,7 @@ CPoiDatabase::CPoiDatabase()
 void CPoiDatabase::addPoi(CPOI const &poi)
 {
 	CPOI tempPoi = poi;
-	pair<map<string, CPOI>::iterator, bool> ret;
+	pair<Poi_Map_Itr_t, bool> ret;
 
 	if (!tempPoi.getName().empty())
 	{
@@ -67,6 +67,17 @@ void CPoiDatabase::addPoi(CPOI const &poi)
 	{
 		cout << "WARNING: Trying to add invalid POI to the Database.\n" << poi << endl;
 	}
+}
+
+
+/**
+ * Function which returns the container having POIs in the Database
+ * param@ Wp_Map_t &WpDatabase		-	POIs in Database	(IN)
+ * returnvalue@ void
+ */
+void CPoiDatabase::getPoisFromDatabase(Poi_Map_t &Pois) const
+{
+	Pois = this->m_Poi;
 }
 
 

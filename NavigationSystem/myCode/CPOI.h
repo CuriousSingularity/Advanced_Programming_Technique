@@ -58,8 +58,14 @@ public:
 	void getAllDataByReference(std::string& name, double& latitude, double& longitude, t_poi &type, std::string &description);
 
 	/**
+	 * Gets the type name in the string
+	 * returnvalue@ string 	-	name of the POI type
+	 */
+	std::string getPoiTypeName();
+
+	/**
 	 * Prints the POI values in Degree-Mins-secs format or Decimal format
-	 * param@ int format	-	Decimal or Deg-min-ss (OUT)
+	 * param@ int format	-	Decimal or Deg-min-ss (IN)
 	 * returnvalue@ void
 	 */
 	void print(int format);
