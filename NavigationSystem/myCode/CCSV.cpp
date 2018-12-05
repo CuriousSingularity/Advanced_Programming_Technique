@@ -25,6 +25,9 @@ using namespace std;
 //Macros
 //#define RUN_TEST_CASE
 
+const std::string CCSV::delimiters(",;");
+
+
 /**
  * Constructor
  */
@@ -196,56 +199,37 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 	{
 		string			readLine;
 
+		this->lineCounter = 0;
+
 		while (!fileStream.eof())
 		{
 			getline(fileStream, readLine, '\n');
+			this->lineCounter++;
 
 			if (readLine.length() == 0)
 			{
 				// empty line - ignore them
-				cout << "WARNING: Empty line found, hence ignoring.\n";
+				cout << "ERROR: Empty line in line " << this->lineCounter << "\n";
 				continue;
 			}
 
 			if (fileStream.fail())
 			{
 				fileStream.clear();
-				cout << "WARNING: Error reading a waypoint from the file - " << fileName << endl;
+				cout << "ERROR: Reading a waypoint from the file - " << fileName << endl;
 				ret = false;
 			}
 			else
 			{
-				stringstream	ss(readLine);
-				string			nameParsed, latitudeParsed, longitudeParsed;
+				string			name;
 				double 			latitude = (LATITUDE_MAX + 1), longitude = (LONGITUDE_MAX  + 1);	// set to invalid values
 
-				getline(ss, nameParsed, ';');
-				getline(ss, latitudeParsed, ';');
-				getline(ss, longitudeParsed, '\n');
-
-				ss.clear();
-				ss.str("");
-
-				ss << latitudeParsed;
-
-				if (!latitudeParsed.empty())
+				if (!this->parserEachLine(readLine, name, latitude, longitude))
 				{
-					ss >> latitude;
-
-					ss.clear();
-					ss.str("");
+					continue;
 				}
 
-				ss << longitudeParsed;
-
-				if (!longitudeParsed.empty())
-				{
-					ss >> longitude;
-					ss.clear();
-					ss.str("");
-				}
-
-				CWaypoint wp(nameParsed, latitude, longitude);
+				CWaypoint wp(name, latitude, longitude);
 
 				if (!wp.getName().empty())
 				{
@@ -253,7 +237,7 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 				}
 				else
 				{
-					cout << "WARNING: Invalid waypoint found in the database, hence ignoring.\n";
+					cout << "ERROR: Invalid Waypoint in line " << this->lineCounter << "\n";
 				}
 			}
 		}
@@ -266,26 +250,154 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 	}
 
 	fileStream.close();
+//
+//	fileName = this->mediaName + "read-poi.txt";
+//	fileStream.precision(10);
+//	fileStream.clear();
+//
+//	// Read POIs
+//	fileStream.open(fileName.c_str(), ifstream::in);
+//
+//	// is the open successful?
+//	if (!fileStream.fail())
+//	{
+//		string			readLine;
+//
+//		this->lineCounter = 0;
+//
+//		while (!fileStream.eof())
+//		{
+//			getline(fileStream, readLine, '\n');
+//			this->lineCounter++;
+//
+//			if (readLine.length() == 0)
+//			{
+//				// empty line - ignore them
+//				cout << "ERROR: Empty line in line " << this->lineCounter << "\n";
+//				continue;
+//			}
+//
+//			if (fileStream.fail())
+//			{
+//				fileStream.clear();
+//				cout << "ERROR: Reading a POI from the file - " << fileName << endl;
+//				ret = false;
+//			}
+//			else
+//			{
+//				CPOI::t_poi		type;
+//				string			name, description;
+//				double 			latitude = (LATITUDE_MAX + 1), longitude = (LONGITUDE_MAX  + 1);	// set to invalid values
+//
+//				if (!this->parserEachLine(readLine, name, latitude, longitude))
+//				{
+//					continue;
+//				}
+//
+//				CPOI wp(name, latitude, longitude);
+//
+//				if (!wp.getName().empty())
+//				{
+//					waypointDb.addWaypoint(wp);
+//				}
+//				else
+//				{
+//					cout << "ERROR: Invalid Waypoint in line " << this->lineCounter << "\n";
+//				}
+//			}
+//		}
+//	}
+//	else
+//	{
+//		fileStream.clear();
+//		cout << "WARNING: Error opening the file to read - " << fileName << endl;
+//		ret = false;
+//	}
+//
+//	fileStream.close();
+
 
 	return ret;
 }
 
-bool extractNumberFromString(const std::string &str, double &number)
-{
-	bool ret = false;
 
-	if (!str.empty())
+bool CCSV::parserEachLine(const string &readLine, std::string &name, double &latitude, double &longitude)
+{
+	bool			ret = true;
+
+	// check if the one of the delimiters exists
+	if (readLine.find_first_of(this->delimiters) != string::npos)
 	{
-		for (unsigned int index = 0, decPointCount = 0; index < str.length(); ++index)
+		stringstream	ss(readLine);
+		string			nameParsed, latitudeParsed, longitudeParsed;
+
+		for (unsigned int index = 0; index < this->delimiters.length(); index++)
 		{
-			if (!((str[index] >= '0' && str[index] <= '9') || (str[index] == '.' && !decPointCount++)))
+			if (readLine.find_first_of(this->delimiters[index]) != string::npos)
 			{
+				getline(ss, nameParsed, 		this->delimiters[index]);
+				getline(ss, latitudeParsed, 	this->delimiters[index]);
+				getline(ss, longitudeParsed,	'\n');
+
+				name = nameParsed;
 				break;
 			}
 		}
 
-		ret = true;
+		if ((!this->extractNumberFromString(latitudeParsed, latitude)) ||
+			(!this->extractNumberFromString(longitudeParsed, longitude)) ||
+			(nameParsed.empty()))
+		{
+			cout << "ERROR: Invalid or too few fields in line " << this->lineCounter << "\n";
+			ret = false;
+		}
+	}
+	else
+	{
+		cout << "ERROR: Could not find the delimiters in line " << this->lineCounter << "\n";
+		ret = false;
 	}
 
-	return true;
+	return ret;
+}
+
+
+bool CCSV::extractNumberFromString(const std::string &str, double &number)
+{
+	bool 			isNumber = false;
+
+	if (!str.empty())
+	{
+		unsigned int index = 0;
+
+		// remove all the leading spaces and tabs
+		while ((str[index] == ' ') || (str[index] == '\t'))
+		{
+			index++;
+		}
+
+		for (unsigned int decPointCount = 0; index < str.length(); ++index)
+		{
+			// check if the string contains only numbers and maybe a .
+			if (!((str[index] >= '0' && str[index] <= '9') || (str[index] == '.' && !decPointCount++)))
+			{
+				isNumber = false;
+				break;
+			}
+			else
+			{
+				isNumber = true;
+			}
+		}
+
+		if (isNumber)
+		{
+			stringstream	ss(str);
+
+			// extract the number
+			ss >> number;
+		}
+	}
+
+	return isNumber;
 }
