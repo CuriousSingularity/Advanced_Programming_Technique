@@ -20,9 +20,14 @@
 class CCSV : public CPersistentStorage {
 private:
 
+	static const std::string delimiters;
 	std::string 	mediaName;
 
+	unsigned int 	lineCounter;
+
 	bool extractNumberFromString(const std::string &str, double &number);
+
+	bool parserEachLine(const std::string &readLine, std::string &name, double &latitude, double &longitude);
 
 public:
 	/**
