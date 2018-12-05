@@ -32,15 +32,15 @@ CWpDatabase::CWpDatabase()
 	// add Waypoints from persistence storage
 	// TODO: check the validity - type, lat, long
 
-	this->addWaypoint(CWaypoint("Berliner Alle", 			49.866851, 	8.634864));
-	this->addWaypoint(CWaypoint("Rheinstraße", 				49.870267, 	8.633266));
-	this->addWaypoint(CWaypoint("Neckarstraße", 			49.8717, 	8.644417));
-	this->addWaypoint(CWaypoint("Landskronstraße", 			49.853308,	8.646835));
-	this->addWaypoint(CWaypoint("Bessunger", 				49.846994,	8.646193));
-	this->addWaypoint(CWaypoint("FriedrichStraße",	 		49.838545,	8.645571));
-	this->addWaypoint(CWaypoint("Katharinen Str.", 			49.824827,	8.644529));
-	this->addWaypoint(CWaypoint("Wartehalle", 				49.820845,	8.644222));
-	this->addWaypoint(CWaypoint("Wartehalle", 				49.820845,	8.644222));
+//	this->addWaypoint(CWaypoint("Berliner Alle", 			49.866851, 	8.634864));
+//	this->addWaypoint(CWaypoint("Rheinstraße", 				49.870267, 	8.633266));
+//	this->addWaypoint(CWaypoint("Neckarstraße", 			49.8717, 	8.644417));
+//	this->addWaypoint(CWaypoint("Landskronstraße", 			49.853308,	8.646835));
+//	this->addWaypoint(CWaypoint("Bessunger", 				49.846994,	8.646193));
+//	this->addWaypoint(CWaypoint("FriedrichStraße",	 		49.838545,	8.645571));
+//	this->addWaypoint(CWaypoint("Katharinen Str.", 			49.824827,	8.644529));
+//	this->addWaypoint(CWaypoint("Wartehalle", 				49.820845,	8.644222));
+//	this->addWaypoint(CWaypoint("Wartehalle", 				49.820845,	8.644222));
 }
 
 

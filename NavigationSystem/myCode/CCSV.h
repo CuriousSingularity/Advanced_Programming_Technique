@@ -22,6 +22,8 @@ private:
 
 	std::string 	mediaName;
 
+	bool extractNumberFromString(const std::string &str, double &number);
+
 public:
 	/**
 	 * Constructor

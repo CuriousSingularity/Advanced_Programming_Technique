@@ -91,7 +91,6 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 			// assuming all the elements in Database is valid
 			itr->second.getAllDataByReference(name, latitude, longitude);
 
-			cout << itr->second << endl;
 			fileStream << name << "; ";
 			fileStream << latitude << "; ";
 			fileStream << longitude << "\n";
@@ -138,7 +137,6 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 			itr->second.getAllDataByReference(name, latitude, longitude, type, description);
 			typeName = itr->second.getPoiTypeName();
 
-			cout << itr->second << endl;
 			fileStream << typeName << "; ";
 			fileStream << name << "; ";
 			fileStream << description << "; ";
@@ -190,7 +188,7 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 	fileStream.precision(10);
 	fileStream.clear();
 
-	// Write Waypoints
+	// Read Waypoints
 	fileStream.open(fileName.c_str(), ifstream::in);
 
 	// is the open successful?
@@ -205,9 +203,9 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 			if (readLine.length() == 0)
 			{
 				// empty line - ignore them
+				cout << "WARNING: Empty line found, hence ignoring.\n";
 				continue;
 			}
-			cout << readLine << endl;
 
 			if (fileStream.fail())
 			{
@@ -219,23 +217,44 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 			{
 				stringstream	ss(readLine);
 				string			nameParsed, latitudeParsed, longitudeParsed;
-				double 			latitude, longitude;
+				double 			latitude = (LATITUDE_MAX + 1), longitude = (LONGITUDE_MAX  + 1);	// set to invalid values
 
 				getline(ss, nameParsed, ';');
 				getline(ss, latitudeParsed, ';');
-				getline(ss, longitudeParsed);
+				getline(ss, longitudeParsed, '\n');
 
 				ss.clear();
 				ss.str("");
 
 				ss << latitudeParsed;
-				ss >> latitude;
 
-				ss.clear();
-				ss.str("");
+				if (!latitudeParsed.empty())
+				{
+					ss >> latitude;
+
+					ss.clear();
+					ss.str("");
+				}
 
 				ss << longitudeParsed;
-				ss >> longitude;
+
+				if (!longitudeParsed.empty())
+				{
+					ss >> longitude;
+					ss.clear();
+					ss.str("");
+				}
+
+				CWaypoint wp(nameParsed, latitude, longitude);
+
+				if (!wp.getName().empty())
+				{
+					waypointDb.addWaypoint(wp);
+				}
+				else
+				{
+					cout << "WARNING: Invalid waypoint found in the database, hence ignoring.\n";
+				}
 			}
 		}
 	}
@@ -249,4 +268,24 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 	fileStream.close();
 
 	return ret;
+}
+
+bool extractNumberFromString(const std::string &str, double &number)
+{
+	bool ret = false;
+
+	if (!str.empty())
+	{
+		for (unsigned int index = 0, decPointCount = 0; index < str.length(); ++index)
+		{
+			if (!((str[index] >= '0' && str[index] <= '9') || (str[index] == '.' && !decPointCount++)))
+			{
+				break;
+			}
+		}
+
+		ret = true;
+	}
+
+	return true;
 }
