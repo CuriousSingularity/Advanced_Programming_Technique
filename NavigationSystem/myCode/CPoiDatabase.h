@@ -33,38 +33,19 @@ private:
 	 */
 	Poi_Map_t 				m_Poi;
 
-    /**
-     * An iterator for the above container
-     */
-	Poi_Map_Itr_t			m_PoiItr;
-
 public:
 
     /**
-	 * CPoiDatabase constructor:
-	 * Add all the POIs to the Database
+	 * CPoiDatabase constructor
 	 */
     CPoiDatabase();
 
     /**
 	 * Add a Point of interest to the database
-	 * param@ CPOI const &poi		-	point of interest   		(IN)
+	 * param@ CPOI const &poi			-	point of interest   (IN)
 	 * returnvalue@ void
 	 */
     void addPoi(CPOI const &poi);
-
-    /**
-	 * Function which returns the container having POIs in the Database
-	 * param@ Wp_Map_t &WpDatabase		-	POIs in Database	(IN)
-	 * returnvalue@ void
-	 */
-    const Poi_Map_t& getPoisFromDatabase() const;
-
-    /**
-	 * Resets the Database
-	 * returnvalue@ void
-	 */
-	void resetPoisDatabase();
 
     /**
 	 * Get pointer to a POI from the Database which matches the name
@@ -72,6 +53,25 @@ public:
 	 * returnvalue@ CPOI*		-	Pointer to a POI in the database
 	 */
     CPOI* getPointerToPoi(std::string name);
+
+    /**
+     * Get POIs from the Database
+     * returnvalue@ Poi_Map_t			-	POIs in the Database	(OUT)
+     */
+    const Poi_Map_t getPoisFromDatabase() const;
+
+    /**
+	 * Resets the Database
+	 * returnvalue@ void
+	 */
+	void resetPoisDatabase();
+
+	/**
+	 * Print all the POIs in the database
+	 * returnvalue@ void
+	 */
+	void print();
+
 };
 /********************
 **  CLASS END

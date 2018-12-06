@@ -64,18 +64,18 @@ public:
 	std::string getPoiTypeName();
 
 	/**
+	 * Gets the type - Global function
+	 * param@ const string &poiTypeName	-	POI name (IN)
+	 * returnvalue@ CPOI::t_poi 		-	POI type
+	 */
+	static CPOI::t_poi getPoiType(const std::string &poiTypeName);
+
+	/**
 	 * Prints the POI values in Degree-Mins-secs format or Decimal format
 	 * param@ int format	-	Decimal or Deg-min-ss (IN)
 	 * returnvalue@ void
 	 */
 	void print(int format);
-
-	/**
-	 * Gets the type
-	 * param@ const string &poiTypeName	-	POI name (IN)
-	 * returnvalue@ CPOI::t_poi 		-	POI type
-	 */
-	static CPOI::t_poi getPoiType(const std::string &poiTypeName);
 
 	/**
 	 * An operator overloaded friend function which prints the POI information

@@ -21,26 +21,11 @@ using namespace std;
 
 //Method Implementations
 /**
- * CPoiDatabase constructor:
- * Add all the POIs to the Database
+ * CPoiDatabase constructor
  */
 CPoiDatabase::CPoiDatabase()
 {
-	this->m_PoiItr = this->m_Poi.begin();
-
-	// add POIs from persistence storage
-	// TODO: check the validity - type, lat, long
-//	this->addPoi(CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 		49.86727, 	8.638459));
-//	this->addPoi(CPOI(CPOI::GASSTATION, "Aral Tankst."		, "Refuel your vehicle", 		49.871558, 	8.639206));
-//	this->addPoi(CPOI(CPOI::RESTAURANT, "Starbucks"			, "A blissful coffee", 			49.872409, 	8.650744));
-//	this->addPoi(CPOI(CPOI::RESTAURANT, "SushiRestaurant"	, "Asian food today!", 			49.869365,	8.645922));
-//	this->addPoi(CPOI(CPOI::GASSTATION, "Aral Tankstelle"	, "Refuel your vehicle", 		49.868538,	8.645465));
-//	this->addPoi(CPOI(CPOI::TOURISTIC,  "Church Holy"		, "Freie Christengemeinde", 	49.865072,	8.647415));
-//	this->addPoi(CPOI(CPOI::RESTAURANT, "Thessaloniki"		, "Greek Restaurant ", 			49.862869, 	8.646691));
-//	this->addPoi(CPOI(CPOI::TOURISTIC,  "Church 7 Days"		, "Adventist Chruch", 			49.839096,	8.646294));
-//	this->addPoi(CPOI(CPOI::GASSTATION, "Ladestation"		, "Electric vehicle charge", 	49.811698,	8.646074));
-//	this->addPoi(CPOI(CPOI::RESTAURANT, "El Quinto Vino"	, "Spanish Restaurant ", 		49.813422, 	8.646246));
-//	this->addPoi(CPOI(CPOI::RESTAURANT, "El Quinto Vino"	, "Spanish Restaurant ", 		49.813422, 	8.646246));
+	// do nothing
 }
 
 
@@ -51,12 +36,12 @@ CPoiDatabase::CPoiDatabase()
  */
 void CPoiDatabase::addPoi(CPOI const &poi)
 {
-	CPOI tempPoi = poi;
-	pair<Poi_Map_Itr_t, bool> ret;
+	CPOI 						inPoi = poi;
+	pair<Poi_Map_Itr_t, bool> 	ret;
 
-	if (!tempPoi.getName().empty())
+	if (!inPoi.getName().empty())
 	{
-		ret = this->m_Poi.insert(pair<string, CPOI>(tempPoi.getName(), poi));
+		ret = this->m_Poi.insert(pair<string, CPOI>(inPoi.getName(), poi));
 
 		if (ret.second == false)
 		{
@@ -71,17 +56,6 @@ void CPoiDatabase::addPoi(CPOI const &poi)
 
 
 /**
- * Function which returns the container having POIs in the Database
- * param@ Wp_Map_t &WpDatabase		-	POIs in Database	(IN)
- * returnvalue@ void
- */
-const Poi_Map_t& CPoiDatabase::getPoisFromDatabase() const
-{
-	return (this->m_Poi);
-}
-
-
-/**
  * Get pointer to a POI from the Database which matches the name
  * param@ string name		-	name of a POI					(IN)
  * returnvalue@ CPOI*		-	Pointer to a POI in the database
@@ -92,16 +66,26 @@ CPOI* CPoiDatabase::getPointerToPoi(string name)
 
 	if (!this->m_Poi.empty())
 	{
-		this->m_PoiItr = this->m_Poi.find(name);
+		Poi_Map_Itr_t	poiItr = this->m_Poi.find(name);
 
-		if (this->m_PoiItr != this->m_Poi.end())
+		if (poiItr != this->m_Poi.end())
 		{
 			// element found
-			pPoi = &this->m_PoiItr->second;
+			pPoi = &poiItr->second;
 		}
 	}
 
 	return pPoi;
+}
+
+
+/**
+ * Get POIs from the Database
+ * returnvalue@ Poi_Map_t			-	POIs in the Database	(OUT)
+ */
+const Poi_Map_t CPoiDatabase::getPoisFromDatabase() const
+{
+	return (this->m_Poi);
 }
 
 
@@ -112,4 +96,17 @@ CPOI* CPoiDatabase::getPointerToPoi(string name)
 void CPoiDatabase::resetPoisDatabase()
 {
 	this->m_Poi.clear();
+}
+
+
+/**
+ * Print all the POIs in the database
+ * returnvalue@ void
+ */
+void CPoiDatabase::print()
+{
+	for (Poi_Map_Itr_t poiItr = this->m_Poi.begin(); poiItr != this->m_Poi.end(); ++poiItr)
+	{
+		cout << poiItr->second << endl;
+	}
 }

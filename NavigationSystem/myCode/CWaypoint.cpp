@@ -18,8 +18,8 @@
 
 //Macros
 #define PI_VALUE						(atan(1) * 4)
-#define degToRad(angleInDegrees) 	((angleInDegrees) * PI_VALUE / 180.0)
-#define radToDeg(angleInRadians) 	((angleInRadians) * 180.0 / PI_VALUE)
+#define degToRad(angleInDegrees) 		((angleInDegrees) * PI_VALUE / 180.0)
+#define radToDeg(angleInRadians) 		((angleInRadians) * 180.0 / PI_VALUE)
 
 //Namespaces
 using namespace std;
@@ -103,54 +103,6 @@ void CWaypoint::getAllDataByReference(string& name, double& latitude, double& lo
 
 
 /**
- * Return the distance between 2 waypoint co-ordinates
- * param@ const CWaypoint& wp	-	Waypoint co-ordinate (IN)
- * returnvalue@ double			- 	Distance in KMs
- */
-double CWaypoint::calculateDistance(const CWaypoint& wp)
-{
-	double distance = 0;
-
-	// distance in a spherical co-ordinate system
-	distance = 6378.17 * (acos(sin(degToRad(this->m_latitude)) * sin(degToRad(wp.m_latitude)) + 		\
-						 cos(degToRad(this->m_latitude)) * cos(degToRad(wp.m_latitude)) * cos(degToRad(wp.m_longitude - this->m_longitude))));
-
-	return distance;
-}
-
-
-/**
- * Prints the waypoint values in Degree-Mins-secs format or Decimal format
- * returnvalue@ void
- */
-void CWaypoint::print(int format)
-{
-	if (format == DEGREE)
-	{
-		// Latitude and Longitude in decimal format
-		cout << this->m_name << "\ton " << "latitude = " << this->m_latitude << "\tand " << "longitude = " << this->m_longitude << endl;
-	}
-	else if (format == MMSS)
-	{
-		// Latitude and Longitude in deg mm ss format
-		int deg = 0, mm = 0;
-		double ss = 0;
-
-		this->transformLatitude2degmmss(deg, mm, ss);
-		cout << this->m_name << "\ton " << "latitude = " << deg << "deg " << mm << "min " << ss << "s ";
-
-		this->transformLongitude2degmmss(deg, mm, ss);
-		cout << "\tand longitude = " << deg << "deg " << mm << "min " << ss << "s" << endl;
-	}
-	else
-	{
-		cout << "WARNING: Requested Print format doesn't exist.\n";
-	}
-}
-
-
-
-/**
  * Converts the Latitude in decimal to deg-min-sec format
  * param@ int& deg		-	latitude in degrees	(OUT)
  * param@ int& deg		-	latitude in minutes	(OUT)
@@ -205,6 +157,53 @@ void CWaypoint::transformLongitude2degmmss(int& deg, int& mm, double& ss)
 
 
 /**
+ * Return the distance between 2 waypoint co-ordinates
+ * param@ const CWaypoint& wp	-	Waypoint co-ordinate (IN)
+ * returnvalue@ double			- 	Distance in KMs
+ */
+double CWaypoint::calculateDistance(const CWaypoint& wp)
+{
+	double distance = 0;
+
+	// distance in a spherical co-ordinate system
+	distance = 6378.17 * (acos(sin(degToRad(this->m_latitude)) * sin(degToRad(wp.m_latitude)) + 		\
+						 cos(degToRad(this->m_latitude)) * cos(degToRad(wp.m_latitude)) * cos(degToRad(wp.m_longitude - this->m_longitude))));
+
+	return distance;
+}
+
+
+/**
+ * Prints the waypoint values in Degree-Mins-secs format or Decimal format
+ * returnvalue@ void
+ */
+void CWaypoint::print(int format)
+{
+	if (format == DEGREE)
+	{
+		// Latitude and Longitude in decimal format
+		cout << this->m_name << "\ton " << "latitude = " << this->m_latitude << "\tand " << "longitude = " << this->m_longitude << endl;
+	}
+	else if (format == MMSS)
+	{
+		// Latitude and Longitude in deg mm ss format
+		int deg = 0, mm = 0;
+		double ss = 0;
+
+		this->transformLatitude2degmmss(deg, mm, ss);
+		cout << this->m_name << "\ton " << "latitude = " << deg << "deg " << mm << "min " << ss << "s ";
+
+		this->transformLongitude2degmmss(deg, mm, ss);
+		cout << "\tand longitude = " << deg << "deg " << mm << "min " << ss << "s" << endl;
+	}
+	else
+	{
+		cout << "WARNING: Requested Print format doesn't exist.\n";
+	}
+}
+
+
+/**
  * An operator overloaded friend function which prints the waypoint information
  * param@ ostream &stream		-	output stream	(IN/OUT)
  * param@ CWaypoint const &wp	-	A Waypoint 		(IN)
@@ -212,22 +211,22 @@ void CWaypoint::transformLongitude2degmmss(int& deg, int& mm, double& ss)
  */
 ostream& operator<< (ostream &stream, CWaypoint const &wp)
 {
-	CWaypoint tempWp = wp;
+	CWaypoint outWp = wp;
 
 	string name;
 	double latitude, longitude;
 
-	tempWp.getAllDataByReference(name, latitude, longitude);
+	outWp.getAllDataByReference(name, latitude, longitude);
 
 	int deg, mm;
 	double ss;
 
 	stream << "Waypoint  : " << name << "\n";
 
-	tempWp.transformLatitude2degmmss(deg, mm, ss);
+	outWp.transformLatitude2degmmss(deg, mm, ss);
 	stream << "Latitude  : " << deg << "deg " << mm << "min " << ss << "s\n";
 
-	tempWp.transformLongitude2degmmss(deg, mm, ss);
+	outWp.transformLongitude2degmmss(deg, mm, ss);
 	stream << "Longitude : " << deg << "deg " << mm << "min " << ss << "s \n";
 
 	return stream;

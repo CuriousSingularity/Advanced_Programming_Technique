@@ -20,6 +20,10 @@
 #include "CPoiDatabase.h"
 #include "CWpDatabase.h"
 
+typedef std::list<CWaypoint *> 						Route_Collection_t;
+typedef std::list<CWaypoint *>::iterator			Route_Collection_FwdItr;
+typedef std::list<CWaypoint *>::reverse_iterator	Route_Collection_RevItr;
+
 class CRoute {
 private:
 
@@ -27,16 +31,6 @@ private:
 	 * An list container to store the waypoints and POI of the route
 	 */
 	std::list<CWaypoint *>						m_Course;
-
-	/**
-	 * An iterator for the above container
-	 */
-	std::list<CWaypoint *>::iterator			m_ForwardItr;
-
-	/**
-	 * A reverse iterator for the above container
-	 */
-	std::list<CWaypoint *>::reverse_iterator	m_ReverseItr;
 
 	/**
 	 * A pointer to the Point of interest Database
@@ -58,7 +52,7 @@ public:
 
     /**
 	 * CRoute Constructor:
-	 * Sets the value when an object is created by deep copy.
+	 * Sets the value when an object is created by performing deep copy.
 	 * @param CRoute const &origin	- CRoute const object (IN)
 	 */
 	CRoute(CRoute const &origin);
@@ -99,12 +93,6 @@ public:
     void addPoi(std::string namePoi, std::string afterWp);
 
     /**
-	 * The function is an extension of addPoi which searches the Databases and add the
-	 * Waypoint or the POI which matches the name.
-	 */
-	void operator += (std::string const &name);
-
-    /**
 	 * Calculates the distance between waypoint and POI
 	 * @param CWaypoint const &wp	- waypoint			(IN)
 	 * @param CPOI& poi				- POI				(IN)
@@ -118,14 +106,20 @@ public:
     void print();
 
     /**
-     * A assignment operator
+	 * The function is an extension of addPoi which searches the Databases and add the
+	 * Waypoint or the POI which matches the name.
+	 */
+	void operator += (std::string const &name);
+
+    /**
+     * A copy assignment operator
      * @param CRoute const & rhs	- CRoute const object (IN)
      * @returnval CRoute&
      */
     CRoute& operator=(CRoute const & rhs);
 
     /**
-	 * A addition operator
+	 * An addition operator
 	 * @param CRoute const & rhs	- CRoute const object (IN)
 	 * @returnval CRoute
 	 */
