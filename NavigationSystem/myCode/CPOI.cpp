@@ -20,6 +20,23 @@
 //Namespaces
 using namespace std;
 
+struct POITypeName
+{
+	string				poiTypeName;
+	CPOI::t_poi			poiType;
+};
+
+
+static const POITypeName POI_names[CPOI::DEFAULT_POI + 1] =
+{
+	{"Restaurant", 		CPOI::RESTAURANT},
+	{"Touristic", 		CPOI::TOURISTIC},
+	{"Gas station", 	CPOI::GASSTATION},
+	{"University", 		CPOI::UNIVERSITY},
+	{"Default", 		CPOI::DEFAULT_POI},
+};
+
+
 //Method Implementations
 
 /**
@@ -71,34 +88,32 @@ void CPOI::getAllDataByReference(string& name, double& latitude, double& longitu
  */
 string CPOI::getPoiTypeName()
 {
-	string typeName;
-
-	switch(this->m_type)
-	{
-		case RESTAURANT:
-			typeName = "Restaurant";
-			break;
-
-		case TOURISTIC:
-			typeName = "Touristic";
-			break;
-
-		case GASSTATION:
-			typeName = "Gas station";
-			break;
-
-		case UNIVERSITY:
-			typeName = "University";
-			break;
-
-		case DEFAULT_POI:
-		default:
-			typeName = "Default";
-			break;
-	}
-
-	return typeName;
+	return POI_names[this->m_type].poiTypeName;
 }
+
+
+/**
+ * Gets the type
+ * param@ const string &poiTypeName	-	POI name (IN)
+ * returnvalue@ CPOI::t_poi 		-	POI type
+ */
+CPOI::t_poi CPOI::getPoiType(const std::string &poiTypeName)
+{
+	CPOI::t_poi		ret = CPOI::DEFAULT_POI;
+
+	for (unsigned index = 0; index <= CPOI::DEFAULT_POI; index++)
+	{
+		if(!POI_names[index].poiTypeName.compare(poiTypeName))
+		{
+			// equal
+			ret = POI_names[index].poiType;
+			break;
+		}
+	}
+	return ret;
+}
+
+
 /**
  * Prints the POI values in Degree-Mins-secs format or Decimal format
  * param@ int format	-	Decimal or Deg-min-ss (OUT)
