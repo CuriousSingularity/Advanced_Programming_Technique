@@ -20,6 +20,8 @@
 #include "CPoiDatabase.h"
 
 //Macros
+//#define RUN_TEST_ROUTE_OPERATOR_ASSIGNMENT
+//#define RUN_TEST_ROUTE_OPERATOR_ADDITION
 //#define RUN_TEST_CASE_NON_EXIST_POI
 //#define RUN_TEST_CASE_NON_EXIST_WAYPOINT
 //#define RUN_TEST_CASE_DATABASE_NOT_AVAILABLE_POI
@@ -50,13 +52,13 @@ private:
 
     /**
      * Get the Poi Database
-     * returnval@ const Poi_Map_t&	- Constant Reference to the POI Database
+     * returnval@ CPoiDatabase&	- Reference to the POI Database
      */
     CPoiDatabase& getPoiDatabase();
 
     /**
      * Get the Waypoint Database
-     * returnval@ const Poi_Wp_t&	- Constant Reference to the Waypoint Database
+     * returnval@ CWpDatabase&	- Reference to the Waypoint Database
      */
     CWpDatabase& getWpDatabase();
 

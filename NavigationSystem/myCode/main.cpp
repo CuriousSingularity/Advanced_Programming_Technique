@@ -12,18 +12,12 @@
 #include <iomanip>
 
 //Own Include Files
-#include "CWaypoint.h"
-#include "CPOI.h"
-#include "CPoiDatabase.h"
 #include "CNavigationSystem.h"
 
 //Namespaces
 using namespace std;
 
 //Macros
-//#define RUN_TEST_CASE
-
-#include <list>
 /**
  * main function:
  * An entry point to Navigation System Application.

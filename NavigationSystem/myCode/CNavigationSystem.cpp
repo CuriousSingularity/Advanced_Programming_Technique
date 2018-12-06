@@ -31,27 +31,21 @@ CNavigationSystem::CNavigationSystem()
 
 
 /**
- * Navigation System functionaliy's entry function
- * @returnval void
+ * Get the Poi Database
+ * returnval@ CPoiDatabase&	- Reference to the POI Database
  */
-void CNavigationSystem::run()
+CPoiDatabase& CNavigationSystem::getPoiDatabase()
 {
-	// connect to the Database
-#ifdef RUN_TEST_CASE_DATABASE_NOT_AVAILABLE_POI
-	this->testCaseDatabaseNotAvailablePoi();
-#else
-	this->m_route.connectToPoiDatabase(&this->m_PoiDatabase);
-#endif
+	return this->m_PoiDatabase;
+}
 
-#ifdef RUN_TEST_CASE_DATABASE_NOT_AVAILABLE_WAYPOINT
-	this->testCaseDatabaseNotAvailableWaypoint();
-#else
-	this->m_route.connectToWpDatabase(&this->m_WpDatabase);
-#endif
-
-	this->enterRoute();
-	this->printRoute();
-	this->printDistanceCurPosNextPoi();
+/**
+ * Get the Waypoint Database
+ * returnval@ CWpDatabase&	- Reference to the Waypoint Database
+ */
+CWpDatabase& CNavigationSystem::getWpDatabase()
+{
+	return this->m_WpDatabase;
 }
 
 
@@ -61,37 +55,66 @@ void CNavigationSystem::run()
  */
 void CNavigationSystem::enterRoute()
 {
+	cout << "=======================================================\n";
+	cout << "INFO: Add Waypoints and POI to the Route\n";
+	cout << "=======================================================\n";
+
+#ifdef RUN_TEST_ROUTE_OPERATOR_ASSIGNMENT
+	CRoute testRoute;
+	testRoute = this->m_route;
+	this->m_route = testRoute;
+#endif
+
 	// add waypoints
 	this->m_route.addWaypoint("Berliner Alle"	);
-	this->m_route.addWaypoint("Rheinstraße"     );
-	this->m_route.addWaypoint("Neckarstraße"    );
-//	this->m_route.addWaypoint("Landskronstraße" );
-//	this->m_route.addWaypoint("Bessunger"       );
-//	this->m_route.addWaypoint("FriedrichStraße" );
-//	this->m_route.addWaypoint("Katharinen Str." );
-//	this->m_route.addWaypoint("Wartehalle"      );
+	this->m_route.addWaypoint("Rheinstrasse"     );
+	this->m_route.addWaypoint("Neckarstrasse"    );
+
+	// add POIs
+	this->m_route.addPoi("HDA BuildingC10"	, "Berliner Alle"	);
+	this->m_route.addPoi("Aral Tankst."		, "Rheinstrasse"	);
+	this->m_route.addPoi("Starbucks"		, "Neckarstrasse"	);
+
+//	this->m_route += "Landskronstrasse";
+//	this->m_route += "SushiRestaurant";
 
 #ifdef RUN_TEST_CASE_NON_EXIST_WAYPOINT
     testCaseNonExistingWaypoint();
 #endif
 
-	// add POIs
-	this->m_route.addPoi("HDA BuildingC10"	, "Berliner Alle"	);
-	this->m_route.addPoi("Aral Tankst."		, "Rheinstraße"		);
-	this->m_route.addPoi("Starbucks"		, "Neckarstraße"	);
-
-	this->m_route += "Landskronstraße";
-	this->m_route += "SushiRestaurant";
-	this->m_route += "";
-
-//	this->m_route.addPoi("SushiRestaurant"	);
-//	this->m_route.addPoi("Aral Tankstelle"	);
-//	this->m_route.addPoi("Church Holy"		);
-//	this->m_route.addPoi("Thessaloniki"		);
-//	this->m_route.addPoi("Church 7 Days"	);
-
 #ifdef RUN_TEST_CASE_NON_EXIST_POI
 	testCaseNonExistingPOI();
+	this->m_route += "";
+#endif
+
+#ifdef RUN_TEST_ROUTE_OPERATOR_ADDITION
+	CRoute testRoute_extended;
+
+	// connect the database
+	testRoute_extended.connectToPoiDatabase(&this->m_PoiDatabase);
+	testRoute_extended.connectToWpDatabase(&this->m_WpDatabase);
+
+	testRoute_extended.addWaypoint("Bessunger"		);
+	testRoute_extended.addWaypoint("FriedrichStrasse");
+	testRoute_extended.addWaypoint("Katharinen Str.");
+	testRoute_extended.addWaypoint("Wartehalle"		);
+
+	testRoute_extended.addPoi("Aral Tankstelle"	, "Bessunger"	);
+	testRoute_extended.addPoi("Church Holy"		, "FriedrichStrasse"	);
+	testRoute_extended.addPoi("Thessaloniki"	, "Wartehalle");
+
+	cout << "Route1: \n";
+	this->m_route.print();
+
+	cout << "Route2: \n";
+	testRoute_extended.print();
+
+	// combine the routes
+	this->m_route = this->m_route + testRoute_extended;
+
+	cout << "Combined Route: \n";
+	this->m_route.print();
+
 #endif
 }
 
@@ -152,8 +175,11 @@ void CNavigationSystem::printDistanceCurPosNextPoi()
  */
 void CNavigationSystem::createDatabases()
 {
-	this->m_WpDatabase.addWaypoint(CWaypoint("Berliner Alle", 			49.866851, 	8.634864));
-	this->m_PoiDatabase.addPoi(CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 		49.86727, 	8.638459));
+	// add a waypoint
+	this->m_WpDatabase.addWaypoint(CWaypoint("Berliner Alle", 49.866851, 8.634864));
+
+	// add a POI
+	this->m_PoiDatabase.addPoi(CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 49.86727, 8.638459));
 }
 
 
@@ -189,28 +215,49 @@ bool CNavigationSystem::readFromFile()
 	csvDatabase.setMediaName("Database");
 
 	// write the current Databases' contents to files
-	ret = csvDatabase.readData(this->getWpDatabase(), this->getPoiDatabase(), CCSV::MERGE);
+	ret = csvDatabase.readData(this->getWpDatabase(), this->getPoiDatabase(), CCSV::REPLACE);
 
 	return ret;
 }
 
 
 /**
- * Get the Poi Database
- * returnval@ const Poi_Map_t&	- Constant Reference to the POI Database
+ * Navigation System functionaliy's entry function
+ * @returnval void
  */
-CPoiDatabase& CNavigationSystem::getPoiDatabase()
+void CNavigationSystem::run()
 {
-	return this->m_PoiDatabase;
-}
+	// connect to the Database
+#ifdef RUN_TEST_CASE_DATABASE_NOT_AVAILABLE_POI
+	this->testCaseDatabaseNotAvailablePoi();
+#else
+	this->m_route.connectToPoiDatabase(&this->m_PoiDatabase);
+#endif
 
-/**
- * Get the Waypoint Database
- * returnval@ const Poi_Wp_t&	- Constant Reference to the Waypoint Database
- */
-CWpDatabase& CNavigationSystem::getWpDatabase()
-{
-	return this->m_WpDatabase;
+#ifdef RUN_TEST_CASE_DATABASE_NOT_AVAILABLE_WAYPOINT
+	this->testCaseDatabaseNotAvailableWaypoint();
+#else
+	this->m_route.connectToWpDatabase(&this->m_WpDatabase);
+#endif
+
+	// create the databases
+	this->createDatabases();
+
+	// read the database files
+	if (!this->readFromFile())
+	{
+		cout << "WARNING: Reading from the Database files was unsuccessful.\n";
+	}
+
+	// write to the file
+	if (!this->writeToFile())
+	{
+		cout << "WARNING: Writing to the Database files was unsuccessful.\n";
+	}
+
+	this->enterRoute();
+	this->printRoute();
+	this->printDistanceCurPosNextPoi();
 }
 
 
@@ -221,7 +268,7 @@ CWpDatabase& CNavigationSystem::getWpDatabase()
 #ifdef RUN_TEST_CASE_NON_EXIST_POI
 void CNavigationSystem::testCaseNonExistingPOI()
 {
-	//this->m_route.addPoi("My Chicken"		);
+	this->m_route.addPoi("HDA Mensa",	"Berliner Alle");
 }
 #endif
 
@@ -233,7 +280,7 @@ void CNavigationSystem::testCaseNonExistingPOI()
 #ifdef RUN_TEST_CASE_NON_EXIST_WAYPOINT
 void CNavigationSystem::testCaseNonExistingWaypoint()
 {
-	this->m_route.addWaypoint("My Chicken"		);
+	this->m_route.addWaypoint("My Chicken");
 }
 #endif
 

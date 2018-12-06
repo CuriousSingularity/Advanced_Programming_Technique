@@ -123,7 +123,7 @@ void CRoute::addWaypoint(string name)
 		}
 		else
 		{
-			cout << "WARNING: The Requested Waypoint is not available in the Database.\n";
+			cout << "WARNING: The Requested Waypoint -\"" << name << "\" is not available in the Database.\n";
 		}
 	}
 	else
@@ -181,12 +181,12 @@ void CRoute::addPoi(string namePoi, string afterWp)
 				{
 					this->m_Course.push_back(static_cast<CPOI *>(pPoi));
 
-					cout << "WARNING: The Requested Waypoint is not available in the Route.\n";
+					cout << "WARNING: The Requested Waypoint - \"" << afterWp << "\" is not available in the Route.\n";
 				}
 			}
 			else
 			{
-				cout << "WARNING: The Requested POI is not available in the Database.\n";
+				cout << "WARNING: The Requested POI - \"" << namePoi << "\" is not available in the Database.\n";
 			}
 		}
 		else
@@ -321,7 +321,7 @@ void CRoute::operator += (string const &name)
 	}
 	else
 	{
-		cout << "WARNING: Invalid POI / Waypoint.\n";
+		cout << "WARNING: Invalid POI / Waypoint addition to the route request.\n";
 	}
 }
 
