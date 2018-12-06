@@ -23,7 +23,7 @@ public:
 
     enum t_poi
     {
-		RESTAURANT,
+		RESTAURANT = 0,
 		TOURISTIC,
 		GASSTATION,
 		UNIVERSITY,
@@ -69,6 +69,13 @@ public:
 	 * returnvalue@ void
 	 */
 	void print(int format);
+
+	/**
+	 * Gets the type
+	 * param@ const string &poiTypeName	-	POI name (IN)
+	 * returnvalue@ CPOI::t_poi 		-	POI type
+	 */
+	static CPOI::t_poi getPoiType(const std::string &poiTypeName);
 
 	/**
 	 * An operator overloaded friend function which prints the POI information

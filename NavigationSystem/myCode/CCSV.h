@@ -29,6 +29,8 @@ private:
 
 	bool parserEachLine(const std::string &readLine, std::string &name, double &latitude, double &longitude);
 
+	bool parserEachLine(const std::string &readLine, CPOI::t_poi &type, std::string &name, std::string &description, double &latitude, double &longitude);
+
 public:
 	/**
 	 * Constructor
