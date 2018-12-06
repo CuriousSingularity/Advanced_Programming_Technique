@@ -30,14 +30,12 @@ CRoute::CRoute()
 	this->m_Course.clear();
 	this->m_pPoiDatabase	= 0;
 	this->m_pWpDatabase		= 0;
-	this->m_ForwardItr 		= this->m_Course.begin();
-	this->m_ReverseItr		= this->m_Course.rbegin();
 }
 
 
 /**
  * CRoute Constructor:
- * Sets the value when an object is created by deep copy.
+ * Sets the value when an object is created by performing deep copy.
  * @param CRoute const &origin	- CRoute const object (IN)
  */
 CRoute::CRoute(CRoute const &origin)
@@ -45,72 +43,13 @@ CRoute::CRoute(CRoute const &origin)
 	cout << "INFO: Performing deep copy.\n";
 
 	this->m_Course 		= origin.m_Course;
-	this->m_ForwardItr	= this->m_Course.begin();
-	this->m_ReverseItr	= this->m_Course.rbegin();
 	this->m_pPoiDatabase= origin.m_pPoiDatabase;
 	this->m_pWpDatabase	= origin.m_pWpDatabase;
 }
 
 
 /**
- * A assignment operator
- * @param CRoute const & rhs	- CRoute const object (IN)
- * @returnval CRoute&
- */
-CRoute& CRoute::operator=(CRoute const & rhs)
-{
-	this->m_Course.clear();
-	this->m_pPoiDatabase= 0;
-	this->m_pWpDatabase	= 0;
-
-	this->m_Course 		= rhs.m_Course;
-	this->m_ForwardItr	= this->m_Course.begin();
-	this->m_ReverseItr	= this->m_Course.rbegin();
-	this->m_pPoiDatabase= rhs.m_pPoiDatabase;
-	this->m_pWpDatabase	= rhs.m_pWpDatabase;
-
-	return *this;
-}
-
-
-/**
- * A addition operator
- * @param CRoute const & rhs	- CRoute const object (IN)
- * @returnval CRoute
- */
-CRoute CRoute::operator+(CRoute const & rhs)
-{
-	CRoute result;
-
-	// check if the Databases are same
-	if ((this->m_pPoiDatabase == rhs.m_pPoiDatabase) &&
-		(this->m_pWpDatabase == rhs.m_pWpDatabase))
-	{
-		list<CWaypoint *> temp1 = this->m_Course;
-		list<CWaypoint *> temp2 = rhs.m_Course;
-
-		result.m_Course.clear();
-		result.m_ForwardItr = result.m_Course.begin();
-
-		result.m_Course.splice(result.m_ForwardItr, temp1);
-		result.m_Course.splice(result.m_ForwardItr, temp2);
-		result.m_ForwardItr 	= result.m_Course.begin();
-		result.m_ReverseItr 	= result.m_Course.rbegin();
-		result.m_pPoiDatabase	= rhs.m_pPoiDatabase;
-		result.m_pWpDatabase	= rhs.m_pWpDatabase;
-	}
-	else
-	{
-		cout << "WARNING: The Databases are different and can not be concatenated.\n";
-	}
-
-	return result;
-}
-
-
-/**
- * CRoute Destructor:
- * Called when the object is destroyed
+ * CRoute Destructor
  */
 CRoute::~CRoute()
 {
@@ -141,6 +80,7 @@ void CRoute::connectToPoiDatabase(CPoiDatabase *pPoiDB)
 		cout << "WARNING: POI Database not connected to the route.\n";
 	}
 }
+
 
 /**
  * Get the address of the Waypoint Database and connect it to the CRoute
@@ -220,9 +160,9 @@ void CRoute::addPoi(string namePoi, string afterWp)
 
 			if (pPoi)
 			{
-				for (this->m_ReverseItr = this->m_Course.rbegin(); this->m_ReverseItr != this->m_Course.rend(); ++(this->m_ReverseItr))
+				for (Route_Collection_RevItr revItr = this->m_Course.rbegin(); revItr != this->m_Course.rend(); ++revItr)
 				{
-					pWp = dynamic_cast<CWaypoint *>(*this->m_ReverseItr);
+					pWp = dynamic_cast<CWaypoint *>(*revItr);
 
 					// is this a Waypoint ?
 					if (pWp)
@@ -230,7 +170,7 @@ void CRoute::addPoi(string namePoi, string afterWp)
 						// are the names matching ?
 						if (!afterWp.compare(pWp->getName()))
 						{
-							this->m_Course.insert(this->m_ReverseItr.base(), pPoi);
+							this->m_Course.insert(revItr.base(), pPoi);
 							isAfterWp = true;
 							break;
 						}
@@ -260,6 +200,89 @@ void CRoute::addPoi(string namePoi, string afterWp)
 	}
 }
 
+
+/**
+ * Calculates the distance between waypoint and POI
+ * @param CWaypoint const &wp	- waypoint			(IN)
+ * @param CPOI& poi				- POI				(IN)
+ * @return double				- Distance in Kms
+ */
+double CRoute::getDistanceNextPoi(CWaypoint const &wp, CPOI& poi)
+{
+	CPOI	*pPoi = 0;
+	double	shortestDistance = numeric_limits<double>::max(), currentDistance = 0;
+
+	if (!this->m_Course.empty())
+	{
+		for (Route_Collection_FwdItr fwdItr = this->m_Course.begin(); fwdItr != this->m_Course.end(); ++fwdItr)
+		{
+			pPoi = dynamic_cast<CPOI *>(*fwdItr);
+
+			if (pPoi)
+			{
+				currentDistance = pPoi->CWaypoint::calculateDistance(wp);
+
+				if (currentDistance <= shortestDistance)
+				{
+					shortestDistance = currentDistance;
+					poi				 = *pPoi;
+				}
+			}
+		}
+	}
+
+	return shortestDistance;
+}
+
+
+/**
+ * prints all the waypoints and POIs in the route
+ */
+void CRoute::print()
+{
+	CPOI		*pPoi	= 0;
+	CWaypoint 	*pWp 	= 0;
+
+	cout << "=======================================================\n";
+	cout << "The Route Information:\n";
+	cout << "=======================================================\n";
+
+	for (Route_Collection_FwdItr fwdItr = this->m_Course.begin(); fwdItr != this->m_Course.end(); ++fwdItr)
+	{
+		pPoi = dynamic_cast<CPOI *>(*fwdItr);
+
+#ifdef RUN_TEST_PRINT
+		// The iterator can point to
+		// 1. Address of a CWaypoint	-> CWaypoint::print() 	will be invoked.
+		// 2. Address of a CPOI			-> CPOI::print() 		will be invoked.
+		// The respective print function will be called due to polymorphic virtual function
+		(*this->m_ForwardItr)->print(2);
+
+		// Since the container used is of type CWaypoint, even the POI will be treated as
+		// a Waypoint data(since there is not explict dynamic casting) and the
+		// CWaypointer's operator<< will be invoked.
+		cout << (**this->m_ForwardItr) << endl;
+#endif
+
+		if (pPoi)
+		{
+			cout << *pPoi << endl;
+		}
+		else
+		{
+			pWp = dynamic_cast<CWaypoint *>(*fwdItr);
+
+			if (pWp)
+			{
+				cout << *pWp << endl;
+			}
+			else
+			{
+				cout << "WARNING: Unknown type of Data in the Route.\n" << endl;
+			}
+		}
+	}
+}
 
 
 /**
@@ -304,82 +327,50 @@ void CRoute::operator += (string const &name)
 
 
 /**
- * Calculates the distance between waypoint and POI
- * @param CWaypoint const &wp	- waypoint			(IN)
- * @param CPOI& poi				- POI				(IN)
- * @return double				- Distance in Kms
+ * A copy assignment operator
+ * @param CRoute const & rhs	- CRoute const object (IN)
+ * @returnval CRoute&
  */
-double CRoute::getDistanceNextPoi(CWaypoint const &wp, CPOI& poi)
+CRoute& CRoute::operator=(CRoute const & rhs)
 {
-	CPOI	*pPoi = 0;
-	double	shortestDistance = numeric_limits<double>::max(), currentDistance = 0;
+	this->m_Course.clear();
+	this->m_pPoiDatabase= 0;
+	this->m_pWpDatabase	= 0;
 
-	if (!this->m_Course.empty())
-	{
-		for (this->m_ForwardItr = this->m_Course.begin(); this->m_ForwardItr != this->m_Course.end(); ++(this->m_ForwardItr))
-		{
-			pPoi = dynamic_cast<CPOI *>(*this->m_ForwardItr);
+	this->m_Course 		= rhs.m_Course;
+	this->m_pPoiDatabase= rhs.m_pPoiDatabase;
+	this->m_pWpDatabase	= rhs.m_pWpDatabase;
 
-			if (pPoi)
-			{
-				currentDistance = pPoi->CWaypoint::calculateDistance(wp);
-
-				if (currentDistance <= shortestDistance)
-				{
-					shortestDistance = currentDistance;
-					poi				 = *pPoi;
-				}
-			}
-		}
-	}
-
-	return shortestDistance;
+	return *this;
 }
 
 
 /**
- * prints all the waypoints and POIs in the route
+ * An addition operator
+ * @param CRoute const & rhs	- CRoute const object (IN)
+ * @returnval CRoute
  */
-void CRoute::print()
+CRoute CRoute::operator+(CRoute const & rhs)
 {
-	CPOI		*pPoi	= 0;
-	CWaypoint 	*pWp 	= 0;
+	CRoute result;
 
-	cout << "=======================================================\n";
-	cout << "The Route Information:\n";
-	cout << "=======================================================\n";
-
-	for (this->m_ForwardItr = this->m_Course.begin(); this->m_ForwardItr != this->m_Course.end(); ++(this->m_ForwardItr))
+	// check if the Databases are same
+	if ((this->m_pPoiDatabase == rhs.m_pPoiDatabase) &&
+		(this->m_pWpDatabase == rhs.m_pWpDatabase))
 	{
-		pPoi = dynamic_cast<CPOI *>(*this->m_ForwardItr);
+		Route_Collection_t 		rhs1 = this->m_Course;
+		Route_Collection_t 		rhs2 = rhs.m_Course;
+		Route_Collection_FwdItr fwdItr = result.m_Course.begin();
 
-#ifdef RUN_TEST_PRINT
-		// The iterator can point to
-		// 1. Address of a CWaypoint	-> CWaypoint::print() 	will be invoked.
-		// 2. Address of a CPOI			-> CPOI::print() 		will be invoked.
-		(*this->m_ForwardItr)->print(2);
-
-		// Since the container used is of type CWaypoint, even the POI will be treated as
-		// a Waypoint data and the corresponding CWaypointer's operator<< will be invoked.
-		cout << (**this->m_ForwardItr) << endl;
-#endif
-
-		if (pPoi)
-		{
-			cout << *pPoi << endl;
-		}
-		else
-		{
-			pWp = dynamic_cast<CWaypoint *>(*this->m_ForwardItr);
-
-			if (pWp)
-			{
-				cout << *pWp << endl;
-			}
-			else
-			{
-				cout << "WARNING: Unknown type of Data in the Route.\n" << endl;
-			}
-		}
+		result.m_Course.splice(fwdItr, rhs1);
+		result.m_Course.splice(fwdItr, rhs2);
+		result.m_pPoiDatabase	= rhs.m_pPoiDatabase;
+		result.m_pWpDatabase	= rhs.m_pWpDatabase;
 	}
+	else
+	{
+		cout << "WARNING: The Databases are different and can not be concatenated.\n";
+	}
+
+	return result;
 }

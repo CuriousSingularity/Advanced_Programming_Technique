@@ -12,7 +12,6 @@
 
 //System Include Files
 #include <iostream>
-#include <map>
 
 //Own Include Files
 #include "CWpDatabase.h"
@@ -22,25 +21,11 @@ using namespace std;
 
 //Method Implementations
 /**
- * CWpDatabase constructor:
- * Add all the Waypoints to the Database
+ * CWpDatabase constructor
  */
 CWpDatabase::CWpDatabase()
 {
-	this->m_WpItr = this->m_Wp.begin();
-
-	// add Waypoints from persistence storage
-	// TODO: check the validity - type, lat, long
-
-//	this->addWaypoint(CWaypoint("Berliner Alle", 			49.866851, 	8.634864));
-//	this->addWaypoint(CWaypoint("Rheinstraße", 				49.870267, 	8.633266));
-//	this->addWaypoint(CWaypoint("Neckarstraße", 			49.8717, 	8.644417));
-//	this->addWaypoint(CWaypoint("Landskronstraße", 			49.853308,	8.646835));
-//	this->addWaypoint(CWaypoint("Bessunger", 				49.846994,	8.646193));
-//	this->addWaypoint(CWaypoint("FriedrichStraße",	 		49.838545,	8.645571));
-//	this->addWaypoint(CWaypoint("Katharinen Str.", 			49.824827,	8.644529));
-//	this->addWaypoint(CWaypoint("Wartehalle", 				49.820845,	8.644222));
-//	this->addWaypoint(CWaypoint("Wartehalle", 				49.820845,	8.644222));
+	// do nothing
 }
 
 
@@ -51,12 +36,12 @@ CWpDatabase::CWpDatabase()
  */
 void CWpDatabase::addWaypoint(CWaypoint const &wp)
 {
-	CWaypoint tempWp = wp;
-	pair<Wp_Map_Itr_t, bool> ret;
+	CWaypoint 					inWp = wp;
+	pair<Wp_Map_Itr_t, bool> 	ret;
 
-	if (!tempWp.getName().empty())
+	if (!inWp.getName().empty())
 	{
-		ret = this->m_Wp.insert(pair<string, CWaypoint>(tempWp.getName(), wp));
+		ret = this->m_Wp.insert(pair<string, CWaypoint>(inWp.getName(), wp));
 
 		if (ret.second == false)
 		{
@@ -73,20 +58,20 @@ void CWpDatabase::addWaypoint(CWaypoint const &wp)
 /**
  * Get pointer to a Waypoint from the Database which matches the name
  * param@ string name		-	name of a Waypoint	(IN)
- * returnvalue@ CPOI*		-	Pointer to a POI in the database
+ * returnvalue@ CPOI*		-	Pointer to a Waypoint in the database
  */
 CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
 {
-	CWaypoint *pWp = 0;
+	CWaypoint 	*pWp = 0;
 
 	if (!this->m_Wp.empty())
 	{
-		this->m_WpItr = this->m_Wp.find(name);
+		Wp_Map_Itr_t 	wpItr = this->m_Wp.find(name);
 
-		if (this->m_WpItr != this->m_Wp.end())
+		if (wpItr != this->m_Wp.end())
 		{
 			// element found
-			pWp = &this->m_WpItr->second;
+			pWp = &wpItr->second;
 		}
 	}
 
@@ -95,11 +80,10 @@ CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
 
 
 /**
- * Function which returns the container having waypoints in the Database
- * param@ Wp_Map_t &WpDatabase		-	Waypoints in Database	(IN)
- * returnvalue@ void
+ * Get Waypoints from the Database
+ * returnvalue@ Wp_Map_t			-	Waypoints in the Database	(OUT)
  */
-const Wp_Map_t& CWpDatabase::getWpsFromDatabase() const
+const Wp_Map_t CWpDatabase::getWpsFromDatabase() const
 {
 	return (this->m_Wp);
 }
@@ -121,8 +105,8 @@ void CWpDatabase::resetWpsDatabase()
  */
 void CWpDatabase::print()
 {
-	for (this->m_WpItr = this->m_Wp.begin(); this->m_WpItr != this->m_Wp.end(); ++(this->m_WpItr))
+	for (Wp_Map_Itr_t wpItr = this->m_Wp.begin(); wpItr != this->m_Wp.end(); ++wpItr)
 	{
-		cout << this->m_WpItr->second << endl;
+		cout << wpItr->second << endl;
 	}
 }

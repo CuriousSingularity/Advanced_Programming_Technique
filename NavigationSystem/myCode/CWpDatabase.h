@@ -33,16 +33,10 @@ private:
 	 */
 	Wp_Map_t 				m_Wp;
 
-    /**
-	 * An iterator for the above container
-	 */
-	Wp_Map_Itr_t			m_WpItr;
-
 public:
 
 	/**
-	 * CWpDatabase constructor:
-	 * Add all the Waypoints to the Database
+	 * CWpDatabase constructor
 	 */
     CWpDatabase();
 
@@ -56,16 +50,15 @@ public:
     /**
 	 * Get pointer to a Waypoint from the Database which matches the name
 	 * param@ string name		-	name of a Waypoint	(IN)
-	 * returnvalue@ CPOI*		-	Pointer to a POI in the database
+	 * returnvalue@ CWaypoint*	-	Pointer to a Waypoint in the database
 	 */
     CWaypoint* getPointerToWaypoint(std::string name);
 
     /**
-     * Function which returns the container having waypoints in the Database
-     * param@ Wp_Map_t &WpDatabase		-	Waypoints in Database	(IN)
-     * returnvalue@ void
+     * Get Waypoints from the Database
+     * returnvalue@ Wp_Map_t			-	Waypoints in the Database	(OUT)
      */
-    const Wp_Map_t& getWpsFromDatabase() const;
+    const Wp_Map_t getWpsFromDatabase() const;
 
     /**
 	 * Resets the Database

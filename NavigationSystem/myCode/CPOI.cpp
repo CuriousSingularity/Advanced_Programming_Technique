@@ -141,26 +141,26 @@ void CPOI::print(int format)
  */
 ostream& operator<< (ostream &stream, CPOI const &poi)
 {
-	CPOI tempPoi = poi;
-	CPOI::t_poi type;
-	string name, description, typeName;
-	double latitude, longitude;
+	CPOI 			outPoi = poi;
+	CPOI::t_poi 	type;
+	string 			name, description, typeName;
+	double 			latitude, longitude;
 
-	tempPoi.getAllDataByReference(name, latitude, longitude, type, description);
+	outPoi.getAllDataByReference(name, latitude, longitude, type, description);
 
-	typeName = tempPoi.getPoiTypeName();
+	typeName = outPoi.getPoiTypeName();
 
 	stream << "POI	  : " << name << "\n";
 	stream << "POI type  : " << typeName << "\n";
 	stream << "Descript  : " << description << "\n";
 
-	int deg, mm;
-	double ss;
+	int 			deg, mm;
+	double 			ss;
 
-	tempPoi.transformLatitude2degmmss(deg, mm, ss);
+	outPoi.transformLatitude2degmmss(deg, mm, ss);
 	stream << "Latitude  : " << deg << "deg " << mm << "min " << ss << "s\n";
 
-	tempPoi.transformLongitude2degmmss(deg, mm, ss);
+	outPoi.transformLongitude2degmmss(deg, mm, ss);
 	stream << "Longitude : " << deg << "deg " << mm << "min " << ss << "s \n";
 
 	return stream;
