@@ -88,7 +88,7 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 		string			name;
 		double 			latitude, longitude;
 
-		waypointDb.getWpsFromDatabase(Waypoints);
+		Waypoints = waypointDb.getWpsFromDatabase();
 
 		for (itr = Waypoints.begin(); itr != Waypoints.end(); ++(itr))
 		{
@@ -133,7 +133,7 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 		string			name, description, typeName;
 		double 			latitude, longitude;
 
-		poiDb.getPoisFromDatabase(Pois);
+		Pois = poiDb.getPoisFromDatabase();
 
 		for (itr = Pois.begin(); itr != Pois.end(); ++(itr))
 		{
@@ -202,6 +202,21 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 
 		this->lineCounter = 0;
 
+		if (mode == CCSV::MERGE)
+		{
+			cout << "INFO: Waypoint Database Merge Request.\n";
+		}
+		else if (mode == CCSV::REPLACE)
+		{
+			waypointDb.resetWpsDatabase();
+			cout << "INFO: Waypoint Database Replace Request.\n";
+		}
+		else
+		{
+			cout << "ERROR: Waypoint Database Unknown MergeMode Request.\n";
+			return false;
+		}
+
 		while (!fileStream.eof())
 		{
 			getline(fileStream, readLine, '\n');
@@ -234,11 +249,22 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 
 				if (!wp.getName().empty())
 				{
-					waypointDb.addWaypoint(wp);
+					if (mode == CCSV::MERGE)
+					{
+						waypointDb.addWaypoint(wp);
+					}
+					else if (mode == CCSV::REPLACE)
+					{
+
+					}
+					else
+					{
+
+					}
 				}
 				else
 				{
-					cout << "ERROR: Invalid Waypoint in line " << this->lineCounter << "\n";
+					cout << "ERROR: Invalid Waypoint in line " << this->lineCounter << ": " << readLine << "\n";
 				}
 			}
 		}
@@ -265,6 +291,21 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 		string			readLine;
 
 		this->lineCounter = 0;
+
+		if (mode == CCSV::MERGE)
+		{
+			cout << "INFO: POI Database Merge Request.\n";
+		}
+		else if (mode == CCSV::REPLACE)
+		{
+			poiDb.resetPoisDatabase();
+			cout << "INFO: POI Database Replace Request.\n";
+		}
+		else
+		{
+			cout << "ERROR: POI Database Unknown MergeMode Request.\n";
+			return false;
+		}
 
 		while (!fileStream.eof())
 		{
@@ -299,11 +340,23 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 
 				if (!poi.getName().empty())
 				{
-					poiDb.addPoi(poi);
+					if (mode == CCSV::MERGE)
+					{
+						poiDb.addPoi(poi);
+					}
+					else if (mode == CCSV::REPLACE)
+					{
+
+					}
+					else
+					{
+
+					}
+
 				}
 				else
 				{
-					cout << "ERROR: Invalid Waypoint in line " << this->lineCounter << "\n";
+					cout << "ERROR: Invalid Waypoint in line " << this->lineCounter << ": " << readLine << "\n";
 				}
 			}
 		}
@@ -352,13 +405,13 @@ bool CCSV::parserEachLine(const string &readLine, std::string &name, double &lat
 			(!this->extractNumberFromString(longitudeParsed, longitude)) ||
 			(nameParsed.empty()))
 		{
-			cout << "ERROR: Invalid or too few fields in line " << this->lineCounter << "\n";
+			cout << "ERROR: Invalid or too few fields in line " << this->lineCounter << ": " << readLine << "\n";
 			ret = false;
 		}
 	}
 	else
 	{
-		cout << "ERROR: Could not find the delimiters in line " << this->lineCounter << "\n";
+		cout << "ERROR: Could not find the delimiters in line " << this->lineCounter << ": " << readLine << "\n";
 		ret = false;
 	}
 
@@ -405,13 +458,13 @@ bool CCSV::parserEachLine(const string &readLine, CPOI::t_poi &type, string &nam
 			(CPOI::DEFAULT_POI == type) ||
 			(nameParsed.empty()))
 		{
-			cout << "ERROR: Invalid or too few fields in line " << this->lineCounter << "\n";
+			cout << "ERROR: Invalid or too few fields in line " << this->lineCounter << ": " << readLine << "\n";
 			ret = false;
 		}
 	}
 	else
 	{
-		cout << "ERROR: Could not find the delimiters in line " << this->lineCounter << "\n";
+		cout << "ERROR: Could not find the delimiters in line " << this->lineCounter << ": " << readLine << "\n";
 		ret = false;
 	}
 

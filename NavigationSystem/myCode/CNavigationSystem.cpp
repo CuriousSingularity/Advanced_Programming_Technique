@@ -15,6 +15,7 @@
 
 //Own Include Files
 #include "CNavigationSystem.h"
+#include "CCSV.h"
 
 //Namespaces
 using namespace std;
@@ -142,6 +143,74 @@ void CNavigationSystem::printDistanceCurPosNextPoi()
 	{
 		cout << "WARNING: Invalid Sensor data.\n";
 	}
+}
+
+
+/**
+ * Creates Waypoint Database and Poi Database
+ * @returnval void
+ */
+void CNavigationSystem::createDatabases()
+{
+	this->m_WpDatabase.addWaypoint(CWaypoint("Berliner Alle", 			49.866851, 	8.634864));
+	this->m_PoiDatabase.addPoi(CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 		49.86727, 	8.638459));
+}
+
+
+/**
+ * Write the current content of Databases to files
+ * @returnval void
+ */
+bool CNavigationSystem::writeToFile()
+{
+	bool 			ret = false;
+	CCSV 			csvDatabase;
+
+	// set the media name
+	csvDatabase.setMediaName("Database");
+
+	// write the current Databases' contents to files
+	ret = csvDatabase.writeData(this->getWpDatabase(), this->getPoiDatabase());
+
+	return ret;
+}
+
+
+/**
+ * Read the Database content from file to Databases
+ * @returnval void
+ */
+bool CNavigationSystem::readFromFile()
+{
+	bool 			ret = false;
+	CCSV 			csvDatabase;
+
+	// set the media name
+	csvDatabase.setMediaName("Database");
+
+	// write the current Databases' contents to files
+	ret = csvDatabase.readData(this->getWpDatabase(), this->getPoiDatabase(), CCSV::MERGE);
+
+	return ret;
+}
+
+
+/**
+ * Get the Poi Database
+ * returnval@ const Poi_Map_t&	- Constant Reference to the POI Database
+ */
+CPoiDatabase& CNavigationSystem::getPoiDatabase()
+{
+	return this->m_PoiDatabase;
+}
+
+/**
+ * Get the Waypoint Database
+ * returnval@ const Poi_Wp_t&	- Constant Reference to the Waypoint Database
+ */
+CWpDatabase& CNavigationSystem::getWpDatabase()
+{
+	return this->m_WpDatabase;
 }
 
 

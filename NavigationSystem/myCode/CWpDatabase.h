@@ -65,10 +65,10 @@ public:
      * param@ Wp_Map_t &WpDatabase		-	Waypoints in Database	(IN)
      * returnvalue@ void
      */
-    void getWpsFromDatabase(Wp_Map_t &Wps) const;
+    const Wp_Map_t& getWpsFromDatabase() const;
 
     /**
-	 * Function which reset the Database
+	 * Resets the Database
 	 * returnvalue@ void
 	 */
 	void resetWpsDatabase();
