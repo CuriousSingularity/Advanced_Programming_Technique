@@ -58,7 +58,13 @@ public:
 	 * param@ Wp_Map_t &WpDatabase		-	POIs in Database	(IN)
 	 * returnvalue@ void
 	 */
-    void getPoisFromDatabase(Poi_Map_t &Pois) const;
+    const Poi_Map_t& getPoisFromDatabase() const;
+
+    /**
+	 * Resets the Database
+	 * returnvalue@ void
+	 */
+	void resetPoisDatabase();
 
     /**
 	 * Get pointer to a POI from the Database which matches the name

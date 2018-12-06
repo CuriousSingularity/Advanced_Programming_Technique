@@ -49,6 +49,18 @@ private:
     CWpDatabase 	m_WpDatabase;
 
     /**
+     * Get the Poi Database
+     * returnval@ const Poi_Map_t&	- Constant Reference to the POI Database
+     */
+    CPoiDatabase& getPoiDatabase();
+
+    /**
+     * Get the Waypoint Database
+     * returnval@ const Poi_Wp_t&	- Constant Reference to the Waypoint Database
+     */
+    CWpDatabase& getWpDatabase();
+
+    /**
 	 * Add waypoints and POIs to create custom route
 	 * @returnval void
 	 */
@@ -65,6 +77,24 @@ private:
 	 * @returnval void
 	 */
 	void printDistanceCurPosNextPoi();
+
+    /**
+	 * Creates Waypoint Database and Poi Database
+	 * @returnval void
+	 */
+    void createDatabases();
+
+    /**
+	 * Write the current content of Databases to files
+	 * @returnval void
+	 */
+	bool writeToFile();
+
+	/**
+	 * Read the Database content from file to Databases
+	 * @returnval void
+	 */
+	bool readFromFile();
 
     /**
 	 * TestCase to check if non existing POI is added to the route

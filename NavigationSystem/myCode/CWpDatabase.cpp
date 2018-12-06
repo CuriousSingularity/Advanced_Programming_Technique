@@ -99,14 +99,14 @@ CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
  * param@ Wp_Map_t &WpDatabase		-	Waypoints in Database	(IN)
  * returnvalue@ void
  */
-void CWpDatabase::getWpsFromDatabase(Wp_Map_t &Wps) const
+const Wp_Map_t& CWpDatabase::getWpsFromDatabase() const
 {
-	Wps = this->m_Wp;
+	return (this->m_Wp);
 }
 
 
 /**
- * Function which reset the Database
+ * Reset the Database
  * returnvalue@ void
  */
 void CWpDatabase::resetWpsDatabase()

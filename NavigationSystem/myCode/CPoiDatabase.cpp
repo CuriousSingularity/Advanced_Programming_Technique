@@ -75,9 +75,9 @@ void CPoiDatabase::addPoi(CPOI const &poi)
  * param@ Wp_Map_t &WpDatabase		-	POIs in Database	(IN)
  * returnvalue@ void
  */
-void CPoiDatabase::getPoisFromDatabase(Poi_Map_t &Pois) const
+const Poi_Map_t& CPoiDatabase::getPoisFromDatabase() const
 {
-	Pois = this->m_Poi;
+	return (this->m_Poi);
 }
 
 
@@ -102,4 +102,14 @@ CPOI* CPoiDatabase::getPointerToPoi(string name)
 	}
 
 	return pPoi;
+}
+
+
+/**
+ * Reset the Database
+ * returnvalue@ void
+ */
+void CPoiDatabase::resetPoisDatabase()
+{
+	this->m_Poi.clear();
 }
