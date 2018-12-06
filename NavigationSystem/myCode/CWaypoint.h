@@ -50,6 +50,11 @@ public:
 	CWaypoint(std::string name = "", double latitude = 0, double longitude = 0, wp_type type = WAYPOINT);
 
 	/**
+	 * Destructor
+	 */
+	virtual ~CWaypoint();
+
+	/**
 	 * Return the current waypoint co-ordinate name
 	 * retuvalue@ string name	-	name of a Waypoint
 	 */

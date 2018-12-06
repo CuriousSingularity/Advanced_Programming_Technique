@@ -26,6 +26,7 @@ using namespace std;
 //Macros
 //#define RUN_TEST_CASE
 
+//Class constant variables
 const std::string CCSV::delimiters(",;");
 
 
@@ -34,7 +35,7 @@ const std::string CCSV::delimiters(",;");
  */
 CCSV::CCSV()
 {
-	// do nothing
+	this->lineCounter = 0;
 }
 
 /**
@@ -53,6 +54,7 @@ CCSV::~CCSV()
 * of the component.
 *
 * @param name the media to be used
+* @returnval void
 */
 void CCSV::setMediaName(string name)
 {
@@ -73,12 +75,15 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 	ofstream 		fileStream;
 	string 			fileName;
 
-	fileName = this->mediaName + "write-wp.txt";
+	fileName = this->mediaName + "-wp.txt";
 	fileStream.precision(10);
 	fileStream.clear();
 
 	// Write Waypoints
 	fileStream.open(fileName.c_str(), ofstream::out);
+
+	cout << "=======================================================\n";
+	cout << "INFO: Waypoint Database backup request\n";
 
 	// is the open successful?
 	if (!fileStream.fail())
@@ -117,12 +122,17 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 	fileStream.flush();
 	fileStream.close();
 
-	fileName = this->mediaName + "write-poi.txt";
+	cout << "=======================================================\n";
+
+	fileName = this->mediaName + "-poi.txt";
 	fileStream.precision(10);
 	fileStream.clear();
 
 	// Write Point of Interests
 	fileStream.open(fileName.c_str(), ofstream::out);
+
+	cout << "=======================================================\n";
+	cout << "INFO: POI Database backup request\n";
 
 	// is the open successful?
 	if (!fileStream.fail())
@@ -165,6 +175,8 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 	fileStream.flush();
 	fileStream.close();
 
+	cout << "=======================================================\n";
+
 	return ret;
 }
 
@@ -188,7 +200,7 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 	ifstream 		fileStream;
 	string 			fileName;
 
-	fileName = this->mediaName + "read-wp.txt";
+	fileName = this->mediaName + "-wp.txt";
 	fileStream.precision(10);
 	fileStream.clear();
 
@@ -202,6 +214,7 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 
 		this->lineCounter = 0;
 
+		cout << "=======================================================\n";
 		if (mode == CCSV::MERGE)
 		{
 			cout << "INFO: Waypoint Database Merge Request.\n";
@@ -216,6 +229,8 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 			cout << "ERROR: Waypoint Database Unknown MergeMode Request.\n";
 			return false;
 		}
+
+		cout << "=======================================================\n";
 
 		while (!fileStream.eof())
 		{
@@ -249,18 +264,7 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 
 				if (!wp.getName().empty())
 				{
-					if (mode == CCSV::MERGE)
-					{
-						waypointDb.addWaypoint(wp);
-					}
-					else if (mode == CCSV::REPLACE)
-					{
-
-					}
-					else
-					{
-
-					}
+					waypointDb.addWaypoint(wp);
 				}
 				else
 				{
@@ -278,7 +282,7 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 
 	fileStream.close();
 
-	fileName = this->mediaName + "read-poi.txt";
+	fileName = this->mediaName + "-poi.txt";
 	fileStream.precision(10);
 	fileStream.clear();
 
@@ -291,6 +295,8 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 		string			readLine;
 
 		this->lineCounter = 0;
+
+		cout << "=======================================================\n";
 
 		if (mode == CCSV::MERGE)
 		{
@@ -306,6 +312,8 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 			cout << "ERROR: POI Database Unknown MergeMode Request.\n";
 			return false;
 		}
+
+		cout << "=======================================================\n";
 
 		while (!fileStream.eof())
 		{
@@ -340,19 +348,7 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 
 				if (!poi.getName().empty())
 				{
-					if (mode == CCSV::MERGE)
-					{
-						poiDb.addPoi(poi);
-					}
-					else if (mode == CCSV::REPLACE)
-					{
-
-					}
-					else
-					{
-
-					}
-
+					poiDb.addPoi(poi);
 				}
 				else
 				{
@@ -370,11 +366,65 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 
 	fileStream.close();
 
-
 	return ret;
 }
 
 
+/**
+ * Extract number from the string
+ * @param const string &str		-	string				(IN)
+ * @param double &number		-	Number to return 	(OUT)
+ * @returnval bool				- 	Success - true or Failure - false
+ */
+bool CCSV::extractNumberFromString(const std::string &str, double &number)
+{
+	bool 			isNumber = false;
+
+	if (!str.empty())
+	{
+		unsigned int index = 0;
+
+		// remove all the leading spaces and tabs
+		while ((str[index] == ' ') || (str[index] == '\t'))
+		{
+			index++;
+		}
+
+		for (unsigned int decPointCount = 0; index < str.length(); ++index)
+		{
+			// check if the string contains only numbers and maybe a .
+			if (!((str[index] >= '0' && str[index] <= '9') || (str[index] == '.' && !decPointCount++)))
+			{
+				isNumber = false;
+				break;
+			}
+			else
+			{
+				isNumber = true;
+			}
+		}
+
+		if (isNumber)
+		{
+			stringstream	ss(str);
+
+			// extract the number
+			ss >> number;
+		}
+	}
+
+	return isNumber;
+}
+
+
+/**
+ * Parse a line to get waypoint information such as name, latitude and longitude in order
+ * @param const string &readLine	-	Each Line				(IN)
+ * @param const string &name		-	name of waypoint		(OUT)
+ * @param const double &latitude	-	latitude of waypoint	(OUT)
+ * @param const double &longitude	-	longitude of waypoint	(OUT)
+ * @returnval bool					- 	Success - true or Failure - false
+ */
 bool CCSV::parserEachLine(const string &readLine, std::string &name, double &latitude, double &longitude)
 {
 	bool			ret = true;
@@ -419,6 +469,16 @@ bool CCSV::parserEachLine(const string &readLine, std::string &name, double &lat
 }
 
 
+/**
+ * Parse a line to get POI information such as type, name, description, latitude and longitude in order
+ * @param const string &readLine	-	Each Line				(IN)
+ * @param const t_poi &type			-	name of POI				(OUT)
+ * @param const string &name		-	name of POI				(OUT)
+ * @param const string &description	-	description of POI		(OUT)
+ * @param const double &latitude	-	latitude of POI			(OUT)
+ * @param const double &longitude	-	longitude of POI		(OUT)
+ * @returnval bool					- 	Success - true or Failure - false
+ */
 bool CCSV::parserEachLine(const string &readLine, CPOI::t_poi &type, string &name, std::string &description, double &latitude, double &longitude)
 {
 	bool			ret = true;
@@ -469,45 +529,4 @@ bool CCSV::parserEachLine(const string &readLine, CPOI::t_poi &type, string &nam
 	}
 
 	return ret;
-}
-
-
-bool CCSV::extractNumberFromString(const std::string &str, double &number)
-{
-	bool 			isNumber = false;
-
-	if (!str.empty())
-	{
-		unsigned int index = 0;
-
-		// remove all the leading spaces and tabs
-		while ((str[index] == ' ') || (str[index] == '\t'))
-		{
-			index++;
-		}
-
-		for (unsigned int decPointCount = 0; index < str.length(); ++index)
-		{
-			// check if the string contains only numbers and maybe a .
-			if (!((str[index] >= '0' && str[index] <= '9') || (str[index] == '.' && !decPointCount++)))
-			{
-				isNumber = false;
-				break;
-			}
-			else
-			{
-				isNumber = true;
-			}
-		}
-
-		if (isNumber)
-		{
-			stringstream	ss(str);
-
-			// extract the number
-			ss >> number;
-		}
-	}
-
-	return isNumber;
 }

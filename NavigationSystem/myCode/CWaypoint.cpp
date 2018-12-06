@@ -58,6 +58,15 @@ CWaypoint::CWaypoint(string name, double latitude, double longitude, wp_type typ
 
 
 /**
+ * Destructor
+ */
+CWaypoint::~CWaypoint()
+{
+	// do nothing
+}
+
+
+/**
  * Return the current waypoint co-ordinate name
  * retuvalue@ string name	-	name of a Waypoint
  */
