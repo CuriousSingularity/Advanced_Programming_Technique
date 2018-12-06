@@ -508,6 +508,10 @@ bool CCSV::parserEachLine(const string &readLine, CPOI::t_poi &type, string &nam
 				descriptionParsed.erase(0, descriptionParsed.find_first_not_of(' '));
 				descriptionParsed.erase(0, descriptionParsed.find_first_not_of('\t'));
 				description 	= descriptionParsed;
+
+				// remove leading spaces and tables
+				typeParsed.erase(0, typeParsed.find_first_not_of(' '));
+				typeParsed.erase(0, typeParsed.find_first_not_of('\t'));
 				type			= CPOI::getPoiType(typeParsed);
 				break;
 			}
