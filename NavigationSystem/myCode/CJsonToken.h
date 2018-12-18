@@ -23,8 +23,18 @@ public:
 	 * The different token types. See RFC7159
 	 * (https://tools.ietf.org/html/rfc7159).
 	 */
-	enum TokenType { BEGIN_OBJECT, END_OBJECT, BEGIN_ARRAY, END_ARRAY,
-		NAME_SEPARATOR, VALUE_SEPARATOR, STRING, NUMBER, BOOL, JSON_NULL };
+	enum TokenType {
+		BEGIN_OBJECT,
+		END_OBJECT,
+		BEGIN_ARRAY,
+		END_ARRAY,
+		NAME_SEPARATOR,
+		VALUE_SEPARATOR,
+		STRING,
+		NUMBER,
+		BOOL,
+		JSON_NULL
+	};
 
 	CJsonToken(TokenType type);
 	virtual ~CJsonToken();

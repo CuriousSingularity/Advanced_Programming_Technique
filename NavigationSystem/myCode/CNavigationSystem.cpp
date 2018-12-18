@@ -16,6 +16,7 @@
 //Own Include Files
 #include "CNavigationSystem.h"
 #include "CCSV.h"
+#include "CJson.h"
 
 //Namespaces
 using namespace std;
@@ -197,6 +198,10 @@ bool CNavigationSystem::writeToFile()
 
 	// write the current Databases' contents to files
 	ret = csvDatabase.writeData(this->getWpDatabase(), this->getPoiDatabase());
+
+	CJson 			jsonFormat;
+	jsonFormat.setMediaName("Database.json");
+	ret = jsonFormat.writeData(this->getWpDatabase(), this->getPoiDatabase());
 
 	return ret;
 }

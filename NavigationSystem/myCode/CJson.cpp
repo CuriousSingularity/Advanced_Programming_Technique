@@ -1,11 +1,11 @@
 /***************************************************************************
 *============= Copyright by Darmstadt University of Applied Sciences =======
 ****************************************************************************
-* Filename        : CCSV.cpp
+* Filename        : CJson.cpp
 * Author          : Bharath Ramachandraiah
 * Description     : The file defines all the methods pertaining to the
-* 					class type - class CCSV.
-* 					The class CCSV is implement the persistent feature using
+* 					class type - class CJson.
+* 					The class CJson is implement the persistent feature using
 * 					the CPersistanceStorage abstract class's interfaces.
 *
 ****************************************************************************/
@@ -17,33 +17,20 @@
 #include <sstream>
 
 //Own Include Files
-#include "CCSV.h"
+#include "CJson.h"
 #include "CPOI.h"
 
-//Namespaces
 using namespace std;
 
-//Macros
-//#define RUN_TEST_CASE
-
-
-/**
- * Constructor
- */
-CCSV::CCSV()
+CJson::CJson()
 {
-	this->lineCounter = 0;
+	// Do nothing
 }
 
-/**
- * Destructor
- */
-CCSV::~CCSV()
+CJson::~CJson()
 {
-	// do nothing
+	// Do nothing
 }
-
-
 
 /**
 * Set the name of the media to be used for persistent storage.
@@ -53,7 +40,7 @@ CCSV::~CCSV()
 * @param name the media to be used
 * @returnval void
 */
-void CCSV::setMediaName(string name)
+void CJson::setMediaName(string name)
 {
 	this->mediaName = name;
 }
@@ -66,13 +53,13 @@ void CCSV::setMediaName(string name)
 * @param poiDb the database with points of interest
 * @return true if the data could be saved successfully
 */
-bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
+bool CJson::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 {
 	bool			ret = true;
 	ofstream 		fileStream;
 	string 			fileName;
 
-	fileName = this->mediaName + "-wp.txt";
+	fileName = this->mediaName;
 	fileStream.precision(10);
 	fileStream.clear();
 
@@ -86,20 +73,36 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 	if (!fileStream.fail())
 	{
 		Wp_Map_t		Waypoints;
-		Wp_Map_Itr_t 	itr;
-		string			name;
+		Poi_Map_t		Pois;
+		CPOI::t_poi		type;
+		string			name, description, typeName;
 		double 			latitude, longitude;
 
 		Waypoints = waypointDb.getWpsFromDatabase();
 
-		for (itr = Waypoints.begin(); itr != Waypoints.end(); ++(itr))
+		// create waypoint object in the Json format
+		fileStream << "{\n";
+		fileStream << "\"waypoints\": [\n";
+
+		for (Wp_Map_Itr_t itr = Waypoints.begin(); itr != Waypoints.end(); ++(itr))
 		{
 			// assuming all the elements in Database is valid
 			itr->second.getAllDataByReference(name, latitude, longitude);
 
-			fileStream << name << "; ";
-			fileStream << latitude << "; ";
-			fileStream << longitude << "\n";
+			fileStream << "\t{\n";
+			fileStream << "\t\t\"name\": \"" << name << "\",\n";
+			fileStream << "\t\t\"latitude\": " << latitude << ",\n";
+			fileStream << "\t\t\"longitude\": " << longitude << "\n";
+
+			// check if this is the last element in the database
+			if (&(*itr) != &(*Waypoints.rbegin()))
+			{
+				fileStream << "\t},\n";
+			}
+			else
+			{
+				fileStream << "\t}\n";
+			}
 
 			if (fileStream.fail())
 			{
@@ -108,51 +111,36 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 				ret = false;
 			}
 		}
-	}
-	else
-	{
-		fileStream.clear();
-		cout << "WARNING: Error opening the file to write - " << fileName << endl;
-		ret = false;
-	}
 
-	fileStream.flush();
-	fileStream.close();
-
-	cout << "=======================================================\n";
-
-	fileName = this->mediaName + "-poi.txt";
-	fileStream.precision(10);
-	fileStream.clear();
-
-	// Write Point of Interests
-	fileStream.open(fileName.c_str(), ofstream::out);
-
-	cout << "=======================================================\n";
-	cout << "INFO: POI Database backup request\n";
-
-	// is the open successful?
-	if (!fileStream.fail())
-	{
-		Poi_Map_t		Pois;
-		Poi_Map_Itr_t 	itr;
-		CPOI::t_poi		type;
-		string			name, description, typeName;
-		double 			latitude, longitude;
+		// end the waypoint object
+		fileStream << "],\n";
 
 		Pois = poiDb.getPoisFromDatabase();
 
-		for (itr = Pois.begin(); itr != Pois.end(); ++(itr))
+		// create waypoint object in the Json format
+		fileStream << "\"pois\": [\n";
+
+		for (Poi_Map_Itr_t itr = Pois.begin(); itr != Pois.end(); ++(itr))
 		{
 			// assuming all the elements in Database is valid
 			itr->second.getAllDataByReference(name, latitude, longitude, type, description);
 			typeName = itr->second.getPoiTypeName();
 
-			fileStream << typeName << "; ";
-			fileStream << name << "; ";
-			fileStream << description << "; ";
-			fileStream << latitude << "; ";
-			fileStream << longitude << "\n";
+			fileStream << "\t{\n";
+			fileStream << "\t\t\"name\": \"" << name << "\",\n";
+			fileStream << "\t\t\"latitude\": " << latitude << ",\n";
+			fileStream << "\t\t\"longitude\": " << longitude << ",\n";
+			fileStream << "\t\t\"type\": \"" << typeName << ",\n";
+			fileStream << "\t\t\"description\": \"" << description << "\"\n";
+
+			if (&(*itr) != &(*Pois.rbegin()))
+			{
+				fileStream << "\t},\n";
+			}
+			else
+			{
+				fileStream << "\t}\n";
+			}
 
 			if (fileStream.fail())
 			{
@@ -161,6 +149,9 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 				ret = false;
 			}
 		}
+
+		// end the poi object
+		fileStream << "]\n}\n";
 	}
 	else
 	{
@@ -173,7 +164,6 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 	fileStream.close();
 
 	cout << "=======================================================\n";
-
 	return ret;
 }
 
@@ -191,13 +181,14 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 * @param mode the merge mode
 * @return true if the data could be read successfully
 */
-bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mode)
+bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mode)
 {
 	bool			ret = true;
+#if 0
 	ifstream 		fileStream;
 	string 			fileName;
 
-	fileName = this->mediaName + "-wp.txt";
+	fileName = this->mediaName;
 	fileStream.precision(10);
 	fileStream.clear();
 
@@ -207,16 +198,30 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 	// is the open successful?
 	if (!fileStream.fail())
 	{
-		string			readLine;
+		CJsonScanner obj(fileStream);
+			CJsonToken *ptr = 0;
+			CJsonStringToken *ptoken = 0;
 
-		this->lineCounter = 0;
+			do
+			{
+				ptr = obj.nextToken();
+
+				cout << ptr->getType() << endl;
+
+				ptoken = dynamic_cast<CJsonStringToken *>(ptr);
+
+				if (ptoken)
+				{
+					cout << ptoken->getValue() << endl;
+				}
+			} while (ptr);
 
 		cout << "=======================================================\n";
-		if (mode == CCSV::MERGE)
+		if (mode == CJson::MERGE)
 		{
 			cout << "INFO: Waypoint Database Merge Request.\n";
 		}
-		else if (mode == CCSV::REPLACE)
+		else if (mode == CJson::REPLACE)
 		{
 			waypointDb.resetWpsDatabase();
 			cout << "INFO: Waypoint Database Replace Request.\n";
@@ -231,8 +236,9 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 
 		while (!fileStream.eof())
 		{
+
+#if 0
 			getline(fileStream, readLine, '\n');
-			this->lineCounter++;
 
 			if (readLine.length() == 0)
 			{
@@ -268,6 +274,7 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 					cout << "ERROR: Invalid Waypoint in line " << this->lineCounter << ": " << readLine << "\n";
 				}
 			}
+#endif
 		}
 	}
 	else
@@ -362,6 +369,6 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 	}
 
 	fileStream.close();
-
+#endif
 	return ret;
 }

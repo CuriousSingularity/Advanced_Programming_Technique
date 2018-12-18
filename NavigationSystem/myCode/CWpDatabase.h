@@ -22,6 +22,8 @@
 //typedefs
 typedef std::map<std::string, CWaypoint> 			Wp_Map_t;
 typedef std::map<std::string, CWaypoint>::iterator 	Wp_Map_Itr_t;
+typedef std::map<std::string, CWaypoint>::reverse_iterator 	Wp_Map_RevItr_t;
+
 
 class CWpDatabase {
 private:
