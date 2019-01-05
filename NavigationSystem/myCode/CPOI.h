@@ -30,6 +30,17 @@ public:
 		DEFAULT_POI,
     };
 
+    enum AttributesType
+	{
+    	INVALID_TYPE = 0,
+    	NAME,
+		LATITUDE,
+		LONGITUDE,
+		POI_TYPE,
+		DESCRIPTION,
+		MAX_TYPES
+	};
+
     /**
 	 * CPOI constructor:
 	 * Sets the value of an object when created.
