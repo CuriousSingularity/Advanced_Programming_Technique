@@ -200,7 +200,7 @@ bool CNavigationSystem::writeToFile()
 	ret = csvDatabase.writeData(this->getWpDatabase(), this->getPoiDatabase());
 
 	CJson 			jsonFormat;
-	jsonFormat.setMediaName("Database.json");
+	jsonFormat.setMediaName("Database.json1");
 	ret = jsonFormat.writeData(this->getWpDatabase(), this->getPoiDatabase());
 
 	return ret;
@@ -221,6 +221,13 @@ bool CNavigationSystem::readFromFile()
 
 	// write the current Databases' contents to files
 	ret = csvDatabase.readData(this->getWpDatabase(), this->getPoiDatabase(), CCSV::REPLACE);
+
+	CJson 			jsonFormat;
+	// set the media name
+	jsonFormat.setMediaName("Database.json");
+
+	// write the current Databases' contents to files
+	ret = jsonFormat.readData(this->getWpDatabase(), this->getPoiDatabase(), CJson::REPLACE);
 
 	return ret;
 }
@@ -246,7 +253,7 @@ void CNavigationSystem::run()
 #endif
 
 	// create the databases
-	this->createDatabases();
+	//this->createDatabases();
 
 	// read the database files
 	if (!this->readFromFile())
