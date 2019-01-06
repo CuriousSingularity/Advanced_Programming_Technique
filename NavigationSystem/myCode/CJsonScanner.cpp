@@ -7,7 +7,7 @@
 
 #include <string>
 #include "CJsonScanner.h"
-#include "CJson.h"
+#include "CJsonPersistence.h"
 
 using namespace std;
 
@@ -32,7 +32,7 @@ CJsonToken* CJsonScanner::nextToken() {
 	if (scanResult == -1) {
 		string illegalChar(YYText());
 		// Found illegal character.
-		throw CJson::JSON_ERR_ILLEGAL_CHARACTER;
+		throw CJsonPersistence::JSON_ERR_ILLEGAL_CHARACTER;
 	}
 	return token;
 }

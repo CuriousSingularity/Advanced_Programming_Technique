@@ -1,21 +1,21 @@
 /***************************************************************************
 *============= Copyright by Darmstadt University of Applied Sciences =======
 ****************************************************************************
-* Filename        : CJson.h
+* Filename        : CJsonPersistence.h
 * Author          : Bharath Ramachandraiah
-* Description     : The file defines a class CJson.
-* 					The class CJson is used to implement the Persistence feature.
+* Description     : The file defines a class CJsonPersistence.
+* 					The class CJsonPersistence is used to implement the Persistence feature.
 *
 ****************************************************************************/
 
 
-#ifndef CJSON_H_
-#define CJSON_H_
+#ifndef CJSONPERSISTENCE_H_
+#define CJSONPERSISTENCE_H_
 
 #include "CJsonScanner.h"
 #include "CPersistentStorage.h"
 
-class CJson : public CPersistentStorage
+class CJsonPersistence : public CPersistentStorage
 {
 public:
 
@@ -55,9 +55,9 @@ public:
 		JSON_ERR_ILLEGAL_CHARACTER,
 	};
 
-	CJson();
+	CJsonPersistence();
 
-	virtual ~CJson();
+	virtual ~CJsonPersistence();
 
 	/**
 	* Set the name of the media to be used for persistent storage.
@@ -125,4 +125,4 @@ private:
 	bool extractValue(std::string &name, double &latitude, double &longitude, CPOI::t_poi &type, std::string &description);
 };
 
-#endif /* CJSON_H_ */
+#endif /* CJSONPERSISTENCE_H_ */

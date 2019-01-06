@@ -1,34 +1,47 @@
 /***************************************************************************
 *============= Copyright by Darmstadt University of Applied Sciences =======
 ****************************************************************************
-* Filename        : CJson.cpp
+* Filename        : CJsonPersistence.cpp
 * Author          : Bharath Ramachandraiah
 * Description     : The file defines all the methods pertaining to the
-* 					class type - class CJson.
-* 					The class CJson is implement the persistent feature using
+* 					class type - class CJsonPersistence.
+* 					The class CJsonPersistence is implement the persistent feature using
 * 					the CPersistanceStorage abstract class's interfaces.
 *
 ****************************************************************************/
 
 //System Include Files
+#include "CJsonPersistence.h"
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
 
 //Own Include Files
-#include "CJson.h"
 #include "CPOI.h"
 
 using namespace std;
 using namespace APT;
 
-CJson::CJson()
+CJsonPersistence::CJsonPersistence()
 {
-	// Do nothing
+	this->m_pToken 					= 0;
+	this->m_exceptedTokenType 		= CJsonToken::JSON_NULL;
+	this->m_exceptedAttributeType 	= CPOI::INVALID_TYPE;
+
+	for (unsigned int Index = 0; Index < sizeof(this->m_isAttrAlreadyRead)/sizeof(this->m_isAttrAlreadyRead[0]); ++Index)
+	{
+		this->m_isAttrAlreadyRead[Index] = false;
+	}
+
+	for (unsigned int Index = 0; Index < sizeof(this->m_currentObjectRead)/sizeof(this->m_currentObjectRead[0]); ++Index)
+	{
+		this->m_currentObjectRead[Index] = false;
+	}
 }
 
-CJson::~CJson()
+CJsonPersistence::~CJsonPersistence()
 {
 	// Do nothing
 }
@@ -41,7 +54,7 @@ CJson::~CJson()
 * @param name the media to be used
 * @returnval void
 */
-void CJson::setMediaName(string name)
+void CJsonPersistence::setMediaName(string name)
 {
 	this->mediaName = name;
 }
@@ -54,7 +67,7 @@ void CJson::setMediaName(string name)
 * @param poiDb the database with points of interest
 * @return true if the data could be saved successfully
 */
-bool CJson::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
+bool CJsonPersistence::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 {
 	bool			ret = true;
 	ofstream 		fileStream;
@@ -179,7 +192,7 @@ bool CJson::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 * @param mode the merge mode
 * @return true if the data could be read successfully
 */
-bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mode)
+bool CJsonPersistence::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mode)
 {
 	bool			ret = true;
 	ifstream 		fileStream;
@@ -196,11 +209,11 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 	if (!fileStream.fail())
 	{
 		cout << "=======================================================\n";
-		if (mode == CJson::MERGE)
+		if (mode == CJsonPersistence::MERGE)
 		{
 			cout << "INFO: Waypoint Database Merge Request.\n";
 		}
-		else if (mode == CJson::REPLACE)
+		else if (mode == CJsonPersistence::REPLACE)
 		{
 			waypointDb.resetWpsDatabase();
 			cout << "INFO: Waypoint Database Replace Request.\n";
@@ -222,11 +235,11 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 		 * yyFlexLexer -> base class -> parsing
 		 * CJsonScanner -> derived class(yyFlexLexer) -> handles parsing and returns pointer to CJsonToken which points to CJsonValueToken(polymorphism)
 		 */
-		CJsonScanner 				scanner(fileStream);
-		CJsonToken::TokenType 		event = CJsonToken::JSON_NULL, previousEvent = CJsonToken::JSON_NULL;
-		CJson::readStates			currentState = WAITING_FOR_BEGIN_OBJECT, previousState = WAITING_FOR_BEGIN_OBJECT;
-		CJsonStringToken 			*pTokenString = 0;
-		CJson::jsonReadExceptions	error = CJson::JSON_ERR_NO;
+		CJsonScanner 					scanner(fileStream);
+		CJsonToken::TokenType 			event = CJsonToken::JSON_NULL, previousEvent = CJsonToken::JSON_NULL;
+		CJsonPersistence::readStates	currentState = WAITING_FOR_BEGIN_OBJECT, previousState = WAITING_FOR_BEGIN_OBJECT;
+		CJsonStringToken 				*pTokenString = 0;
+		CJsonPersistence::jsonReadExceptions	error = CJsonPersistence::JSON_ERR_NO;
 
 		/*
 		 * Exceptions:
@@ -260,7 +273,7 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 							}
 							else
 							{
-								error = CJson::JSON_ERR_EXPECT_BEGIN_OBJECT;
+								error = CJsonPersistence::JSON_ERR_EXPECT_BEGIN_OBJECT;
 							}
 							break;
 
@@ -279,12 +292,12 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 								}
 								else
 								{
-									error = CJson::JSON_ERR_EXPECT_DB_NAME_STRING;
+									error = CJsonPersistence::JSON_ERR_EXPECT_DB_NAME_STRING;
 								}
 							}
 							else
 							{
-								error = CJson::JSON_ERR_EXPECT_DB_NAME_STRING;
+								error = CJsonPersistence::JSON_ERR_EXPECT_DB_NAME_STRING;
 							}
 							break;
 
@@ -296,7 +309,7 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 							}
 							else
 							{
-								error = CJson::JSON_ERR_EXPECT_DB_ARRAY_BEGIN;
+								error = CJsonPersistence::JSON_ERR_EXPECT_DB_ARRAY_BEGIN;
 							}
 							break;
 
@@ -307,9 +320,14 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 								previousState = currentState;
 								currentState = WAITING_FOR_ATTRIBUTE_NAME;
 							}
+							else if (event == CJsonToken::END_ARRAY)
+							{
+								previousState = currentState;
+								currentState = WAITING_FOR_VALUE_SEPARATOR;
+							}
 							else
 							{
-								error = CJson::JSON_ERR_EXPECT_DB_OBJECT_BEGIN;
+								error = CJsonPersistence::JSON_ERR_EXPECT_DB_OBJECT_BEGIN;
 							}
 							break;
 
@@ -321,7 +339,7 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 							}
 							else
 							{
-								error = CJson::JSON_ERR_EXPECT_DB_OBJECT_END;
+								error = CJsonPersistence::JSON_ERR_EXPECT_DB_OBJECT_END;
 							}
 							break;
 
@@ -343,7 +361,7 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 									}
 									else
 									{
-										error = CJson::JSON_ERR_EXPECT_ATTR_NAME;
+										error = CJsonPersistence::JSON_ERR_EXPECT_ATTR_NAME;
 									}
 								}
 							}
@@ -364,12 +382,12 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 								}
 								else
 								{
-									error = CJson::JSON_ERR_EXPECT_NAME_SEPARATOR;
+									error = CJsonPersistence::JSON_ERR_EXPECT_NAME_SEPARATOR;
 								}
 							}
 							else
 							{
-								error = CJson::JSON_ERR_EXPECT_NAME_SEPARATOR;
+								error = CJsonPersistence::JSON_ERR_EXPECT_NAME_SEPARATOR;
 							}
 							break;
 
@@ -419,7 +437,7 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 							}
 							else
 							{
-								error = CJson::JSON_ERR_EXPECT_ATTR_VALUE;
+								error = CJsonPersistence::JSON_ERR_EXPECT_ATTR_VALUE;
 							}
 							break;
 
@@ -443,7 +461,7 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 								}
 								else
 								{
-									error = CJson::JSON_ERR_EXPECT_VALUE_SEPARATOR;
+									error = CJsonPersistence::JSON_ERR_EXPECT_VALUE_SEPARATOR;
 								}
 							}
 							else if (event == CJsonToken::END_ARRAY)
@@ -460,7 +478,7 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 							}
 							else
 							{
-								error = CJson::JSON_ERR_EXPECT_VALUE_SEPARATOR;
+								error = CJsonPersistence::JSON_ERR_EXPECT_VALUE_SEPARATOR;
 							}
 							break;
 
@@ -470,7 +488,7 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 					}
 
 					// throw exception
-					if (error > CJson::JSON_ERR_NO)
+					if (error > CJsonPersistence::JSON_ERR_NO)
 					{
 						throw error;
 					}
@@ -496,7 +514,7 @@ bool CJson::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mo
 }
 
 
-void CJson::resetCurrentReadObjects()
+void CJsonPersistence::resetCurrentReadObjects()
 {
 	for (unsigned int Index = 0; Index < sizeof(this->m_currentObjectRead)/sizeof(this->m_currentObjectRead[0]); ++Index)
 	{
@@ -505,18 +523,18 @@ void CJson::resetCurrentReadObjects()
 }
 
 
-bool CJson::currentReadObject(string name)
+bool CJsonPersistence::currentReadObject(string name)
 {
 	bool ret = true;
 
 	if (!name.compare("waypoints"))
 	{
-		this->m_currentObjectRead[CJson::WAYPOINTS] 		= true;
+		this->m_currentObjectRead[CJsonPersistence::WAYPOINTS] 		= true;
 
 	}
 	else if (!name.compare("pois"))
 	{
-		this->m_currentObjectRead[CJson::POINT_OF_INTEREST] = true;
+		this->m_currentObjectRead[CJsonPersistence::POINT_OF_INTEREST] = true;
 	}
 	else
 	{
@@ -527,7 +545,7 @@ bool CJson::currentReadObject(string name)
 }
 
 
-bool CJson::expectedAttributeValue(string attributeName)
+bool CJsonPersistence::expectedAttributeValue(string attributeName)
 {
 	bool ret = false;
 
@@ -565,7 +583,7 @@ bool CJson::expectedAttributeValue(string attributeName)
 }
 
 
-bool CJson::allAttributesRead()
+bool CJsonPersistence::allAttributesRead()
 {
 	bool ret = false;
 
@@ -582,7 +600,6 @@ bool CJson::allAttributesRead()
 				this->m_isAttrAlreadyRead[CPOI::LONGITUDE] &&
 				this->m_isAttrAlreadyRead[CPOI::POI_TYPE] &&
 				this->m_isAttrAlreadyRead[CPOI::DESCRIPTION];
-
 	}
 	else
 	{
@@ -593,7 +610,7 @@ bool CJson::allAttributesRead()
 }
 
 
-void CJson::resetAllAttributesRead()
+void CJsonPersistence::resetAllAttributesRead()
 {
 	for (unsigned int Index = CPOI::INVALID_TYPE; Index < CPOI::MAX_TYPES; ++Index)
 	{
@@ -602,7 +619,7 @@ void CJson::resetAllAttributesRead()
 }
 
 
-bool CJson::extractValue(string &name, double &latitude, double &longitude, CPOI::t_poi &type, string &description)
+bool CJsonPersistence::extractValue(string &name, double &latitude, double &longitude, CPOI::t_poi &type, string &description)
 {
 	CJsonStringToken *pTokenString;
 	CJsonNumberToken *pTokenNumber;
@@ -684,7 +701,7 @@ bool CJson::extractValue(string &name, double &latitude, double &longitude, CPOI
 }
 
 
-void CJson::exceptionHandler(jsonReadExceptions& ex, int lineNumber)
+void CJsonPersistence::exceptionHandler(jsonReadExceptions& ex, int lineNumber)
 {
 	string errorMsg;
 
