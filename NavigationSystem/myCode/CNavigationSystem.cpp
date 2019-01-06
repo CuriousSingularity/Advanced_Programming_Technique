@@ -16,7 +16,7 @@
 //Own Include Files
 #include "CNavigationSystem.h"
 #include "CCSV.h"
-#include "CJson.h"
+#include "CJsonPersistence.h"
 
 //Namespaces
 using namespace std;
@@ -191,16 +191,15 @@ void CNavigationSystem::createDatabases()
 bool CNavigationSystem::writeToFile()
 {
 	bool 			ret = false;
-	CCSV 			csvDatabase;
 
-	// set the media name
+	CCSV 			csvDatabase;
 	csvDatabase.setMediaName("Database");
 
 	// write the current Databases' contents to files
 	ret = csvDatabase.writeData(this->getWpDatabase(), this->getPoiDatabase());
 
-	CJson 			jsonFormat;
-	jsonFormat.setMediaName("Database.json1");
+	CJsonPersistence	jsonFormat;
+	jsonFormat.setMediaName("Database.json");
 	ret = jsonFormat.writeData(this->getWpDatabase(), this->getPoiDatabase());
 
 	return ret;
@@ -214,20 +213,18 @@ bool CNavigationSystem::writeToFile()
 bool CNavigationSystem::readFromFile()
 {
 	bool 			ret = false;
-	CCSV 			csvDatabase;
 
-	// set the media name
+	CCSV 			csvDatabase;
 	csvDatabase.setMediaName("Database");
 
 	// write the current Databases' contents to files
 	ret = csvDatabase.readData(this->getWpDatabase(), this->getPoiDatabase(), CCSV::REPLACE);
 
-	CJson 			jsonFormat;
-	// set the media name
+	CJsonPersistence		jsonFormat;
 	jsonFormat.setMediaName("Database.json");
 
 	// write the current Databases' contents to files
-	ret = jsonFormat.readData(this->getWpDatabase(), this->getPoiDatabase(), CJson::REPLACE);
+	ret = jsonFormat.readData(this->getWpDatabase(), this->getPoiDatabase(), CJsonPersistence::REPLACE);
 
 	return ret;
 }
