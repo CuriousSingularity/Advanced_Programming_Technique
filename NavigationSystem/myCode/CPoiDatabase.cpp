@@ -28,6 +28,14 @@ CPoiDatabase::CPoiDatabase()
 	// do nothing
 }
 
+/**
+ * CPoiDatabase destructor
+ */
+CPoiDatabase::~CPoiDatabase()
+{
+	// do nothing
+}
+
 
 /*
  * Add a Point of interest to the database
@@ -36,23 +44,39 @@ CPoiDatabase::CPoiDatabase()
  */
 void CPoiDatabase::addPoi(CPOI const &poi)
 {
-	CPOI 						inPoi = poi;
-	pair<Poi_Map_Itr_t, bool> 	ret;
+	this->addPoi(poi.getName(), poi);
+}
 
-	if (!inPoi.getName().empty())
+
+/*
+ * Add a Point of interest to the database
+ * param@ string &name			- 	unique name for the poi		(IN)
+ * param@ CPOI const &poi		-	point of interest   		(IN)
+ * returnvalue@ void
+ */
+void CPoiDatabase::addPoi(const string &name, CPOI const &poi)
+{
+	if (!poi.getName().empty())
 	{
-		ret = this->m_Poi.insert(pair<string, CPOI>(inPoi.getName(), poi));
-
-		if (ret.second == false)
-		{
-			cout << "WARNING: POI already exists in the Database.\n" << poi << endl;
-		}
+		this->addElement(name, poi);
 	}
 	else
 	{
 		cout << "WARNING: Trying to add invalid POI to the Database.\n" << poi << endl;
 	}
 }
+
+
+/*
+ * Add a Point of interest to the database
+ * param@ int &number			- 	unique number for the poi	(IN)
+ * param@ CPOI const &poi		-	point of interest   		(IN)
+ * returnvalue@ void
+ */
+//void CPoiDatabase::addPoi(const int &number, CPOI const &poi)
+//{
+//	this->addElement(number, poi);
+//}
 
 
 /**
@@ -62,20 +86,7 @@ void CPoiDatabase::addPoi(CPOI const &poi)
  */
 CPOI* CPoiDatabase::getPointerToPoi(string name)
 {
-	CPOI *pPoi = 0;
-
-	if (!this->m_Poi.empty())
-	{
-		Poi_Map_Itr_t	poiItr = this->m_Poi.find(name);
-
-		if (poiItr != this->m_Poi.end())
-		{
-			// element found
-			pPoi = &poiItr->second;
-		}
-	}
-
-	return pPoi;
+	return (this->getPointerToElement(name));
 }
 
 
@@ -85,7 +96,7 @@ CPOI* CPoiDatabase::getPointerToPoi(string name)
  */
 const Poi_Map_t CPoiDatabase::getPoisFromDatabase() const
 {
-	return (this->m_Poi);
+	return (this->getElementsFromDatabase());
 }
 
 
@@ -95,7 +106,7 @@ const Poi_Map_t CPoiDatabase::getPoisFromDatabase() const
  */
 void CPoiDatabase::resetPoisDatabase()
 {
-	this->m_Poi.clear();
+	this->resetDatabase();
 }
 
 
@@ -105,8 +116,5 @@ void CPoiDatabase::resetPoisDatabase()
  */
 void CPoiDatabase::print()
 {
-	for (Poi_Map_Itr_t poiItr = this->m_Poi.begin(); poiItr != this->m_Poi.end(); ++poiItr)
-	{
-		cout << poiItr->second << endl;
-	}
+	this->CDatabase::print();
 }

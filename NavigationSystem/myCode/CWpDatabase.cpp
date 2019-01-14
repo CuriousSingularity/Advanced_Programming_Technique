@@ -28,6 +28,14 @@ CWpDatabase::CWpDatabase()
 	// do nothing
 }
 
+/**
+ * CWpDatabase destructor
+ */
+CWpDatabase::~CWpDatabase()
+{
+	// do nothing
+}
+
 
 /**
  * Add a Waypoint to the database
@@ -36,23 +44,38 @@ CWpDatabase::CWpDatabase()
  */
 void CWpDatabase::addWaypoint(CWaypoint const &wp)
 {
-	CWaypoint 					inWp = wp;
-	pair<Wp_Map_Itr_t, bool> 	ret;
+	this->addWaypoint(wp.getName(), wp);
+}
 
-	if (!inWp.getName().empty())
+
+/**
+ * Add a Waypoint to the database
+ * param@ string &name			- 	unique name for the wp		(IN)
+ * param@ CWaypoint const &wp	-	Waypoint   					(IN)
+ * returnvalue@ void
+ */
+void CWpDatabase::addWaypoint(const std::string &name, CWaypoint const &wp)
+{
+	if (!wp.getName().empty())
 	{
-		ret = this->m_Wp.insert(pair<string, CWaypoint>(inWp.getName(), wp));
-
-		if (ret.second == false)
-		{
-			cout << "WARNING: Waypoint already exists in the Database.\n" << wp << endl;
-		}
+		this->addElement(name, wp);
 	}
 	else
 	{
 		cout << "WARNING: Trying to add invalid Waypoint to the Database.\n" << wp << endl;
 	}
 }
+
+///**
+// * Add a Waypoint to the database
+// * param@ int &number			- 	unique number for the wp	(IN)
+// * param@ CWaypoint const &wp	-	Waypoint   					(IN)
+// * returnvalue@ void
+// */
+//void CWpDatabase::addWaypoint(const int &number, CWaypoint const &poi)
+//{
+//
+//}
 
 
 /**
@@ -62,20 +85,7 @@ void CWpDatabase::addWaypoint(CWaypoint const &wp)
  */
 CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
 {
-	CWaypoint 	*pWp = 0;
-
-	if (!this->m_Wp.empty())
-	{
-		Wp_Map_Itr_t 	wpItr = this->m_Wp.find(name);
-
-		if (wpItr != this->m_Wp.end())
-		{
-			// element found
-			pWp = &wpItr->second;
-		}
-	}
-
-	return pWp;
+	return (this->getPointerToElement(name));
 }
 
 
@@ -85,7 +95,7 @@ CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
  */
 const Wp_Map_t CWpDatabase::getWpsFromDatabase() const
 {
-	return (this->m_Wp);
+	return (this->getElementsFromDatabase());
 }
 
 
@@ -95,7 +105,7 @@ const Wp_Map_t CWpDatabase::getWpsFromDatabase() const
  */
 void CWpDatabase::resetWpsDatabase()
 {
-	this->m_Wp.clear();
+	this->resetDatabase();
 }
 
 
@@ -105,8 +115,5 @@ void CWpDatabase::resetWpsDatabase()
  */
 void CWpDatabase::print()
 {
-	for (Wp_Map_Itr_t wpItr = this->m_Wp.begin(); wpItr != this->m_Wp.end(); ++wpItr)
-	{
-		cout << wpItr->second << endl;
-	}
+	this->CDatabase::print();
 }

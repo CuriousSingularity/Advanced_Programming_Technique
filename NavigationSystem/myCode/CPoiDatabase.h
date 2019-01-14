@@ -18,21 +18,13 @@
 
 //Own Include Files
 #include "CPOI.h"
+#include "CDatabase.h"
 
 
 typedef std::map<std::string, CPOI> 			Poi_Map_t;
 typedef std::map<std::string, CPOI>::iterator 	Poi_Map_Itr_t;
 
-class CPoiDatabase {
-private:
-
-	/**
-	 * An Associative container to store point of interests.
-	 * key 		- name
-	 * value	- POI
-	 */
-	Poi_Map_t 				m_Poi;
-
+class CPoiDatabase : public CDatabase<std::string, CPOI> {
 public:
 
     /**
@@ -41,11 +33,32 @@ public:
     CPoiDatabase();
 
     /**
+     * CPoiDatabase destructor
+     */
+    ~CPoiDatabase();
+
+    /**
 	 * Add a Point of interest to the database
 	 * param@ CPOI const &poi			-	point of interest   (IN)
 	 * returnvalue@ void
 	 */
     void addPoi(CPOI const &poi);
+
+    /*
+     * Add a Point of interest to the database
+     * param@ string &name			- 	unique name for the poi		(IN)
+     * param@ CPOI const &poi		-	point of interest   		(IN)
+     * returnvalue@ void
+     */
+    void addPoi(const std::string &name, CPOI const &poi);
+
+    /*
+	 * Add a Point of interest to the database
+	 * param@ int &number			- 	unique number for the poi	(IN)
+	 * param@ CPOI const &poi		-	point of interest   		(IN)
+	 * returnvalue@ void
+	 */
+	void addPoi(const int &number, CPOI const &poi);
 
     /**
 	 * Get pointer to a POI from the Database which matches the name

@@ -21,6 +21,13 @@
 //Namespaces
 using namespace std;
 
+#define CSV						0
+#define JSON					1
+
+//#define CONFIG_PERSISTENCE_STORAGE		CSV
+#define CONFIG_PERSISTENCE_STORAGE		JSON
+
+
 //Method Implementations
 /**
  * Constructor
@@ -39,6 +46,7 @@ CPoiDatabase& CNavigationSystem::getPoiDatabase()
 {
 	return this->m_PoiDatabase;
 }
+
 
 /**
  * Get the Waypoint Database
@@ -192,16 +200,23 @@ bool CNavigationSystem::writeToFile()
 {
 	bool 			ret = false;
 
+#if (defined(CONFIG_PERSISTENCE_STORAGE) && (CONFIG_PERSISTENCE_STORAGE == CSV))
+
 	CCSV 			csvDatabase;
 	csvDatabase.setMediaName("Database");
 
 	// write the current Databases' contents to files
 	ret = csvDatabase.writeData(this->getWpDatabase(), this->getPoiDatabase());
 
+#elif (defined(CONFIG_CONFIG_PERSISTENCE_STORAGE) && (CONFIG_CONFIG_PERSISTENCE_STORAGE == JSON))
+
 	CJsonPersistence	jsonFormat;
-	jsonFormat.setMediaName("Database.json");
+	jsonFormat.setMediaName("Database1.json");
 	ret = jsonFormat.writeData(this->getWpDatabase(), this->getPoiDatabase());
 
+#else
+
+#endif
 	return ret;
 }
 
@@ -214,17 +229,25 @@ bool CNavigationSystem::readFromFile()
 {
 	bool 			ret = false;
 
+#if (defined(CONFIG_PERSISTENCE_STORAGE) && (CONFIG_PERSISTENCE_STORAGE == CSV))
+
 	CCSV 			csvDatabase;
 	csvDatabase.setMediaName("Database");
 
 	// write the current Databases' contents to files
 	ret = csvDatabase.readData(this->getWpDatabase(), this->getPoiDatabase(), CCSV::REPLACE);
 
+#elif (defined(CONFIG_PERSISTENCE_STORAGE) && (CONFIG_PERSISTENCE_STORAGE == JSON))
+
 	CJsonPersistence		jsonFormat;
 	jsonFormat.setMediaName("Database.json");
 
 	// write the current Databases' contents to files
 	ret = jsonFormat.readData(this->getWpDatabase(), this->getPoiDatabase(), CJsonPersistence::REPLACE);
+
+#else
+
+#endif
 
 	return ret;
 }
@@ -263,6 +286,11 @@ void CNavigationSystem::run()
 	{
 		cout << "WARNING: Writing to the Database files was unsuccessful.\n";
 	}
+
+	cout << "Here1" << endl;
+	this->m_PoiDatabase.print();
+	this->m_WpDatabase.print();
+	cout << "Here1" << endl;
 
 	this->enterRoute();
 	this->printRoute();
