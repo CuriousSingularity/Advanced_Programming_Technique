@@ -18,6 +18,7 @@
 
 //Own Include Files
 #include "CWaypoint.h"
+#include "CDatabase.h"
 
 //typedefs
 typedef std::map<std::string, CWaypoint> 			Wp_Map_t;
@@ -25,16 +26,7 @@ typedef std::map<std::string, CWaypoint>::iterator 	Wp_Map_Itr_t;
 typedef std::map<std::string, CWaypoint>::reverse_iterator 	Wp_Map_RevItr_t;
 
 
-class CWpDatabase {
-private:
-
-	/**
-	 * An Associative container to store waypoints.
-	 * key 		- name
-	 * value	- waypoint
-	 */
-	Wp_Map_t 				m_Wp;
-
+class CWpDatabase : public CDatabase<std::string, CWaypoint> {
 public:
 
 	/**
@@ -43,11 +35,32 @@ public:
     CWpDatabase();
 
     /**
+     * CWpDatabase destructor
+     */
+    ~CWpDatabase();
+
+    /**
 	 * Add a Waypoint to the database
 	 * param@ CWaypoint const &wp	-	Waypoint   		(IN)
 	 * returnvalue@ void
 	 */
     void addWaypoint(CWaypoint const &wp);
+
+    /**
+	 * Add a Waypoint to the database
+	 * param@ string &name			- 	unique name for the wp		(IN)
+	 * param@ CWaypoint const &wp	-	Waypoint   					(IN)
+	 * returnvalue@ void
+	 */
+	void addWaypoint(const std::string &name, CWaypoint const &wp);
+
+	/**
+	 * Add a Waypoint to the database
+	 * param@ int &number			- 	unique number for the wp	(IN)
+	 * param@ CWaypoint const &wp	-	Waypoint   					(IN)
+	 * returnvalue@ void
+	 */
+	void addWaypoint(const int &number, CWaypoint const &poi);
 
     /**
 	 * Get pointer to a Waypoint from the Database which matches the name

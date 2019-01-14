@@ -58,7 +58,7 @@ public:
 	 * Return the current waypoint co-ordinate name
 	 * retuvalue@ string name	-	name of a Waypoint
 	 */
-	std::string getName();
+	std::string getName() const;
 
 	/**
 	 * Return the current waypoint latitude

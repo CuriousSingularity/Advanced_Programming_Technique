@@ -70,7 +70,7 @@ CWaypoint::~CWaypoint()
  * Return the current waypoint co-ordinate name
  * retuvalue@ string name	-	name of a Waypoint
  */
-string CWaypoint::getName()
+string CWaypoint::getName() const
 {
 	return (this->m_name);
 }
