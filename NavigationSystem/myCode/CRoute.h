@@ -15,6 +15,7 @@
 //System Include Files
 #include <string>
 #include <list>
+#include <vector>
 
 //Own Include Files
 #include "CPoiDatabase.h"
@@ -94,6 +95,12 @@ public:
      * @returnval void
      */
     void addPoi(Database_key_t namePoi, Database_key_t afterWp);
+
+    /**
+     * Get the current route information
+     * @returnval vector - 	Current route having Waypoints and POI
+     */
+    const std::vector<const CWaypoint*> getRoute();
 
     /**
 	 * Calculates the distance between waypoint and POI
