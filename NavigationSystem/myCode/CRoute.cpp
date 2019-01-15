@@ -202,6 +202,23 @@ void CRoute::addPoi(Database_key_t namePoi, Database_key_t afterWp)
 
 
 /**
+ * Get the current route information
+ * @returnval vector - 	Current route having Waypoints and POI
+ */
+const vector<const CWaypoint*> CRoute::getRoute()
+{
+	vector<const CWaypoint*> currentRoute;
+
+	for (Route_Collection_FwdItr itr = this->m_Course.begin(); itr != this->m_Course.end(); ++itr)
+	{
+		currentRoute.push_back(*itr);
+	}
+
+	return currentRoute;
+}
+
+
+/**
  * Calculates the distance between waypoint and POI
  * @param CWaypoint const &wp	- waypoint			(IN)
  * @param CPOI& poi				- POI				(IN)

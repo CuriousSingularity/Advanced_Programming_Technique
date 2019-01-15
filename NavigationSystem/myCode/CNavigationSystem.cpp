@@ -208,7 +208,7 @@ bool CNavigationSystem::writeToFile()
 	// write the current Databases' contents to files
 	ret = csvDatabase.writeData(this->getWpDatabase(), this->getPoiDatabase());
 
-#elif (defined(CONFIG_CONFIG_PERSISTENCE_STORAGE) && (CONFIG_CONFIG_PERSISTENCE_STORAGE == JSON))
+#elif (defined(CONFIG_PERSISTENCE_STORAGE) && (CONFIG_PERSISTENCE_STORAGE == JSON))
 
 	CJsonPersistence	jsonFormat;
 	jsonFormat.setMediaName("Database1.json");
@@ -286,11 +286,6 @@ void CNavigationSystem::run()
 	{
 		cout << "WARNING: Writing to the Database files was unsuccessful.\n";
 	}
-
-	cout << "Here1" << endl;
-	this->m_PoiDatabase.print();
-	this->m_WpDatabase.print();
-	cout << "Here1" << endl;
 
 	this->enterRoute();
 	this->printRoute();
