@@ -21,13 +21,14 @@
 #include "CDatabase.h"
 
 //typedefs
-typedef std::map<std::string, CWaypoint> 			Wp_Map_t;
-typedef std::map<std::string, CWaypoint>::iterator 	Wp_Map_Itr_t;
-typedef std::map<std::string, CWaypoint>::reverse_iterator 	Wp_Map_RevItr_t;
+typedef std::string											Wp_Database_key_t;
 
-
-class CWpDatabase : public CDatabase<std::string, CWaypoint> {
+class CWpDatabase : public CDatabase<Wp_Database_key_t, CWaypoint> {
 public:
+
+	typedef std::map<Wp_Database_key_t, CWaypoint> 						Wp_Map_t;
+	typedef std::map<Wp_Database_key_t, CWaypoint>::iterator 			Wp_Map_Itr_t;
+	typedef std::map<Wp_Database_key_t, CWaypoint>::reverse_iterator 	Wp_Map_RevItr_t;
 
 	/**
 	 * CWpDatabase constructor
@@ -41,33 +42,18 @@ public:
 
     /**
 	 * Add a Waypoint to the database
-	 * param@ CWaypoint const &wp	-	Waypoint   		(IN)
+	 * param@ Wp_Database_key_t &name	- 	unique name for the wp		(IN)
+	 * param@ CWaypoint const &wp		-	Waypoint   					(IN)
 	 * returnvalue@ void
 	 */
-    void addWaypoint(CWaypoint const &wp);
-
-    /**
-	 * Add a Waypoint to the database
-	 * param@ string &name			- 	unique name for the wp		(IN)
-	 * param@ CWaypoint const &wp	-	Waypoint   					(IN)
-	 * returnvalue@ void
-	 */
-	void addWaypoint(const std::string &name, CWaypoint const &wp);
-
-	/**
-	 * Add a Waypoint to the database
-	 * param@ int &number			- 	unique number for the wp	(IN)
-	 * param@ CWaypoint const &wp	-	Waypoint   					(IN)
-	 * returnvalue@ void
-	 */
-	void addWaypoint(const int &number, CWaypoint const &poi);
+	void addWaypoint(Wp_Database_key_t const &name, CWaypoint const &wp);
 
     /**
 	 * Get pointer to a Waypoint from the Database which matches the name
-	 * param@ string name		-	name of a Waypoint	(IN)
-	 * returnvalue@ CWaypoint*	-	Pointer to a Waypoint in the database
+	 * param@ Wp_Database_key_t name	-	name of a Waypoint	(IN)
+	 * returnvalue@ CWaypoint*			-	Pointer to a Waypoint in the database
 	 */
-    CWaypoint* getPointerToWaypoint(std::string name);
+    CWaypoint* getPointerToWaypoint(Wp_Database_key_t name);
 
     /**
      * Get Waypoints from the Database

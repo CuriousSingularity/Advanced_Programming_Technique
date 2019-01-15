@@ -85,8 +85,8 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 	// is the open successful?
 	if (!fileStream.fail())
 	{
-		Wp_Map_t		Waypoints;
-		Wp_Map_Itr_t 	itr;
+		CWpDatabase::Wp_Map_t		Waypoints;
+		CWpDatabase::Wp_Map_Itr_t 	itr;
 		string			name;
 		double 			latitude, longitude;
 
@@ -134,8 +134,8 @@ bool CCSV::writeData (const CWpDatabase& waypointDb, const CPoiDatabase& poiDb)
 	// is the open successful?
 	if (!fileStream.fail())
 	{
-		Poi_Map_t		Pois;
-		Poi_Map_Itr_t 	itr;
+		CPoiDatabase::Poi_Map_t			Pois;
+		CPoiDatabase::Poi_Map_Itr_t 	itr;
 		CPOI::t_poi		type;
 		string			name, description, typeName;
 		double 			latitude, longitude;
@@ -261,7 +261,7 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 
 				if (!wp.getName().empty())
 				{
-					waypointDb.addWaypoint(wp);
+					waypointDb.addWaypoint(wp.getName(), wp);
 				}
 				else
 				{
@@ -345,7 +345,7 @@ bool CCSV::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, MergeMode mod
 
 				if (!poi.getName().empty())
 				{
-					poiDb.addPoi(poi);
+					poiDb.addPoi(poi.getName(), poi);
 				}
 				else
 				{

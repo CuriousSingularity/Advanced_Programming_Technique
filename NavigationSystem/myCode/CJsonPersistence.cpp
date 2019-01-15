@@ -83,8 +83,8 @@ bool CJsonPersistence::writeData (const CWpDatabase& waypointDb, const CPoiDatab
 
 	if (!fileStream.fail())
 	{
-		Wp_Map_t		Waypoints;
-		Poi_Map_t		Pois;
+		CWpDatabase::Wp_Map_t		Waypoints;
+		CPoiDatabase::Poi_Map_t		Pois;
 		CPOI::t_poi		type;
 		string			name, description, typeName;
 		double 			latitude, longitude;
@@ -95,7 +95,7 @@ bool CJsonPersistence::writeData (const CWpDatabase& waypointDb, const CPoiDatab
 		fileStream << "{\n";
 		fileStream << "\"waypoints\": [\n";
 
-		for (Wp_Map_Itr_t itr = Waypoints.begin(); itr != Waypoints.end(); ++(itr))
+		for (CWpDatabase::Wp_Map_Itr_t itr = Waypoints.begin(); itr != Waypoints.end(); ++(itr))
 		{
 			// assuming all the elements in Database is valid
 			itr->second.getAllDataByReference(name, latitude, longitude);
@@ -131,7 +131,7 @@ bool CJsonPersistence::writeData (const CWpDatabase& waypointDb, const CPoiDatab
 		// create waypoint object in the Json format
 		fileStream << "\"pois\": [\n";
 
-		for (Poi_Map_Itr_t itr = Pois.begin(); itr != Pois.end(); ++(itr))
+		for (CPoiDatabase::Poi_Map_Itr_t itr = Pois.begin(); itr != Pois.end(); ++(itr))
 		{
 			// assuming all the elements in Database is valid
 			itr->second.getAllDataByReference(name, latitude, longitude, type, description);
@@ -406,7 +406,7 @@ bool CJsonPersistence::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, M
 
 										if (!wp.getName().empty())
 										{
-											waypointDb.addWaypoint(wp);
+											waypointDb.addWaypoint(wp.getName(), wp);
 										}
 										else
 										{
@@ -419,7 +419,7 @@ bool CJsonPersistence::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, M
 
 										if (!poi.getName().empty())
 										{
-											poiDb.addPoi(poi);
+											poiDb.addPoi(poi.getName(), poi);
 										}
 										else
 										{

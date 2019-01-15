@@ -20,6 +20,9 @@
 #include "CPoiDatabase.h"
 #include "CWpDatabase.h"
 
+typedef POI_Database_key_t							Database_key_t;
+//typedef Wp_Database_key_t							Database_key_t;
+
 typedef std::list<CWaypoint *> 						Route_Collection_t;
 typedef std::list<CWaypoint *>::iterator			Route_Collection_FwdItr;
 typedef std::list<CWaypoint *>::reverse_iterator	Route_Collection_RevItr;
@@ -79,18 +82,18 @@ public:
 
     /**
 	 * Search the waypoint in the waypoint-database by the name; Add the waypoint to current route
-	 * @param string name		- name of a waypoint		(IN)
+	 * @param Database_key_t key		- name of a waypoint		(IN)
 	 * @returnval void
 	 */
-    void addWaypoint(std::string name);
+    void addWaypoint(Database_key_t key);
 
     /**
      * Search the POI in the POI-database by the name; Add the POI to current route after "afterWp"
-     * @param string namePoi			- name of a POI		(IN)
-     * @param string afterWp			- name of a waypoint(IN)
+     * @param Database_key_t namePoi			- name of a POI		(IN)
+     * @param Database_key_t afterWp			- name of a waypoint(IN)
      * @returnval void
      */
-    void addPoi(std::string namePoi, std::string afterWp);
+    void addPoi(Database_key_t namePoi, Database_key_t afterWp);
 
     /**
 	 * Calculates the distance between waypoint and POI
@@ -109,7 +112,7 @@ public:
 	 * The function is an extension of addPoi which searches the Databases and add the
 	 * Waypoint or the POI which matches the name.
 	 */
-	void operator += (std::string const &name);
+	void operator += (Database_key_t const &name);
 
     /**
      * A copy assignment operator

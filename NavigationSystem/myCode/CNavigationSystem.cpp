@@ -185,10 +185,10 @@ void CNavigationSystem::printDistanceCurPosNextPoi()
 void CNavigationSystem::createDatabases()
 {
 	// add a waypoint
-	this->m_WpDatabase.addWaypoint(CWaypoint("Berliner Alle", 49.866851, 8.634864));
+	this->m_WpDatabase.addWaypoint("Berliner Alle", CWaypoint("Berliner Alle", 49.866851, 8.634864));
 
 	// add a POI
-	this->m_PoiDatabase.addPoi(CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 49.86727, 8.638459));
+	this->m_PoiDatabase.addPoi("HDA BuildingC10", CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 49.86727, 8.638459));
 }
 
 
