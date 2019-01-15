@@ -39,51 +39,22 @@ CWpDatabase::~CWpDatabase()
 
 /**
  * Add a Waypoint to the database
- * param@ CWaypoint const &wp	-	Waypoint   		(IN)
+ * param@ Wp_Database_key_t const &key	- 	key for the wp	(IN)
+ * param@ CWaypoint const &wp			-	Waypoint   		(IN)
  * returnvalue@ void
  */
-void CWpDatabase::addWaypoint(CWaypoint const &wp)
+void CWpDatabase::addWaypoint(Wp_Database_key_t const &key, CWaypoint const &wp)
 {
-	this->addWaypoint(wp.getName(), wp);
+	this->addElement(key, wp);
 }
-
-
-/**
- * Add a Waypoint to the database
- * param@ string &name			- 	unique name for the wp		(IN)
- * param@ CWaypoint const &wp	-	Waypoint   					(IN)
- * returnvalue@ void
- */
-void CWpDatabase::addWaypoint(const std::string &name, CWaypoint const &wp)
-{
-	if (!wp.getName().empty())
-	{
-		this->addElement(name, wp);
-	}
-	else
-	{
-		cout << "WARNING: Trying to add invalid Waypoint to the Database.\n" << wp << endl;
-	}
-}
-
-///**
-// * Add a Waypoint to the database
-// * param@ int &number			- 	unique number for the wp	(IN)
-// * param@ CWaypoint const &wp	-	Waypoint   					(IN)
-// * returnvalue@ void
-// */
-//void CWpDatabase::addWaypoint(const int &number, CWaypoint const &poi)
-//{
-//
-//}
 
 
 /**
  * Get pointer to a Waypoint from the Database which matches the name
- * param@ string name		-	name of a Waypoint	(IN)
- * returnvalue@ CPOI*		-	Pointer to a Waypoint in the database
+ * param@ Wp_Database_key_t name	-	name of a Waypoint	(IN)
+ * returnvalue@ CPOI*				-	Pointer to a Waypoint in the database
  */
-CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
+CWaypoint* CWpDatabase::getPointerToWaypoint(Wp_Database_key_t name)
 {
 	return (this->getPointerToElement(name));
 }
@@ -93,7 +64,7 @@ CWaypoint* CWpDatabase::getPointerToWaypoint(string name)
  * Get Waypoints from the Database
  * returnvalue@ Wp_Map_t			-	Waypoints in the Database	(OUT)
  */
-const Wp_Map_t CWpDatabase::getWpsFromDatabase() const
+const CWpDatabase::Wp_Map_t CWpDatabase::getWpsFromDatabase() const
 {
 	return (this->getElementsFromDatabase());
 }

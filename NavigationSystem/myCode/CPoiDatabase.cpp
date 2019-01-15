@@ -39,54 +39,24 @@ CPoiDatabase::~CPoiDatabase()
 
 /*
  * Add a Point of interest to the database
- * param@ CPOI const &poi		-	point of interest   		(IN)
+ * param@ POI_Database_key_t &name	- 	unique name for the poi		(IN)
+ * param@ CPOI const &poi			-	point of interest   		(IN)
  * returnvalue@ void
  */
-void CPoiDatabase::addPoi(CPOI const &poi)
+void CPoiDatabase::addPoi(POI_Database_key_t const &key, CPOI const &poi)
 {
-	this->addPoi(poi.getName(), poi);
+	this->addElement(key, poi);
 }
-
-
-/*
- * Add a Point of interest to the database
- * param@ string &name			- 	unique name for the poi		(IN)
- * param@ CPOI const &poi		-	point of interest   		(IN)
- * returnvalue@ void
- */
-void CPoiDatabase::addPoi(const string &name, CPOI const &poi)
-{
-	if (!poi.getName().empty())
-	{
-		this->addElement(name, poi);
-	}
-	else
-	{
-		cout << "WARNING: Trying to add invalid POI to the Database.\n" << poi << endl;
-	}
-}
-
-
-/*
- * Add a Point of interest to the database
- * param@ int &number			- 	unique number for the poi	(IN)
- * param@ CPOI const &poi		-	point of interest   		(IN)
- * returnvalue@ void
- */
-//void CPoiDatabase::addPoi(const int &number, CPOI const &poi)
-//{
-//	this->addElement(number, poi);
-//}
 
 
 /**
  * Get pointer to a POI from the Database which matches the name
- * param@ string name		-	name of a POI					(IN)
+ * param@ string key		-	name of a POI					(IN)
  * returnvalue@ CPOI*		-	Pointer to a POI in the database
  */
-CPOI* CPoiDatabase::getPointerToPoi(string name)
+CPOI* CPoiDatabase::getPointerToPoi(Database_Container_key_t key)
 {
-	return (this->getPointerToElement(name));
+	return (this->getPointerToElement(key));
 }
 
 
@@ -94,7 +64,7 @@ CPOI* CPoiDatabase::getPointerToPoi(string name)
  * Get POIs from the Database
  * returnvalue@ Poi_Map_t			-	POIs in the Database	(OUT)
  */
-const Poi_Map_t CPoiDatabase::getPoisFromDatabase() const
+const CPoiDatabase::Poi_Map_t CPoiDatabase::getPoisFromDatabase() const
 {
 	return (this->getElementsFromDatabase());
 }

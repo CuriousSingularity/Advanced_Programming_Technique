@@ -20,12 +20,13 @@
 #include "CPOI.h"
 #include "CDatabase.h"
 
+typedef std::string								POI_Database_key_t;
 
-typedef std::map<std::string, CPOI> 			Poi_Map_t;
-typedef std::map<std::string, CPOI>::iterator 	Poi_Map_Itr_t;
-
-class CPoiDatabase : public CDatabase<std::string, CPOI> {
+class CPoiDatabase : public CDatabase<POI_Database_key_t, CPOI> {
 public:
+
+	typedef std::map<POI_Database_key_t, CPOI> 					Poi_Map_t;
+	typedef std::map<POI_Database_key_t, CPOI>::iterator 		Poi_Map_Itr_t;
 
     /**
 	 * CPoiDatabase constructor
@@ -37,35 +38,20 @@ public:
      */
     ~CPoiDatabase();
 
-    /**
-	 * Add a Point of interest to the database
-	 * param@ CPOI const &poi			-	point of interest   (IN)
-	 * returnvalue@ void
-	 */
-    void addPoi(CPOI const &poi);
-
     /*
      * Add a Point of interest to the database
-     * param@ string &name			- 	unique name for the poi		(IN)
-     * param@ CPOI const &poi		-	point of interest   		(IN)
+     * param@ POI_Database_key_t const &key	- 	unique name for the poi		(IN)
+     * param@ CPOI const &poi						-	point of interest   		(IN)
      * returnvalue@ void
      */
-    void addPoi(const std::string &name, CPOI const &poi);
-
-    /*
-	 * Add a Point of interest to the database
-	 * param@ int &number			- 	unique number for the poi	(IN)
-	 * param@ CPOI const &poi		-	point of interest   		(IN)
-	 * returnvalue@ void
-	 */
-	void addPoi(const int &number, CPOI const &poi);
+    void addPoi(POI_Database_key_t const &key, CPOI const &poi);
 
     /**
 	 * Get pointer to a POI from the Database which matches the name
-	 * param@ string name		-	name of a POI					(IN)
-	 * returnvalue@ CPOI*		-	Pointer to a POI in the database
+	 * param@ POI_Database_key_t key		-	key of a POI					(IN)
+	 * returnvalue@ CPOI*						-	Pointer to a POI in the database(IN)
 	 */
-    CPOI* getPointerToPoi(std::string name);
+    CPOI* getPointerToPoi(POI_Database_key_t key);
 
     /**
      * Get POIs from the Database

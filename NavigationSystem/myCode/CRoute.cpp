@@ -104,17 +104,17 @@ void CRoute::connectToWpDatabase(CWpDatabase *pWpDB)
 
 /**
  * Search the waypoint in the waypoint-database by the name; Add the waypoint to current route
- * @param string name		- name of a waypoint		(IN)
+ * @param Database_key_t key		- name of a waypoint		(IN)
  * @returnval void
  */
-void CRoute::addWaypoint(string name)
+void CRoute::addWaypoint(Database_key_t key)
 {
 	CWaypoint *pWp;
 
 	// check if the database is connected
 	if (this->m_pWpDatabase)
 	{
-		pWp = this->m_pWpDatabase->getPointerToWaypoint(name);
+		pWp = this->m_pWpDatabase->getPointerToWaypoint(key);
 
 		if (pWp)
 		{
@@ -123,7 +123,7 @@ void CRoute::addWaypoint(string name)
 		}
 		else
 		{
-			cout << "WARNING: The Requested Waypoint -\"" << name << "\" is not available in the Database.\n";
+			cout << "WARNING: The Requested Waypoint -\"" << key << "\" is not available in the Database.\n";
 		}
 	}
 	else
@@ -145,7 +145,7 @@ void CRoute::addWaypoint(string name)
  * @param string afterWp			- name of a waypoint(IN)
  * @returnval void
  */
-void CRoute::addPoi(string namePoi, string afterWp)
+void CRoute::addPoi(Database_key_t namePoi, Database_key_t afterWp)
 {
 	bool		isAfterWp 	= false;
 	CPOI		*pPoi 		= 0;
@@ -289,7 +289,7 @@ void CRoute::print()
  * The function is an extension of addPoi which searches the Databases and add the
  * Waypoint and/or the POI which matches the name.
  */
-void CRoute::operator += (string const &name)
+void CRoute::operator += (Database_key_t const &name)
 {
 	CPOI		*pPoi = 0;
 	CWaypoint	*pWp  = 0;

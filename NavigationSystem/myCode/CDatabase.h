@@ -18,6 +18,7 @@ public:
 
 	typedef std::map<T1, T2> 						Database_Container_t;
 	typedef typename std::map<T1, T2>::iterator 	Database_Container_Itr_t;
+	typedef T1										Database_Container_key_t;
 
     /**
 	 * CDatabase constructor
