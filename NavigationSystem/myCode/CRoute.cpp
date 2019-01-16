@@ -13,6 +13,7 @@
 //System Include Files
 #include <iostream>
 #include <limits>
+#include <typeinfo>
 
 //Own Include Files
 #include "CRoute.h"
@@ -151,7 +152,9 @@ void CRoute::addPoi(Database_key_t namePoi, Database_key_t afterWp)
 	CPOI		*pPoi 		= 0;
 	CWaypoint 	*pWp 		= 0;
 
-	if (!namePoi.empty() || !afterWp.empty())
+	if ((typeid(namePoi) == typeid(string)) &&
+		(typeid(afterWp) == typeid(string)) &&
+		(!namePoi.empty() || !afterWp.empty()))
 	{
 		// check if the database is connected
 		if (this->m_pPoiDatabase)
