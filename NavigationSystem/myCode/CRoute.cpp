@@ -13,7 +13,6 @@
 //System Include Files
 #include <iostream>
 #include <limits>
-#include <typeinfo>
 
 //Own Include Files
 #include "CRoute.h"
@@ -142,64 +141,55 @@ void CRoute::addWaypoint(Database_key_t key)
  * 		namePoi is not empty 	and afterWp is empty		-> Add POI to Route at the end
  * 		namePoi is not empty 	and afterWp is not empty	-> Add POI afterWp where afterWP is already added
  *
- * @param string namePoi			- name of a POI		(IN)
+ * @param Database_key_t namePoi	- name of a POI		(IN)
  * @param string afterWp			- name of a waypoint(IN)
  * @returnval void
  */
-void CRoute::addPoi(Database_key_t namePoi, Database_key_t afterWp)
+void CRoute::addPoi(Database_key_t namePoi, string afterWp)
 {
 	bool		isAfterWp 	= false;
 	CPOI		*pPoi 		= 0;
 	CWaypoint 	*pWp 		= 0;
 
-	if ((typeid(namePoi) == typeid(string)) &&
-		(typeid(afterWp) == typeid(string)) &&
-		(!namePoi.empty() || !afterWp.empty()))
+	// check if the database is connected
+	if (this->m_pPoiDatabase)
 	{
-		// check if the database is connected
-		if (this->m_pPoiDatabase)
+		pPoi = this->m_pPoiDatabase->getPointerToPoi(namePoi);
+
+		if (pPoi)
 		{
-			pPoi = this->m_pPoiDatabase->getPointerToPoi(namePoi);
-
-			if (pPoi)
+			for (Route_Collection_RevItr revItr = this->m_Course.rbegin(); revItr != this->m_Course.rend(); ++revItr)
 			{
-				for (Route_Collection_RevItr revItr = this->m_Course.rbegin(); revItr != this->m_Course.rend(); ++revItr)
-				{
-					pWp = dynamic_cast<CWaypoint *>(*revItr);
+				pWp = dynamic_cast<CWaypoint *>(*revItr);
 
-					// is this a Waypoint ?
-					if (pWp)
+				// is this a Waypoint ?
+				if (pWp)
+				{
+					// are the names matching ?
+					if (!afterWp.compare(pWp->getName()))
 					{
-						// are the names matching ?
-						if (!afterWp.compare(pWp->getName()))
-						{
-							this->m_Course.insert(revItr.base(), pPoi);
-							isAfterWp = true;
-							break;
-						}
+						this->m_Course.insert(revItr.base(), pPoi);
+						isAfterWp = true;
+						break;
 					}
 				}
-
-				if (!isAfterWp)
-				{
-					this->m_Course.push_back(static_cast<CPOI *>(pPoi));
-
-					cout << "WARNING: The Requested Waypoint - \"" << afterWp << "\" is not available in the Route.\n";
-				}
 			}
-			else
+
+			if (!isAfterWp)
 			{
-				cout << "WARNING: The Requested POI - \"" << namePoi << "\" is not available in the Database.\n";
+				this->m_Course.push_back(static_cast<CPOI *>(pPoi));
+
+				cout << "WARNING: The Requested Waypoint - \"" << afterWp << "\" is not available in the Route.\n";
 			}
 		}
 		else
 		{
-			cout << "WARNING: The POI Database is not available.\n";
+			cout << "WARNING: The Requested POI - \"" << namePoi << "\" is not available in the Database.\n";
 		}
 	}
 	else
 	{
-		cout << "WARNING: The Waypoint and POI are invalid.\n";
+		cout << "WARNING: The POI Database is not available.\n";
 	}
 }
 
@@ -315,34 +305,27 @@ void CRoute::operator += (Database_key_t const &name)
 	CWaypoint	*pWp  = 0;
 	string 		namePoi, nameWp;
 
-	if (!name.empty())
+	if (this->m_pWpDatabase)
 	{
-		if (this->m_pWpDatabase)
+		pWp	= this->m_pWpDatabase->getPointerToWaypoint(name);
+
+		if (pWp)
 		{
-			pWp	= this->m_pWpDatabase->getPointerToWaypoint(name);
-
-			if (pWp)
-			{
-				this->addWaypoint(name);
-				nameWp = name;
-			}
+			this->addWaypoint(name);
+			nameWp = name;
 		}
-
-		if (this->m_pPoiDatabase)
-		{
-			pPoi = this->m_pPoiDatabase->getPointerToPoi(name);
-
-			if (pPoi)
-			{
-				namePoi = name;
-			}
-		}
-		this->addPoi(namePoi, nameWp);
 	}
-	else
+
+	if (this->m_pPoiDatabase)
 	{
-		cout << "WARNING: Invalid POI / Waypoint addition to the route request.\n";
+		pPoi = this->m_pPoiDatabase->getPointerToPoi(name);
+
+		if (pPoi)
+		{
+			namePoi = name;
+		}
 	}
+	this->addPoi(namePoi, nameWp);
 }
 
 

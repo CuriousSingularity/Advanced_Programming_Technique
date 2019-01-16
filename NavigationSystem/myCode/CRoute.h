@@ -91,10 +91,10 @@ public:
     /**
      * Search the POI in the POI-database by the name; Add the POI to current route after "afterWp"
      * @param Database_key_t namePoi			- name of a POI		(IN)
-     * @param Database_key_t afterWp			- name of a waypoint(IN)
+     * @param string afterWp			- name of a waypoint(IN)
      * @returnval void
      */
-    void addPoi(Database_key_t namePoi, Database_key_t afterWp);
+    void addPoi(Database_key_t namePoi, std::string afterWp);
 
     /**
      * Get the current route information
