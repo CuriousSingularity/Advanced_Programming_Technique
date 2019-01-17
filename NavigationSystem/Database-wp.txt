@@ -1,0 +1,8 @@
+Berliner Alle; 49.866851; 8.634864
+Bessunger; 49.846994; 8.646193
+FriedrichStrasse; 49.838545; 8.645571
+Katharinen Str.; 49.824827; 8.644529
+Landskronstrasse; 49.853308; 8.646835
+Neckarstrasse; 49.8717; 8.644417
+Rheinstrasse; 49.870267; 8.633266
+Wartehalle; 49.820845; 8.644222
