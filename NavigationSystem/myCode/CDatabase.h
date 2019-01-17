@@ -12,6 +12,7 @@
 #ifndef CDATABASE_H_
 #define CDATABASE_H_
 
+// a template class for the Database
 template<class T1, class T2>
 class CDatabase {
 public:
@@ -56,6 +57,19 @@ public:
 	 * returnvalue@ void
 	 */
 	void resetDatabase();
+
+	/**
+	 * Setter method Database
+	 * param@ Database_Container_t const elemsEontainer
+	 * returnvalue@ void
+	 */
+	void setDatabase(Database_Container_t const elemsEontainer);
+
+	/**
+	 * Getter method Database
+	 * returnvalue@ Database_Container_t const
+	 */
+	Database_Container_t const getDatabase();
 
 	/**
 	 * Print all the elements in the database
@@ -162,6 +176,25 @@ void CDatabase<T1, T2>::resetDatabase()
 	this->m_container.clear();
 }
 
+/**
+ * Setter method Database
+ * returnvalue@ void
+ */
+template<class T1, class T2>
+void CDatabase<T1, T2>::setDatabase(Database_Container_t const elemsEontainer)
+{
+	this->m_container = elemsEontainer;
+}
+
+/**
+ * Getter method Database
+ * returnvalue@ Database_Container_t const
+ */
+template<class T1, class T2>
+const typename CDatabase<T1, T2>::Database_Container_t CDatabase<T1, T2>::getDatabase()
+{
+	return this->m_container;
+}
 
 /**
  * Print all the elements in the database
