@@ -1,0 +1,174 @@
+{
+"waypoints": [
+	{
+	"name": "Amsterdam",
+	"latitude": 52.3731,
+	"longitude": 4.8922
+	},
+	{
+	"name": "Berlin",
+	"latitude": 52.5166,
+	"longitude": 13.4
+	},
+	{
+	"name": "Darmstadt",
+	"latitude": 49.85,
+	"longitude": 8.6527
+	}
+],
+"pois": [
+	{
+	"name": "Berlin",
+	"latitude": 52.51,
+	"longitude": 13.4,
+	"type": "Restaurant",
+	"description": "Berlin City Center"
+	},
+	{
+	"name": "Mensa HDA",
+	"latitude": 10,
+	"longitude": 20,
+	"type": "Restaurant",
+	"description": "The best Mensa in the world"
+	},
+	{
+	"name": "Sitte",
+	"latitude": 11,
+	"longitude": 22,
+	"type": "Restaurant",
+	"description": "More expensive but also good"
+	}
+]
+}
+
+this to test:
+1. empty array
+
+		BEGIN_OBJECT,		0
+		END_OBJECT,			1
+		BEGIN_ARRAY,		2
+		END_ARRAY,			3
+		NAME_SEPARATOR,		4
+		VALUE_SEPARATOR,	5
+		STRING,				6
+		NUMBER,				7
+		BOOL,				8
+		JSON_NULL			9
+		
+0
+6
+4
+2
+0
+6
+4
+6
+5
+6
+4
+7
+5
+6
+4
+7
+1
+5
+0
+6
+4
+6
+5
+6
+4
+7
+5
+6
+4
+7
+1
+5
+0
+6
+4
+6
+5
+6
+4
+7
+5
+6
+4
+7
+1
+3
+5
+6
+4
+2
+0
+6
+4
+6
+5
+6
+4
+7
+5
+6
+4
+7
+5
+6
+4
+6
+5
+6
+4
+6
+1
+5
+0
+6
+4
+6
+5
+6
+4
+7
+5
+6
+4
+7
+5
+6
+4
+6
+5
+6
+4
+6
+1
+5
+0
+6
+4
+6
+5
+6
+4
+7
+5
+6
+4
+7
+5
+6
+4
+6
+5
+6
+4
+6
+1
+3
+1
