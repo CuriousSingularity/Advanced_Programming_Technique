@@ -11,6 +11,12 @@
 
 #include "../myCode/CRoute.h"
 
+/**
+ * This class implements several test cases related to the CRoute's operator overloading methods.
+ * Each test case is implemented
+ * as a method testXXX. The static method suite() returns a TestSuite
+ * in which all tests are registered.
+ */
 class COperatorOverloadingTest: public CppUnit::TestFixture {
 public:
 
@@ -21,22 +27,13 @@ public:
 
 			CPPUNIT_ASSERT(0 == porigin->getRoute().size());
 
-			// add a POI to the database
 			pWpDatabase->addWaypoint("Berliner Alle", CWaypoint("Berliner Alle", 49.866851, 8.634864));
-
-			// add a POI to the database
 			pPOIDatabase->addPoi("HDA BuildingC10", CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 49.86727, 8.638459));
 
-			// do not connect the database
 			porigin->connectToWpDatabase(pWpDatabase);
-
-			// do not connect the database
 			porigin->connectToPoiDatabase(pPOIDatabase);
 
-			// add a waypoint to the route
 			*porigin += "Berliner Alle";
-
-			// add a POI to the route
 			*porigin += "HDA BuildingC10";
 
 			CPPUNIT_ASSERT(2 == porigin->getRoute().size());
@@ -53,22 +50,13 @@ public:
 
 			CPPUNIT_ASSERT(0 == porigin->getRoute().size());
 
-			// add a POI to the database
 			pWpDatabase->addWaypoint("Berliner Alle", CWaypoint("Berliner Alle", 49.866851, 8.634864));
-
-			// add a POI to the database
 			pPOIDatabase->addPoi("HDA BuildingC10", CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 49.86727, 8.638459));
 
-			// do not connect the database
 			porigin->connectToWpDatabase(0);
-
-			// do not connect the database
 			porigin->connectToPoiDatabase(0);
 
-			// add a waypoint to the route
 			*porigin += "Berliner Alle";
-
-			// add a POI to the route
 			*porigin += "HDA BuildingC10";
 
 			CPPUNIT_ASSERT(0 == porigin->getRoute().size());
@@ -86,22 +74,13 @@ public:
 
 			CPPUNIT_ASSERT(0 == porigin->getRoute().size());
 
-			// add a POI to the database
 			pWpDatabase->addWaypoint("Berliner Alle", CWaypoint("Berliner Alle", 49.866851, 8.634864));
-
-			// add a POI to the database
 			pPOIDatabase->addPoi("HDA BuildingC10", CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 49.86727, 8.638459));
 
-			// do not connect the database
 			porigin->connectToWpDatabase(pWpDatabase);
-
-			// do not connect the database
 			porigin->connectToPoiDatabase(pPOIDatabase);
 
-			// add a POI to the route
 			*porigin += "HDA BuildingC10";
-
-			// add a waypoint to the route
 			porigin->addWaypoint("Berliner Alle");
 
 			CPPUNIT_ASSERT(pcurrentRoute->getRoute().size() != porigin->getRoute().size());
@@ -123,30 +102,17 @@ public:
 
 			CPPUNIT_ASSERT(0 == porigin->getRoute().size());
 
-			// add a POI to the database
 			pWpDatabase->addWaypoint("Berliner Alle", CWaypoint("Berliner Alle", 49.866851, 8.634864));
-
-			// add a POI to the database
 			pPOIDatabase->addPoi("HDA BuildingC10", CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 49.86727, 8.638459));
 
-			// do not connect the database
 			porigin->connectToWpDatabase(pWpDatabase);
-
-			// do not connect the database
 			porigin->connectToPoiDatabase(pPOIDatabase);
 
-			// do not connect the database
 			pcurrentRoute->connectToWpDatabase(pWpDatabase);
-
-			// do not connect the database
 			pcurrentRoute->connectToPoiDatabase(pPOIDatabase);
 
-			// add a POI to the route
 			*porigin += "HDA BuildingC10";
-
-			// add a waypoint to the route
 			pcurrentRoute->addWaypoint("Berliner Alle");
-
 			*pcurrentRoute = *pcurrentRoute + *porigin;
 
 			CPPUNIT_ASSERT(2 == pcurrentRoute->getRoute().size());
@@ -164,28 +130,15 @@ public:
 
 			CPPUNIT_ASSERT(0 == porigin->getRoute().size());
 
-			// add a POI to the database
 			pWpDatabase->addWaypoint("Berliner Alle", CWaypoint("Berliner Alle", 49.866851, 8.634864));
-
-			// add a POI to the database
 			pPOIDatabase->addPoi("HDA BuildingC10", CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 49.86727, 8.638459));
 
-			// do not connect the database
 			porigin->connectToWpDatabase(0);
-
-			// do not connect the database
 			porigin->connectToPoiDatabase(pPOIDatabase);
-
-			// do not connect the database
-			pcurrentRoute->connectToWpDatabase(pWpDatabase);
-
-			// do not connect the database
-			pcurrentRoute->connectToPoiDatabase(0);
-
-			// add a POI to the route
 			*porigin += "HDA BuildingC10";
 
-			// add a waypoint to the route
+			pcurrentRoute->connectToWpDatabase(pWpDatabase);
+			pcurrentRoute->connectToPoiDatabase(0);
 			pcurrentRoute->addWaypoint("Berliner Alle");
 
 			*pcurrentRoute 	= *pcurrentRoute + *porigin;
