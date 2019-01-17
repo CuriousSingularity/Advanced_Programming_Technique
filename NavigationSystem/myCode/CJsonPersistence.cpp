@@ -11,8 +11,6 @@
 ****************************************************************************/
 
 //System Include Files
-#include "CJsonPersistence.h"
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -20,6 +18,8 @@
 
 //Own Include Files
 #include "CPOI.h"
+#include "CJsonPersistence.h"
+
 
 using namespace std;
 using namespace APT;
@@ -208,24 +208,6 @@ bool CJsonPersistence::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, M
 	// is the open successful?
 	if (!fileStream.fail())
 	{
-		cout << "=======================================================\n";
-		if (mode == CJsonPersistence::MERGE)
-		{
-			cout << "INFO: Waypoint Database Merge Request.\n";
-		}
-		else if (mode == CJsonPersistence::REPLACE)
-		{
-			waypointDb.resetWpsDatabase();
-			cout << "INFO: Waypoint Database Replace Request.\n";
-		}
-		else
-		{
-			cout << "ERROR: Waypoint Database Unknown MergeMode Request.\n";
-			return false;
-		}
-
-		cout << "=======================================================\n";
-
 		/*
 		 * CJsonToken -> base class -> stores the type of a token
 		 * CJsonValueToken -> derived template class(CJsonToken) -> stores the value associated with the token
@@ -251,6 +233,9 @@ bool CJsonPersistence::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, M
 		 */
 		try
 		{
+			CDatabase<Wp_Database_key_t, CWaypoint>::Database_Container_t	wpsRead 	= waypointDb.getDatabase();
+			CDatabase<POI_Database_key_t, CPOI>::Database_Container_t		poisRead	= poiDb.getDatabase();
+
 			CPOI::t_poi		type = CPOI::DEFAULT_POI;
 			string			name = "", description = "";
 			double 			latitude = (LATITUDE_MAX + 1), longitude = (LONGITUDE_MAX  + 1);	// set to invalid values
@@ -365,6 +350,10 @@ bool CJsonPersistence::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, M
 									}
 								}
 							}
+							else
+							{
+								error = CJsonPersistence::JSON_ERR_EXPECT_ATTR_NAME;
+							}
 							break;
 
 						case WAITING_FOR_NAME_SEPARATOR:
@@ -406,7 +395,16 @@ bool CJsonPersistence::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, M
 
 										if (!wp.getName().empty())
 										{
-											waypointDb.addWaypoint(wp.getName(), wp);
+											pair<CDatabase<Wp_Database_key_t, CWaypoint>::Database_Container_Itr_t, bool> 	ret;
+
+											ret = wpsRead.insert(std::pair<Wp_Database_key_t, CWaypoint>(wp.getName(), wp));
+
+											if (ret.second == false)
+											{
+												std::cout << "WARNING: Element already exists in the Database.\n";
+												std::cout << "Key = " << wp.getName() << endl;
+												std::cout << "Element = " << wp << endl;
+											}
 										}
 										else
 										{
@@ -419,7 +417,16 @@ bool CJsonPersistence::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, M
 
 										if (!poi.getName().empty())
 										{
-											poiDb.addPoi(poi.getName(), poi);
+											pair<CDatabase<POI_Database_key_t, CPOI>::Database_Container_Itr_t, bool> 	ret;
+
+											ret = poisRead.insert(std::pair<POI_Database_key_t, CPOI>(poi.getName(), poi));
+
+											if (ret.second == false)
+											{
+												std::cout << "WARNING: Element already exists in the Database.\n";
+												std::cout << "Key = " << poi.getName() << endl;
+												std::cout << "Element = " << poi << endl;
+											}
 										}
 										else
 										{
@@ -496,6 +503,31 @@ bool CJsonPersistence::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, M
 					previousEvent = event;
 				}
 			} while (this->m_pToken);
+
+			cout << "=======================================================\n";
+			if (mode == CJsonPersistence::MERGE)
+			{
+				cout << "INFO: Waypoint Database Merge Request.\n";
+				waypointDb.setDatabase(wpsRead);
+				poiDb.setDatabase(poisRead);
+			}
+			else if (mode == CJsonPersistence::REPLACE)
+			{
+				cout << "INFO: Waypoint Database Replace Request.\n";
+				waypointDb.resetWpsDatabase();
+				poiDb.resetPoisDatabase();
+
+				waypointDb.setDatabase(wpsRead);
+				poiDb.setDatabase(poisRead);
+			}
+			else
+			{
+				cout << "ERROR: Waypoint Database Unknown MergeMode Request.\n";
+				return false;
+			}
+
+			cout << "=======================================================\n";
+
 		}
 		catch (jsonReadExceptions &ex)
 		{
@@ -514,6 +546,10 @@ bool CJsonPersistence::readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb, M
 }
 
 
+/**
+ * A function to reset the current read object flags
+ * return@void
+ */
 void CJsonPersistence::resetCurrentReadObjects()
 {
 	for (unsigned int Index = 0; Index < sizeof(this->m_currentObjectRead)/sizeof(this->m_currentObjectRead[0]); ++Index)
@@ -523,6 +559,10 @@ void CJsonPersistence::resetCurrentReadObjects()
 }
 
 
+/**
+ * A function to to set flag to signify the current object being read
+ * return@void
+ */
 bool CJsonPersistence::currentReadObject(string name)
 {
 	bool ret = true;
@@ -545,6 +585,11 @@ bool CJsonPersistence::currentReadObject(string name)
 }
 
 
+/**
+ * A function to check whether the string name is the expected attribute's name
+ * @param string attributeName			- attribte name
+ * return@bool
+ */
 bool CJsonPersistence::expectedAttributeValue(string attributeName)
 {
 	bool ret = false;
@@ -583,6 +628,10 @@ bool CJsonPersistence::expectedAttributeValue(string attributeName)
 }
 
 
+/**
+ * A function to check if all the attributes for an object is being read
+ * return@bool
+ */
 bool CJsonPersistence::allAttributesRead()
 {
 	bool ret = false;
@@ -610,6 +659,10 @@ bool CJsonPersistence::allAttributesRead()
 }
 
 
+/**
+ * A function to reset all the attributes flags
+ * return@void
+ */
 void CJsonPersistence::resetAllAttributesRead()
 {
 	for (unsigned int Index = CPOI::INVALID_TYPE; Index < CPOI::MAX_TYPES; ++Index)
@@ -619,6 +672,15 @@ void CJsonPersistence::resetAllAttributesRead()
 }
 
 
+/**
+ * A function to extract values
+ * param@ string& name		-	name of a POI					(OUT)
+ * param@ double& latitude	-	latitude of a POI's Waypoint	(OUT)
+ * param@ double& longitude	-	longitude of a POI's Waypoint 	(OUT)
+ * param@ t_poi& type		-	point of interest type  		(OUT)
+ * param@ string&description-	description of a POI			(OUT)
+ * return@bool
+ */
 bool CJsonPersistence::extractValue(string &name, double &latitude, double &longitude, CPOI::t_poi &type, string &description)
 {
 	CJsonStringToken *pTokenString;
@@ -701,6 +763,12 @@ bool CJsonPersistence::extractValue(string &name, double &latitude, double &long
 }
 
 
+/**
+ * An exception handler for the possible errors
+ * param@ jsonReadExceptions& ex		- exception									(IN)
+ * param@ int lineNumber				- line number where the error has occured 	(IN)
+ * return@void
+ */
 void CJsonPersistence::exceptionHandler(jsonReadExceptions& ex, int lineNumber)
 {
 	string errorMsg;

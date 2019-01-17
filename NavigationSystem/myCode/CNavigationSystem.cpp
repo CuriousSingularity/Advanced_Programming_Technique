@@ -211,7 +211,7 @@ bool CNavigationSystem::writeToFile()
 #elif (defined(CONFIG_PERSISTENCE_STORAGE) && (CONFIG_PERSISTENCE_STORAGE == JSON))
 
 	CJsonPersistence	jsonFormat;
-	jsonFormat.setMediaName("Database1.json");
+	jsonFormat.setMediaName("Database.json");
 	ret = jsonFormat.writeData(this->getWpDatabase(), this->getPoiDatabase());
 
 #else

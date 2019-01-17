@@ -100,28 +100,79 @@ private:
 	 */
 	std::string 					mediaName;
 
+	/**
+	 * Attributes types expected
+	 */
 	CPOI::AttributesType 			m_exceptedAttributeType;
 
+	/**
+	 * A pointer to the json token
+	 */
 	APT::CJsonToken 				*m_pToken;
 
+	/**
+	 * An expected token
+	 */
 	APT::CJsonToken::TokenType 		m_exceptedTokenType;
 
+	/**
+	 * To keep track if all attributes are read
+	 */
 	bool							m_isAttrAlreadyRead[CPOI::MAX_TYPES];
 
+	/**
+	 * To keep track of the current object being read
+	 */
 	bool							m_currentObjectRead[MAX_JSON_OBJECTS];
 
+	/**
+	 * A function to reset the current read object flags
+	 * return@void
+	 */
 	void resetCurrentReadObjects();
 
+	/**
+	 * A function to to set flag to signify the current object being read
+	 * return@void
+	 */
 	bool currentReadObject(std::string name);
 
+	/**
+	 * A function to reset all the attributes flags
+	 * return@void
+	 */
 	void resetAllAttributesRead();
 
+	/**
+	 * A function to check if all the attributes for an object is being read
+	 * return@bool
+	 */
 	bool allAttributesRead();
 
+	/**
+	 * An exception handler for the possible errors
+	 * param@ jsonReadExceptions& ex		- exception									(IN)
+	 * param@ int lineNumber				- line number where the error has occured 	(IN)
+	 * return@void
+	 */
 	void exceptionHandler(jsonReadExceptions& ex, int lineNumber);
 
+	/**
+	 * A function to check whether the string name is the expected attribute's name
+	 * param@ string attributeName			- attribte name
+	 * return@bool
+	 */
 	bool expectedAttributeValue(std::string attributeName);
 
+	/**
+	 * A function to extract values
+	 * param@ string& name		-	name of a POI					(OUT)
+	 * param@ double& latitude	-	latitude of a POI's Waypoint	(OUT)
+	 * param@ double& longitude	-	longitude of a POI's Waypoint 	(OUT)
+	 * param@ t_poi& type		-	point of interest type  		(OUT)
+	 * param@ string&description-	description of a POI			(OUT)
+	 * return@bool
+	 */
 	bool extractValue(std::string &name, double &latitude, double &longitude, CPOI::t_poi &type, std::string &description);
 };
 
