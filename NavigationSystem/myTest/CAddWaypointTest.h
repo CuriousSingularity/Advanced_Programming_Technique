@@ -11,6 +11,12 @@
 
 #include "../myCode/CRoute.h"
 
+/**
+ * This class implements several test cases related to the CRoute's addWaypoint method.
+ * Each test case is implemented
+ * as a method testXXX. The static method suite() returns a TestSuite
+ * in which all tests are registered.
+ */
 class CAddWaypointTest: public CppUnit::TestFixture {
 public:
 
@@ -21,13 +27,8 @@ public:
 
 			CPPUNIT_ASSERT(0 == porigin->getRoute().size());
 
-			// add a POI to the database
 			pWpDatabase->addWaypoint("Berliner Alle", CWaypoint("Berliner Alle", 49.866851, 8.634864));
-
-			// do not connect the database
 			porigin->connectToWpDatabase(0);
-
-			// add a waypoint to the route
 			porigin->addWaypoint("Berliner Alle");
 
 			CPPUNIT_ASSERT(0 == porigin->getRoute().size());
@@ -44,13 +45,8 @@ public:
 
 			CPPUNIT_ASSERT(0 == porigin->getRoute().size());
 
-			// add a POI to the database
 			pWpDatabase->addWaypoint("Berliner Alle", CWaypoint("Berliner Alle", 49.866851, 8.634864));
-
-			// do not connect the database
 			porigin->connectToWpDatabase(pWpDatabase);
-
-			// add a waypoint to the route
 			porigin->addWaypoint("Berliner Alle");
 
 			CPPUNIT_ASSERT(1 == porigin->getRoute().size());
@@ -67,13 +63,8 @@ public:
 
 			CPPUNIT_ASSERT(0 == porigin->getRoute().size());
 
-			// add a POI to the database
 			pWpDatabase->addWaypoint("Berliner Alle", CWaypoint("Berliner Alle", 49.866851, 8.634864));
-
-			// do not connect the database
 			porigin->connectToWpDatabase(pWpDatabase);
-
-			// add a waypoint to the route
 			porigin->addWaypoint("Mensa");
 
 			CPPUNIT_ASSERT(0 == porigin->getRoute().size());

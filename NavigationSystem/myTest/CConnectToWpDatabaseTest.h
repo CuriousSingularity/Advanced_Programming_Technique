@@ -11,6 +11,12 @@
 
 #include "../myCode/CRoute.h"
 
+/**
+ * This class implements several test cases related to the CRoute's connectToWpDatabase method.
+ * Each test case is implemented
+ * as a method testXXX. The static method suite() returns a TestSuite
+ * in which all tests are registered.
+ */
 class CConnectToWpDatabase: public CppUnit::TestFixture {
 public:
 
@@ -18,13 +24,9 @@ public:
 		CRoute* pcurrentRoute 		= new CRoute;
 		CWpDatabase *pWpDatabase 	= new CWpDatabase;
 
-		// add a Wp to the database
 		pWpDatabase->addWaypoint("Berliner Alle", CWaypoint("Berliner Alle", 49.866851, 8.634864));
 
-		// do not connect the database
 		pcurrentRoute->connectToWpDatabase(0);
-
-		// add a Wp to the route
 		*pcurrentRoute += "Berliner Alle";
 
 		CPPUNIT_ASSERT(0 == pcurrentRoute->getRoute().size());
@@ -37,13 +39,9 @@ public:
 			CRoute* pcurrentRoute 		= new CRoute;
 			CWpDatabase *pWpDatabase 	= new CWpDatabase;
 
-			// add a Wp to the database
 			pWpDatabase->addWaypoint("Berliner Alle", CWaypoint("Berliner Alle", 49.866851, 8.634864));
-
-			// do not connect the database
 			pcurrentRoute->connectToWpDatabase(pWpDatabase);
 
-			// add a Wp to the route
 			pcurrentRoute->addWaypoint("Berliner Alle");
 
 			CPPUNIT_ASSERT(0 != pcurrentRoute->getRoute().size());

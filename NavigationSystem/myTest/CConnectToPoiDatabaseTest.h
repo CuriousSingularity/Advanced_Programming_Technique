@@ -11,6 +11,12 @@
 
 #include "../myCode/CRoute.h"
 
+/**
+ * This class implements several test cases related to the CRoute's connectToPoiDatabase method.
+ * Each test case is implemented
+ * as a method testXXX. The static method suite() returns a TestSuite
+ * in which all tests are registered.
+ */
 
 class CConnectToPoiDatabase: public CppUnit::TestFixture {
 public:
@@ -19,13 +25,9 @@ public:
 		CRoute* pcurrentRoute 		= new CRoute;
 		CPoiDatabase *pPOIDatabase 	= new CPoiDatabase;
 
-		// add a POI to the database
 		pPOIDatabase->addPoi("HDA BuildingC10", CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 49.86727, 8.638459));
 
-		// do not connect the database
 		pcurrentRoute->connectToPoiDatabase(0);
-
-		// add a POI to the route
 		*pcurrentRoute += "HDA BuildingC10";
 
 		CPPUNIT_ASSERT(0 == pcurrentRoute->getRoute().size());
@@ -38,13 +40,9 @@ public:
 			CRoute* pcurrentRoute 		= new CRoute;
 			CPoiDatabase *pPOIDatabase 	= new CPoiDatabase;
 
-			// add a POI to the database
 			pPOIDatabase->addPoi("HDA BuildingC10", CPOI(CPOI::UNIVERSITY, "HDA BuildingC10"	, "An awesome University", 49.86727, 8.638459));
 
-			// do not connect the database
 			pcurrentRoute->connectToPoiDatabase(pPOIDatabase);
-
-			// add a POI to the route
 			pcurrentRoute->addPoi("HDA BuildingC10", "Mensa");
 
 			CPPUNIT_ASSERT(0 != pcurrentRoute->getRoute().size());
