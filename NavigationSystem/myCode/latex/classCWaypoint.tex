@@ -1,0 +1,174 @@
+\hypertarget{classCWaypoint}{}\section{C\+Waypoint Class Reference}
+\label{classCWaypoint}\index{C\+Waypoint@{C\+Waypoint}}
+
+
+{\ttfamily \#include $<$C\+Waypoint.\+h$>$}
+
+
+
+Inheritance diagram for C\+Waypoint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classCWaypoint__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+Waypoint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classCWaypoint__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8a}{wp\+\_\+type} \{ \hyperlink{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8aa22c9bb710a20488e41e0522f836edcee}{W\+A\+Y\+P\+O\+I\+NT}, 
+\hyperlink{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8aac5313b10832538160cae4612688df59f}{P\+OI}, 
+\hyperlink{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8aaf3998ae68619b810a26451138606a57e}{I\+N\+V\+A\+L\+ID}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCWaypoint_addbb5ff027b48242d3e905ccfb7c6453}{C\+Waypoint} (std\+::string name=\char`\"{}\char`\"{}, double latitude=0, double longitude=0, \hyperlink{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8a}{wp\+\_\+type} type=\hyperlink{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8aa22c9bb710a20488e41e0522f836edcee}{W\+A\+Y\+P\+O\+I\+NT})
+\item 
+virtual \hyperlink{classCWaypoint_a74c7197b95df5dc4e631935d33c5ad27}{$\sim$\+C\+Waypoint} ()
+\item 
+std\+::string \hyperlink{classCWaypoint_afa0887a7523a345624046168fe3a2ce5}{get\+Name} () const
+\item 
+double \hyperlink{classCWaypoint_a8040d28d7b4628799f61565ba53e55b0}{get\+Latitude} ()
+\item 
+double \hyperlink{classCWaypoint_a662b4705b3f60929856ebacdebf8bf2d}{get\+Longitude} ()
+\item 
+void \hyperlink{classCWaypoint_a352acef38557203e1e266528e2aa23cf}{get\+All\+Data\+By\+Reference} (std\+::string \&name, double \&latitude, double \&longitude)
+\item 
+void \hyperlink{classCWaypoint_aec530aa8f453abd22cf41d8a6c6080f2}{transform\+Latitude2degmmss} (int \&deg, int \&mm, double \&ss)
+\item 
+void \hyperlink{classCWaypoint_aba26f2ba294cf5bb5bd0be1d9fdb1214}{transform\+Longitude2degmmss} (int \&deg, int \&mm, double \&ss)
+\item 
+double \hyperlink{classCWaypoint_aff44ab2fb23c9b96646550392644dd8a}{calculate\+Distance} (const \hyperlink{classCWaypoint}{C\+Waypoint} \&wp)
+\item 
+virtual void \hyperlink{classCWaypoint_a9a4177a2734842c9395658cb60a70c24}{print} (int format)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classCWaypoint_a7403a96c1fcf3263e880835cb4590cde}{operator$<$$<$} (std\+::ostream \&stream, \hyperlink{classCWaypoint}{C\+Waypoint} const \&wp)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8a}\label{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8a}} 
+\index{C\+Waypoint@{C\+Waypoint}!wp\+\_\+type@{wp\+\_\+type}}
+\index{wp\+\_\+type@{wp\+\_\+type}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{wp\+\_\+type}{wp\_type}}
+{\footnotesize\ttfamily enum \hyperlink{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8a}{C\+Waypoint\+::wp\+\_\+type}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+Y\+P\+O\+I\+NT@{W\+A\+Y\+P\+O\+I\+NT}!C\+Waypoint@{C\+Waypoint}}\index{C\+Waypoint@{C\+Waypoint}!W\+A\+Y\+P\+O\+I\+NT@{W\+A\+Y\+P\+O\+I\+NT}}}\mbox{\Hypertarget{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8aa22c9bb710a20488e41e0522f836edcee}\label{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8aa22c9bb710a20488e41e0522f836edcee}} 
+W\+A\+Y\+P\+O\+I\+NT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+OI@{P\+OI}!C\+Waypoint@{C\+Waypoint}}\index{C\+Waypoint@{C\+Waypoint}!P\+OI@{P\+OI}}}\mbox{\Hypertarget{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8aac5313b10832538160cae4612688df59f}\label{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8aac5313b10832538160cae4612688df59f}} 
+P\+OI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+V\+A\+L\+ID@{I\+N\+V\+A\+L\+ID}!C\+Waypoint@{C\+Waypoint}}\index{C\+Waypoint@{C\+Waypoint}!I\+N\+V\+A\+L\+ID@{I\+N\+V\+A\+L\+ID}}}\mbox{\Hypertarget{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8aaf3998ae68619b810a26451138606a57e}\label{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8aaf3998ae68619b810a26451138606a57e}} 
+I\+N\+V\+A\+L\+ID&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCWaypoint_addbb5ff027b48242d3e905ccfb7c6453}\label{classCWaypoint_addbb5ff027b48242d3e905ccfb7c6453}} 
+\index{C\+Waypoint@{C\+Waypoint}!C\+Waypoint@{C\+Waypoint}}
+\index{C\+Waypoint@{C\+Waypoint}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{C\+Waypoint()}{CWaypoint()}}
+{\footnotesize\ttfamily C\+Waypoint\+::\+C\+Waypoint (\begin{DoxyParamCaption}\item[{std\+::string}]{name = {\ttfamily \char`\"{}\char`\"{}},  }\item[{double}]{latitude = {\ttfamily 0},  }\item[{double}]{longitude = {\ttfamily 0},  }\item[{\hyperlink{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8a}{wp\+\_\+type}}]{type = {\ttfamily \hyperlink{classCWaypoint_afc0d93011dc8399f17e05ea26f1abb8aa22c9bb710a20488e41e0522f836edcee}{W\+A\+Y\+P\+O\+I\+NT}} }\end{DoxyParamCaption})}
+
+\hyperlink{classCWaypoint}{C\+Waypoint} constructor\+: Sets the value of an object when created. param@ string name -\/ name of a Waypoint, default value \char`\"{}\char`\"{} (IN) param@ double latitude -\/ latitude of a Waypoint, default value 0 (IN) param@ double longitude -\/ longitude of a Waypoint,default value 0 (IN) param@ wp\+\_\+type type -\/ Type of data -\/ P\+OI / Waypoint, default invalid (IN)
+
+\hyperlink{classCWaypoint}{C\+Waypoint} constructor\+: Sets the value of any object when created param@ string name -\/ name of a Waypoint (IN) param@ double latitude -\/ latitude of a Waypoint (IN) param@ double longitude -\/ longitude of a Waypoint (IN) param@ wp\+\_\+type type -\/ type of data the object represents\+: P\+OI / Waypoint / Invalid(\+I\+N) \mbox{\Hypertarget{classCWaypoint_a74c7197b95df5dc4e631935d33c5ad27}\label{classCWaypoint_a74c7197b95df5dc4e631935d33c5ad27}} 
+\index{C\+Waypoint@{C\+Waypoint}!````~C\+Waypoint@{$\sim$\+C\+Waypoint}}
+\index{````~C\+Waypoint@{$\sim$\+C\+Waypoint}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Waypoint()}{~CWaypoint()}}
+{\footnotesize\ttfamily C\+Waypoint\+::$\sim$\+C\+Waypoint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Destructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCWaypoint_aff44ab2fb23c9b96646550392644dd8a}\label{classCWaypoint_aff44ab2fb23c9b96646550392644dd8a}} 
+\index{C\+Waypoint@{C\+Waypoint}!calculate\+Distance@{calculate\+Distance}}
+\index{calculate\+Distance@{calculate\+Distance}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{calculate\+Distance()}{calculateDistance()}}
+{\footnotesize\ttfamily double C\+Waypoint\+::calculate\+Distance (\begin{DoxyParamCaption}\item[{const \hyperlink{classCWaypoint}{C\+Waypoint} \&}]{wp }\end{DoxyParamCaption})}
+
+Return the distance between 2 waypoint co-\/ordinates param@ const \hyperlink{classCWaypoint}{C\+Waypoint}\& wp -\/ Waypoint co-\/ordinate (IN) returnvalue@ double -\/ Distance in K\+Ms \mbox{\Hypertarget{classCWaypoint_a352acef38557203e1e266528e2aa23cf}\label{classCWaypoint_a352acef38557203e1e266528e2aa23cf}} 
+\index{C\+Waypoint@{C\+Waypoint}!get\+All\+Data\+By\+Reference@{get\+All\+Data\+By\+Reference}}
+\index{get\+All\+Data\+By\+Reference@{get\+All\+Data\+By\+Reference}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{get\+All\+Data\+By\+Reference()}{getAllDataByReference()}}
+{\footnotesize\ttfamily void C\+Waypoint\+::get\+All\+Data\+By\+Reference (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{double \&}]{latitude,  }\item[{double \&}]{longitude }\end{DoxyParamCaption})}
+
+Return the current waypoint co-\/ordinate values param@ string\& name -\/ name of a Waypoint (O\+UT) param@ double\& latitude -\/ latitude of a Waypoint (O\+UT) param@ double\& longitude -\/ longitude of a Waypoint (O\+UT) returnvalue@ void \mbox{\Hypertarget{classCWaypoint_a8040d28d7b4628799f61565ba53e55b0}\label{classCWaypoint_a8040d28d7b4628799f61565ba53e55b0}} 
+\index{C\+Waypoint@{C\+Waypoint}!get\+Latitude@{get\+Latitude}}
+\index{get\+Latitude@{get\+Latitude}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{get\+Latitude()}{getLatitude()}}
+{\footnotesize\ttfamily double C\+Waypoint\+::get\+Latitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return the current waypoint latitude returnvalue@ double latitude -\/ latitude of a Waypoint \mbox{\Hypertarget{classCWaypoint_a662b4705b3f60929856ebacdebf8bf2d}\label{classCWaypoint_a662b4705b3f60929856ebacdebf8bf2d}} 
+\index{C\+Waypoint@{C\+Waypoint}!get\+Longitude@{get\+Longitude}}
+\index{get\+Longitude@{get\+Longitude}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{get\+Longitude()}{getLongitude()}}
+{\footnotesize\ttfamily double C\+Waypoint\+::get\+Longitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return the current waypoint longitude returnvalue@ double longitude-\/ longitude of a Waypoint \mbox{\Hypertarget{classCWaypoint_afa0887a7523a345624046168fe3a2ce5}\label{classCWaypoint_afa0887a7523a345624046168fe3a2ce5}} 
+\index{C\+Waypoint@{C\+Waypoint}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily string C\+Waypoint\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Return the current waypoint co-\/ordinate name retuvalue@ string name -\/ name of a Waypoint \mbox{\Hypertarget{classCWaypoint_a9a4177a2734842c9395658cb60a70c24}\label{classCWaypoint_a9a4177a2734842c9395658cb60a70c24}} 
+\index{C\+Waypoint@{C\+Waypoint}!print@{print}}
+\index{print@{print}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void C\+Waypoint\+::print (\begin{DoxyParamCaption}\item[{int}]{format }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Prints the waypoint values in Degree-\/\+Mins-\/secs format or Decimal format param@ int format -\/ Decimal or Deg-\/min-\/ss (O\+UT) returnvalue@ void
+
+Prints the waypoint values in Degree-\/\+Mins-\/secs format or Decimal format returnvalue@ void 
+
+Reimplemented in \hyperlink{classCPOI_a2b65d12e722c89a8a105620726195d10}{C\+P\+OI}.
+
+\mbox{\Hypertarget{classCWaypoint_aec530aa8f453abd22cf41d8a6c6080f2}\label{classCWaypoint_aec530aa8f453abd22cf41d8a6c6080f2}} 
+\index{C\+Waypoint@{C\+Waypoint}!transform\+Latitude2degmmss@{transform\+Latitude2degmmss}}
+\index{transform\+Latitude2degmmss@{transform\+Latitude2degmmss}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{transform\+Latitude2degmmss()}{transformLatitude2degmmss()}}
+{\footnotesize\ttfamily void C\+Waypoint\+::transform\+Latitude2degmmss (\begin{DoxyParamCaption}\item[{int \&}]{deg,  }\item[{int \&}]{mm,  }\item[{double \&}]{ss }\end{DoxyParamCaption})}
+
+Converts the Latitude in decimal to deg-\/min-\/sec format param@ int\& deg -\/ latitude in degrees (O\+UT) param@ int\& deg -\/ latitude in minutes (O\+UT) param@ double\& ss -\/ latitude in seconds (O\+UT) returnvalue@ void \mbox{\Hypertarget{classCWaypoint_aba26f2ba294cf5bb5bd0be1d9fdb1214}\label{classCWaypoint_aba26f2ba294cf5bb5bd0be1d9fdb1214}} 
+\index{C\+Waypoint@{C\+Waypoint}!transform\+Longitude2degmmss@{transform\+Longitude2degmmss}}
+\index{transform\+Longitude2degmmss@{transform\+Longitude2degmmss}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{transform\+Longitude2degmmss()}{transformLongitude2degmmss()}}
+{\footnotesize\ttfamily void C\+Waypoint\+::transform\+Longitude2degmmss (\begin{DoxyParamCaption}\item[{int \&}]{deg,  }\item[{int \&}]{mm,  }\item[{double \&}]{ss }\end{DoxyParamCaption})}
+
+Converts the Longitude in decimal to deg-\/min-\/sec format param@ int\& deg -\/ longitude in degrees (O\+UT) param@ int\& deg -\/ longitude in minutes (O\+UT) param@ double\& ss -\/ longitude in seconds (O\+UT) returnvalue@ void 
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classCWaypoint_a7403a96c1fcf3263e880835cb4590cde}\label{classCWaypoint_a7403a96c1fcf3263e880835cb4590cde}} 
+\index{C\+Waypoint@{C\+Waypoint}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!C\+Waypoint@{C\+Waypoint}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream,  }\item[{\hyperlink{classCWaypoint}{C\+Waypoint} const \&}]{wp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+An operator overloaded friend function which prints the waypoint information param@ ostream \&stream -\/ output stream (I\+N/\+O\+UT) param@ \hyperlink{classCWaypoint}{C\+Waypoint} const \&wp -\/ A Waypoint (IN) returnvalue@ output stream with the waypoint information 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CWaypoint_8h}{C\+Waypoint.\+h}\item 
+\hyperlink{CWaypoint_8cpp}{C\+Waypoint.\+cpp}\end{DoxyCompactItemize}

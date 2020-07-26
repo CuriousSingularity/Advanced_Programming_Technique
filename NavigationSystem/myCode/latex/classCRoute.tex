@@ -1,0 +1,195 @@
+\hypertarget{classCRoute}{}\section{C\+Route Class Reference}
+\label{classCRoute}\index{C\+Route@{C\+Route}}
+
+
+{\ttfamily \#include $<$C\+Route.\+h$>$}
+
+
+
+Collaboration diagram for C\+Route\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classCRoute__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCRoute_a279642bf28bce1bb9865317db93bb08b}{C\+Route} ()
+\item 
+\hyperlink{classCRoute_a0f6fad7298482d4717380ec91a5d0bf9}{C\+Route} (\hyperlink{classCRoute}{C\+Route} const \&origin)
+\item 
+\hyperlink{classCRoute_ac78e6d6f34788ee62f5d65b182cf1c2f}{$\sim$\+C\+Route} ()
+\item 
+void \hyperlink{classCRoute_a04173f3a28fb020f0704a0703956836f}{connect\+To\+Poi\+Database} (\hyperlink{classCPoiDatabase}{C\+Poi\+Database} $\ast$p\+Poi\+DB)
+\item 
+void \hyperlink{classCRoute_a0efb25d5f4c3167b189c03cbcd3d64f9}{connect\+To\+Wp\+Database} (\hyperlink{classCWpDatabase}{C\+Wp\+Database} $\ast$p\+Wp\+DB)
+\item 
+void \hyperlink{classCRoute_ade32420c69c3b4bb2e6068619607f279}{add\+Waypoint} (\hyperlink{CRoute_8h_a112678f2c32c39b2d50c558d89dbde68}{Database\+\_\+key\+\_\+t} key)
+\item 
+void \hyperlink{classCRoute_ab925dec9a729fbcad96f85065df36b61}{add\+Poi} (\hyperlink{CRoute_8h_a112678f2c32c39b2d50c558d89dbde68}{Database\+\_\+key\+\_\+t} name\+Poi, std\+::string after\+Wp)
+\item 
+const std\+::vector$<$ const \hyperlink{classCWaypoint}{C\+Waypoint} $\ast$ $>$ \hyperlink{classCRoute_a4e359e364950dc60f1669ff36761e716}{get\+Route} ()
+\item 
+double \hyperlink{classCRoute_ac0eb87d7cce83cee166de71857fa68cb}{get\+Distance\+Next\+Poi} (\hyperlink{classCWaypoint}{C\+Waypoint} const \&wp, \hyperlink{classCPOI}{C\+P\+OI} \&poi)
+\item 
+void \hyperlink{classCRoute_ac414ab61fe61cf703eb6225b25d9f09c}{print} ()
+\item 
+void \hyperlink{classCRoute_a278402d6f68b924679c555a933b6312c}{operator+=} (\hyperlink{CRoute_8h_a112678f2c32c39b2d50c558d89dbde68}{Database\+\_\+key\+\_\+t} const \&name)
+\item 
+\hyperlink{classCRoute}{C\+Route} \& \hyperlink{classCRoute_a898a4b296423fe629a771de487aae7fc}{operator=} (\hyperlink{classCRoute}{C\+Route} const \&rhs)
+\item 
+\hyperlink{classCRoute}{C\+Route} \hyperlink{classCRoute_aa9d2cdf6f3a0ce51ca4ab0c4285004a9}{operator+} (\hyperlink{classCRoute}{C\+Route} const \&rhs)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCRoute_a279642bf28bce1bb9865317db93bb08b}\label{classCRoute_a279642bf28bce1bb9865317db93bb08b}} 
+\index{C\+Route@{C\+Route}!C\+Route@{C\+Route}}
+\index{C\+Route@{C\+Route}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{C\+Route()}{CRoute()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily C\+Route\+::\+C\+Route (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hyperlink{classCRoute}{C\+Route} Constructor\+: Sets the value when an object is created. \mbox{\Hypertarget{classCRoute_a0f6fad7298482d4717380ec91a5d0bf9}\label{classCRoute_a0f6fad7298482d4717380ec91a5d0bf9}} 
+\index{C\+Route@{C\+Route}!C\+Route@{C\+Route}}
+\index{C\+Route@{C\+Route}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{C\+Route()}{CRoute()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily C\+Route\+::\+C\+Route (\begin{DoxyParamCaption}\item[{\hyperlink{classCRoute}{C\+Route} const \&}]{origin }\end{DoxyParamCaption})}
+
+\hyperlink{classCRoute}{C\+Route} Constructor\+: Sets the value when an object is created by performing deep copy. 
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classCRoute}{C\+Route}} & const \&origin -\/ \hyperlink{classCRoute}{C\+Route} const object (IN) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCRoute_ac78e6d6f34788ee62f5d65b182cf1c2f}\label{classCRoute_ac78e6d6f34788ee62f5d65b182cf1c2f}} 
+\index{C\+Route@{C\+Route}!````~C\+Route@{$\sim$\+C\+Route}}
+\index{````~C\+Route@{$\sim$\+C\+Route}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Route()}{~CRoute()}}
+{\footnotesize\ttfamily C\+Route\+::$\sim$\+C\+Route (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hyperlink{classCRoute}{C\+Route} Destructor\+: Called when the object is destroyed
+
+\hyperlink{classCRoute}{C\+Route} Destructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCRoute_ab925dec9a729fbcad96f85065df36b61}\label{classCRoute_ab925dec9a729fbcad96f85065df36b61}} 
+\index{C\+Route@{C\+Route}!add\+Poi@{add\+Poi}}
+\index{add\+Poi@{add\+Poi}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{add\+Poi()}{addPoi()}}
+{\footnotesize\ttfamily void C\+Route\+::add\+Poi (\begin{DoxyParamCaption}\item[{\hyperlink{CRoute_8h_a112678f2c32c39b2d50c558d89dbde68}{Database\+\_\+key\+\_\+t}}]{name\+Poi,  }\item[{std\+::string}]{after\+Wp }\end{DoxyParamCaption})}
+
+Search the P\+OI in the P\+O\+I-\/database by the name; Add the P\+OI to current route after \char`\"{}after\+Wp\char`\"{} 
+\begin{DoxyParams}{Parameters}
+{\em Database\+\_\+key\+\_\+t} & name\+Poi -\/ name of a P\+OI (IN) \\
+\hline
+{\em string} & after\+Wp -\/ name of a waypoint(\+I\+N)  void\\
+\hline
+\end{DoxyParams}
+Search the P\+OI in the P\+O\+I-\/database by the name; Add the P\+OI to current route after \char`\"{}after\+Wp\char`\"{} if -\/$>$ name\+Poi is empty and after\+Wp is empty -\/$>$ don\textquotesingle{}t add name\+Poi is empty and after\+Wp is not empty -\/$>$ P\+OI will not be in the DB name\+Poi is not empty and after\+Wp is empty -\/$>$ Add P\+OI to Route at the end name\+Poi is not empty and after\+Wp is not empty -\/$>$ Add P\+OI after\+Wp where after\+WP is already added
+
+
+\begin{DoxyParams}{Parameters}
+{\em Database\+\_\+key\+\_\+t} & name\+Poi -\/ name of a P\+OI (IN) \\
+\hline
+{\em string} & after\+Wp -\/ name of a waypoint(\+I\+N)  void \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCRoute_ade32420c69c3b4bb2e6068619607f279}\label{classCRoute_ade32420c69c3b4bb2e6068619607f279}} 
+\index{C\+Route@{C\+Route}!add\+Waypoint@{add\+Waypoint}}
+\index{add\+Waypoint@{add\+Waypoint}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{add\+Waypoint()}{addWaypoint()}}
+{\footnotesize\ttfamily void C\+Route\+::add\+Waypoint (\begin{DoxyParamCaption}\item[{\hyperlink{CRoute_8h_a112678f2c32c39b2d50c558d89dbde68}{Database\+\_\+key\+\_\+t}}]{key }\end{DoxyParamCaption})}
+
+Search the waypoint in the waypoint-\/database by the name; Add the waypoint to current route 
+\begin{DoxyParams}{Parameters}
+{\em Database\+\_\+key\+\_\+t} & key -\/ name of a waypoint (IN)  void \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCRoute_a04173f3a28fb020f0704a0703956836f}\label{classCRoute_a04173f3a28fb020f0704a0703956836f}} 
+\index{C\+Route@{C\+Route}!connect\+To\+Poi\+Database@{connect\+To\+Poi\+Database}}
+\index{connect\+To\+Poi\+Database@{connect\+To\+Poi\+Database}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{connect\+To\+Poi\+Database()}{connectToPoiDatabase()}}
+{\footnotesize\ttfamily void C\+Route\+::connect\+To\+Poi\+Database (\begin{DoxyParamCaption}\item[{\hyperlink{classCPoiDatabase}{C\+Poi\+Database} $\ast$}]{p\+Poi\+DB }\end{DoxyParamCaption})}
+
+Get the address of the P\+OI Database and connect it to the \hyperlink{classCRoute}{C\+Route} 
+\begin{DoxyParams}{Parameters}
+{\em C\+Poi\+Database$\ast$} & p\+Poi\+DB -\/ pointer to the P\+OI Database (IN)  void \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCRoute_a0efb25d5f4c3167b189c03cbcd3d64f9}\label{classCRoute_a0efb25d5f4c3167b189c03cbcd3d64f9}} 
+\index{C\+Route@{C\+Route}!connect\+To\+Wp\+Database@{connect\+To\+Wp\+Database}}
+\index{connect\+To\+Wp\+Database@{connect\+To\+Wp\+Database}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{connect\+To\+Wp\+Database()}{connectToWpDatabase()}}
+{\footnotesize\ttfamily void C\+Route\+::connect\+To\+Wp\+Database (\begin{DoxyParamCaption}\item[{\hyperlink{classCWpDatabase}{C\+Wp\+Database} $\ast$}]{p\+Wp\+DB }\end{DoxyParamCaption})}
+
+Get the address of the Waypoint Database and connect it to the \hyperlink{classCRoute}{C\+Route} 
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classCWpDatabase}{C\+Wp\+Database}} & $\ast$p\+Wp\+DB -\/ pointer to the Waypoint Database (IN)  void \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCRoute_ac0eb87d7cce83cee166de71857fa68cb}\label{classCRoute_ac0eb87d7cce83cee166de71857fa68cb}} 
+\index{C\+Route@{C\+Route}!get\+Distance\+Next\+Poi@{get\+Distance\+Next\+Poi}}
+\index{get\+Distance\+Next\+Poi@{get\+Distance\+Next\+Poi}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{get\+Distance\+Next\+Poi()}{getDistanceNextPoi()}}
+{\footnotesize\ttfamily double C\+Route\+::get\+Distance\+Next\+Poi (\begin{DoxyParamCaption}\item[{\hyperlink{classCWaypoint}{C\+Waypoint} const \&}]{wp,  }\item[{\hyperlink{classCPOI}{C\+P\+OI} \&}]{poi }\end{DoxyParamCaption})}
+
+Calculates the distance between waypoint and P\+OI 
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classCWaypoint}{C\+Waypoint}} & const \&wp -\/ waypoint (IN) \\
+\hline
+{\em C\+P\+O\+I\&} & poi -\/ P\+OI (IN) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double -\/ Distance in Kms 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCRoute_a4e359e364950dc60f1669ff36761e716}\label{classCRoute_a4e359e364950dc60f1669ff36761e716}} 
+\index{C\+Route@{C\+Route}!get\+Route@{get\+Route}}
+\index{get\+Route@{get\+Route}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{get\+Route()}{getRoute()}}
+{\footnotesize\ttfamily const vector$<$ const \hyperlink{classCWaypoint}{C\+Waypoint} $\ast$ $>$ C\+Route\+::get\+Route (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the current route information  vector -\/ Current route having Waypoints and P\+OI \mbox{\Hypertarget{classCRoute_aa9d2cdf6f3a0ce51ca4ab0c4285004a9}\label{classCRoute_aa9d2cdf6f3a0ce51ca4ab0c4285004a9}} 
+\index{C\+Route@{C\+Route}!operator+@{operator+}}
+\index{operator+@{operator+}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \hyperlink{classCRoute}{C\+Route} C\+Route\+::operator+ (\begin{DoxyParamCaption}\item[{\hyperlink{classCRoute}{C\+Route} const \&}]{rhs }\end{DoxyParamCaption})}
+
+An addition operator 
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classCRoute}{C\+Route}} & const \& rhs -\/ \hyperlink{classCRoute}{C\+Route} const object (IN)  \hyperlink{classCRoute}{C\+Route} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCRoute_a278402d6f68b924679c555a933b6312c}\label{classCRoute_a278402d6f68b924679c555a933b6312c}} 
+\index{C\+Route@{C\+Route}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily void C\+Route\+::operator+= (\begin{DoxyParamCaption}\item[{\hyperlink{CRoute_8h_a112678f2c32c39b2d50c558d89dbde68}{Database\+\_\+key\+\_\+t} const \&}]{name }\end{DoxyParamCaption})}
+
+The function is an extension of add\+Poi which searches the Databases and add the Waypoint or the P\+OI which matches the name.
+
+The function is an extension of add\+Poi which searches the Databases and add the Waypoint and/or the P\+OI which matches the name. \mbox{\Hypertarget{classCRoute_a898a4b296423fe629a771de487aae7fc}\label{classCRoute_a898a4b296423fe629a771de487aae7fc}} 
+\index{C\+Route@{C\+Route}!operator=@{operator=}}
+\index{operator=@{operator=}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classCRoute}{C\+Route} \& C\+Route\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classCRoute}{C\+Route} const \&}]{rhs }\end{DoxyParamCaption})}
+
+A copy assignment operator 
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classCRoute}{C\+Route}} & const \& rhs -\/ \hyperlink{classCRoute}{C\+Route} const object (IN)  \hyperlink{classCRoute}{C\+Route}\& \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCRoute_ac414ab61fe61cf703eb6225b25d9f09c}\label{classCRoute_ac414ab61fe61cf703eb6225b25d9f09c}} 
+\index{C\+Route@{C\+Route}!print@{print}}
+\index{print@{print}!C\+Route@{C\+Route}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void C\+Route\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+prints all the waypoints and P\+O\+Is in the route 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CRoute_8h}{C\+Route.\+h}\item 
+\hyperlink{CRoute_8cpp}{C\+Route.\+cpp}\end{DoxyCompactItemize}

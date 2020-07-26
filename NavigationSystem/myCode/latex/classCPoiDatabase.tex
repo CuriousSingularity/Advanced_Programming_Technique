@@ -1,0 +1,123 @@
+\hypertarget{classCPoiDatabase}{}\section{C\+Poi\+Database Class Reference}
+\label{classCPoiDatabase}\index{C\+Poi\+Database@{C\+Poi\+Database}}
+
+
+{\ttfamily \#include $<$C\+Poi\+Database.\+h$>$}
+
+
+
+Inheritance diagram for C\+Poi\+Database\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classCPoiDatabase__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+Poi\+Database\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classCPoiDatabase__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::map$<$ \hyperlink{CPoiDatabase_8h_ad55418fc31c1491ccfbd50da54f494a0}{P\+O\+I\+\_\+\+Database\+\_\+key\+\_\+t}, \hyperlink{classCPOI}{C\+P\+OI} $>$ \hyperlink{classCPoiDatabase_ad9ed38adc9bf4250e704cd3d378176a2}{Poi\+\_\+\+Map\+\_\+t}
+\item 
+typedef std\+::map$<$ \hyperlink{CPoiDatabase_8h_ad55418fc31c1491ccfbd50da54f494a0}{P\+O\+I\+\_\+\+Database\+\_\+key\+\_\+t}, \hyperlink{classCPOI}{C\+P\+OI} $>$\+::iterator \hyperlink{classCPoiDatabase_ac9ec3b0a5e8efee92521eeb03aa0b198}{Poi\+\_\+\+Map\+\_\+\+Itr\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCPoiDatabase_a03098c79d2c4958e353658127fa0535e}{C\+Poi\+Database} ()
+\item 
+\hyperlink{classCPoiDatabase_a01b246bbd0dfa5bf3c94e97b09df92b2}{$\sim$\+C\+Poi\+Database} ()
+\item 
+void \hyperlink{classCPoiDatabase_a963761cbbaf6ad8f249d5950b428f7eb}{add\+Poi} (\hyperlink{CPoiDatabase_8h_ad55418fc31c1491ccfbd50da54f494a0}{P\+O\+I\+\_\+\+Database\+\_\+key\+\_\+t} const \&key, \hyperlink{classCPOI}{C\+P\+OI} const \&poi)
+\item 
+\hyperlink{classCPOI}{C\+P\+OI} $\ast$ \hyperlink{classCPoiDatabase_a4320809ce8b8f2cb6d3a9e56d598293c}{get\+Pointer\+To\+Poi} (\hyperlink{CPoiDatabase_8h_ad55418fc31c1491ccfbd50da54f494a0}{P\+O\+I\+\_\+\+Database\+\_\+key\+\_\+t} key)
+\item 
+const \hyperlink{classCPoiDatabase_ad9ed38adc9bf4250e704cd3d378176a2}{Poi\+\_\+\+Map\+\_\+t} \hyperlink{classCPoiDatabase_a3f5c6705e35e3f543d60fc0ddf9334a8}{get\+Pois\+From\+Database} () const
+\item 
+void \hyperlink{classCPoiDatabase_aab8efdfbd61515050fb1685d769cf5cd}{reset\+Pois\+Database} ()
+\item 
+void \hyperlink{classCPoiDatabase_a540c1119ded65c6732fc92728c5b9c14}{print} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classCPoiDatabase_ac9ec3b0a5e8efee92521eeb03aa0b198}\label{classCPoiDatabase_ac9ec3b0a5e8efee92521eeb03aa0b198}} 
+\index{C\+Poi\+Database@{C\+Poi\+Database}!Poi\+\_\+\+Map\+\_\+\+Itr\+\_\+t@{Poi\+\_\+\+Map\+\_\+\+Itr\+\_\+t}}
+\index{Poi\+\_\+\+Map\+\_\+\+Itr\+\_\+t@{Poi\+\_\+\+Map\+\_\+\+Itr\+\_\+t}!C\+Poi\+Database@{C\+Poi\+Database}}
+\subsubsection{\texorpdfstring{Poi\+\_\+\+Map\+\_\+\+Itr\+\_\+t}{Poi\_Map\_Itr\_t}}
+{\footnotesize\ttfamily typedef std\+::map$<$\hyperlink{CPoiDatabase_8h_ad55418fc31c1491ccfbd50da54f494a0}{P\+O\+I\+\_\+\+Database\+\_\+key\+\_\+t}, \hyperlink{classCPOI}{C\+P\+OI}$>$\+::iterator \hyperlink{classCPoiDatabase_ac9ec3b0a5e8efee92521eeb03aa0b198}{C\+Poi\+Database\+::\+Poi\+\_\+\+Map\+\_\+\+Itr\+\_\+t}}
+
+\mbox{\Hypertarget{classCPoiDatabase_ad9ed38adc9bf4250e704cd3d378176a2}\label{classCPoiDatabase_ad9ed38adc9bf4250e704cd3d378176a2}} 
+\index{C\+Poi\+Database@{C\+Poi\+Database}!Poi\+\_\+\+Map\+\_\+t@{Poi\+\_\+\+Map\+\_\+t}}
+\index{Poi\+\_\+\+Map\+\_\+t@{Poi\+\_\+\+Map\+\_\+t}!C\+Poi\+Database@{C\+Poi\+Database}}
+\subsubsection{\texorpdfstring{Poi\+\_\+\+Map\+\_\+t}{Poi\_Map\_t}}
+{\footnotesize\ttfamily typedef std\+::map$<$\hyperlink{CPoiDatabase_8h_ad55418fc31c1491ccfbd50da54f494a0}{P\+O\+I\+\_\+\+Database\+\_\+key\+\_\+t}, \hyperlink{classCPOI}{C\+P\+OI}$>$ \hyperlink{classCPoiDatabase_ad9ed38adc9bf4250e704cd3d378176a2}{C\+Poi\+Database\+::\+Poi\+\_\+\+Map\+\_\+t}}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCPoiDatabase_a03098c79d2c4958e353658127fa0535e}\label{classCPoiDatabase_a03098c79d2c4958e353658127fa0535e}} 
+\index{C\+Poi\+Database@{C\+Poi\+Database}!C\+Poi\+Database@{C\+Poi\+Database}}
+\index{C\+Poi\+Database@{C\+Poi\+Database}!C\+Poi\+Database@{C\+Poi\+Database}}
+\subsubsection{\texorpdfstring{C\+Poi\+Database()}{CPoiDatabase()}}
+{\footnotesize\ttfamily C\+Poi\+Database\+::\+C\+Poi\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hyperlink{classCPoiDatabase}{C\+Poi\+Database} constructor \mbox{\Hypertarget{classCPoiDatabase_a01b246bbd0dfa5bf3c94e97b09df92b2}\label{classCPoiDatabase_a01b246bbd0dfa5bf3c94e97b09df92b2}} 
+\index{C\+Poi\+Database@{C\+Poi\+Database}!````~C\+Poi\+Database@{$\sim$\+C\+Poi\+Database}}
+\index{````~C\+Poi\+Database@{$\sim$\+C\+Poi\+Database}!C\+Poi\+Database@{C\+Poi\+Database}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Poi\+Database()}{~CPoiDatabase()}}
+{\footnotesize\ttfamily C\+Poi\+Database\+::$\sim$\+C\+Poi\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hyperlink{classCPoiDatabase}{C\+Poi\+Database} destructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCPoiDatabase_a963761cbbaf6ad8f249d5950b428f7eb}\label{classCPoiDatabase_a963761cbbaf6ad8f249d5950b428f7eb}} 
+\index{C\+Poi\+Database@{C\+Poi\+Database}!add\+Poi@{add\+Poi}}
+\index{add\+Poi@{add\+Poi}!C\+Poi\+Database@{C\+Poi\+Database}}
+\subsubsection{\texorpdfstring{add\+Poi()}{addPoi()}}
+{\footnotesize\ttfamily void C\+Poi\+Database\+::add\+Poi (\begin{DoxyParamCaption}\item[{\hyperlink{CPoiDatabase_8h_ad55418fc31c1491ccfbd50da54f494a0}{P\+O\+I\+\_\+\+Database\+\_\+key\+\_\+t} const \&}]{key,  }\item[{\hyperlink{classCPOI}{C\+P\+OI} const \&}]{poi }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCPoiDatabase_a4320809ce8b8f2cb6d3a9e56d598293c}\label{classCPoiDatabase_a4320809ce8b8f2cb6d3a9e56d598293c}} 
+\index{C\+Poi\+Database@{C\+Poi\+Database}!get\+Pointer\+To\+Poi@{get\+Pointer\+To\+Poi}}
+\index{get\+Pointer\+To\+Poi@{get\+Pointer\+To\+Poi}!C\+Poi\+Database@{C\+Poi\+Database}}
+\subsubsection{\texorpdfstring{get\+Pointer\+To\+Poi()}{getPointerToPoi()}}
+{\footnotesize\ttfamily \hyperlink{classCPOI}{C\+P\+OI} $\ast$ C\+Poi\+Database\+::get\+Pointer\+To\+Poi (\begin{DoxyParamCaption}\item[{\hyperlink{CPoiDatabase_8h_ad55418fc31c1491ccfbd50da54f494a0}{P\+O\+I\+\_\+\+Database\+\_\+key\+\_\+t}}]{key }\end{DoxyParamCaption})}
+
+Get pointer to a P\+OI from the Database which matches the name param@ P\+O\+I\+\_\+\+Database\+\_\+key\+\_\+t key -\/ key of a P\+OI (IN) returnvalue@ C\+P\+O\+I$\ast$ -\/ Pointer to a P\+OI in the database(\+I\+N)
+
+Get pointer to a P\+OI from the Database which matches the name param@ string key -\/ name of a P\+OI (IN) returnvalue@ C\+P\+O\+I$\ast$ -\/ Pointer to a P\+OI in the database \mbox{\Hypertarget{classCPoiDatabase_a3f5c6705e35e3f543d60fc0ddf9334a8}\label{classCPoiDatabase_a3f5c6705e35e3f543d60fc0ddf9334a8}} 
+\index{C\+Poi\+Database@{C\+Poi\+Database}!get\+Pois\+From\+Database@{get\+Pois\+From\+Database}}
+\index{get\+Pois\+From\+Database@{get\+Pois\+From\+Database}!C\+Poi\+Database@{C\+Poi\+Database}}
+\subsubsection{\texorpdfstring{get\+Pois\+From\+Database()}{getPoisFromDatabase()}}
+{\footnotesize\ttfamily const \hyperlink{classCPoiDatabase_ad9ed38adc9bf4250e704cd3d378176a2}{C\+Poi\+Database\+::\+Poi\+\_\+\+Map\+\_\+t} C\+Poi\+Database\+::get\+Pois\+From\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get P\+O\+Is from the Database returnvalue@ Poi\+\_\+\+Map\+\_\+t -\/ P\+O\+Is in the Database (O\+UT) \mbox{\Hypertarget{classCPoiDatabase_a540c1119ded65c6732fc92728c5b9c14}\label{classCPoiDatabase_a540c1119ded65c6732fc92728c5b9c14}} 
+\index{C\+Poi\+Database@{C\+Poi\+Database}!print@{print}}
+\index{print@{print}!C\+Poi\+Database@{C\+Poi\+Database}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void C\+Poi\+Database\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Print all the P\+O\+Is in the database returnvalue@ void \mbox{\Hypertarget{classCPoiDatabase_aab8efdfbd61515050fb1685d769cf5cd}\label{classCPoiDatabase_aab8efdfbd61515050fb1685d769cf5cd}} 
+\index{C\+Poi\+Database@{C\+Poi\+Database}!reset\+Pois\+Database@{reset\+Pois\+Database}}
+\index{reset\+Pois\+Database@{reset\+Pois\+Database}!C\+Poi\+Database@{C\+Poi\+Database}}
+\subsubsection{\texorpdfstring{reset\+Pois\+Database()}{resetPoisDatabase()}}
+{\footnotesize\ttfamily void C\+Poi\+Database\+::reset\+Pois\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Resets the Database returnvalue@ void
+
+Reset the Database returnvalue@ void 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CPoiDatabase_8h}{C\+Poi\+Database.\+h}\item 
+\hyperlink{CPoiDatabase_8cpp}{C\+Poi\+Database.\+cpp}\end{DoxyCompactItemize}

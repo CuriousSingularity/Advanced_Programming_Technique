@@ -1,0 +1,133 @@
+\hypertarget{classCWpDatabase}{}\section{C\+Wp\+Database Class Reference}
+\label{classCWpDatabase}\index{C\+Wp\+Database@{C\+Wp\+Database}}
+
+
+{\ttfamily \#include $<$C\+Wp\+Database.\+h$>$}
+
+
+
+Inheritance diagram for C\+Wp\+Database\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classCWpDatabase__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+Wp\+Database\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classCWpDatabase__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::map$<$ \hyperlink{CWpDatabase_8h_af4bde7780fd7a000e6647ae788fe5a10}{Wp\+\_\+\+Database\+\_\+key\+\_\+t}, \hyperlink{classCWaypoint}{C\+Waypoint} $>$ \hyperlink{classCWpDatabase_acdf43fd8206955eeb54807e9254958cb}{Wp\+\_\+\+Map\+\_\+t}
+\item 
+typedef std\+::map$<$ \hyperlink{CWpDatabase_8h_af4bde7780fd7a000e6647ae788fe5a10}{Wp\+\_\+\+Database\+\_\+key\+\_\+t}, \hyperlink{classCWaypoint}{C\+Waypoint} $>$\+::iterator \hyperlink{classCWpDatabase_a3fbf501fb525f4f45171e7811596fc10}{Wp\+\_\+\+Map\+\_\+\+Itr\+\_\+t}
+\item 
+typedef std\+::map$<$ \hyperlink{CWpDatabase_8h_af4bde7780fd7a000e6647ae788fe5a10}{Wp\+\_\+\+Database\+\_\+key\+\_\+t}, \hyperlink{classCWaypoint}{C\+Waypoint} $>$\+::reverse\+\_\+iterator \hyperlink{classCWpDatabase_ae28984b70adcf73331968295206fba5d}{Wp\+\_\+\+Map\+\_\+\+Rev\+Itr\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCWpDatabase_a373c0ba6b4524115cda152273a713017}{C\+Wp\+Database} ()
+\item 
+\hyperlink{classCWpDatabase_a9c8209e9d6ba9a4c275cb4f6266950d6}{$\sim$\+C\+Wp\+Database} ()
+\item 
+void \hyperlink{classCWpDatabase_a96d64308fe52f48b423d7c97f9e95dcf}{add\+Waypoint} (\hyperlink{CWpDatabase_8h_af4bde7780fd7a000e6647ae788fe5a10}{Wp\+\_\+\+Database\+\_\+key\+\_\+t} const \&name, \hyperlink{classCWaypoint}{C\+Waypoint} const \&wp)
+\item 
+\hyperlink{classCWaypoint}{C\+Waypoint} $\ast$ \hyperlink{classCWpDatabase_a5e7031a38c729dc54ff48834e2a7902f}{get\+Pointer\+To\+Waypoint} (\hyperlink{CWpDatabase_8h_af4bde7780fd7a000e6647ae788fe5a10}{Wp\+\_\+\+Database\+\_\+key\+\_\+t} name)
+\item 
+const \hyperlink{classCWpDatabase_acdf43fd8206955eeb54807e9254958cb}{Wp\+\_\+\+Map\+\_\+t} \hyperlink{classCWpDatabase_ad264883102664dde8c25fa8f11e41087}{get\+Wps\+From\+Database} () const
+\item 
+void \hyperlink{classCWpDatabase_a13e513a40e9339ae56f1c8b77eb0b9d3}{reset\+Wps\+Database} ()
+\item 
+void \hyperlink{classCWpDatabase_a14ca531b56bffb1dc354c5a688115d74}{print} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classCWpDatabase_a3fbf501fb525f4f45171e7811596fc10}\label{classCWpDatabase_a3fbf501fb525f4f45171e7811596fc10}} 
+\index{C\+Wp\+Database@{C\+Wp\+Database}!Wp\+\_\+\+Map\+\_\+\+Itr\+\_\+t@{Wp\+\_\+\+Map\+\_\+\+Itr\+\_\+t}}
+\index{Wp\+\_\+\+Map\+\_\+\+Itr\+\_\+t@{Wp\+\_\+\+Map\+\_\+\+Itr\+\_\+t}!C\+Wp\+Database@{C\+Wp\+Database}}
+\subsubsection{\texorpdfstring{Wp\+\_\+\+Map\+\_\+\+Itr\+\_\+t}{Wp\_Map\_Itr\_t}}
+{\footnotesize\ttfamily typedef std\+::map$<$\hyperlink{CWpDatabase_8h_af4bde7780fd7a000e6647ae788fe5a10}{Wp\+\_\+\+Database\+\_\+key\+\_\+t}, \hyperlink{classCWaypoint}{C\+Waypoint}$>$\+::iterator \hyperlink{classCWpDatabase_a3fbf501fb525f4f45171e7811596fc10}{C\+Wp\+Database\+::\+Wp\+\_\+\+Map\+\_\+\+Itr\+\_\+t}}
+
+\mbox{\Hypertarget{classCWpDatabase_ae28984b70adcf73331968295206fba5d}\label{classCWpDatabase_ae28984b70adcf73331968295206fba5d}} 
+\index{C\+Wp\+Database@{C\+Wp\+Database}!Wp\+\_\+\+Map\+\_\+\+Rev\+Itr\+\_\+t@{Wp\+\_\+\+Map\+\_\+\+Rev\+Itr\+\_\+t}}
+\index{Wp\+\_\+\+Map\+\_\+\+Rev\+Itr\+\_\+t@{Wp\+\_\+\+Map\+\_\+\+Rev\+Itr\+\_\+t}!C\+Wp\+Database@{C\+Wp\+Database}}
+\subsubsection{\texorpdfstring{Wp\+\_\+\+Map\+\_\+\+Rev\+Itr\+\_\+t}{Wp\_Map\_RevItr\_t}}
+{\footnotesize\ttfamily typedef std\+::map$<$\hyperlink{CWpDatabase_8h_af4bde7780fd7a000e6647ae788fe5a10}{Wp\+\_\+\+Database\+\_\+key\+\_\+t}, \hyperlink{classCWaypoint}{C\+Waypoint}$>$\+::reverse\+\_\+iterator \hyperlink{classCWpDatabase_ae28984b70adcf73331968295206fba5d}{C\+Wp\+Database\+::\+Wp\+\_\+\+Map\+\_\+\+Rev\+Itr\+\_\+t}}
+
+\mbox{\Hypertarget{classCWpDatabase_acdf43fd8206955eeb54807e9254958cb}\label{classCWpDatabase_acdf43fd8206955eeb54807e9254958cb}} 
+\index{C\+Wp\+Database@{C\+Wp\+Database}!Wp\+\_\+\+Map\+\_\+t@{Wp\+\_\+\+Map\+\_\+t}}
+\index{Wp\+\_\+\+Map\+\_\+t@{Wp\+\_\+\+Map\+\_\+t}!C\+Wp\+Database@{C\+Wp\+Database}}
+\subsubsection{\texorpdfstring{Wp\+\_\+\+Map\+\_\+t}{Wp\_Map\_t}}
+{\footnotesize\ttfamily typedef std\+::map$<$\hyperlink{CWpDatabase_8h_af4bde7780fd7a000e6647ae788fe5a10}{Wp\+\_\+\+Database\+\_\+key\+\_\+t}, \hyperlink{classCWaypoint}{C\+Waypoint}$>$ \hyperlink{classCWpDatabase_acdf43fd8206955eeb54807e9254958cb}{C\+Wp\+Database\+::\+Wp\+\_\+\+Map\+\_\+t}}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCWpDatabase_a373c0ba6b4524115cda152273a713017}\label{classCWpDatabase_a373c0ba6b4524115cda152273a713017}} 
+\index{C\+Wp\+Database@{C\+Wp\+Database}!C\+Wp\+Database@{C\+Wp\+Database}}
+\index{C\+Wp\+Database@{C\+Wp\+Database}!C\+Wp\+Database@{C\+Wp\+Database}}
+\subsubsection{\texorpdfstring{C\+Wp\+Database()}{CWpDatabase()}}
+{\footnotesize\ttfamily C\+Wp\+Database\+::\+C\+Wp\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hyperlink{classCWpDatabase}{C\+Wp\+Database} constructor \mbox{\Hypertarget{classCWpDatabase_a9c8209e9d6ba9a4c275cb4f6266950d6}\label{classCWpDatabase_a9c8209e9d6ba9a4c275cb4f6266950d6}} 
+\index{C\+Wp\+Database@{C\+Wp\+Database}!````~C\+Wp\+Database@{$\sim$\+C\+Wp\+Database}}
+\index{````~C\+Wp\+Database@{$\sim$\+C\+Wp\+Database}!C\+Wp\+Database@{C\+Wp\+Database}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Wp\+Database()}{~CWpDatabase()}}
+{\footnotesize\ttfamily C\+Wp\+Database\+::$\sim$\+C\+Wp\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hyperlink{classCWpDatabase}{C\+Wp\+Database} destructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCWpDatabase_a96d64308fe52f48b423d7c97f9e95dcf}\label{classCWpDatabase_a96d64308fe52f48b423d7c97f9e95dcf}} 
+\index{C\+Wp\+Database@{C\+Wp\+Database}!add\+Waypoint@{add\+Waypoint}}
+\index{add\+Waypoint@{add\+Waypoint}!C\+Wp\+Database@{C\+Wp\+Database}}
+\subsubsection{\texorpdfstring{add\+Waypoint()}{addWaypoint()}}
+{\footnotesize\ttfamily void C\+Wp\+Database\+::add\+Waypoint (\begin{DoxyParamCaption}\item[{\hyperlink{CWpDatabase_8h_af4bde7780fd7a000e6647ae788fe5a10}{Wp\+\_\+\+Database\+\_\+key\+\_\+t} const \&}]{key,  }\item[{\hyperlink{classCWaypoint}{C\+Waypoint} const \&}]{wp }\end{DoxyParamCaption})}
+
+Add a Waypoint to the database param@ Wp\+\_\+\+Database\+\_\+key\+\_\+t \&name -\/ unique name for the wp (IN) param@ \hyperlink{classCWaypoint}{C\+Waypoint} const \&wp -\/ Waypoint (IN) returnvalue@ void
+
+Add a Waypoint to the database param@ Wp\+\_\+\+Database\+\_\+key\+\_\+t const \&key -\/ key for the wp (IN) param@ \hyperlink{classCWaypoint}{C\+Waypoint} const \&wp -\/ Waypoint (IN) returnvalue@ void \mbox{\Hypertarget{classCWpDatabase_a5e7031a38c729dc54ff48834e2a7902f}\label{classCWpDatabase_a5e7031a38c729dc54ff48834e2a7902f}} 
+\index{C\+Wp\+Database@{C\+Wp\+Database}!get\+Pointer\+To\+Waypoint@{get\+Pointer\+To\+Waypoint}}
+\index{get\+Pointer\+To\+Waypoint@{get\+Pointer\+To\+Waypoint}!C\+Wp\+Database@{C\+Wp\+Database}}
+\subsubsection{\texorpdfstring{get\+Pointer\+To\+Waypoint()}{getPointerToWaypoint()}}
+{\footnotesize\ttfamily \hyperlink{classCWaypoint}{C\+Waypoint} $\ast$ C\+Wp\+Database\+::get\+Pointer\+To\+Waypoint (\begin{DoxyParamCaption}\item[{\hyperlink{CWpDatabase_8h_af4bde7780fd7a000e6647ae788fe5a10}{Wp\+\_\+\+Database\+\_\+key\+\_\+t}}]{name }\end{DoxyParamCaption})}
+
+Get pointer to a Waypoint from the Database which matches the name param@ Wp\+\_\+\+Database\+\_\+key\+\_\+t name -\/ name of a Waypoint (IN) returnvalue@ C\+Waypoint$\ast$ -\/ Pointer to a Waypoint in the database
+
+Get pointer to a Waypoint from the Database which matches the name param@ Wp\+\_\+\+Database\+\_\+key\+\_\+t name -\/ name of a Waypoint (IN) returnvalue@ C\+P\+O\+I$\ast$ -\/ Pointer to a Waypoint in the database \mbox{\Hypertarget{classCWpDatabase_ad264883102664dde8c25fa8f11e41087}\label{classCWpDatabase_ad264883102664dde8c25fa8f11e41087}} 
+\index{C\+Wp\+Database@{C\+Wp\+Database}!get\+Wps\+From\+Database@{get\+Wps\+From\+Database}}
+\index{get\+Wps\+From\+Database@{get\+Wps\+From\+Database}!C\+Wp\+Database@{C\+Wp\+Database}}
+\subsubsection{\texorpdfstring{get\+Wps\+From\+Database()}{getWpsFromDatabase()}}
+{\footnotesize\ttfamily const \hyperlink{classCWpDatabase_acdf43fd8206955eeb54807e9254958cb}{C\+Wp\+Database\+::\+Wp\+\_\+\+Map\+\_\+t} C\+Wp\+Database\+::get\+Wps\+From\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get Waypoints from the Database returnvalue@ Wp\+\_\+\+Map\+\_\+t -\/ Waypoints in the Database (O\+UT) \mbox{\Hypertarget{classCWpDatabase_a14ca531b56bffb1dc354c5a688115d74}\label{classCWpDatabase_a14ca531b56bffb1dc354c5a688115d74}} 
+\index{C\+Wp\+Database@{C\+Wp\+Database}!print@{print}}
+\index{print@{print}!C\+Wp\+Database@{C\+Wp\+Database}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void C\+Wp\+Database\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Print all the Waypoints in the database returnvalue@ void \mbox{\Hypertarget{classCWpDatabase_a13e513a40e9339ae56f1c8b77eb0b9d3}\label{classCWpDatabase_a13e513a40e9339ae56f1c8b77eb0b9d3}} 
+\index{C\+Wp\+Database@{C\+Wp\+Database}!reset\+Wps\+Database@{reset\+Wps\+Database}}
+\index{reset\+Wps\+Database@{reset\+Wps\+Database}!C\+Wp\+Database@{C\+Wp\+Database}}
+\subsubsection{\texorpdfstring{reset\+Wps\+Database()}{resetWpsDatabase()}}
+{\footnotesize\ttfamily void C\+Wp\+Database\+::reset\+Wps\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Resets the Database returnvalue@ void
+
+Reset the Database returnvalue@ void 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CWpDatabase_8h}{C\+Wp\+Database.\+h}\item 
+\hyperlink{CWpDatabase_8cpp}{C\+Wp\+Database.\+cpp}\end{DoxyCompactItemize}

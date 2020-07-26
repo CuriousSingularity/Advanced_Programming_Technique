@@ -1,0 +1,127 @@
+\hypertarget{classCCSV}{}\section{C\+C\+SV Class Reference}
+\label{classCCSV}\index{C\+C\+SV@{C\+C\+SV}}
+
+
+{\ttfamily \#include $<$C\+C\+S\+V.\+h$>$}
+
+
+
+Inheritance diagram for C\+C\+SV\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCCSV__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+C\+SV\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCCSV__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCCSV_af643bffe19b07da7ecad5c4a6cfd82c0}{C\+C\+SV} ()
+\item 
+\hyperlink{classCCSV_aa1a56cc8993767e5f0572b839c594bec}{$\sim$\+C\+C\+SV} ()
+\item 
+void \hyperlink{classCCSV_a473f20a4cb83f3f50174a194121138d1}{set\+Media\+Name} (std\+::string name)
+\item 
+bool \hyperlink{classCCSV_a9f0f855c4337078ab3ccff7a3a8148fa}{write\+Data} (const \hyperlink{classCWpDatabase}{C\+Wp\+Database} \&waypoint\+Db, const \hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&poi\+Db)
+\item 
+bool \hyperlink{classCCSV_a861ad5d158b00a1eaef4d45710aa466c}{read\+Data} (\hyperlink{classCWpDatabase}{C\+Wp\+Database} \&waypoint\+Db, \hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&poi\+Db, \hyperlink{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584}{Merge\+Mode} mode)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCCSV_af643bffe19b07da7ecad5c4a6cfd82c0}\label{classCCSV_af643bffe19b07da7ecad5c4a6cfd82c0}} 
+\index{C\+C\+SV@{C\+C\+SV}!C\+C\+SV@{C\+C\+SV}}
+\index{C\+C\+SV@{C\+C\+SV}!C\+C\+SV@{C\+C\+SV}}
+\subsubsection{\texorpdfstring{C\+C\+S\+V()}{CCSV()}}
+{\footnotesize\ttfamily C\+C\+S\+V\+::\+C\+C\+SV (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor \mbox{\Hypertarget{classCCSV_aa1a56cc8993767e5f0572b839c594bec}\label{classCCSV_aa1a56cc8993767e5f0572b839c594bec}} 
+\index{C\+C\+SV@{C\+C\+SV}!````~C\+C\+SV@{$\sim$\+C\+C\+SV}}
+\index{````~C\+C\+SV@{$\sim$\+C\+C\+SV}!C\+C\+SV@{C\+C\+SV}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+C\+S\+V()}{~CCSV()}}
+{\footnotesize\ttfamily C\+C\+S\+V\+::$\sim$\+C\+C\+SV (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCCSV_a861ad5d158b00a1eaef4d45710aa466c}\label{classCCSV_a861ad5d158b00a1eaef4d45710aa466c}} 
+\index{C\+C\+SV@{C\+C\+SV}!read\+Data@{read\+Data}}
+\index{read\+Data@{read\+Data}!C\+C\+SV@{C\+C\+SV}}
+\subsubsection{\texorpdfstring{read\+Data()}{readData()}}
+{\footnotesize\ttfamily bool C\+C\+S\+V\+::read\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{classCWpDatabase}{C\+Wp\+Database} \&}]{waypoint\+Db,  }\item[{\hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&}]{poi\+Db,  }\item[{\hyperlink{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584}{Merge\+Mode}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Fill the databases with the data from persistent storage. If merge mode is M\+E\+R\+GE, the content in the persistent storage will be merged with any content already existing in the data bases. If merge mode is R\+E\+P\+L\+A\+CE, already existing content will be removed before inserting the content from the persistent storage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em waypoint\+Db} & the the data base with way points \\
+\hline
+{\em poi\+Db} & the database with points of interest \\
+\hline
+{\em mode} & the merge mode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the data could be read successfully 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classCPersistentStorage_a28edf547e10449a7f45de9885b68890b}{C\+Persistent\+Storage}.
+
+\mbox{\Hypertarget{classCCSV_a473f20a4cb83f3f50174a194121138d1}\label{classCCSV_a473f20a4cb83f3f50174a194121138d1}} 
+\index{C\+C\+SV@{C\+C\+SV}!set\+Media\+Name@{set\+Media\+Name}}
+\index{set\+Media\+Name@{set\+Media\+Name}!C\+C\+SV@{C\+C\+SV}}
+\subsubsection{\texorpdfstring{set\+Media\+Name()}{setMediaName()}}
+{\footnotesize\ttfamily void C\+C\+S\+V\+::set\+Media\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Set the name of the media to be used for persistent storage. The exact interpretation of the name depends on the implementation of the component.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the media to be used  void \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classCPersistentStorage_af626d001915346c04c2008c9ea8bb8d8}{C\+Persistent\+Storage}.
+
+\mbox{\Hypertarget{classCCSV_a9f0f855c4337078ab3ccff7a3a8148fa}\label{classCCSV_a9f0f855c4337078ab3ccff7a3a8148fa}} 
+\index{C\+C\+SV@{C\+C\+SV}!write\+Data@{write\+Data}}
+\index{write\+Data@{write\+Data}!C\+C\+SV@{C\+C\+SV}}
+\subsubsection{\texorpdfstring{write\+Data()}{writeData()}}
+{\footnotesize\ttfamily bool C\+C\+S\+V\+::write\+Data (\begin{DoxyParamCaption}\item[{const \hyperlink{classCWpDatabase}{C\+Wp\+Database} \&}]{waypoint\+Db,  }\item[{const \hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&}]{poi\+Db }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Write the data to the persistent storage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em waypoint\+Db} & the data base with way points \\
+\hline
+{\em poi\+Db} & the database with points of interest \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the data could be saved successfully 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classCPersistentStorage_ab0c03dbf674c6218d574289ec54a75ed}{C\+Persistent\+Storage}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CCSV_8h}{C\+C\+S\+V.\+h}\item 
+\hyperlink{CCSV_8cpp}{C\+C\+S\+V.\+cpp}\end{DoxyCompactItemize}

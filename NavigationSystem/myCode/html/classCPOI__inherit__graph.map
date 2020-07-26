@@ -1,0 +1,3 @@
+<map id="CPOI" name="CPOI">
+<area shape="rect" id="node2" href="$classCWaypoint.html" title="{CWaypoint\n||+ CWaypoint()\l+ ~CWaypoint()\l+ getName()\l+ getLatitude()\l+ getLongitude()\l+ getAllDataByReference()\l+ transformLatitude2degmmss()\l+ transformLongitude2degmmss()\l+ calculateDistance()\l+ print()\l}" alt="" coords="5,5,252,215"/>
+</map>

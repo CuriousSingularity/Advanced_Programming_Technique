@@ -1,0 +1,75 @@
+\hypertarget{classAPT_1_1CJsonScanner}{}\section{A\+PT\+:\+:C\+Json\+Scanner Class Reference}
+\label{classAPT_1_1CJsonScanner}\index{A\+P\+T\+::\+C\+Json\+Scanner@{A\+P\+T\+::\+C\+Json\+Scanner}}
+
+
+{\ttfamily \#include $<$C\+Json\+Scanner.\+h$>$}
+
+
+
+Inheritance diagram for A\+PT\+:\+:C\+Json\+Scanner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classAPT_1_1CJsonScanner__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for A\+PT\+:\+:C\+Json\+Scanner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classAPT_1_1CJsonScanner__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAPT_1_1CJsonScanner_a66b75b3be7d072f0b51b17399a372b4b}{C\+Json\+Scanner} (std\+::istream \&input)
+\item 
+\hyperlink{classAPT_1_1CJsonScanner_a3ddc04d78015157e8e52df2cd6317330}{$\sim$\+C\+Json\+Scanner} ()
+\item 
+\hyperlink{classAPT_1_1CJsonToken}{C\+Json\+Token} $\ast$ \hyperlink{classAPT_1_1CJsonScanner_afe3b93ec865d0a77c31df6966e6fc4e1}{next\+Token} ()
+\item 
+int \hyperlink{classAPT_1_1CJsonScanner_adf983e640d42df3a5796b9f2aa2df5c0}{scanned\+Line} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAPT_1_1CJsonScanner_a66b75b3be7d072f0b51b17399a372b4b}\label{classAPT_1_1CJsonScanner_a66b75b3be7d072f0b51b17399a372b4b}} 
+\index{A\+P\+T\+::\+C\+Json\+Scanner@{A\+P\+T\+::\+C\+Json\+Scanner}!C\+Json\+Scanner@{C\+Json\+Scanner}}
+\index{C\+Json\+Scanner@{C\+Json\+Scanner}!A\+P\+T\+::\+C\+Json\+Scanner@{A\+P\+T\+::\+C\+Json\+Scanner}}
+\subsubsection{\texorpdfstring{C\+Json\+Scanner()}{CJsonScanner()}}
+{\footnotesize\ttfamily A\+P\+T\+::\+C\+Json\+Scanner\+::\+C\+Json\+Scanner (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{input }\end{DoxyParamCaption})}
+
+Create a new scanner that reads the given input stream. \mbox{\Hypertarget{classAPT_1_1CJsonScanner_a3ddc04d78015157e8e52df2cd6317330}\label{classAPT_1_1CJsonScanner_a3ddc04d78015157e8e52df2cd6317330}} 
+\index{A\+P\+T\+::\+C\+Json\+Scanner@{A\+P\+T\+::\+C\+Json\+Scanner}!````~C\+Json\+Scanner@{$\sim$\+C\+Json\+Scanner}}
+\index{````~C\+Json\+Scanner@{$\sim$\+C\+Json\+Scanner}!A\+P\+T\+::\+C\+Json\+Scanner@{A\+P\+T\+::\+C\+Json\+Scanner}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Json\+Scanner()}{~CJsonScanner()}}
+{\footnotesize\ttfamily A\+P\+T\+::\+C\+Json\+Scanner\+::$\sim$\+C\+Json\+Scanner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Frees all allocated resources. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classAPT_1_1CJsonScanner_afe3b93ec865d0a77c31df6966e6fc4e1}\label{classAPT_1_1CJsonScanner_afe3b93ec865d0a77c31df6966e6fc4e1}} 
+\index{A\+P\+T\+::\+C\+Json\+Scanner@{A\+P\+T\+::\+C\+Json\+Scanner}!next\+Token@{next\+Token}}
+\index{next\+Token@{next\+Token}!A\+P\+T\+::\+C\+Json\+Scanner@{A\+P\+T\+::\+C\+Json\+Scanner}}
+\subsubsection{\texorpdfstring{next\+Token()}{nextToken()}}
+{\footnotesize\ttfamily \hyperlink{classAPT_1_1CJsonToken}{C\+Json\+Token} $\ast$ A\+P\+T\+::\+C\+Json\+Scanner\+::next\+Token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the next token from the input. The pointer returned points to an object managed by this class. It is only valid until the next invocation of the method.
+
+If the input is exhausted, the method returns 0. \mbox{\Hypertarget{classAPT_1_1CJsonScanner_adf983e640d42df3a5796b9f2aa2df5c0}\label{classAPT_1_1CJsonScanner_adf983e640d42df3a5796b9f2aa2df5c0}} 
+\index{A\+P\+T\+::\+C\+Json\+Scanner@{A\+P\+T\+::\+C\+Json\+Scanner}!scanned\+Line@{scanned\+Line}}
+\index{scanned\+Line@{scanned\+Line}!A\+P\+T\+::\+C\+Json\+Scanner@{A\+P\+T\+::\+C\+Json\+Scanner}}
+\subsubsection{\texorpdfstring{scanned\+Line()}{scannedLine()}}
+{\footnotesize\ttfamily int A\+P\+T\+::\+C\+Json\+Scanner\+::scanned\+Line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return the line number of the input where last token (returned by \hyperlink{classAPT_1_1CJsonScanner_afe3b93ec865d0a77c31df6966e6fc4e1}{next\+Token()}) was found. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CJsonScanner_8h}{C\+Json\+Scanner.\+h}\item 
+\hyperlink{CJsonScanner_8cpp}{C\+Json\+Scanner.\+cpp}\end{DoxyCompactItemize}

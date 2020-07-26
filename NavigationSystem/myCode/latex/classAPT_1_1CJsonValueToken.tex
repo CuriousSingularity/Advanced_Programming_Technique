@@ -1,0 +1,78 @@
+\hypertarget{classAPT_1_1CJsonValueToken}{}\section{A\+PT\+:\+:C\+Json\+Value\+Token$<$ token\+Type, T $>$ Class Template Reference}
+\label{classAPT_1_1CJsonValueToken}\index{A\+P\+T\+::\+C\+Json\+Value\+Token$<$ token\+Type, T $>$@{A\+P\+T\+::\+C\+Json\+Value\+Token$<$ token\+Type, T $>$}}
+
+
+{\ttfamily \#include $<$C\+Json\+Token.\+h$>$}
+
+
+
+Inheritance diagram for A\+PT\+:\+:C\+Json\+Value\+Token$<$ token\+Type, T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{classAPT_1_1CJsonValueToken__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for A\+PT\+:\+:C\+Json\+Value\+Token$<$ token\+Type, T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{classAPT_1_1CJsonValueToken__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAPT_1_1CJsonValueToken_a8c037f13ded3735b427a5d2738208df8}{C\+Json\+Value\+Token} (T value)
+\item 
+T \hyperlink{classAPT_1_1CJsonValueToken_a352489d038676e08aba9f8b06f932c88}{get\+Value} () const
+\item 
+std\+::string \hyperlink{classAPT_1_1CJsonValueToken_ab7d49b06f5242abfb7e67fa10278690b}{str} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$C\+Json\+Token\+::\+Token\+Type token\+Type, class T$>$\newline
+class A\+P\+T\+::\+C\+Json\+Value\+Token$<$ token\+Type, T $>$}
+
+This template is used to define special tokens that have an associated value of the given type. This is not intended to be used by programmers. Use the derived types C\+Json\+String\+Token, C\+Json\+Number\+Token and C\+Json\+Bool\+Token instead. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAPT_1_1CJsonValueToken_a8c037f13ded3735b427a5d2738208df8}\label{classAPT_1_1CJsonValueToken_a8c037f13ded3735b427a5d2738208df8}} 
+\index{A\+P\+T\+::\+C\+Json\+Value\+Token@{A\+P\+T\+::\+C\+Json\+Value\+Token}!C\+Json\+Value\+Token@{C\+Json\+Value\+Token}}
+\index{C\+Json\+Value\+Token@{C\+Json\+Value\+Token}!A\+P\+T\+::\+C\+Json\+Value\+Token@{A\+P\+T\+::\+C\+Json\+Value\+Token}}
+\subsubsection{\texorpdfstring{C\+Json\+Value\+Token()}{CJsonValueToken()}}
+{\footnotesize\ttfamily template$<$C\+Json\+Token\+::\+Token\+Type token\+Type, class T $>$ \\
+\hyperlink{classAPT_1_1CJsonValueToken}{A\+P\+T\+::\+C\+Json\+Value\+Token}$<$ token\+Type, T $>$\+::\hyperlink{classAPT_1_1CJsonValueToken}{C\+Json\+Value\+Token} (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Create a token with the given value. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classAPT_1_1CJsonValueToken_a352489d038676e08aba9f8b06f932c88}\label{classAPT_1_1CJsonValueToken_a352489d038676e08aba9f8b06f932c88}} 
+\index{A\+P\+T\+::\+C\+Json\+Value\+Token@{A\+P\+T\+::\+C\+Json\+Value\+Token}!get\+Value@{get\+Value}}
+\index{get\+Value@{get\+Value}!A\+P\+T\+::\+C\+Json\+Value\+Token@{A\+P\+T\+::\+C\+Json\+Value\+Token}}
+\subsubsection{\texorpdfstring{get\+Value()}{getValue()}}
+{\footnotesize\ttfamily template$<$C\+Json\+Token\+::\+Token\+Type token\+Type, class T $>$ \\
+T \hyperlink{classAPT_1_1CJsonValueToken}{A\+P\+T\+::\+C\+Json\+Value\+Token}$<$ token\+Type, T $>$\+::get\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return the value associated with the token. \mbox{\Hypertarget{classAPT_1_1CJsonValueToken_ab7d49b06f5242abfb7e67fa10278690b}\label{classAPT_1_1CJsonValueToken_ab7d49b06f5242abfb7e67fa10278690b}} 
+\index{A\+P\+T\+::\+C\+Json\+Value\+Token@{A\+P\+T\+::\+C\+Json\+Value\+Token}!str@{str}}
+\index{str@{str}!A\+P\+T\+::\+C\+Json\+Value\+Token@{A\+P\+T\+::\+C\+Json\+Value\+Token}}
+\subsubsection{\texorpdfstring{str()}{str()}}
+{\footnotesize\ttfamily template$<$C\+Json\+Token\+::\+Token\+Type token\+Type, class T $>$ \\
+std\+::string \hyperlink{classAPT_1_1CJsonValueToken}{A\+P\+T\+::\+C\+Json\+Value\+Token}$<$ token\+Type, T $>$\+::str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Allow convertion to string. 
+
+Reimplemented from \hyperlink{classAPT_1_1CJsonToken_a743343b64c20d0aa726d271c2b0e9be8}{A\+P\+T\+::\+C\+Json\+Token}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CJsonToken_8h}{C\+Json\+Token.\+h}\end{DoxyCompactItemize}

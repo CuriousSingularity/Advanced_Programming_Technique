@@ -1,0 +1,204 @@
+\hypertarget{classCPOI}{}\section{C\+P\+OI Class Reference}
+\label{classCPOI}\index{C\+P\+OI@{C\+P\+OI}}
+
+
+{\ttfamily \#include $<$C\+P\+O\+I.\+h$>$}
+
+
+
+Inheritance diagram for C\+P\+OI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classCPOI__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+P\+OI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classCPOI__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{t\+\_\+poi} \{ \newline
+\hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19fa9e2e59681f7e72aecac624223b9fa8e4}{R\+E\+S\+T\+A\+U\+R\+A\+NT} = 0, 
+\hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19facf4a12f93b8c022863d68afc23eba40c}{T\+O\+U\+R\+I\+S\+T\+IC}, 
+\hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19faea743cce5aaba1631332753cc174e959}{G\+A\+S\+S\+T\+A\+T\+I\+ON}, 
+\hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19faa5da5fd02f7ccaa7f05851cd08ad02e2}{U\+N\+I\+V\+E\+R\+S\+I\+TY}, 
+\newline
+\hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19fa2c7961f7a81e01841006025f0653b0f0}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+OI}
+ \}
+\item 
+enum \hyperlink{classCPOI_a8b2f40865be2841f714570f02cfa5308}{Attributes\+Type} \{ \newline
+\hyperlink{classCPOI_a8b2f40865be2841f714570f02cfa5308a5c6f58856c64c6d4551c6d3633c5389b}{I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+Y\+PE} = 0, 
+\hyperlink{classCPOI_a8b2f40865be2841f714570f02cfa5308ab8e333612d4db73c33947c2388295a12}{N\+A\+ME}, 
+\hyperlink{classCPOI_a8b2f40865be2841f714570f02cfa5308a57ea5a2fc969fac0404968f7791824cb}{L\+A\+T\+I\+T\+U\+DE}, 
+\hyperlink{classCPOI_a8b2f40865be2841f714570f02cfa5308a2c5ae5d334f3e644260138be14e29e42}{L\+O\+N\+G\+I\+T\+U\+DE}, 
+\newline
+\hyperlink{classCPOI_a8b2f40865be2841f714570f02cfa5308a91fafb096c2a3f1359ce122d91526401}{P\+O\+I\+\_\+\+T\+Y\+PE}, 
+\hyperlink{classCPOI_a8b2f40865be2841f714570f02cfa5308a2ff203a7d3c5fd108d72db1e2138064e}{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}, 
+\hyperlink{classCPOI_a8b2f40865be2841f714570f02cfa5308a3fce19695d636371523a0ffc51ace1fc}{M\+A\+X\+\_\+\+T\+Y\+P\+ES}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCPOI_a9dd1c6e7b2a3e82ca3a383cc0a02bf8d}{C\+P\+OI} (\hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{t\+\_\+poi} type=\hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19fa2c7961f7a81e01841006025f0653b0f0}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+OI}, std\+::string name=\char`\"{}\char`\"{}, std\+::string description=\char`\"{}\char`\"{}, double latitude=0, double longitude=0)
+\item 
+\hyperlink{classCPOI_a8fc284c7b62be827e11f7e8ae443c55f}{$\sim$\+C\+P\+OI} ()
+\item 
+void \hyperlink{classCPOI_a65c0161ce80d49cf5f2fe80765bc94d9}{get\+All\+Data\+By\+Reference} (std\+::string \&name, double \&latitude, double \&longitude, \hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{t\+\_\+poi} \&type, std\+::string \&description)
+\item 
+std\+::string \hyperlink{classCPOI_a908fcdd7b79aca230c67c05bf1b1a78c}{get\+Poi\+Type\+Name} ()
+\item 
+void \hyperlink{classCPOI_a2b65d12e722c89a8a105620726195d10}{print} (int format)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{C\+P\+O\+I\+::t\+\_\+poi} \hyperlink{classCPOI_ac100f8c90fe0e5057e6fa4eca53126ad}{get\+Poi\+Type} (const std\+::string \&poi\+Type\+Name)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classCPOI_ad0c53792637fc266cb40d31e21c8a68f}{operator$<$$<$} (std\+::ostream \&stream, \hyperlink{classCPOI}{C\+P\+OI} const \&poi)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classCPOI_a8b2f40865be2841f714570f02cfa5308}\label{classCPOI_a8b2f40865be2841f714570f02cfa5308}} 
+\index{C\+P\+OI@{C\+P\+OI}!Attributes\+Type@{Attributes\+Type}}
+\index{Attributes\+Type@{Attributes\+Type}!C\+P\+OI@{C\+P\+OI}}
+\subsubsection{\texorpdfstring{Attributes\+Type}{AttributesType}}
+{\footnotesize\ttfamily enum \hyperlink{classCPOI_a8b2f40865be2841f714570f02cfa5308}{C\+P\+O\+I\+::\+Attributes\+Type}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+Y\+PE@{I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+Y\+PE}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+Y\+PE@{I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+Y\+PE}}}\mbox{\Hypertarget{classCPOI_a8b2f40865be2841f714570f02cfa5308a5c6f58856c64c6d4551c6d3633c5389b}\label{classCPOI_a8b2f40865be2841f714570f02cfa5308a5c6f58856c64c6d4551c6d3633c5389b}} 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+Y\+PE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+A\+ME@{N\+A\+ME}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!N\+A\+ME@{N\+A\+ME}}}\mbox{\Hypertarget{classCPOI_a8b2f40865be2841f714570f02cfa5308ab8e333612d4db73c33947c2388295a12}\label{classCPOI_a8b2f40865be2841f714570f02cfa5308ab8e333612d4db73c33947c2388295a12}} 
+N\+A\+ME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+A\+T\+I\+T\+U\+DE@{L\+A\+T\+I\+T\+U\+DE}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!L\+A\+T\+I\+T\+U\+DE@{L\+A\+T\+I\+T\+U\+DE}}}\mbox{\Hypertarget{classCPOI_a8b2f40865be2841f714570f02cfa5308a57ea5a2fc969fac0404968f7791824cb}\label{classCPOI_a8b2f40865be2841f714570f02cfa5308a57ea5a2fc969fac0404968f7791824cb}} 
+L\+A\+T\+I\+T\+U\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+N\+G\+I\+T\+U\+DE@{L\+O\+N\+G\+I\+T\+U\+DE}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!L\+O\+N\+G\+I\+T\+U\+DE@{L\+O\+N\+G\+I\+T\+U\+DE}}}\mbox{\Hypertarget{classCPOI_a8b2f40865be2841f714570f02cfa5308a2c5ae5d334f3e644260138be14e29e42}\label{classCPOI_a8b2f40865be2841f714570f02cfa5308a2c5ae5d334f3e644260138be14e29e42}} 
+L\+O\+N\+G\+I\+T\+U\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+O\+I\+\_\+\+T\+Y\+PE@{P\+O\+I\+\_\+\+T\+Y\+PE}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!P\+O\+I\+\_\+\+T\+Y\+PE@{P\+O\+I\+\_\+\+T\+Y\+PE}}}\mbox{\Hypertarget{classCPOI_a8b2f40865be2841f714570f02cfa5308a91fafb096c2a3f1359ce122d91526401}\label{classCPOI_a8b2f40865be2841f714570f02cfa5308a91fafb096c2a3f1359ce122d91526401}} 
+P\+O\+I\+\_\+\+T\+Y\+PE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON@{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!D\+E\+S\+C\+R\+I\+P\+T\+I\+ON@{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}}}\mbox{\Hypertarget{classCPOI_a8b2f40865be2841f714570f02cfa5308a2ff203a7d3c5fd108d72db1e2138064e}\label{classCPOI_a8b2f40865be2841f714570f02cfa5308a2ff203a7d3c5fd108d72db1e2138064e}} 
+D\+E\+S\+C\+R\+I\+P\+T\+I\+ON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+A\+X\+\_\+\+T\+Y\+P\+ES@{M\+A\+X\+\_\+\+T\+Y\+P\+ES}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!M\+A\+X\+\_\+\+T\+Y\+P\+ES@{M\+A\+X\+\_\+\+T\+Y\+P\+ES}}}\mbox{\Hypertarget{classCPOI_a8b2f40865be2841f714570f02cfa5308a3fce19695d636371523a0ffc51ace1fc}\label{classCPOI_a8b2f40865be2841f714570f02cfa5308a3fce19695d636371523a0ffc51ace1fc}} 
+M\+A\+X\+\_\+\+T\+Y\+P\+ES&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}\label{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}} 
+\index{C\+P\+OI@{C\+P\+OI}!t\+\_\+poi@{t\+\_\+poi}}
+\index{t\+\_\+poi@{t\+\_\+poi}!C\+P\+OI@{C\+P\+OI}}
+\subsubsection{\texorpdfstring{t\+\_\+poi}{t\_poi}}
+{\footnotesize\ttfamily enum \hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{C\+P\+O\+I\+::t\+\_\+poi}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+E\+S\+T\+A\+U\+R\+A\+NT@{R\+E\+S\+T\+A\+U\+R\+A\+NT}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!R\+E\+S\+T\+A\+U\+R\+A\+NT@{R\+E\+S\+T\+A\+U\+R\+A\+NT}}}\mbox{\Hypertarget{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19fa9e2e59681f7e72aecac624223b9fa8e4}\label{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19fa9e2e59681f7e72aecac624223b9fa8e4}} 
+R\+E\+S\+T\+A\+U\+R\+A\+NT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+O\+U\+R\+I\+S\+T\+IC@{T\+O\+U\+R\+I\+S\+T\+IC}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!T\+O\+U\+R\+I\+S\+T\+IC@{T\+O\+U\+R\+I\+S\+T\+IC}}}\mbox{\Hypertarget{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19facf4a12f93b8c022863d68afc23eba40c}\label{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19facf4a12f93b8c022863d68afc23eba40c}} 
+T\+O\+U\+R\+I\+S\+T\+IC&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+A\+S\+S\+T\+A\+T\+I\+ON@{G\+A\+S\+S\+T\+A\+T\+I\+ON}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!G\+A\+S\+S\+T\+A\+T\+I\+ON@{G\+A\+S\+S\+T\+A\+T\+I\+ON}}}\mbox{\Hypertarget{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19faea743cce5aaba1631332753cc174e959}\label{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19faea743cce5aaba1631332753cc174e959}} 
+G\+A\+S\+S\+T\+A\+T\+I\+ON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+N\+I\+V\+E\+R\+S\+I\+TY@{U\+N\+I\+V\+E\+R\+S\+I\+TY}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!U\+N\+I\+V\+E\+R\+S\+I\+TY@{U\+N\+I\+V\+E\+R\+S\+I\+TY}}}\mbox{\Hypertarget{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19faa5da5fd02f7ccaa7f05851cd08ad02e2}\label{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19faa5da5fd02f7ccaa7f05851cd08ad02e2}} 
+U\+N\+I\+V\+E\+R\+S\+I\+TY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+OI@{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+OI}!C\+P\+OI@{C\+P\+OI}}\index{C\+P\+OI@{C\+P\+OI}!D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+OI@{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+OI}}}\mbox{\Hypertarget{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19fa2c7961f7a81e01841006025f0653b0f0}\label{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19fa2c7961f7a81e01841006025f0653b0f0}} 
+D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+OI&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCPOI_a9dd1c6e7b2a3e82ca3a383cc0a02bf8d}\label{classCPOI_a9dd1c6e7b2a3e82ca3a383cc0a02bf8d}} 
+\index{C\+P\+OI@{C\+P\+OI}!C\+P\+OI@{C\+P\+OI}}
+\index{C\+P\+OI@{C\+P\+OI}!C\+P\+OI@{C\+P\+OI}}
+\subsubsection{\texorpdfstring{C\+P\+O\+I()}{CPOI()}}
+{\footnotesize\ttfamily C\+P\+O\+I\+::\+C\+P\+OI (\begin{DoxyParamCaption}\item[{\hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{t\+\_\+poi}}]{type = {\ttfamily \hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19fa2c7961f7a81e01841006025f0653b0f0}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+OI}},  }\item[{std\+::string}]{name = {\ttfamily \char`\"{}\char`\"{}},  }\item[{std\+::string}]{description = {\ttfamily \char`\"{}\char`\"{}},  }\item[{double}]{latitude = {\ttfamily 0},  }\item[{double}]{longitude = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\hyperlink{classCPOI}{C\+P\+OI} constructor\+: Sets the value of an object when created. param@ t\+\_\+poi type -\/ type of a Point of interest (IN) param@ string name -\/ name of a Waypoint (IN) param@ double latitude -\/ latitude of a Waypoint (IN) param@ double longitude -\/ longitude of a Waypoint (IN) \mbox{\Hypertarget{classCPOI_a8fc284c7b62be827e11f7e8ae443c55f}\label{classCPOI_a8fc284c7b62be827e11f7e8ae443c55f}} 
+\index{C\+P\+OI@{C\+P\+OI}!````~C\+P\+OI@{$\sim$\+C\+P\+OI}}
+\index{````~C\+P\+OI@{$\sim$\+C\+P\+OI}!C\+P\+OI@{C\+P\+OI}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+P\+O\+I()}{~CPOI()}}
+{\footnotesize\ttfamily C\+P\+O\+I\+::$\sim$\+C\+P\+OI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hyperlink{classCPOI}{C\+P\+OI} Destructor\+: Called when the object is destroyed 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCPOI_a65c0161ce80d49cf5f2fe80765bc94d9}\label{classCPOI_a65c0161ce80d49cf5f2fe80765bc94d9}} 
+\index{C\+P\+OI@{C\+P\+OI}!get\+All\+Data\+By\+Reference@{get\+All\+Data\+By\+Reference}}
+\index{get\+All\+Data\+By\+Reference@{get\+All\+Data\+By\+Reference}!C\+P\+OI@{C\+P\+OI}}
+\subsubsection{\texorpdfstring{get\+All\+Data\+By\+Reference()}{getAllDataByReference()}}
+{\footnotesize\ttfamily void C\+P\+O\+I\+::get\+All\+Data\+By\+Reference (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{double \&}]{latitude,  }\item[{double \&}]{longitude,  }\item[{\hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{t\+\_\+poi} \&}]{type,  }\item[{std\+::string \&}]{description }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCPOI_ac100f8c90fe0e5057e6fa4eca53126ad}\label{classCPOI_ac100f8c90fe0e5057e6fa4eca53126ad}} 
+\index{C\+P\+OI@{C\+P\+OI}!get\+Poi\+Type@{get\+Poi\+Type}}
+\index{get\+Poi\+Type@{get\+Poi\+Type}!C\+P\+OI@{C\+P\+OI}}
+\subsubsection{\texorpdfstring{get\+Poi\+Type()}{getPoiType()}}
+{\footnotesize\ttfamily \hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{C\+P\+O\+I\+::t\+\_\+poi} C\+P\+O\+I\+::get\+Poi\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{poi\+Type\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Gets the type -\/ Global function param@ const string \&poi\+Type\+Name -\/ P\+OI name (IN) returnvalue@ \hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{C\+P\+O\+I\+::t\+\_\+poi} -\/ P\+OI type
+
+Gets the type param@ const string \&poi\+Type\+Name -\/ P\+OI name (IN) returnvalue@ \hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{C\+P\+O\+I\+::t\+\_\+poi} -\/ P\+OI type \mbox{\Hypertarget{classCPOI_a908fcdd7b79aca230c67c05bf1b1a78c}\label{classCPOI_a908fcdd7b79aca230c67c05bf1b1a78c}} 
+\index{C\+P\+OI@{C\+P\+OI}!get\+Poi\+Type\+Name@{get\+Poi\+Type\+Name}}
+\index{get\+Poi\+Type\+Name@{get\+Poi\+Type\+Name}!C\+P\+OI@{C\+P\+OI}}
+\subsubsection{\texorpdfstring{get\+Poi\+Type\+Name()}{getPoiTypeName()}}
+{\footnotesize\ttfamily string C\+P\+O\+I\+::get\+Poi\+Type\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the type name in the string returnvalue@ string -\/ name of the P\+OI type \mbox{\Hypertarget{classCPOI_a2b65d12e722c89a8a105620726195d10}\label{classCPOI_a2b65d12e722c89a8a105620726195d10}} 
+\index{C\+P\+OI@{C\+P\+OI}!print@{print}}
+\index{print@{print}!C\+P\+OI@{C\+P\+OI}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void C\+P\+O\+I\+::print (\begin{DoxyParamCaption}\item[{int}]{format }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Prints the P\+OI values in Degree-\/\+Mins-\/secs format or Decimal format param@ int format -\/ Decimal or Deg-\/min-\/ss (IN) returnvalue@ void
+
+Prints the P\+OI values in Degree-\/\+Mins-\/secs format or Decimal format param@ int format -\/ Decimal or Deg-\/min-\/ss (O\+UT) returnvalue@ void 
+
+Reimplemented from \hyperlink{classCWaypoint_a9a4177a2734842c9395658cb60a70c24}{C\+Waypoint}.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classCPOI_ad0c53792637fc266cb40d31e21c8a68f}\label{classCPOI_ad0c53792637fc266cb40d31e21c8a68f}} 
+\index{C\+P\+OI@{C\+P\+OI}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!C\+P\+OI@{C\+P\+OI}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream,  }\item[{\hyperlink{classCPOI}{C\+P\+OI} const \&}]{poi }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+An operator overloaded friend function which prints the P\+OI information param@ ostream \&stream -\/ output stream (I\+N/\+O\+UT) param@ \hyperlink{classCPOI}{C\+P\+OI} const \&poi -\/ A P\+OI (IN) returnvalue@ output stream with the P\+OI information 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CPOI_8h}{C\+P\+O\+I.\+h}\item 
+\hyperlink{CPOI_8cpp}{C\+P\+O\+I.\+cpp}\end{DoxyCompactItemize}

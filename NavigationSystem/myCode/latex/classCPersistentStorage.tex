@@ -1,0 +1,143 @@
+\hypertarget{classCPersistentStorage}{}\section{C\+Persistent\+Storage Class Reference}
+\label{classCPersistentStorage}\index{C\+Persistent\+Storage@{C\+Persistent\+Storage}}
+
+
+{\ttfamily \#include $<$C\+Persistent\+Storage.\+h$>$}
+
+
+
+Inheritance diagram for C\+Persistent\+Storage\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{classCPersistentStorage__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+Persistent\+Storage\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classCPersistentStorage__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584}{Merge\+Mode} \{ \hyperlink{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584a61eb51fcd97853482d0436ea6b5fec2f}{M\+E\+R\+GE}, 
+\hyperlink{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584a5eb3db7839315215409a77d1c58230ac}{R\+E\+P\+L\+A\+CE}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classCPersistentStorage_af626d001915346c04c2008c9ea8bb8d8}{set\+Media\+Name} (std\+::string name)=0
+\item 
+virtual bool \hyperlink{classCPersistentStorage_ab0c03dbf674c6218d574289ec54a75ed}{write\+Data} (const \hyperlink{classCWpDatabase}{C\+Wp\+Database} \&waypoint\+Db, const \hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&poi\+Db)=0
+\item 
+virtual bool \hyperlink{classCPersistentStorage_a28edf547e10449a7f45de9885b68890b}{read\+Data} (\hyperlink{classCWpDatabase}{C\+Wp\+Database} \&waypoint\+Db, \hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&poi\+Db, \hyperlink{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584}{Merge\+Mode} mode)=0
+\item 
+virtual \hyperlink{classCPersistentStorage_a040e22bf1000853fbcd2ff45239386d9}{$\sim$\+C\+Persistent\+Storage} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584}\label{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584}} 
+\index{C\+Persistent\+Storage@{C\+Persistent\+Storage}!Merge\+Mode@{Merge\+Mode}}
+\index{Merge\+Mode@{Merge\+Mode}!C\+Persistent\+Storage@{C\+Persistent\+Storage}}
+\subsubsection{\texorpdfstring{Merge\+Mode}{MergeMode}}
+{\footnotesize\ttfamily enum \hyperlink{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584}{C\+Persistent\+Storage\+::\+Merge\+Mode}}
+
+The mode to be used when reading the data bases (see read\+Data). \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+E\+R\+GE@{M\+E\+R\+GE}!C\+Persistent\+Storage@{C\+Persistent\+Storage}}\index{C\+Persistent\+Storage@{C\+Persistent\+Storage}!M\+E\+R\+GE@{M\+E\+R\+GE}}}\mbox{\Hypertarget{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584a61eb51fcd97853482d0436ea6b5fec2f}\label{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584a61eb51fcd97853482d0436ea6b5fec2f}} 
+M\+E\+R\+GE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+E\+P\+L\+A\+CE@{R\+E\+P\+L\+A\+CE}!C\+Persistent\+Storage@{C\+Persistent\+Storage}}\index{C\+Persistent\+Storage@{C\+Persistent\+Storage}!R\+E\+P\+L\+A\+CE@{R\+E\+P\+L\+A\+CE}}}\mbox{\Hypertarget{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584a5eb3db7839315215409a77d1c58230ac}\label{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584a5eb3db7839315215409a77d1c58230ac}} 
+R\+E\+P\+L\+A\+CE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCPersistentStorage_a040e22bf1000853fbcd2ff45239386d9}\label{classCPersistentStorage_a040e22bf1000853fbcd2ff45239386d9}} 
+\index{C\+Persistent\+Storage@{C\+Persistent\+Storage}!````~C\+Persistent\+Storage@{$\sim$\+C\+Persistent\+Storage}}
+\index{````~C\+Persistent\+Storage@{$\sim$\+C\+Persistent\+Storage}!C\+Persistent\+Storage@{C\+Persistent\+Storage}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Persistent\+Storage()}{~CPersistentStorage()}}
+{\footnotesize\ttfamily virtual C\+Persistent\+Storage\+::$\sim$\+C\+Persistent\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+A Virtual Destructor for an abstract class 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCPersistentStorage_a28edf547e10449a7f45de9885b68890b}\label{classCPersistentStorage_a28edf547e10449a7f45de9885b68890b}} 
+\index{C\+Persistent\+Storage@{C\+Persistent\+Storage}!read\+Data@{read\+Data}}
+\index{read\+Data@{read\+Data}!C\+Persistent\+Storage@{C\+Persistent\+Storage}}
+\subsubsection{\texorpdfstring{read\+Data()}{readData()}}
+{\footnotesize\ttfamily virtual bool C\+Persistent\+Storage\+::read\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{classCWpDatabase}{C\+Wp\+Database} \&}]{waypoint\+Db,  }\item[{\hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&}]{poi\+Db,  }\item[{\hyperlink{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584}{Merge\+Mode}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Fill the databases with the data from persistent storage. If merge mode is M\+E\+R\+GE, the content in the persistent storage will be merged with any content already existing in the data bases. If merge mode is R\+E\+P\+L\+A\+CE, already existing content will be removed before inserting the content from the persistent storage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em waypoint\+Db} & the the data base with way points \\
+\hline
+{\em poi\+Db} & the database with points of interest \\
+\hline
+{\em mode} & the merge mode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the data could be read successfully 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classCJsonPersistence_a433ddbf7f66175f38f549dbedcbb1e93}{C\+Json\+Persistence}, and \hyperlink{classCCSV_a861ad5d158b00a1eaef4d45710aa466c}{C\+C\+SV}.
+
+\mbox{\Hypertarget{classCPersistentStorage_af626d001915346c04c2008c9ea8bb8d8}\label{classCPersistentStorage_af626d001915346c04c2008c9ea8bb8d8}} 
+\index{C\+Persistent\+Storage@{C\+Persistent\+Storage}!set\+Media\+Name@{set\+Media\+Name}}
+\index{set\+Media\+Name@{set\+Media\+Name}!C\+Persistent\+Storage@{C\+Persistent\+Storage}}
+\subsubsection{\texorpdfstring{set\+Media\+Name()}{setMediaName()}}
+{\footnotesize\ttfamily virtual void C\+Persistent\+Storage\+::set\+Media\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Set the name of the media to be used for persistent storage. The exact interpretation of the name depends on the implementation of the component.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the media to be used \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classCJsonPersistence_a857d2c1a5de0f3fafceef1266e32a25d}{C\+Json\+Persistence}, and \hyperlink{classCCSV_a473f20a4cb83f3f50174a194121138d1}{C\+C\+SV}.
+
+\mbox{\Hypertarget{classCPersistentStorage_ab0c03dbf674c6218d574289ec54a75ed}\label{classCPersistentStorage_ab0c03dbf674c6218d574289ec54a75ed}} 
+\index{C\+Persistent\+Storage@{C\+Persistent\+Storage}!write\+Data@{write\+Data}}
+\index{write\+Data@{write\+Data}!C\+Persistent\+Storage@{C\+Persistent\+Storage}}
+\subsubsection{\texorpdfstring{write\+Data()}{writeData()}}
+{\footnotesize\ttfamily virtual bool C\+Persistent\+Storage\+::write\+Data (\begin{DoxyParamCaption}\item[{const \hyperlink{classCWpDatabase}{C\+Wp\+Database} \&}]{waypoint\+Db,  }\item[{const \hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&}]{poi\+Db }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Write the data to the persistent storage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em waypoint\+Db} & the data base with way points \\
+\hline
+{\em poi\+Db} & the database with points of interest \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the data could be saved successfully 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classCJsonPersistence_acd18e844bf7ec52ba1ec265ea2767dcb}{C\+Json\+Persistence}, and \hyperlink{classCCSV_a9f0f855c4337078ab3ccff7a3a8148fa}{C\+C\+SV}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CPersistentStorage_8h}{C\+Persistent\+Storage.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classCParser.html" title="CParser" alt="" coords="43,5,114,32"/>
+<area shape="rect" id="node2" href="$classCCSV.html" title="CCSV" alt="" coords="238,5,295,32"/>
+<area shape="rect" id="node3" href="$classCPersistentStorage.html" title="CPersistentStorage" alt="" coords="5,56,152,83"/>
+<area shape="rect" id="node4" href="$classCJsonPersistence.html" title="CJsonPersistence" alt="" coords="200,56,333,83"/>
+</map>

@@ -1,0 +1,288 @@
+\hypertarget{classCJsonPersistence}{}\section{C\+Json\+Persistence Class Reference}
+\label{classCJsonPersistence}\index{C\+Json\+Persistence@{C\+Json\+Persistence}}
+
+
+{\ttfamily \#include $<$C\+Json\+Persistence.\+h$>$}
+
+
+
+Inheritance diagram for C\+Json\+Persistence\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classCJsonPersistence__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+Json\+Persistence\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classCJsonPersistence__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525}{json\+Objects} \{ \hyperlink{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525a963baef36cfee6c583e0033b120fb21e}{W\+A\+Y\+P\+O\+I\+N\+TS} = 0, 
+\hyperlink{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525a4033b9ccdf12ae4e1eab1e985d90d1a4}{P\+O\+I\+N\+T\+\_\+\+O\+F\+\_\+\+I\+N\+T\+E\+R\+E\+ST}, 
+\hyperlink{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525a53031fa62b5180ac9feffd460aa23b61}{M\+A\+X\+\_\+\+J\+S\+O\+N\+\_\+\+O\+B\+J\+E\+C\+TS}
+ \}
+\item 
+enum \hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674c}{read\+States} \{ \newline
+\hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674cad4f6e6d5bb4ff97b9cc6466e9d58d4d7}{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT}, 
+\hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674ca8c55dd61dcaed312b81f0f648c54879e}{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+N\+A\+ME}, 
+\hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674cac61f2d6dd3c0203b2458e83f7a5a1435}{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN}, 
+\hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674ca7a5b17132dd7fd839ab80473d262fc62}{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN}, 
+\newline
+\hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674caa0c6b41380f8137cdb65fb4925dd12ba}{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND}, 
+\hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674cadb84feef04d47a48ddd0232c8c96d5fe}{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+N\+A\+ME}, 
+\hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674caa4a6e877d4f719757cae30457217a24d}{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}, 
+\hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674cab6451c0867f3f950fc867d8e1e6f6c42}{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+UE}, 
+\newline
+\hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674cab812c6537b104b4b9c738bc9f067af79}{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}, 
+\hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674cac2e24e77b09d77dc505b15449a8577e8}{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+ON}
+ \}
+\item 
+enum \hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7fa}{json\+Read\+Exceptions} \{ \newline
+\hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa14e442c1343ab3ac8fdcd2b7c696aede}{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+NO} = -\/1, 
+\hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa2122f517c76588a93b17b30dfc86f38e}{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT}, 
+\hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa082a9d09bf852aa55521f21071626d5c}{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+N\+A\+M\+E\+\_\+\+S\+T\+R\+I\+NG}, 
+\hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa08e44398e606d09d2043fce4d6e2cf1d}{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}, 
+\newline
+\hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa2597b46f8ae18cfc77b402f7e2112230}{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN}, 
+\hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa1eb8b803408cbb855acb793ef5e24df1}{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN}, 
+\hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa8872c69880179dcb420161dfde22dd84}{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND}, 
+\hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa033e3643d78ac07295f5c26d9b6b913e}{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+N\+A\+ME}, 
+\newline
+\hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa201f44a08d57f7af38042522c13b5d5b}{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+V\+A\+L\+UE}, 
+\hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa24b2dcf8d11a73e809ac11bb46701603}{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}, 
+\hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faaf2e3fbfd01567bac343e419211b4180f}{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCJsonPersistence_a4ecc6567fdd9d7f76ea3f53bbfd27a04}{C\+Json\+Persistence} ()
+\item 
+virtual \hyperlink{classCJsonPersistence_a4540b65d9b71826f3efa0342e9dc0f08}{$\sim$\+C\+Json\+Persistence} ()
+\item 
+void \hyperlink{classCJsonPersistence_a857d2c1a5de0f3fafceef1266e32a25d}{set\+Media\+Name} (std\+::string name)
+\item 
+bool \hyperlink{classCJsonPersistence_acd18e844bf7ec52ba1ec265ea2767dcb}{write\+Data} (const \hyperlink{classCWpDatabase}{C\+Wp\+Database} \&waypoint\+Db, const \hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&poi\+Db)
+\item 
+bool \hyperlink{classCJsonPersistence_a433ddbf7f66175f38f549dbedcbb1e93}{read\+Data} (\hyperlink{classCWpDatabase}{C\+Wp\+Database} \&waypoint\+Db, \hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&poi\+Db, \hyperlink{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584}{Merge\+Mode} mode)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525}\label{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525}} 
+\index{C\+Json\+Persistence@{C\+Json\+Persistence}!json\+Objects@{json\+Objects}}
+\index{json\+Objects@{json\+Objects}!C\+Json\+Persistence@{C\+Json\+Persistence}}
+\subsubsection{\texorpdfstring{json\+Objects}{jsonObjects}}
+{\footnotesize\ttfamily enum \hyperlink{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525}{C\+Json\+Persistence\+::json\+Objects}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+Y\+P\+O\+I\+N\+TS@{W\+A\+Y\+P\+O\+I\+N\+TS}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!W\+A\+Y\+P\+O\+I\+N\+TS@{W\+A\+Y\+P\+O\+I\+N\+TS}}}\mbox{\Hypertarget{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525a963baef36cfee6c583e0033b120fb21e}\label{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525a963baef36cfee6c583e0033b120fb21e}} 
+W\+A\+Y\+P\+O\+I\+N\+TS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+O\+I\+N\+T\+\_\+\+O\+F\+\_\+\+I\+N\+T\+E\+R\+E\+ST@{P\+O\+I\+N\+T\+\_\+\+O\+F\+\_\+\+I\+N\+T\+E\+R\+E\+ST}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!P\+O\+I\+N\+T\+\_\+\+O\+F\+\_\+\+I\+N\+T\+E\+R\+E\+ST@{P\+O\+I\+N\+T\+\_\+\+O\+F\+\_\+\+I\+N\+T\+E\+R\+E\+ST}}}\mbox{\Hypertarget{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525a4033b9ccdf12ae4e1eab1e985d90d1a4}\label{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525a4033b9ccdf12ae4e1eab1e985d90d1a4}} 
+P\+O\+I\+N\+T\+\_\+\+O\+F\+\_\+\+I\+N\+T\+E\+R\+E\+ST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+A\+X\+\_\+\+J\+S\+O\+N\+\_\+\+O\+B\+J\+E\+C\+TS@{M\+A\+X\+\_\+\+J\+S\+O\+N\+\_\+\+O\+B\+J\+E\+C\+TS}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!M\+A\+X\+\_\+\+J\+S\+O\+N\+\_\+\+O\+B\+J\+E\+C\+TS@{M\+A\+X\+\_\+\+J\+S\+O\+N\+\_\+\+O\+B\+J\+E\+C\+TS}}}\mbox{\Hypertarget{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525a53031fa62b5180ac9feffd460aa23b61}\label{classCJsonPersistence_a32c7998a8554b336a0d7f44e10686525a53031fa62b5180ac9feffd460aa23b61}} 
+M\+A\+X\+\_\+\+J\+S\+O\+N\+\_\+\+O\+B\+J\+E\+C\+TS&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7fa}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7fa}} 
+\index{C\+Json\+Persistence@{C\+Json\+Persistence}!json\+Read\+Exceptions@{json\+Read\+Exceptions}}
+\index{json\+Read\+Exceptions@{json\+Read\+Exceptions}!C\+Json\+Persistence@{C\+Json\+Persistence}}
+\subsubsection{\texorpdfstring{json\+Read\+Exceptions}{jsonReadExceptions}}
+{\footnotesize\ttfamily enum \hyperlink{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7fa}{C\+Json\+Persistence\+::json\+Read\+Exceptions}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+NO@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+NO}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+NO@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+NO}}}\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa14e442c1343ab3ac8fdcd2b7c696aede}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa14e442c1343ab3ac8fdcd2b7c696aede}} 
+J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+NO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT}}}\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa2122f517c76588a93b17b30dfc86f38e}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa2122f517c76588a93b17b30dfc86f38e}} 
+J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+N\+A\+M\+E\+\_\+\+S\+T\+R\+I\+NG@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+N\+A\+M\+E\+\_\+\+S\+T\+R\+I\+NG}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+N\+A\+M\+E\+\_\+\+S\+T\+R\+I\+NG@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+N\+A\+M\+E\+\_\+\+S\+T\+R\+I\+NG}}}\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa082a9d09bf852aa55521f21071626d5c}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa082a9d09bf852aa55521f21071626d5c}} 
+J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+N\+A\+M\+E\+\_\+\+S\+T\+R\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}}}\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa08e44398e606d09d2043fce4d6e2cf1d}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa08e44398e606d09d2043fce4d6e2cf1d}} 
+J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN}}}\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa2597b46f8ae18cfc77b402f7e2112230}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa2597b46f8ae18cfc77b402f7e2112230}} 
+J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN}}}\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa1eb8b803408cbb855acb793ef5e24df1}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa1eb8b803408cbb855acb793ef5e24df1}} 
+J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND}}}\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa8872c69880179dcb420161dfde22dd84}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa8872c69880179dcb420161dfde22dd84}} 
+J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+N\+A\+ME@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+N\+A\+ME}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+N\+A\+ME@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+N\+A\+ME}}}\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa033e3643d78ac07295f5c26d9b6b913e}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa033e3643d78ac07295f5c26d9b6b913e}} 
+J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+N\+A\+ME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+V\+A\+L\+UE@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+V\+A\+L\+UE}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+V\+A\+L\+UE@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+V\+A\+L\+UE}}}\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa201f44a08d57f7af38042522c13b5d5b}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa201f44a08d57f7af38042522c13b5d5b}} 
+J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+A\+T\+T\+R\+\_\+\+V\+A\+L\+UE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}}}\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa24b2dcf8d11a73e809ac11bb46701603}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faa24b2dcf8d11a73e809ac11bb46701603}} 
+J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER@{J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER}}}\mbox{\Hypertarget{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faaf2e3fbfd01567bac343e419211b4180f}\label{classCJsonPersistence_a14ff5edefd4a4aac6fb0559cfbf4b7faaf2e3fbfd01567bac343e419211b4180f}} 
+J\+S\+O\+N\+\_\+\+E\+R\+R\+\_\+\+I\+L\+L\+E\+G\+A\+L\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{classCJsonPersistence_a51707f5742e8804c7c17495791da674c}\label{classCJsonPersistence_a51707f5742e8804c7c17495791da674c}} 
+\index{C\+Json\+Persistence@{C\+Json\+Persistence}!read\+States@{read\+States}}
+\index{read\+States@{read\+States}!C\+Json\+Persistence@{C\+Json\+Persistence}}
+\subsubsection{\texorpdfstring{read\+States}{readStates}}
+{\footnotesize\ttfamily enum \hyperlink{classCJsonPersistence_a51707f5742e8804c7c17495791da674c}{C\+Json\+Persistence\+::read\+States}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT}}}\mbox{\Hypertarget{classCJsonPersistence_a51707f5742e8804c7c17495791da674cad4f6e6d5bb4ff97b9cc6466e9d58d4d7}\label{classCJsonPersistence_a51707f5742e8804c7c17495791da674cad4f6e6d5bb4ff97b9cc6466e9d58d4d7}} 
+W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+B\+E\+G\+I\+N\+\_\+\+O\+B\+J\+E\+CT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+N\+A\+ME@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+N\+A\+ME}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+N\+A\+ME@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+N\+A\+ME}}}\mbox{\Hypertarget{classCJsonPersistence_a51707f5742e8804c7c17495791da674ca8c55dd61dcaed312b81f0f648c54879e}\label{classCJsonPersistence_a51707f5742e8804c7c17495791da674ca8c55dd61dcaed312b81f0f648c54879e}} 
+W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+N\+A\+ME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN}}}\mbox{\Hypertarget{classCJsonPersistence_a51707f5742e8804c7c17495791da674cac61f2d6dd3c0203b2458e83f7a5a1435}\label{classCJsonPersistence_a51707f5742e8804c7c17495791da674cac61f2d6dd3c0203b2458e83f7a5a1435}} 
+W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+B\+E\+G\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN}}}\mbox{\Hypertarget{classCJsonPersistence_a51707f5742e8804c7c17495791da674ca7a5b17132dd7fd839ab80473d262fc62}\label{classCJsonPersistence_a51707f5742e8804c7c17495791da674ca7a5b17132dd7fd839ab80473d262fc62}} 
+W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+B\+E\+G\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND}}}\mbox{\Hypertarget{classCJsonPersistence_a51707f5742e8804c7c17495791da674caa0c6b41380f8137cdb65fb4925dd12ba}\label{classCJsonPersistence_a51707f5742e8804c7c17495791da674caa0c6b41380f8137cdb65fb4925dd12ba}} 
+W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+D\+B\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+ND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+N\+A\+ME@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+N\+A\+ME}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+N\+A\+ME@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+N\+A\+ME}}}\mbox{\Hypertarget{classCJsonPersistence_a51707f5742e8804c7c17495791da674cadb84feef04d47a48ddd0232c8c96d5fe}\label{classCJsonPersistence_a51707f5742e8804c7c17495791da674cadb84feef04d47a48ddd0232c8c96d5fe}} 
+W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+A\+T\+T\+R\+I\+B\+U\+T\+E\+\_\+\+N\+A\+ME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}}}\mbox{\Hypertarget{classCJsonPersistence_a51707f5742e8804c7c17495791da674caa4a6e877d4f719757cae30457217a24d}\label{classCJsonPersistence_a51707f5742e8804c7c17495791da674caa4a6e877d4f719757cae30457217a24d}} 
+W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+N\+A\+M\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+UE@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+UE}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+UE@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+UE}}}\mbox{\Hypertarget{classCJsonPersistence_a51707f5742e8804c7c17495791da674cab6451c0867f3f950fc867d8e1e6f6c42}\label{classCJsonPersistence_a51707f5742e8804c7c17495791da674cab6451c0867f3f950fc867d8e1e6f6c42}} 
+W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+UE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}}}\mbox{\Hypertarget{classCJsonPersistence_a51707f5742e8804c7c17495791da674cab812c6537b104b4b9c738bc9f067af79}\label{classCJsonPersistence_a51707f5742e8804c7c17495791da674cab812c6537b104b4b9c738bc9f067af79}} 
+W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+V\+A\+L\+U\+E\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+ON@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+ON}!C\+Json\+Persistence@{C\+Json\+Persistence}}\index{C\+Json\+Persistence@{C\+Json\+Persistence}!W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+ON@{W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+ON}}}\mbox{\Hypertarget{classCJsonPersistence_a51707f5742e8804c7c17495791da674cac2e24e77b09d77dc505b15449a8577e8}\label{classCJsonPersistence_a51707f5742e8804c7c17495791da674cac2e24e77b09d77dc505b15449a8577e8}} 
+W\+A\+I\+T\+I\+N\+G\+\_\+\+F\+O\+R\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+ON&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCJsonPersistence_a4ecc6567fdd9d7f76ea3f53bbfd27a04}\label{classCJsonPersistence_a4ecc6567fdd9d7f76ea3f53bbfd27a04}} 
+\index{C\+Json\+Persistence@{C\+Json\+Persistence}!C\+Json\+Persistence@{C\+Json\+Persistence}}
+\index{C\+Json\+Persistence@{C\+Json\+Persistence}!C\+Json\+Persistence@{C\+Json\+Persistence}}
+\subsubsection{\texorpdfstring{C\+Json\+Persistence()}{CJsonPersistence()}}
+{\footnotesize\ttfamily C\+Json\+Persistence\+::\+C\+Json\+Persistence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCJsonPersistence_a4540b65d9b71826f3efa0342e9dc0f08}\label{classCJsonPersistence_a4540b65d9b71826f3efa0342e9dc0f08}} 
+\index{C\+Json\+Persistence@{C\+Json\+Persistence}!````~C\+Json\+Persistence@{$\sim$\+C\+Json\+Persistence}}
+\index{````~C\+Json\+Persistence@{$\sim$\+C\+Json\+Persistence}!C\+Json\+Persistence@{C\+Json\+Persistence}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Json\+Persistence()}{~CJsonPersistence()}}
+{\footnotesize\ttfamily C\+Json\+Persistence\+::$\sim$\+C\+Json\+Persistence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCJsonPersistence_a433ddbf7f66175f38f549dbedcbb1e93}\label{classCJsonPersistence_a433ddbf7f66175f38f549dbedcbb1e93}} 
+\index{C\+Json\+Persistence@{C\+Json\+Persistence}!read\+Data@{read\+Data}}
+\index{read\+Data@{read\+Data}!C\+Json\+Persistence@{C\+Json\+Persistence}}
+\subsubsection{\texorpdfstring{read\+Data()}{readData()}}
+{\footnotesize\ttfamily bool C\+Json\+Persistence\+::read\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{classCWpDatabase}{C\+Wp\+Database} \&}]{waypoint\+Db,  }\item[{\hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&}]{poi\+Db,  }\item[{\hyperlink{classCPersistentStorage_a9b9929a4afa6e21da10f4a2e926a4584}{Merge\+Mode}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Fill the databases with the data from persistent storage. If merge mode is M\+E\+R\+GE, the content in the persistent storage will be merged with any content already existing in the data bases. If merge mode is R\+E\+P\+L\+A\+CE, already existing content will be removed before inserting the content from the persistent storage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em waypoint\+Db} & the the data base with way points \\
+\hline
+{\em poi\+Db} & the database with points of interest \\
+\hline
+{\em mode} & the merge mode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the data could be read successfully 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classCPersistentStorage_a28edf547e10449a7f45de9885b68890b}{C\+Persistent\+Storage}.
+
+\mbox{\Hypertarget{classCJsonPersistence_a857d2c1a5de0f3fafceef1266e32a25d}\label{classCJsonPersistence_a857d2c1a5de0f3fafceef1266e32a25d}} 
+\index{C\+Json\+Persistence@{C\+Json\+Persistence}!set\+Media\+Name@{set\+Media\+Name}}
+\index{set\+Media\+Name@{set\+Media\+Name}!C\+Json\+Persistence@{C\+Json\+Persistence}}
+\subsubsection{\texorpdfstring{set\+Media\+Name()}{setMediaName()}}
+{\footnotesize\ttfamily void C\+Json\+Persistence\+::set\+Media\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Set the name of the media to be used for persistent storage. The exact interpretation of the name depends on the implementation of the component.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the media to be used  void \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classCPersistentStorage_af626d001915346c04c2008c9ea8bb8d8}{C\+Persistent\+Storage}.
+
+\mbox{\Hypertarget{classCJsonPersistence_acd18e844bf7ec52ba1ec265ea2767dcb}\label{classCJsonPersistence_acd18e844bf7ec52ba1ec265ea2767dcb}} 
+\index{C\+Json\+Persistence@{C\+Json\+Persistence}!write\+Data@{write\+Data}}
+\index{write\+Data@{write\+Data}!C\+Json\+Persistence@{C\+Json\+Persistence}}
+\subsubsection{\texorpdfstring{write\+Data()}{writeData()}}
+{\footnotesize\ttfamily bool C\+Json\+Persistence\+::write\+Data (\begin{DoxyParamCaption}\item[{const \hyperlink{classCWpDatabase}{C\+Wp\+Database} \&}]{waypoint\+Db,  }\item[{const \hyperlink{classCPoiDatabase}{C\+Poi\+Database} \&}]{poi\+Db }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Write the data to the persistent storage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em waypoint\+Db} & the data base with way points \\
+\hline
+{\em poi\+Db} & the database with points of interest \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the data could be saved successfully 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classCPersistentStorage_ab0c03dbf674c6218d574289ec54a75ed}{C\+Persistent\+Storage}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CJsonPersistence_8h}{C\+Json\+Persistence.\+h}\item 
+\hyperlink{CJsonPersistence_8cpp}{C\+Json\+Persistence.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,114 @@
+\hypertarget{classCParser}{}\section{C\+Parser Class Reference}
+\label{classCParser}\index{C\+Parser@{C\+Parser}}
+
+
+{\ttfamily \#include $<$C\+Parser.\+h$>$}
+
+
+
+Inheritance diagram for C\+Parser\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classCParser__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for C\+Parser\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classCParser__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCParser_aa6372ef4dbf7d11dc4c51f4f4abd1750}{C\+Parser} ()
+\item 
+virtual \hyperlink{classCParser_acabd3b10aa5593fe571fe55426a7916f}{$\sim$\+C\+Parser} ()
+\item 
+bool \hyperlink{classCParser_a4bd9b28a9d6512c10b2b5af3ff36495f}{extract\+Number\+From\+String} (const std\+::string \&str, double \&number)
+\item 
+bool \hyperlink{classCParser_a2bfd12df0bb7928de4a0ad50230a2e19}{parser\+Each\+Line} (const std\+::string \&read\+Line, std\+::string \&name, double \&latitude, double \&longitude, const unsigned int line\+Counter)
+\item 
+bool \hyperlink{classCParser_a5d04d85e9ccaf568a50b7cfe071b7bf3}{parser\+Each\+Line} (const std\+::string \&read\+Line, \hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{C\+P\+O\+I\+::t\+\_\+poi} \&type, std\+::string \&name, std\+::string \&description, double \&latitude, double \&longitude, const unsigned int line\+Counter)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCParser_aa6372ef4dbf7d11dc4c51f4f4abd1750}\label{classCParser_aa6372ef4dbf7d11dc4c51f4f4abd1750}} 
+\index{C\+Parser@{C\+Parser}!C\+Parser@{C\+Parser}}
+\index{C\+Parser@{C\+Parser}!C\+Parser@{C\+Parser}}
+\subsubsection{\texorpdfstring{C\+Parser()}{CParser()}}
+{\footnotesize\ttfamily C\+Parser\+::\+C\+Parser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCParser_acabd3b10aa5593fe571fe55426a7916f}\label{classCParser_acabd3b10aa5593fe571fe55426a7916f}} 
+\index{C\+Parser@{C\+Parser}!````~C\+Parser@{$\sim$\+C\+Parser}}
+\index{````~C\+Parser@{$\sim$\+C\+Parser}!C\+Parser@{C\+Parser}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Parser()}{~CParser()}}
+{\footnotesize\ttfamily C\+Parser\+::$\sim$\+C\+Parser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCParser_a4bd9b28a9d6512c10b2b5af3ff36495f}\label{classCParser_a4bd9b28a9d6512c10b2b5af3ff36495f}} 
+\index{C\+Parser@{C\+Parser}!extract\+Number\+From\+String@{extract\+Number\+From\+String}}
+\index{extract\+Number\+From\+String@{extract\+Number\+From\+String}!C\+Parser@{C\+Parser}}
+\subsubsection{\texorpdfstring{extract\+Number\+From\+String()}{extractNumberFromString()}}
+{\footnotesize\ttfamily bool C\+Parser\+::extract\+Number\+From\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{double \&}]{number }\end{DoxyParamCaption})}
+
+Extract number from the string 
+\begin{DoxyParams}{Parameters}
+{\em const} & string \&str -\/ string (IN) \\
+\hline
+{\em double} & \&number -\/ Number to return (O\+UT)  bool -\/ Success -\/ true or Failure -\/ false \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCParser_a2bfd12df0bb7928de4a0ad50230a2e19}\label{classCParser_a2bfd12df0bb7928de4a0ad50230a2e19}} 
+\index{C\+Parser@{C\+Parser}!parser\+Each\+Line@{parser\+Each\+Line}}
+\index{parser\+Each\+Line@{parser\+Each\+Line}!C\+Parser@{C\+Parser}}
+\subsubsection{\texorpdfstring{parser\+Each\+Line()}{parserEachLine()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool C\+Parser\+::parser\+Each\+Line (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{read\+Line,  }\item[{std\+::string \&}]{name,  }\item[{double \&}]{latitude,  }\item[{double \&}]{longitude,  }\item[{const unsigned int}]{line\+Counter }\end{DoxyParamCaption})}
+
+Parse a line to get waypoint information such as name, latitude and longitude in order 
+\begin{DoxyParams}{Parameters}
+{\em const} & string \&read\+Line -\/ Each Line (IN) \\
+\hline
+{\em const} & string \&name -\/ name of waypoint (O\+UT) \\
+\hline
+{\em const} & double \&latitude -\/ latitude of waypoint (O\+UT) \\
+\hline
+{\em const} & double \&longitude -\/ longitude of waypoint (O\+UT)  bool -\/ Success -\/ true or Failure -\/ false \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCParser_a5d04d85e9ccaf568a50b7cfe071b7bf3}\label{classCParser_a5d04d85e9ccaf568a50b7cfe071b7bf3}} 
+\index{C\+Parser@{C\+Parser}!parser\+Each\+Line@{parser\+Each\+Line}}
+\index{parser\+Each\+Line@{parser\+Each\+Line}!C\+Parser@{C\+Parser}}
+\subsubsection{\texorpdfstring{parser\+Each\+Line()}{parserEachLine()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool C\+Parser\+::parser\+Each\+Line (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{read\+Line,  }\item[{\hyperlink{classCPOI_a4b95e2e14055d2f9ca134e474dd4a19f}{C\+P\+O\+I\+::t\+\_\+poi} \&}]{type,  }\item[{std\+::string \&}]{name,  }\item[{std\+::string \&}]{description,  }\item[{double \&}]{latitude,  }\item[{double \&}]{longitude,  }\item[{const unsigned int}]{line\+Counter }\end{DoxyParamCaption})}
+
+Parse a line to get P\+OI information such as type, name, description, latitude and longitude in order 
+\begin{DoxyParams}{Parameters}
+{\em const} & string \&read\+Line -\/ Each Line (IN) \\
+\hline
+{\em const} & t\+\_\+poi \&type -\/ name of P\+OI (O\+UT) \\
+\hline
+{\em const} & string \&name -\/ name of P\+OI (O\+UT) \\
+\hline
+{\em const} & string \&description -\/ description of P\+OI (O\+UT) \\
+\hline
+{\em const} & double \&latitude -\/ latitude of P\+OI (O\+UT) \\
+\hline
+{\em const} & double \&longitude -\/ longitude of P\+OI (O\+UT)  bool -\/ Success -\/ true or Failure -\/ false \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CParser_8h}{C\+Parser.\+h}\item 
+\hyperlink{CParser_8cpp}{C\+Parser.\+cpp}\end{DoxyCompactItemize}

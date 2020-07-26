@@ -1,0 +1,146 @@
+\hypertarget{classCDatabase}{}\section{C\+Database$<$ T1, T2 $>$ Class Template Reference}
+\label{classCDatabase}\index{C\+Database$<$ T1, T2 $>$@{C\+Database$<$ T1, T2 $>$}}
+
+
+{\ttfamily \#include $<$C\+Database.\+h$>$}
+
+
+
+Collaboration diagram for C\+Database$<$ T1, T2 $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classCDatabase__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::map$<$ T1, T2 $>$ \hyperlink{classCDatabase_ac20411b7c5997877aebb46d0bd3a8461}{Database\+\_\+\+Container\+\_\+t}
+\item 
+typedef std\+::map$<$ T1, T2 $>$\+::iterator \hyperlink{classCDatabase_a07aa3db528b07931347d91ebf505b8ed}{Database\+\_\+\+Container\+\_\+\+Itr\+\_\+t}
+\item 
+typedef T1 \hyperlink{classCDatabase_aa48e663caabc489e9aa738e299d10ee0}{Database\+\_\+\+Container\+\_\+key\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCDatabase_ac5fd82bb19a12e500d2f65cbd919c256}{C\+Database} ()
+\item 
+\hyperlink{classCDatabase_a2b3592b975d43dfb06e4bac2a4245c7b}{$\sim$\+C\+Database} ()
+\item 
+void \hyperlink{classCDatabase_a269a0a23ba838e0c6ce533017a0d635a}{add\+Element} (T1 const \&key, T2 const \&elem)
+\item 
+T2 $\ast$ \hyperlink{classCDatabase_a708130facbed33fd15956bf3cf760372}{get\+Pointer\+To\+Element} (T1 elem\+Identifier)
+\item 
+const \hyperlink{classCDatabase_ac20411b7c5997877aebb46d0bd3a8461}{Database\+\_\+\+Container\+\_\+t} \hyperlink{classCDatabase_a2ecfd5ba202cea2332ddcd59237baf8e}{get\+Elements\+From\+Database} () const
+\item 
+void \hyperlink{classCDatabase_a96f398964530b48ad7fc63c05783369f}{reset\+Database} ()
+\item 
+void \hyperlink{classCDatabase_a695c6bbbf0fc27a07cd520a5eda81128}{set\+Database} (\hyperlink{classCDatabase_ac20411b7c5997877aebb46d0bd3a8461}{Database\+\_\+\+Container\+\_\+t} const elems\+Eontainer)
+\item 
+\hyperlink{classCDatabase_ac20411b7c5997877aebb46d0bd3a8461}{Database\+\_\+\+Container\+\_\+t} const \hyperlink{classCDatabase_a7991d341e324528af43b4a1a2a09f39f}{get\+Database} ()
+\item 
+void \hyperlink{classCDatabase_aeaff36fd440603cb8308676c7e4eb296}{print} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classCDatabase_a07aa3db528b07931347d91ebf505b8ed}\label{classCDatabase_a07aa3db528b07931347d91ebf505b8ed}} 
+\index{C\+Database@{C\+Database}!Database\+\_\+\+Container\+\_\+\+Itr\+\_\+t@{Database\+\_\+\+Container\+\_\+\+Itr\+\_\+t}}
+\index{Database\+\_\+\+Container\+\_\+\+Itr\+\_\+t@{Database\+\_\+\+Container\+\_\+\+Itr\+\_\+t}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{Database\+\_\+\+Container\+\_\+\+Itr\+\_\+t}{Database\_Container\_Itr\_t}}
+{\footnotesize\ttfamily template$<$class T1, class T2$>$ \\
+typedef std\+::map$<$T1, T2$>$\+::iterator \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::\hyperlink{classCDatabase_a07aa3db528b07931347d91ebf505b8ed}{Database\+\_\+\+Container\+\_\+\+Itr\+\_\+t}}
+
+\mbox{\Hypertarget{classCDatabase_aa48e663caabc489e9aa738e299d10ee0}\label{classCDatabase_aa48e663caabc489e9aa738e299d10ee0}} 
+\index{C\+Database@{C\+Database}!Database\+\_\+\+Container\+\_\+key\+\_\+t@{Database\+\_\+\+Container\+\_\+key\+\_\+t}}
+\index{Database\+\_\+\+Container\+\_\+key\+\_\+t@{Database\+\_\+\+Container\+\_\+key\+\_\+t}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{Database\+\_\+\+Container\+\_\+key\+\_\+t}{Database\_Container\_key\_t}}
+{\footnotesize\ttfamily template$<$class T1, class T2$>$ \\
+typedef T1 \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::\hyperlink{classCDatabase_aa48e663caabc489e9aa738e299d10ee0}{Database\+\_\+\+Container\+\_\+key\+\_\+t}}
+
+\mbox{\Hypertarget{classCDatabase_ac20411b7c5997877aebb46d0bd3a8461}\label{classCDatabase_ac20411b7c5997877aebb46d0bd3a8461}} 
+\index{C\+Database@{C\+Database}!Database\+\_\+\+Container\+\_\+t@{Database\+\_\+\+Container\+\_\+t}}
+\index{Database\+\_\+\+Container\+\_\+t@{Database\+\_\+\+Container\+\_\+t}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{Database\+\_\+\+Container\+\_\+t}{Database\_Container\_t}}
+{\footnotesize\ttfamily template$<$class T1, class T2$>$ \\
+typedef std\+::map$<$T1, T2$>$ \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::\hyperlink{classCDatabase_ac20411b7c5997877aebb46d0bd3a8461}{Database\+\_\+\+Container\+\_\+t}}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCDatabase_ac5fd82bb19a12e500d2f65cbd919c256}\label{classCDatabase_ac5fd82bb19a12e500d2f65cbd919c256}} 
+\index{C\+Database@{C\+Database}!C\+Database@{C\+Database}}
+\index{C\+Database@{C\+Database}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{C\+Database()}{CDatabase()}}
+{\footnotesize\ttfamily template$<$class T1 , class T2 $>$ \\
+\hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::\hyperlink{classCDatabase}{C\+Database} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hyperlink{classCDatabase}{C\+Database} constructor \mbox{\Hypertarget{classCDatabase_a2b3592b975d43dfb06e4bac2a4245c7b}\label{classCDatabase_a2b3592b975d43dfb06e4bac2a4245c7b}} 
+\index{C\+Database@{C\+Database}!````~C\+Database@{$\sim$\+C\+Database}}
+\index{````~C\+Database@{$\sim$\+C\+Database}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Database()}{~CDatabase()}}
+{\footnotesize\ttfamily template$<$class T1 , class T2 $>$ \\
+\hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::$\sim$\hyperlink{classCDatabase}{C\+Database} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\hyperlink{classCDatabase}{C\+Database} destructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCDatabase_a269a0a23ba838e0c6ce533017a0d635a}\label{classCDatabase_a269a0a23ba838e0c6ce533017a0d635a}} 
+\index{C\+Database@{C\+Database}!add\+Element@{add\+Element}}
+\index{add\+Element@{add\+Element}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{add\+Element()}{addElement()}}
+{\footnotesize\ttfamily template$<$class T1, class T2$>$ \\
+void \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::add\+Element (\begin{DoxyParamCaption}\item[{T1 const \&}]{key,  }\item[{T2 const \&}]{elem }\end{DoxyParamCaption})}
+
+Add an element to the database param@ T1 const \&key -\/ a key to associative container (IN) param@ T2 const \&elem -\/ an element to be added (IN) returnvalue@ void \mbox{\Hypertarget{classCDatabase_a7991d341e324528af43b4a1a2a09f39f}\label{classCDatabase_a7991d341e324528af43b4a1a2a09f39f}} 
+\index{C\+Database@{C\+Database}!get\+Database@{get\+Database}}
+\index{get\+Database@{get\+Database}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{get\+Database()}{getDatabase()}}
+{\footnotesize\ttfamily template$<$class T1 , class T2 $>$ \\
+const \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::\hyperlink{classCDatabase_ac20411b7c5997877aebb46d0bd3a8461}{Database\+\_\+\+Container\+\_\+t} \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::get\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter method Database returnvalue@ Database\+\_\+\+Container\+\_\+t const \mbox{\Hypertarget{classCDatabase_a2ecfd5ba202cea2332ddcd59237baf8e}\label{classCDatabase_a2ecfd5ba202cea2332ddcd59237baf8e}} 
+\index{C\+Database@{C\+Database}!get\+Elements\+From\+Database@{get\+Elements\+From\+Database}}
+\index{get\+Elements\+From\+Database@{get\+Elements\+From\+Database}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{get\+Elements\+From\+Database()}{getElementsFromDatabase()}}
+{\footnotesize\ttfamily template$<$class T1 , class T2 $>$ \\
+const \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::\hyperlink{classCDatabase_ac20411b7c5997877aebb46d0bd3a8461}{Database\+\_\+\+Container\+\_\+t} \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::get\+Elements\+From\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get Elements\textquotesingle{} container from the Database returnvalue@ Database\+\_\+\+Container\+\_\+t -\/ Elements in the Database (O\+UT) \mbox{\Hypertarget{classCDatabase_a708130facbed33fd15956bf3cf760372}\label{classCDatabase_a708130facbed33fd15956bf3cf760372}} 
+\index{C\+Database@{C\+Database}!get\+Pointer\+To\+Element@{get\+Pointer\+To\+Element}}
+\index{get\+Pointer\+To\+Element@{get\+Pointer\+To\+Element}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{get\+Pointer\+To\+Element()}{getPointerToElement()}}
+{\footnotesize\ttfamily template$<$class T1, class T2 $>$ \\
+T2 $\ast$ \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::get\+Pointer\+To\+Element (\begin{DoxyParamCaption}\item[{T1}]{elem\+Identifier }\end{DoxyParamCaption})}
+
+Get pointer to an element from the Database which matches the key param@ T1 elem\+Identifier -\/ Identifier for an element (IN) returnvalue@ T2$\ast$ -\/ Pointer to the element in the database \mbox{\Hypertarget{classCDatabase_aeaff36fd440603cb8308676c7e4eb296}\label{classCDatabase_aeaff36fd440603cb8308676c7e4eb296}} 
+\index{C\+Database@{C\+Database}!print@{print}}
+\index{print@{print}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily template$<$class T1 , class T2 $>$ \\
+void \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Print all the elements in the database returnvalue@ void \mbox{\Hypertarget{classCDatabase_a96f398964530b48ad7fc63c05783369f}\label{classCDatabase_a96f398964530b48ad7fc63c05783369f}} 
+\index{C\+Database@{C\+Database}!reset\+Database@{reset\+Database}}
+\index{reset\+Database@{reset\+Database}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{reset\+Database()}{resetDatabase()}}
+{\footnotesize\ttfamily template$<$class T1 , class T2 $>$ \\
+void \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::reset\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Resets the Database returnvalue@ void \mbox{\Hypertarget{classCDatabase_a695c6bbbf0fc27a07cd520a5eda81128}\label{classCDatabase_a695c6bbbf0fc27a07cd520a5eda81128}} 
+\index{C\+Database@{C\+Database}!set\+Database@{set\+Database}}
+\index{set\+Database@{set\+Database}!C\+Database@{C\+Database}}
+\subsubsection{\texorpdfstring{set\+Database()}{setDatabase()}}
+{\footnotesize\ttfamily template$<$class T1 , class T2 $>$ \\
+void \hyperlink{classCDatabase}{C\+Database}$<$ T1, T2 $>$\+::set\+Database (\begin{DoxyParamCaption}\item[{\hyperlink{classCDatabase_ac20411b7c5997877aebb46d0bd3a8461}{Database\+\_\+\+Container\+\_\+t} const}]{elems\+Eontainer }\end{DoxyParamCaption})}
+
+Setter method Database param@ Database\+\_\+\+Container\+\_\+t const elems\+Eontainer returnvalue@ void
+
+Setter method Database returnvalue@ void 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{CDatabase_8h}{C\+Database.\+h}\end{DoxyCompactItemize}

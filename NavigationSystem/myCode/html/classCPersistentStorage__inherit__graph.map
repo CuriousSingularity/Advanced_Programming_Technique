@@ -1,0 +1,4 @@
+<map id="CPersistentStorage" name="CPersistentStorage">
+<area shape="rect" id="node2" href="$classCCSV.html" title="{CCSV\n||+ CCSV()\l+ ~CCSV()\l+ setMediaName()\l+ writeData()\l+ readData()\l}" alt="" coords="5,175,151,311"/>
+<area shape="rect" id="node3" href="$classCJsonPersistence.html" title="{CJsonPersistence\n||+ CJsonPersistence()\l+ ~CJsonPersistence()\l+ setMediaName()\l+ writeData()\l+ readData()\l}" alt="" coords="175,175,344,311"/>
+</map>

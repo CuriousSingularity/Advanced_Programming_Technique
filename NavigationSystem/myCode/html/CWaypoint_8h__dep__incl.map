@@ -1,0 +1,24 @@
+<map id="CWaypoint.h" name="CWaypoint.h">
+<area shape="rect" id="node2" href="$CPOI_8h.html" title="CPOI.h" alt="" coords="326,80,391,107"/>
+<area shape="rect" id="node19" href="$CWpDatabase_8h.html" title="CWpDatabase.h" alt="" coords="673,155,799,181"/>
+<area shape="rect" id="node21" href="$CGPSSensor_8h.html" title="CGPSSensor.h" alt="" coords="816,80,928,107"/>
+<area shape="rect" id="node23" href="$CWaypoint_8cpp.html" title="CWaypoint.cpp" alt="" coords="951,80,1070,107"/>
+<area shape="rect" id="node3" href="$CPoiDatabase_8h.html" title="CPoiDatabase.h" alt="" coords="367,155,492,181"/>
+<area shape="rect" id="node6" href="$CCSV_8cpp.html" title="CCSV.cpp" alt="" coords="5,379,88,405"/>
+<area shape="rect" id="node9" href="$CJsonPersistence_8cpp.html" title="CJsonPersistence.cpp" alt="" coords="112,379,272,405"/>
+<area shape="rect" id="node16" href="$CParser_8h.html" title="CParser.h" alt="" coords="193,155,276,181"/>
+<area shape="rect" id="node18" href="$CPOI_8cpp.html" title="CPOI.cpp" alt="" coords="516,155,596,181"/>
+<area shape="rect" id="node4" href="$CPersistentStorage_8h.html" title="CPersistentStorage.h" alt="" coords="471,229,630,256"/>
+<area shape="rect" id="node11" href="$CRoute_8h.html" title="CRoute.h" alt="" coords="705,229,785,256"/>
+<area shape="rect" id="node12" href="$CNavigationSystem_8h.html" title="CNavigationSystem.h" alt="" coords="603,304,765,331"/>
+<area shape="rect" id="node15" href="$CPoiDatabase_8cpp.html" title="CPoiDatabase.cpp" alt="" coords="307,229,447,256"/>
+<area shape="rect" id="node5" href="$CCSV_8h.html" title="CCSV.h" alt="" coords="231,304,297,331"/>
+<area shape="rect" id="node8" href="$CJsonPersistence_8h.html" title="CJsonPersistence.h" alt="" coords="365,304,510,331"/>
+<area shape="rect" id="node7" href="$CNavigationSystem_8cpp.html" title="CNavigationSystem.cpp" alt="" coords="296,379,475,405"/>
+<area shape="rect" id="node10" href="$CJsonScanner_8cpp.html" title="CJsonScanner.cpp" alt="" coords="499,379,635,405"/>
+<area shape="rect" id="node14" href="$CRoute_8cpp.html" title="CRoute.cpp" alt="" coords="790,304,885,331"/>
+<area shape="rect" id="node13" href="$main_8cpp.html" title="main.cpp" alt="" coords="659,379,741,405"/>
+<area shape="rect" id="node17" href="$CParser_8cpp.html" title="CParser.cpp" alt="" coords="186,229,283,256"/>
+<area shape="rect" id="node20" href="$CWpDatabase_8cpp.html" title="CWpDatabase.cpp" alt="" coords="809,229,951,256"/>
+<area shape="rect" id="node22" href="$CGPSSensor_8cpp.html" title="CGPSSensor.cpp" alt="" coords="823,155,950,181"/>
+</map>

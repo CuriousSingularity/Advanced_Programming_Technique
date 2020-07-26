@@ -1,0 +1,206 @@
+\hypertarget{classFlexLexer}{}\section{Flex\+Lexer Class Reference}
+\label{classFlexLexer}\index{Flex\+Lexer@{Flex\+Lexer}}
+
+
+{\ttfamily \#include $<$Flex\+Lexer.\+h$>$}
+
+
+
+Inheritance diagram for Flex\+Lexer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classFlexLexer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Flex\+Lexer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classFlexLexer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classFlexLexer_a513c4982ef52db6d43151becbf3fe05a}{$\sim$\+Flex\+Lexer} ()
+\item 
+const char $\ast$ \hyperlink{classFlexLexer_aefb1ea757e0e455ae229ae099b4240c2}{Y\+Y\+Text} () const
+\item 
+int \hyperlink{classFlexLexer_aad615c6bce162fcc98c07d69371f6117}{Y\+Y\+Leng} () const
+\item 
+virtual void \hyperlink{classFlexLexer_a3fa4649c1866a483fc391923ca90ca1d}{yy\+\_\+switch\+\_\+to\+\_\+buffer} (struct \hyperlink{structyy__buffer__state}{yy\+\_\+buffer\+\_\+state} $\ast$new\+\_\+buffer)=0
+\item 
+virtual struct \hyperlink{structyy__buffer__state}{yy\+\_\+buffer\+\_\+state} $\ast$ \hyperlink{classFlexLexer_a9e0d5e33726e0270b241a730a3028990}{yy\+\_\+create\+\_\+buffer} (\hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} istream $\ast$s, int size)=0
+\item 
+virtual void \hyperlink{classFlexLexer_a6c59180ab84ba98af3704ba2cb018230}{yy\+\_\+delete\+\_\+buffer} (struct \hyperlink{structyy__buffer__state}{yy\+\_\+buffer\+\_\+state} $\ast$b)=0
+\item 
+virtual void \hyperlink{classFlexLexer_a15aea8e169874756674e4f79553e68ed}{yyrestart} (\hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} istream $\ast$s)=0
+\item 
+virtual int \hyperlink{classFlexLexer_a1b1f93d24f5a97f50eb1747fac568ccb}{yylex} ()=0
+\item 
+int \hyperlink{classFlexLexer_a5ec7f8b71a9cd9142963f0d924ddaa7c}{yylex} (\hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} istream $\ast$new\+\_\+in, \hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} ostream $\ast$new\+\_\+out=0)
+\item 
+virtual void \hyperlink{classFlexLexer_a09dd0826a8540365a74c2167795bbc61}{switch\+\_\+streams} (\hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} istream $\ast$new\+\_\+in=0, \hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} ostream $\ast$new\+\_\+out=0)=0
+\item 
+int \hyperlink{classFlexLexer_a835d3243729ffa4912949ea44b241f3b}{lineno} () const
+\item 
+int \hyperlink{classFlexLexer_a71d0a4ad9db57c86b44e84c407eb21f1}{debug} () const
+\item 
+void \hyperlink{classFlexLexer_a1da05b19b783fd94e8a65cb4ee02dec8}{set\+\_\+debug} (int flag)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{classFlexLexer_a31e594872cba4bb896011d3ee1f75f0d}{yytext}
+\item 
+int \hyperlink{classFlexLexer_a7a483b8c8426cace921d961cd9634c8b}{yyleng}
+\item 
+int \hyperlink{classFlexLexer_a511f8fed6925478cb9925edce88024c7}{yylineno}
+\item 
+int \hyperlink{classFlexLexer_afb25c8701977e6f510799f4cf8a4a029}{yy\+\_\+flex\+\_\+debug}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFlexLexer_a513c4982ef52db6d43151becbf3fe05a}\label{classFlexLexer_a513c4982ef52db6d43151becbf3fe05a}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!````~Flex\+Lexer@{$\sim$\+Flex\+Lexer}}
+\index{````~Flex\+Lexer@{$\sim$\+Flex\+Lexer}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{$\sim$\+Flex\+Lexer()}{~FlexLexer()}}
+{\footnotesize\ttfamily virtual Flex\+Lexer\+::$\sim$\+Flex\+Lexer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classFlexLexer_a71d0a4ad9db57c86b44e84c407eb21f1}\label{classFlexLexer_a71d0a4ad9db57c86b44e84c407eb21f1}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!debug@{debug}}
+\index{debug@{debug}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{debug()}{debug()}}
+{\footnotesize\ttfamily int Flex\+Lexer\+::debug (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classFlexLexer_a835d3243729ffa4912949ea44b241f3b}\label{classFlexLexer_a835d3243729ffa4912949ea44b241f3b}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!lineno@{lineno}}
+\index{lineno@{lineno}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{lineno()}{lineno()}}
+{\footnotesize\ttfamily int Flex\+Lexer\+::lineno (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classFlexLexer_a1da05b19b783fd94e8a65cb4ee02dec8}\label{classFlexLexer_a1da05b19b783fd94e8a65cb4ee02dec8}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!set\+\_\+debug@{set\+\_\+debug}}
+\index{set\+\_\+debug@{set\+\_\+debug}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{set\+\_\+debug()}{set\_debug()}}
+{\footnotesize\ttfamily void Flex\+Lexer\+::set\+\_\+debug (\begin{DoxyParamCaption}\item[{int}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classFlexLexer_a09dd0826a8540365a74c2167795bbc61}\label{classFlexLexer_a09dd0826a8540365a74c2167795bbc61}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!switch\+\_\+streams@{switch\+\_\+streams}}
+\index{switch\+\_\+streams@{switch\+\_\+streams}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{switch\+\_\+streams()}{switch\_streams()}}
+{\footnotesize\ttfamily virtual void Flex\+Lexer\+::switch\+\_\+streams (\begin{DoxyParamCaption}\item[{\hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} istream $\ast$}]{new\+\_\+in = {\ttfamily 0},  }\item[{\hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} ostream $\ast$}]{new\+\_\+out = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{classyyFlexLexer_ae88d47b620670ef7a924f4fe1e70774b}{yy\+Flex\+Lexer}.
+
+\mbox{\Hypertarget{classFlexLexer_a9e0d5e33726e0270b241a730a3028990}\label{classFlexLexer_a9e0d5e33726e0270b241a730a3028990}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!yy\+\_\+create\+\_\+buffer@{yy\+\_\+create\+\_\+buffer}}
+\index{yy\+\_\+create\+\_\+buffer@{yy\+\_\+create\+\_\+buffer}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{yy\+\_\+create\+\_\+buffer()}{yy\_create\_buffer()}}
+{\footnotesize\ttfamily virtual struct \hyperlink{structyy__buffer__state}{yy\+\_\+buffer\+\_\+state}$\ast$ Flex\+Lexer\+::yy\+\_\+create\+\_\+buffer (\begin{DoxyParamCaption}\item[{\hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} istream $\ast$}]{s,  }\item[{int}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{classyyFlexLexer_ac72d57010353577c918e72eba3d8972a}{yy\+Flex\+Lexer}.
+
+\mbox{\Hypertarget{classFlexLexer_a6c59180ab84ba98af3704ba2cb018230}\label{classFlexLexer_a6c59180ab84ba98af3704ba2cb018230}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!yy\+\_\+delete\+\_\+buffer@{yy\+\_\+delete\+\_\+buffer}}
+\index{yy\+\_\+delete\+\_\+buffer@{yy\+\_\+delete\+\_\+buffer}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{yy\+\_\+delete\+\_\+buffer()}{yy\_delete\_buffer()}}
+{\footnotesize\ttfamily virtual void Flex\+Lexer\+::yy\+\_\+delete\+\_\+buffer (\begin{DoxyParamCaption}\item[{struct \hyperlink{structyy__buffer__state}{yy\+\_\+buffer\+\_\+state} $\ast$}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{classyyFlexLexer_a645a8ebb5b2b5b80707d053a0eb7a21a}{yy\+Flex\+Lexer}.
+
+\mbox{\Hypertarget{classFlexLexer_a3fa4649c1866a483fc391923ca90ca1d}\label{classFlexLexer_a3fa4649c1866a483fc391923ca90ca1d}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!yy\+\_\+switch\+\_\+to\+\_\+buffer@{yy\+\_\+switch\+\_\+to\+\_\+buffer}}
+\index{yy\+\_\+switch\+\_\+to\+\_\+buffer@{yy\+\_\+switch\+\_\+to\+\_\+buffer}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{yy\+\_\+switch\+\_\+to\+\_\+buffer()}{yy\_switch\_to\_buffer()}}
+{\footnotesize\ttfamily virtual void Flex\+Lexer\+::yy\+\_\+switch\+\_\+to\+\_\+buffer (\begin{DoxyParamCaption}\item[{struct \hyperlink{structyy__buffer__state}{yy\+\_\+buffer\+\_\+state} $\ast$}]{new\+\_\+buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{classyyFlexLexer_ad1d304c93cf758e1ae4db98d9ca35ad0}{yy\+Flex\+Lexer}.
+
+\mbox{\Hypertarget{classFlexLexer_aad615c6bce162fcc98c07d69371f6117}\label{classFlexLexer_aad615c6bce162fcc98c07d69371f6117}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!Y\+Y\+Leng@{Y\+Y\+Leng}}
+\index{Y\+Y\+Leng@{Y\+Y\+Leng}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{Y\+Y\+Leng()}{YYLeng()}}
+{\footnotesize\ttfamily int Flex\+Lexer\+::\+Y\+Y\+Leng (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classFlexLexer_a1b1f93d24f5a97f50eb1747fac568ccb}\label{classFlexLexer_a1b1f93d24f5a97f50eb1747fac568ccb}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!yylex@{yylex}}
+\index{yylex@{yylex}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{yylex()}{yylex()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual int Flex\+Lexer\+::yylex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{classyyFlexLexer_a49826cc55dd4c5e668d9391b80a57274}{yy\+Flex\+Lexer}.
+
+\mbox{\Hypertarget{classFlexLexer_a5ec7f8b71a9cd9142963f0d924ddaa7c}\label{classFlexLexer_a5ec7f8b71a9cd9142963f0d924ddaa7c}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!yylex@{yylex}}
+\index{yylex@{yylex}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{yylex()}{yylex()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Flex\+Lexer\+::yylex (\begin{DoxyParamCaption}\item[{\hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} istream $\ast$}]{new\+\_\+in,  }\item[{\hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} ostream $\ast$}]{new\+\_\+out = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classFlexLexer_a15aea8e169874756674e4f79553e68ed}\label{classFlexLexer_a15aea8e169874756674e4f79553e68ed}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!yyrestart@{yyrestart}}
+\index{yyrestart@{yyrestart}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{yyrestart()}{yyrestart()}}
+{\footnotesize\ttfamily virtual void Flex\+Lexer\+::yyrestart (\begin{DoxyParamCaption}\item[{\hyperlink{FlexLexer_8h_ae50ff830f34b9e244163babb41a1552d}{F\+L\+E\+X\+\_\+\+S\+TD} istream $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{classyyFlexLexer_ab337dd3bd9504644164c0600d960b6e2}{yy\+Flex\+Lexer}.
+
+\mbox{\Hypertarget{classFlexLexer_aefb1ea757e0e455ae229ae099b4240c2}\label{classFlexLexer_aefb1ea757e0e455ae229ae099b4240c2}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!Y\+Y\+Text@{Y\+Y\+Text}}
+\index{Y\+Y\+Text@{Y\+Y\+Text}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{Y\+Y\+Text()}{YYText()}}
+{\footnotesize\ttfamily const char$\ast$ Flex\+Lexer\+::\+Y\+Y\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classFlexLexer_afb25c8701977e6f510799f4cf8a4a029}\label{classFlexLexer_afb25c8701977e6f510799f4cf8a4a029}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!yy\+\_\+flex\+\_\+debug@{yy\+\_\+flex\+\_\+debug}}
+\index{yy\+\_\+flex\+\_\+debug@{yy\+\_\+flex\+\_\+debug}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{yy\+\_\+flex\+\_\+debug}{yy\_flex\_debug}}
+{\footnotesize\ttfamily int Flex\+Lexer\+::yy\+\_\+flex\+\_\+debug\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classFlexLexer_a7a483b8c8426cace921d961cd9634c8b}\label{classFlexLexer_a7a483b8c8426cace921d961cd9634c8b}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!yyleng@{yyleng}}
+\index{yyleng@{yyleng}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{yyleng}{yyleng}}
+{\footnotesize\ttfamily int Flex\+Lexer\+::yyleng\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classFlexLexer_a511f8fed6925478cb9925edce88024c7}\label{classFlexLexer_a511f8fed6925478cb9925edce88024c7}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!yylineno@{yylineno}}
+\index{yylineno@{yylineno}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{yylineno}{yylineno}}
+{\footnotesize\ttfamily int Flex\+Lexer\+::yylineno\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classFlexLexer_a31e594872cba4bb896011d3ee1f75f0d}\label{classFlexLexer_a31e594872cba4bb896011d3ee1f75f0d}} 
+\index{Flex\+Lexer@{Flex\+Lexer}!yytext@{yytext}}
+\index{yytext@{yytext}!Flex\+Lexer@{Flex\+Lexer}}
+\subsubsection{\texorpdfstring{yytext}{yytext}}
+{\footnotesize\ttfamily char$\ast$ Flex\+Lexer\+::yytext\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{FlexLexer_8h}{Flex\+Lexer.\+h}\end{DoxyCompactItemize}
